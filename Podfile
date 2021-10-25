@@ -9,6 +9,7 @@ target 'CalendarApp' do
 pod 'CalculateCalendarLogic'
 pod 'FSCalendar'
 pod 'DropDown'
+pod 'RealmSwift'
 
   target 'CalendarAppTests' do
     inherit! :search_paths
@@ -16,6 +17,7 @@ pod 'DropDown'
 pod 'CalculateCalendarLogic'
 pod 'FSCalendar'
 pod 'DropDown'
+pod 'RealmSwift'
 
   end
 
@@ -24,6 +26,7 @@ pod 'DropDown'
 pod 'CalculateCalendarLogic'
 pod 'FSCalendar'
 pod 'DropDown'
+pod 'RealmSwift'
 
   end
 
