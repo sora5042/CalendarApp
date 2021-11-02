@@ -10,6 +10,7 @@ import RealmSwift
 
 class EventModel: Object {
     
+    @objc dynamic var notificationId = ""
     @objc dynamic var title = ""
     @objc dynamic var comment = ""
     @objc dynamic var date = ""

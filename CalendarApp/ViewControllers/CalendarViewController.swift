@@ -13,36 +13,39 @@ import RealmSwift
 
 class CalendarViewController: UIViewController {
     
-    let cellId = "cellId"
-    let selectElementDropDown = DropDown()
-    let elementArray = ["週だけ", "土日祝だけ"]
-    var eventModels: [[String:String]] = []
+    private let cellId = "cellId"
+    private let selectElementDropDown = DropDown()
+    private let elementArray = ["週だけ", "土日祝だけ"]
+    private let dateFormat = DateFormatter()
+    //    var eventModels: [[String:String]] = []
     var eventModel: EventModel?
-    var events = [EventModel]()
+    var eventModels = [EventModel]()
     
-   
-    @IBOutlet weak var calendar: FSCalendar!
-    @IBOutlet weak var taskTableView: UITableView!
-    @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var selectElementButton: UIButton!
-    @IBOutlet weak var selectElementDropDownView: UIView!
-    @IBOutlet weak var elementDropDownButton: UIButton!
+    
+    @IBOutlet weak private var calendar: FSCalendar!
+    @IBOutlet weak private var taskTableView: UITableView!
+    @IBOutlet weak private var addButton: UIButton!
+    @IBOutlet weak private var dateLabel: UILabel!
+    @IBOutlet weak private var selectElementButton: UIButton!
+    @IBOutlet weak private var selectElementDropDownView: UIView!
+    @IBOutlet weak private var elementDropDownButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(Realm.Configuration.defaultConfiguration.fileURL)
         
         setupView()
         setupCalendar()
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-           super.viewDidAppear(animated)
-           
-           fetchEvent()
-           
-       }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //        fetchEvent()
+        //        print("fetchEvent", eventModels)
+    }
     
     private func setupView() {
         
@@ -89,7 +92,7 @@ class CalendarViewController: UIViewController {
         self.present(addEventViewController, animated: true, completion: nil)
     }
     
-  
+    
     
     private func initSelectElementDropDownMenu() {
         
@@ -109,57 +112,75 @@ class CalendarViewController: UIViewController {
             
             let results = realm.objects(EventModel.self)
             for result in results {
-                events.append(result)
-                
-//                ["title": result.title,
-//                                    "memo": result.comment,
-//                                    "date": result.date,
-//                                    "start_time": result.startTime,
-//                                    "end_time": result.endTime]
+                eventModels.append(result)
+                eventModel = result
                 
             }
         } catch {
-            print("create todo error.")
+            print("read todo error.")
             
             
         }
+        
+        taskTableView.reloadData()
     }
     
-   private func filterEvent() {
-        
-        let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "yyyy/MM/dd HH:mm"
-        
-//        var filterdEvents: [[String:String]] = []
-        for eventModel in events {
-            if eventModel["date"] as! String == dateLabel.text! {
-                events.append(eventModel)
+    private func filterEvent(date: Date) {
+        do {
+            
+            dateFormat.dateFormat = "yyyy/MM/dd"
+            
+            let date = dateFormat.string(from: date)
+            
+            let realm = try Realm()
+            let filter = realm.objects(EventModel.self).filter("date == '\(date)'")
+            
+            print("filter", filter)
+            
+            for result in filter {
+                
+                if result.date == date {
+                    
+                    self.eventModels.append(result)
+                    print("date", date)
+                    
+                } else {
+                    
+                    eventModels = []
+                    print("この日は何もありません")
+                    return
+                }
+                
             }
+            
+        } catch {
+            print("read todo error.")
         }
-        
     }
-    
-    //    private let gregorian: Calendar = Calendar(identifier: .gregorian)
-    //    private lazy var dateFormatter: DateFormatter = {
-    //        let formatter = DateFormatter()
-    //        formatter.dateFormat = "yyyy-MM-dd"
-    //        return formatter
-    //    }()
 }
 
+// MARK: - UITableViewDataSource, UITableViewDelegate
 extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 100
+        
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return events.count
+        return eventModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = taskTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! EventTableViewCell
         cell.delegate = self
-        cell.eventModel = self.eventModel
+        cell.eventModels = self.eventModels
         cell.alertDelegate = self
-        cell.eventModels = self.events
+        cell.eventModel = self.eventModels[indexPath.row]
         
         
         return cell
@@ -167,16 +188,17 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
+// MARK: - EventTableViewCellDelegate
 extension CalendarViewController: EventTableViewCellDelegate {
     func notifiCell(eventFromCell: EventModel) {
         
-//        let realm = try! Realm()
+        let realm = try! Realm()
         
-        let event = eventFromCell.realm?.objects(EventModel.self)
+        let event = realm.objects(EventModel.self)
         
         do {
-            try eventFromCell.realm?.write{
-                eventFromCell.realm?.delete(event!)
+            try eventFromCell.realm?.write {
+                eventFromCell.realm?.delete(event)
             }
         } catch {
             print("Error \(error)")
@@ -188,13 +210,16 @@ extension CalendarViewController: EventTableViewCellDelegate {
     }
 }
 
+// MARK: - AddEventViewControllerDelegate
 extension CalendarViewController: AddEventViewControllerDelegate {
     func event(addEvent: EventModel) {
         
         fetchEvent()
+        print("fetchEvent", eventModels)
     }
 }
 
+// MARK: - FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance
 extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
@@ -203,14 +228,34 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
-        filterEvent()
-        taskTableView.reloadData()
-        
         let tmpDate = Calendar(identifier: .gregorian)
         let year = tmpDate.component(.year, from: date)
         let month = tmpDate.component(.month, from: date)
         let day = tmpDate.component(.day, from: date)
         dateLabel.text = "\(year)年\(month)月\(day)日"
+        
+        
+        filterEvent(date: date)
+        taskTableView.reloadData()
+    }
+    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        
+        
+        dateFormat.dateFormat = "yyyy/MM/dd"
+        
+        let date = dateFormat.string(from: date)
+        var hasEvent: Bool = false
+        for eventModel in eventModels {
+            if eventModel["date"] as! String == date {
+                hasEvent = true
+            }
+        }
+        if hasEvent {
+            return 1
+        } else {
+            return 0
+        }
     }
     
     // 土日や祝日の日の文字色を変える
@@ -263,25 +308,4 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         let tmpCalendar = Calendar(identifier: .gregorian)
         return tmpCalendar.component(.weekday, from: date)
     }
-    
-    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        
-        let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "yyyy/MM/dd"
-        
-        let date = dateFormat.string(from: date)
-        var hasEvent: Bool = false
-        for eventModel in eventModels {
-            if eventModel["date"] == date {
-                hasEvent = true
-            }
-        }
-        if hasEvent {
-            return 1
-        } else {
-            return 0
-        }
-    }
-    
-    
 }

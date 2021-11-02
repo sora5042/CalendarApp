@@ -17,13 +17,15 @@ class EventTableViewCell: UITableViewCell {
     weak var alertDelegate: CalendarViewController?
     
     var eventModels = [EventModel]()
-    
     var eventModel: EventModel? {
         didSet {
             
             titleTextField.text = eventModel?.title
+            commentLabel.text = eventModel?.comment
+            placeLabel.text = eventModel?.place
             startTime.text = eventModel?.startTime
             endTime.text = eventModel?.endTime
+            
             
         }
         
@@ -33,6 +35,8 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var startTime: UILabel!
     @IBOutlet weak var endTime: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var placeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
