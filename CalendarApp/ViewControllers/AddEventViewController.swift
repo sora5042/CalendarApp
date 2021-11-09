@@ -13,6 +13,8 @@ protocol AddEventViewControllerDelegate: class {
     
     func event(addEvent: EventModel)
     
+//    func eventList(list: List<EventModel>)
+    
 }
 
 class AddEventViewController: UIViewController {
@@ -21,13 +23,15 @@ class AddEventViewController: UIViewController {
     private let dateFormat = DateFormatter()
     var eventModel = EventModel()
     var eventModels = [EventModel]()
+    var eventLists: List<EventModel>!
+    var eventList = EventList()
     
     @IBOutlet weak private var cancelButton: UIButton!
     @IBOutlet weak private var titleTextField: HoshiTextField!
     @IBOutlet weak private var placeTextField: HoshiTextField!
     @IBOutlet weak private var commentTextField: HoshiTextField!
-    @IBOutlet weak private var startDatePicker: UIDatePicker!
-    @IBOutlet weak private var endDatePicker: UIDatePicker!
+    @IBOutlet weak var startDatePicker: UIDatePicker!
+    @IBOutlet weak var endDatePicker: UIDatePicker!
     @IBOutlet weak private var saveButton: UIButton!
     
     override func viewDidLoad() {
@@ -66,14 +70,16 @@ class AddEventViewController: UIViewController {
     @objc private func tappedSaveButton() {
         
         localNotification()
-        
         delegate?.event(addEvent: eventModel)
+        
         dismiss(animated: true, completion: nil)
     }
     
     private func createEvent(notificationId: String) {
         
         dateFormat.dateFormat = "yyyy/MM/dd"
+        let dateKeyFormat = DateFormatter()
+        dateKeyFormat.dateFormat = "yyyy/MM/dd/HH:mm:ss"
         
         let timeFormat = DateFormatter()
         timeFormat.dateFormat = "HH:mm"
@@ -85,6 +91,13 @@ class AddEventViewController: UIViewController {
         do {
             
             let realm = try Realm()
+            
+//            let event = [
+//
+//                EventModel(value: ["dateKey": "\(dateKeyFormat.string(from: startDatePicker.date))", "notificationId": notificationId, "title": title, "comment": comment, "place": place, "date": "\(dateFormat.string(from: startDatePicker.date))", "startTime": "\(timeFormat.string(from: startDatePicker.date))", "endTime": "\(timeFormat.string(from: endDatePicker.date))"])
+//            ]
+            
+            eventModel.dateKey = "\(dateKeyFormat.string(from: startDatePicker.date))"
             eventModel.notificationId = notificationId
             eventModel.title = title
             eventModel.comment = comment
@@ -94,7 +107,9 @@ class AddEventViewController: UIViewController {
             eventModel.endTime = "\(timeFormat.string(from: endDatePicker.date))"
             
             try realm.write {
+//                eventList.eventList.append(eventModel)
                 realm.add(eventModel)
+//                self.eventLists = realm.objects(EventList.self).first?.eventList
                 //                print("eventModel", eventModel)
                 
             }
@@ -162,6 +177,4 @@ extension AddEventViewController: UITextFieldDelegate {
         
         return true
     }
-    
-    
 }

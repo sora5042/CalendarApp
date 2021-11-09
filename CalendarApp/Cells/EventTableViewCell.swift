@@ -26,7 +26,6 @@ class EventTableViewCell: UITableViewCell {
             startTime.text = eventModel?.startTime
             endTime.text = eventModel?.endTime
             
-            
         }
         
     }
@@ -40,7 +39,6 @@ class EventTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         cancelButton.addTarget(self, action: #selector(tappedClearButton), for: .touchUpInside)
     }
@@ -49,11 +47,11 @@ class EventTableViewCell: UITableViewCell {
            
            let alert = UIAlertController(title: "アラート表示", message: "本当に削除しても良いですか？", preferredStyle: UIAlertController.Style.alert)
            let clearAction = UIAlertAction(title: "削除", style: UIAlertAction.Style.default) { (action: UIAlertAction) in
-               
+
                self.delegate?.notifiCell(eventFromCell: self.eventModel!)
-               
+
            }
-           
+
            alert.addAction(clearAction)
            let cancelAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler: nil)
            alert.addAction(cancelAction)
