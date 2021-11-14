@@ -20,13 +20,7 @@ class EventModel: Object {
     @objc dynamic var endTime = "" //00:00
     
     override static func primaryKey() -> String? {
-            return "dateKey"
-        }
-    
-}
-
-class EventList: Object {
-    
-    let eventList = List<EventModel>()
+        return "dateKey"
+    }
     
 }

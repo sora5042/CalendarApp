@@ -13,8 +13,6 @@ protocol AddEventViewControllerDelegate: class {
     
     func event(addEvent: EventModel)
     
-//    func eventList(list: List<EventModel>)
-    
 }
 
 class AddEventViewController: UIViewController {
@@ -23,8 +21,6 @@ class AddEventViewController: UIViewController {
     private let dateFormat = DateFormatter()
     var eventModel = EventModel()
     var eventModels = [EventModel]()
-    var eventLists: List<EventModel>!
-    var eventList = EventList()
     
     @IBOutlet weak private var cancelButton: UIButton!
     @IBOutlet weak private var titleTextField: HoshiTextField!
@@ -92,25 +88,13 @@ class AddEventViewController: UIViewController {
             
             let realm = try Realm()
             
-//            let event = [
-//
-//                EventModel(value: ["dateKey": "\(dateKeyFormat.string(from: startDatePicker.date))", "notificationId": notificationId, "title": title, "comment": comment, "place": place, "date": "\(dateFormat.string(from: startDatePicker.date))", "startTime": "\(timeFormat.string(from: startDatePicker.date))", "endTime": "\(timeFormat.string(from: endDatePicker.date))"])
-//            ]
-            
-            eventModel.dateKey = "\(dateKeyFormat.string(from: startDatePicker.date))"
-            eventModel.notificationId = notificationId
-            eventModel.title = title
-            eventModel.comment = comment
-            eventModel.place = place
-            eventModel.date = "\(dateFormat.string(from: startDatePicker.date))"
-            eventModel.startTime = "\(timeFormat.string(from: startDatePicker.date))"
-            eventModel.endTime = "\(timeFormat.string(from: endDatePicker.date))"
+            let event = [
+
+                EventModel(value: ["dateKey": "\(dateKeyFormat.string(from: startDatePicker.date))", "notificationId": notificationId, "title": title, "comment": comment, "place": place, "date": "\(dateFormat.string(from: startDatePicker.date))", "startTime": "\(timeFormat.string(from: startDatePicker.date))", "endTime": "\(timeFormat.string(from: endDatePicker.date))"])
+            ]
             
             try realm.write {
-//                eventList.eventList.append(eventModel)
-                realm.add(eventModel)
-//                self.eventLists = realm.objects(EventList.self).first?.eventList
-                //                print("eventModel", eventModel)
+                realm.add(event)
                 
             }
         } catch {
