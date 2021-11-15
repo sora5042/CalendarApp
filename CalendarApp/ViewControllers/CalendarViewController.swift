@@ -17,7 +17,7 @@ class CalendarViewController: UIViewController {
     
     private let cellId = "cellId"
     private let selectElementDropDown = DropDown()
-    private let elementArray = ["デフォルト","週だけ", "土日祝だけ"]
+    private let elementArray = ["デフォルト","平日だけ", "土日祝だけ"]
     private let dateFormat = DateFormatter()
     private var date = String()
     
@@ -41,17 +41,12 @@ class CalendarViewController: UIViewController {
         setupView()
         setupCalendar()
         fetchEventModels()
-        fetchEventResults()
-        
-        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        taskTableView.reloadData()
-        fetchEventModels()
-        
+        filterEvent(date: date)
     }
     
     private func setupView() {
@@ -86,7 +81,6 @@ class CalendarViewController: UIViewController {
         
         selectElementDropDown.show()
         
-        
     }
     
     @objc private func tappedAddButton() {
@@ -98,8 +92,6 @@ class CalendarViewController: UIViewController {
         addEventViewController.delegate = self
         self.present(addEventViewController, animated: true, completion: nil)
     }
-    
-    
     
     private func initSelectElementDropDownMenu() {
         
@@ -113,28 +105,18 @@ class CalendarViewController: UIViewController {
         }
     }
     
-    private func fetchEventResults() {
-        
-        eventResults = realm.objects(EventModel.self)
-        
-    }
-    
     private func fetchEventModels() {
         
-       let event = realm.objects(EventModel.self)
+        eventResults = realm.objects(EventModel.self)
+        taskTableView.reloadData()
         
-        for result in event {
-            
-            eventModels.append(result)
-            calendar.reloadData()
-            
-        }
     }
     
     private func filterEvent(date: String) {
         
         eventResults = realm.objects(EventModel.self).filter("date == '\(date)'")
         print("filter", eventResults)
+        taskTableView.reloadData()
         
     }
 }
@@ -222,7 +204,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         print("date", self.date)
         
         filterEvent(date: date)
-        taskTableView.reloadData()
         
     }
     
@@ -233,7 +214,7 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         
         let date = dateFormat.string(from: date)
         var hasEvent: Bool = false
-        for eventModel in eventModels {
+        for eventModel in eventResults {
             if eventModel["date"] as! String == date {
                 hasEvent = true
             }
