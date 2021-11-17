@@ -9,6 +9,51 @@
           "revision": "4e79a201fad268408a4fd9e2ef429497def9594f",
           "version": "2.8.2"
         }
+      },
+      {
+        "package": "CalculateCalendarLogic",
+        "repositoryURL": "https://github.com/fumiyasac/handMadeCalendarAdvance",
+        "state": {
+          "branch": null,
+          "revision": "84155ac35feb78f79b12ddc4af9007ceb6bdde65",
+          "version": "0.5.0"
+        }
+      },
+      {
+        "package": "IQKeyboardManagerSwift",
+        "repositoryURL": "https://github.com/hackiftekhar/IQKeyboardManager",
+        "state": {
+          "branch": null,
+          "revision": "474f849accae40fe61b5302d9b057dd48ee073ba",
+          "version": "6.5.9"
+        }
+      },
+      {
+        "package": "Realm",
+        "repositoryURL": "https://github.com/realm/realm-cocoa",
+        "state": {
+          "branch": null,
+          "revision": "2dce752b48c3265c63ab04a8c66ddfdf9185f847",
+          "version": "5.5.2"
+        }
+      },
+      {
+        "package": "RealmCore",
+        "repositoryURL": "https://github.com/realm/realm-core",
+        "state": {
+          "branch": null,
+          "revision": "66d79b3c5213fb14d491c1b22193077b488d49a6",
+          "version": "6.2.4"
+        }
+      },
+      {
+        "package": "TextFieldEffects",
+        "repositoryURL": "https://github.com/raulriera/TextFieldEffects",
+        "state": {
+          "branch": null,
+          "revision": "7e563d4d6d755bb1ab6c1c049f8c215d7c489100",
+          "version": "1.7.0"
+        }
       }
     ]
   },
