@@ -20,19 +20,19 @@ class EventTableViewCell: UITableViewCell {
     var eventModel: EventModel? {
         didSet {
             
-            titleTextField.text = eventModel?.title
+            titleLabel.text = eventModel?.title
             commentLabel.text = eventModel?.comment
             placeLabel.text = eventModel?.place
-            startTime.text = eventModel?.startTime
-            endTime.text = eventModel?.endTime
+            startTimeLabel.text = eventModel?.startTime
+            endTimeLabel.text = eventModel?.endTime
             
         }
         
     }
 
-    @IBOutlet weak var titleTextField: UILabel!
-    @IBOutlet weak var startTime: UILabel!
-    @IBOutlet weak var endTime: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var startTimeLabel: UILabel!
+    @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var placeLabel: UILabel!

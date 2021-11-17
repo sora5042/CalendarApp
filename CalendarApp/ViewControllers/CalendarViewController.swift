@@ -149,6 +149,17 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let storyboard = UIStoryboard(name: "AddSchedule", bundle: nil)
+        let addEventViewController = storyboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as! AddEventViewController
+        
+        addEventViewController.eventModel = eventResults[indexPath.row]
+        addEventViewController.modalPresentationStyle = .fullScreen
+        self.present(addEventViewController, animated: true, completion: nil)
+        
+    }
 }
 
 // MARK: - EventTableViewCellDelegate
@@ -163,7 +174,11 @@ extension CalendarViewController: EventTableViewCellDelegate {
         
         do {
             try eventFromCell.realm?.write {
+                // 通知の削除
+                UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [eventFromCell.notificationId])
                 eventFromCell.realm?.delete(eventResults)
+               
             }
         } catch {
             print("Error \(error)")

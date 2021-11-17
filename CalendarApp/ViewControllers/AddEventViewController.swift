@@ -19,8 +19,8 @@ class AddEventViewController: UIViewController {
     
     weak var delegate: AddEventViewControllerDelegate?
     private let dateFormat = DateFormatter()
-    var eventModel = EventModel()
-    var eventModels = [EventModel]()
+    var eventModel: EventModel?
+    var eventModels = EventModel()
     
     @IBOutlet weak private var cancelButton: UIButton!
     @IBOutlet weak private var titleTextField: HoshiTextField!
@@ -45,17 +45,19 @@ class AddEventViewController: UIViewController {
         commentTextField.delegate = self
         titleTextField.delegate = self
         
-        
+        titleTextField.text = eventModel?.title
         titleTextField.placeholderColor = .darkGray
         titleTextField.borderInactiveColor = .darkGray
         titleTextField.borderActiveColor = .systemGreen
         titleTextField.placeholderFontScale = 1
         
+        placeTextField.text = eventModel?.place
         placeTextField.placeholderColor = .darkGray
         placeTextField.borderActiveColor = .systemGreen
         placeTextField.borderInactiveColor = .darkGray
         placeTextField.placeholderFontScale = 1
         
+        commentTextField.text = eventModel?.comment
         commentTextField.placeholderColor = .darkGray
         commentTextField.borderActiveColor = .systemGreen
         commentTextField.borderInactiveColor = .darkGray
@@ -65,9 +67,17 @@ class AddEventViewController: UIViewController {
     
     @objc private func tappedSaveButton() {
         
-        localNotification()
-        delegate?.event(addEvent: eventModel)
+        if eventModel == nil {
+            
+            localNotification()
+            
+        } else {
+            
+            updateLocalNotification()
+            
+        }
         
+        delegate?.event(addEvent: eventModels)
         dismiss(animated: true, completion: nil)
     }
     
@@ -88,13 +98,17 @@ class AddEventViewController: UIViewController {
             
             let realm = try Realm()
             
-            let event = [
-
-                EventModel(value: ["dateKey": "\(dateKeyFormat.string(from: startDatePicker.date))", "notificationId": notificationId, "title": title, "comment": comment, "place": place, "date": "\(dateFormat.string(from: startDatePicker.date))", "startTime": "\(timeFormat.string(from: startDatePicker.date))", "endTime": "\(timeFormat.string(from: endDatePicker.date))"])
-            ]
+            eventModels.dateKey = dateKeyFormat.string(from: startDatePicker.date)
+            eventModels.notificationId = notificationId
+            eventModels.title = title
+            eventModels.place = place
+            eventModels.comment = comment
+            eventModels.date = dateFormat.string(from: startDatePicker.date)
+            eventModels.startTime = timeFormat.string(from: startDatePicker.date)
+            eventModels.endTime = timeFormat.string(from: endDatePicker.date)
             
             try realm.write {
-                realm.add(event)
+                realm.add(eventModels)
                 
             }
         } catch {
@@ -102,32 +116,106 @@ class AddEventViewController: UIViewController {
         }
     }
     
+    private func updateEvent(notificationId: String) {
+        
+        dateFormat.dateFormat = "yyyy/MM/dd"
+        let dateKeyFormat = DateFormatter()
+        dateKeyFormat.dateFormat = "yyyy/MM/dd/HH:mm:ss"
+        
+        let timeFormat = DateFormatter()
+        timeFormat.dateFormat = "HH:mm"
+        
+        guard let dateKey = eventModel?.dateKey else { return }
+        guard let title = titleTextField.text else { return }
+        guard let comment = commentTextField.text else { return }
+        guard let place = placeTextField.text else { return }
+        
+        do {
+            
+            let realm = try Realm()
+            
+            eventModels.dateKey = dateKey
+            eventModels.notificationId = notificationId
+            eventModels.title = title
+            eventModels.place = place
+            eventModels.comment = comment
+            eventModels.date = dateFormat.string(from: startDatePicker.date)
+            eventModels.startTime = timeFormat.string(from: startDatePicker.date)
+            eventModels.endTime = timeFormat.string(from: endDatePicker.date)
+            
+            try realm.write {
+                realm.add(eventModels, update: .modified)
+                
+            }
+        } catch {
+            print("create todo error.")
+        }
+        
+        
+    }
+    
     private func localNotification() {
         
         guard let titleText = titleTextField.text else { return }
         guard let commentText = commentTextField.text else { return }
         
-        // MARK: 通知の中身を設定
+        // 通知の中身を設定
         let content: UNMutableNotificationContent = UNMutableNotificationContent()
         content.title = "\(titleText)の時間です！"
         content.subtitle = commentText
         content.sound = UNNotificationSound.default
         content.badge = 1
         
-        // MARK: 通知をいつ発動するかを設定
+        // 通知をいつ発動するかを設定
         // カレンダークラスを作成
         let calendar = Calendar.current
         let calendarComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: startDatePicker.date)
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: calendarComponents, repeats: true)
         
-        // MARK: 通知のリクエストを作成
+        // 通知のリクエストを作成
         let id = UUID().uuidString
         let request: UNNotificationRequest = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
         print("notificationId", id)
         createEvent(notificationId: id)
         
         // MARK: 通知のリクエストを実際に登録する
+        UNUserNotificationCenter.current().add(request) { (error: Error?) in
+            
+            if error != nil {
+                
+            } else {
+                
+            }
+        }
+    }
+    
+    private func updateLocalNotification() {
+        
+        guard let notificationid = eventModel?.notificationId else { return }
+        guard let titleText = titleTextField.text else { return }
+        guard let commentText = commentTextField.text else { return }
+        
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationid])
+        
+        // 通知の中身を設定
+        let content: UNMutableNotificationContent = UNMutableNotificationContent()
+        content.title = "\(titleText)の時間です！"
+        content.subtitle = commentText
+        content.sound = UNNotificationSound.default
+        content.badge = 1
+        // 通知をいつ発動するかを設定
+        // カレンダークラスを作成
+        let calendar: Calendar = Calendar.current
+        let trigger: UNCalendarNotificationTrigger = UNCalendarNotificationTrigger(dateMatching: calendar.dateComponents([.year, .month, .day, .hour, .minute], from: startDatePicker.date), repeats: true)
+        
+        // 通知のリクエストを作成
+        let newId = UUID().uuidString
+        let request: UNNotificationRequest = UNNotificationRequest(identifier: newId, content: content, trigger: trigger)
+        print("newId", notificationid)
+        updateEvent(notificationId: newId)
+        // 通知のリクエストを実際に登録する
         UNUserNotificationCenter.current().add(request) { (error: Error?) in
             
             if error != nil {
