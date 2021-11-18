@@ -9,13 +9,14 @@ import UIKit
 import FSCalendar
 import CalculateCalendarLogic
 import RealmSwift
+import DropDown
 
 class CalendarViewController: UIViewController {
     
     let realm = try! Realm()
     
     private let cellId = "cellId"
-//    private let selectElementDropDown = DropDown()
+    private let selectElementDropDown = DropDown()
     private let elementArray = ["デフォルト","平日だけ", "土日祝だけ"]
     private let dateFormat = DateFormatter()
     private var date = String()
@@ -58,7 +59,7 @@ class CalendarViewController: UIViewController {
         
         taskTableView.register(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
         
-//        initSelectElementDropDownMenu()
+        initSelectElementDropDownMenu()
     }
     
     private func setupCalendar() {
@@ -78,7 +79,7 @@ class CalendarViewController: UIViewController {
     
     @objc private func tappedElementDropDownButton() {
         
-//        selectElementDropDown.show()
+        selectElementDropDown.show()
         
     }
     
@@ -92,17 +93,17 @@ class CalendarViewController: UIViewController {
         self.present(addEventViewController, animated: true, completion: nil)
     }
     
-//    private func initSelectElementDropDownMenu() {
-//
-//        selectElementButton.backgroundColor = .clear
-//        selectElementDropDown.anchorView = selectElementDropDownView
-//        selectElementDropDown.dataSource = elementArray // [String]
-//        selectElementDropDown.direction = .bottom
-//        selectElementDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-//            // 選択されたときのActionを記載する
-//
-//        }
-//    }
+    private func initSelectElementDropDownMenu() {
+
+        selectElementButton.backgroundColor = .clear
+        selectElementDropDown.anchorView = selectElementDropDownView
+        selectElementDropDown.dataSource = elementArray // [String]
+        selectElementDropDown.direction = .bottom
+        selectElementDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            // 選択されたときのActionを記載する
+
+        }
+    }
     
     private func fetchEventModels() {
         
@@ -166,17 +167,17 @@ extension CalendarViewController: EventTableViewCellDelegate {
     
     func notifiCell(eventFromCell: EventModel) {
         
-        dateFormat.dateFormat = "yyyy/MM/dd"
         let realm = try! Realm()
         
-        eventResults = realm.objects(EventModel.self).filter("dateKey == '\(eventFromCell.dateKey)'")
+        let result: Results<EventModel>!
+        result = realm.objects(EventModel.self).filter("eventId == '\(eventFromCell.eventId)'")
         
         do {
             try eventFromCell.realm?.write {
                 // 通知の削除
                 UNUserNotificationCenter.current().removeAllDeliveredNotifications()
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [eventFromCell.notificationId])
-                eventFromCell.realm?.delete(eventResults)
+                eventFromCell.realm?.delete(result)
                
             }
         } catch {
@@ -184,7 +185,7 @@ extension CalendarViewController: EventTableViewCellDelegate {
         }
         
         taskTableView.reloadData()
-        
+        filterEvent(date: date)
     }
 }
 
@@ -222,7 +223,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        
         
         dateFormat.dateFormat = "yyyy/MM/dd"
         

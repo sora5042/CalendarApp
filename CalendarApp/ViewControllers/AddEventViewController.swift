@@ -84,12 +84,11 @@ class AddEventViewController: UIViewController {
     private func createEvent(notificationId: String) {
         
         dateFormat.dateFormat = "yyyy/MM/dd"
-        let dateKeyFormat = DateFormatter()
-        dateKeyFormat.dateFormat = "yyyy/MM/dd/HH:mm:ss"
         
         let timeFormat = DateFormatter()
         timeFormat.dateFormat = "HH:mm"
         
+        let eventId = UUID().uuidString
         guard let title = titleTextField.text else { return }
         guard let comment = commentTextField.text else { return }
         guard let place = placeTextField.text else { return }
@@ -98,7 +97,7 @@ class AddEventViewController: UIViewController {
             
             let realm = try Realm()
             
-            eventModels.dateKey = dateKeyFormat.string(from: startDatePicker.date)
+            eventModels.eventId = eventId
             eventModels.notificationId = notificationId
             eventModels.title = title
             eventModels.place = place
@@ -119,13 +118,11 @@ class AddEventViewController: UIViewController {
     private func updateEvent(notificationId: String) {
         
         dateFormat.dateFormat = "yyyy/MM/dd"
-        let dateKeyFormat = DateFormatter()
-        dateKeyFormat.dateFormat = "yyyy/MM/dd/HH:mm:ss"
         
         let timeFormat = DateFormatter()
         timeFormat.dateFormat = "HH:mm"
         
-        guard let dateKey = eventModel?.dateKey else { return }
+        guard let eventId = eventModel?.eventId else { return }
         guard let title = titleTextField.text else { return }
         guard let comment = commentTextField.text else { return }
         guard let place = placeTextField.text else { return }
@@ -134,7 +131,7 @@ class AddEventViewController: UIViewController {
             
             let realm = try Realm()
             
-            eventModels.dateKey = dateKey
+            eventModels.eventId = eventId
             eventModels.notificationId = notificationId
             eventModels.title = title
             eventModels.place = place
@@ -176,7 +173,6 @@ class AddEventViewController: UIViewController {
         // 通知のリクエストを作成
         let id = UUID().uuidString
         let request: UNNotificationRequest = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-        print("notificationId", id)
         createEvent(notificationId: id)
         
         // MARK: 通知のリクエストを実際に登録する
@@ -196,6 +192,7 @@ class AddEventViewController: UIViewController {
         guard let titleText = titleTextField.text else { return }
         guard let commentText = commentTextField.text else { return }
         
+        //更新前の通知リクエストを削除
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationid])
         
@@ -213,7 +210,6 @@ class AddEventViewController: UIViewController {
         // 通知のリクエストを作成
         let newId = UUID().uuidString
         let request: UNNotificationRequest = UNNotificationRequest(identifier: newId, content: content, trigger: trigger)
-        print("newId", notificationid)
         updateEvent(notificationId: newId)
         // 通知のリクエストを実際に登録する
         UNUserNotificationCenter.current().add(request) { (error: Error?) in
