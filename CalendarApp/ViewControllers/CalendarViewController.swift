@@ -20,12 +20,14 @@ class CalendarViewController: UIViewController {
     private let elementArray = ["デフォルト","平日だけ", "土日祝だけ"]
     private let dateFormat = DateFormatter()
     private var date = String()
+    private let todayDate = Date()
     
     var eventModel: EventModel?
     var eventModels = [EventModel]()
     var eventResults: Results<EventModel>!
     
     @IBOutlet weak private var calendar: FSCalendar!
+    @IBOutlet weak var calendarHeight: NSLayoutConstraint!
     @IBOutlet weak private var taskTableView: UITableView!
     @IBOutlet weak private var addButton: UIButton!
     @IBOutlet weak private var dateLabel: UILabel!
@@ -41,10 +43,14 @@ class CalendarViewController: UIViewController {
         setupView()
         setupCalendar()
         fetchEventModels()
+        dateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "en_JP"))
+        print("today", todayDate)
+        filterEvent(date: dateFormat.string(from: todayDate))
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         
         filterEvent(date: date)
     }
@@ -54,6 +60,8 @@ class CalendarViewController: UIViewController {
         taskTableView.dataSource = self
         taskTableView.delegate = self
         
+        dateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMMMd", options: 0, locale: Locale(identifier: "ja_JP"))
+        dateLabel.text = dateFormat.string(from: todayDate)
         addButton.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
         elementDropDownButton.addTarget(self, action: #selector(tappedElementDropDownButton), for: .touchUpInside)
         
@@ -67,6 +75,8 @@ class CalendarViewController: UIViewController {
         calendar.dataSource = self
         calendar.delegate = self
         
+        calendar.scrollDirection = .vertical
+        
         calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
         calendar.calendarWeekdayView.weekdayLabels[1].text = "月"
         calendar.calendarWeekdayView.weekdayLabels[2].text = "火"
@@ -79,7 +89,21 @@ class CalendarViewController: UIViewController {
     
     @objc private func tappedElementDropDownButton() {
         
-        selectElementDropDown.show()
+        if calendar.scope == .month {
+            calendar.scope = .week
+            calendar.setScope(.week, animated: true)
+            elementDropDownButton.setTitle("月表示", for: .normal)
+            // calendarを更新
+//            calendar.reloadData()
+        } else if calendar.scope == .week {
+            calendar.scope = .month
+            calendar.setScope(.month, animated: true)
+            elementDropDownButton.setTitle("週表示", for: .normal)
+            // calendarを更新
+//            calendar.reloadData()
+        }
+        
+        //            selectElementDropDown.show()
         
     }
     
@@ -201,6 +225,12 @@ extension CalendarViewController: AddEventViewControllerDelegate {
 // MARK: - FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance
 extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
     
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+           calendarHeight.constant = bounds.height
+           self.view.layoutIfNeeded()
+       }
+    
+    
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         calendar.reloadData()
     }
@@ -223,6 +253,8 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        
+        
         
         dateFormat.dateFormat = "yyyy/MM/dd"
         
@@ -283,6 +315,7 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         let month = tmpCalendar.component(.month, from: date)
         let day = tmpCalendar.component(.day, from: date)
         return (year,month,day)
+        
     }
     
     //曜日判定(日曜日:1 〜 土曜日:7)
@@ -291,4 +324,7 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         let tmpCalendar = Calendar(identifier: .gregorian)
         return tmpCalendar.component(.weekday, from: date)
     }
+    
+   
+    
 }
