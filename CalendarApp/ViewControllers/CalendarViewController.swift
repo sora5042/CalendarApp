@@ -53,6 +53,7 @@ class CalendarViewController: UIViewController {
         
         
         filterEvent(date: date)
+//        fetchEventModels()
     }
     
     private func setupView() {
@@ -93,14 +94,12 @@ class CalendarViewController: UIViewController {
             calendar.scope = .week
             calendar.setScope(.week, animated: true)
             elementDropDownButton.setTitle("月表示", for: .normal)
-            // calendarを更新
-//            calendar.reloadData()
+           
         } else if calendar.scope == .week {
             calendar.scope = .month
             calendar.setScope(.month, animated: true)
             elementDropDownButton.setTitle("週表示", for: .normal)
-            // calendarを更新
-//            calendar.reloadData()
+            
         }
         
         //            selectElementDropDown.show()
@@ -132,7 +131,7 @@ class CalendarViewController: UIViewController {
     private func fetchEventModels() {
         
         eventResults = realm.objects(EventModel.self)
-        taskTableView.reloadData()
+//        taskTableView.reloadData()
         
     }
     
@@ -254,9 +253,8 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         
-        
-        
         dateFormat.dateFormat = "yyyy/MM/dd"
+        fetchEventModels()
         
         let date = dateFormat.string(from: date)
         var hasEvent: Bool = false
@@ -270,9 +268,7 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         } else {
             return 0
         }
-        
     }
-    
     // 土日や祝日の日の文字色を変える
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         
