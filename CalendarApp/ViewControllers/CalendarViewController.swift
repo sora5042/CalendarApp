@@ -137,7 +137,8 @@ class CalendarViewController: UIViewController {
     
     private func filterEvent(date: String) {
         
-        eventResults = realm.objects(EventModel.self).filter("date == '\(date)'")
+        eventResults = realm.objects(EventModel.self).filter("date == '\(date)'").sorted(byKeyPath: "time", ascending: true)
+        
         print("filter", eventResults)
         taskTableView.reloadData()
         

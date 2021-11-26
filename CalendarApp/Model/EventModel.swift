@@ -16,6 +16,7 @@ class EventModel: Object {
     @objc dynamic var comment = ""
     @objc dynamic var date = ""
     @objc dynamic var place = ""
+    @objc dynamic var time = Date()
     @objc dynamic var startTime = "" //00:00
     @objc dynamic var endTime = "" //00:00
     

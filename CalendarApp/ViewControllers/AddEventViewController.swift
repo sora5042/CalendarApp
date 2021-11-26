@@ -102,6 +102,7 @@ class AddEventViewController: UIViewController {
             eventModels.title = title
             eventModels.place = place
             eventModels.comment = comment
+            eventModels.time = startDatePicker.date
             eventModels.date = dateFormat.string(from: startDatePicker.date)
             eventModels.startTime = timeFormat.string(from: startDatePicker.date)
             eventModels.endTime = timeFormat.string(from: endDatePicker.date)
@@ -136,6 +137,7 @@ class AddEventViewController: UIViewController {
             eventModels.title = title
             eventModels.place = place
             eventModels.comment = comment
+            eventModels.time = startDatePicker.date
             eventModels.date = dateFormat.string(from: startDatePicker.date)
             eventModels.startTime = timeFormat.string(from: startDatePicker.date)
             eventModels.endTime = timeFormat.string(from: endDatePicker.date)
