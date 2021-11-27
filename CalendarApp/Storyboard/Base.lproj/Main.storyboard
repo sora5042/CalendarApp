@@ -63,14 +63,22 @@
                                         <rect key="frame" x="314" y="52" width="31" height="30"/>
                                         <state key="normal" title="表示"/>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPm-pT-dpe">
+                                        <rect key="frame" x="20" y="51" width="77" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="スクロール"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.80480665955417729" green="1" blue="0.76148527081689521" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="mh8-0Z-GWZ" secondAttribute="bottom" constant="20" symbolic="YES" id="2Zx-Ql-gGl"/>
                                     <constraint firstItem="7sW-az-yYM" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="top" constant="52" id="4zI-NL-XRW"/>
+                                    <constraint firstItem="dPm-pT-dpe" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="top" constant="51" id="EDG-Dd-oCY"/>
                                     <constraint firstItem="mh8-0Z-GWZ" firstAttribute="centerX" secondItem="cBT-Jv-dNi" secondAttribute="centerX" id="S2x-xn-srF"/>
                                     <constraint firstItem="mh8-0Z-GWZ" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="top" constant="55" id="SUC-ds-TL6"/>
                                     <constraint firstAttribute="trailing" secondItem="7sW-az-yYM" secondAttribute="trailing" constant="30" id="ZIq-I0-lq8"/>
+                                    <constraint firstItem="dPm-pT-dpe" firstAttribute="leading" secondItem="cBT-Jv-dNi" secondAttribute="leading" constant="20" id="bHH-Dm-wOy"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4Lt-Jh-gBl">
@@ -127,6 +135,7 @@
                         <outlet property="calendarHeight" destination="KHY-iv-dBj" id="YiR-d3-LhH"/>
                         <outlet property="dateLabel" destination="go5-jU-eb2" id="h9I-ZW-BY0"/>
                         <outlet property="elementDropDownButton" destination="7sW-az-yYM" id="ZaF-eJ-k5a"/>
+                        <outlet property="scrollButton" destination="dPm-pT-dpe" id="csd-ZS-xyZ"/>
                         <outlet property="selectElementButton" destination="TtV-qY-3FQ" id="6ZV-HU-Ztf"/>
                         <outlet property="selectElementDropDownView" destination="Mu1-5G-x5G" id="3Md-UN-84P"/>
                         <outlet property="taskTableView" destination="4Lt-Jh-gBl" id="8RA-Ow-ezd"/>

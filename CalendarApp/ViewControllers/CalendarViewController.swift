@@ -21,19 +21,20 @@ class CalendarViewController: UIViewController {
     private let dateFormat = DateFormatter()
     private var date = String()
     private let todayDate = Date()
-    
+
     var eventModel: EventModel?
     var eventModels = [EventModel]()
     var eventResults: Results<EventModel>!
     
     @IBOutlet weak private var calendar: FSCalendar!
-    @IBOutlet weak var calendarHeight: NSLayoutConstraint!
+    @IBOutlet weak private var calendarHeight: NSLayoutConstraint!
     @IBOutlet weak private var taskTableView: UITableView!
     @IBOutlet weak private var addButton: UIButton!
     @IBOutlet weak private var dateLabel: UILabel!
     @IBOutlet weak private var selectElementButton: UIButton!
     @IBOutlet weak private var selectElementDropDownView: UIView!
     @IBOutlet weak private var elementDropDownButton: UIButton!
+    @IBOutlet weak private var scrollButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +66,7 @@ class CalendarViewController: UIViewController {
         dateLabel.text = dateFormat.string(from: todayDate)
         addButton.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
         elementDropDownButton.addTarget(self, action: #selector(tappedElementDropDownButton), for: .touchUpInside)
+        scrollButton.addTarget(self, action: #selector(tappedScrollButton), for: .touchUpInside)
         
         taskTableView.register(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
         
@@ -106,6 +108,21 @@ class CalendarViewController: UIViewController {
         
     }
     
+    @objc private func tappedScrollButton() {
+        
+        if calendar.scrollDirection == .vertical {
+            
+            calendar.scrollDirection = .horizontal
+            scrollButton.setTitle("縦方向", for: .normal)
+            
+        } else if calendar.scrollDirection == .horizontal {
+            
+            calendar.scrollDirection = .vertical
+            scrollButton.setTitle("横方向", for: .normal)
+        }
+        
+    }
+    
     @objc private func tappedAddButton() {
         
         let storyboard = UIStoryboard(name: "AddSchedule", bundle: nil)
@@ -113,6 +130,7 @@ class CalendarViewController: UIViewController {
         addEventViewController.modalTransitionStyle = .coverVertical
         addEventViewController.modalPresentationStyle = .fullScreen
         addEventViewController.delegate = self
+        addEventViewController.date = date
         self.present(addEventViewController, animated: true, completion: nil)
     }
     
@@ -180,6 +198,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         let addEventViewController = storyboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as! AddEventViewController
         
         addEventViewController.eventModel = eventResults[indexPath.row]
+        addEventViewController.date = date
         addEventViewController.modalPresentationStyle = .fullScreen
         self.present(addEventViewController, animated: true, completion: nil)
         
@@ -321,7 +340,4 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         let tmpCalendar = Calendar(identifier: .gregorian)
         return tmpCalendar.component(.weekday, from: date)
     }
-    
-   
-    
 }

@@ -21,6 +21,8 @@ class AddEventViewController: UIViewController {
     private let dateFormat = DateFormatter()
     var eventModel: EventModel?
     var eventModels = EventModel()
+    private let dateFormatter = DateFormatter()
+    var date = String()
     
     @IBOutlet weak private var cancelButton: UIButton!
     @IBOutlet weak private var titleTextField: HoshiTextField!
@@ -37,6 +39,11 @@ class AddEventViewController: UIViewController {
     }
     
     private func setupView() {
+        
+        dateFormat.dateFormat = "yyyy/MM/dd"
+        let datePicker = dateFormat.date(from: self.date)
+        startDatePicker.date = datePicker ?? Date()
+        endDatePicker.date = datePicker ?? Date()
         
         cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
         saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
@@ -62,6 +69,7 @@ class AddEventViewController: UIViewController {
         commentTextField.borderActiveColor = .systemGreen
         commentTextField.borderInactiveColor = .darkGray
         commentTextField.placeholderFontScale = 1
+        
         
     }
     
