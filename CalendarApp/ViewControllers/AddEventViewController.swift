@@ -12,7 +12,6 @@ import RealmSwift
 protocol AddEventViewControllerDelegate: class {
     
     func event(addEvent: EventModel)
-    
 }
 
 class AddEventViewController: UIViewController {
@@ -69,8 +68,6 @@ class AddEventViewController: UIViewController {
         commentTextField.borderActiveColor = .systemGreen
         commentTextField.borderInactiveColor = .darkGray
         commentTextField.placeholderFontScale = 1
-        
-        
     }
     
     @objc private func tappedSaveButton() {
@@ -152,13 +149,10 @@ class AddEventViewController: UIViewController {
             
             try realm.write {
                 realm.add(eventModels, update: .modified)
-                
             }
         } catch {
             print("create todo error.")
         }
-        
-        
     }
     
     private func localNotification() {
@@ -235,7 +229,6 @@ class AddEventViewController: UIViewController {
     @objc private func tappedCancelButton() {
         
         dismiss(animated: true, completion: nil)
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

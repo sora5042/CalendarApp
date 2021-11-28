@@ -13,7 +13,7 @@ import DropDown
 
 class CalendarViewController: UIViewController {
     
-    let realm = try! Realm()
+    private let realm = try! Realm()
     
     private let cellId = "cellId"
     private let selectElementDropDown = DropDown()
@@ -21,7 +21,7 @@ class CalendarViewController: UIViewController {
     private let dateFormat = DateFormatter()
     private var date = String()
     private let todayDate = Date()
-
+    
     var eventModel: EventModel?
     var eventModels = [EventModel]()
     var eventResults: Results<EventModel>!
@@ -40,21 +40,27 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
         
         print(Realm.Configuration.defaultConfiguration.fileURL)
+        dateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "ja_JP"))
+        var todayString = dateFormat.string(from: todayDate)
+        print("todayString", todayString)
         
         setupView()
         setupCalendar()
         fetchEventModels()
-        dateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "en_JP"))
-        print("today", todayDate)
-        filterEvent(date: dateFormat.string(from: todayDate))
+        filterEvent(date: todayString)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
-        filterEvent(date: date)
-//        fetchEventModels()
+        if date == "" {
+            return
+            
+        } else {
+            
+            filterEvent(date: date)
+            
+        }
     }
     
     private func setupView() {
@@ -96,7 +102,7 @@ class CalendarViewController: UIViewController {
             calendar.scope = .week
             calendar.setScope(.week, animated: true)
             elementDropDownButton.setTitle("月表示", for: .normal)
-           
+            
         } else if calendar.scope == .week {
             calendar.scope = .month
             calendar.setScope(.month, animated: true)
@@ -120,7 +126,6 @@ class CalendarViewController: UIViewController {
             calendar.scrollDirection = .vertical
             scrollButton.setTitle("横方向", for: .normal)
         }
-        
     }
     
     @objc private func tappedAddButton() {
@@ -135,21 +140,20 @@ class CalendarViewController: UIViewController {
     }
     
     private func initSelectElementDropDownMenu() {
-
+        
         selectElementButton.backgroundColor = .clear
         selectElementDropDown.anchorView = selectElementDropDownView
         selectElementDropDown.dataSource = elementArray // [String]
         selectElementDropDown.direction = .bottom
         selectElementDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             // 選択されたときのActionを記載する
-
+            
         }
     }
     
     private func fetchEventModels() {
         
         eventResults = realm.objects(EventModel.self)
-//        taskTableView.reloadData()
         
     }
     
@@ -221,7 +225,6 @@ extension CalendarViewController: EventTableViewCellDelegate {
                 UNUserNotificationCenter.current().removeAllDeliveredNotifications()
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [eventFromCell.notificationId])
                 eventFromCell.realm?.delete(result)
-               
             }
         } catch {
             print("Error \(error)")
@@ -245,10 +248,9 @@ extension CalendarViewController: AddEventViewControllerDelegate {
 extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-           calendarHeight.constant = bounds.height
-           self.view.layoutIfNeeded()
-       }
-    
+        calendarHeight.constant = bounds.height
+        self.view.layoutIfNeeded()
+    }
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         calendar.reloadData()
@@ -268,7 +270,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         print("date", self.date)
         
         filterEvent(date: date)
-        
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {

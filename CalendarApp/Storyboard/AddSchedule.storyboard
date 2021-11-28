@@ -146,7 +146,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="コメントを入力" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eUu-im-bLr" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="5" y="678" width="365" height="50"/>
+                                <rect key="frame" x="16" y="678" width="342" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="k1O-E2-RfZ"/>
                                 </constraints>
@@ -179,12 +179,12 @@
                             <constraint firstItem="05m-HO-Q56" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="IZY-fl-bil"/>
                             <constraint firstItem="Q6O-XJ-22k" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Jdv-mV-XO2"/>
                             <constraint firstItem="05m-HO-Q56" firstAttribute="top" secondItem="v8Z-Mh-P8A" secondAttribute="bottom" constant="20" id="KMb-sv-Bvl"/>
-                            <constraint firstItem="eUu-im-bLr" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="5" id="KTM-cA-enX"/>
+                            <constraint firstItem="eUu-im-bLr" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="KTM-cA-enX"/>
                             <constraint firstItem="mGG-L9-NoF" firstAttribute="top" secondItem="mef-lD-WiD" secondAttribute="bottom" constant="83" id="LNL-IC-cOC"/>
                             <constraint firstItem="ZJk-aa-dSV" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="O7e-rb-hgb"/>
                             <constraint firstItem="v8Z-Mh-P8A" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="S0g-p0-WNU"/>
                             <constraint firstItem="v8Z-Mh-P8A" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="UDf-f6-rX2"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="eUu-im-bLr" secondAttribute="trailing" constant="5" id="Vj0-SA-dNk"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="eUu-im-bLr" secondAttribute="trailing" constant="17" id="Vj0-SA-dNk"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="N1r-Dm-J3v" secondAttribute="trailing" constant="16" id="XFA-Yi-fG5"/>
                             <constraint firstItem="Q6O-XJ-22k" firstAttribute="top" secondItem="U18-BD-gNP" secondAttribute="bottom" constant="25" id="YMX-Fe-bEP"/>
                             <constraint firstItem="ZYT-rb-6L6" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="ZCC-s3-DCx"/>
