@@ -13,6 +13,8 @@ import DropDown
 
 class CalendarViewController: UIViewController {
     
+    weak var alertDelegate: CalendarViewController?
+    
     private let realm = try! Realm()
     
     private let cellId = "cellId"
@@ -35,6 +37,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak private var selectElementDropDownView: UIView!
     @IBOutlet weak private var elementDropDownButton: UIButton!
     @IBOutlet weak private var scrollButton: UIButton!
+    @IBOutlet weak var bulkDeleteButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +76,7 @@ class CalendarViewController: UIViewController {
         addButton.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
         elementDropDownButton.addTarget(self, action: #selector(tappedElementDropDownButton), for: .touchUpInside)
         scrollButton.addTarget(self, action: #selector(tappedScrollButton), for: .touchUpInside)
+        bulkDeleteButton.addTarget(self, action: #selector(tappedBulkDeleteButton), for: .touchUpInside)
         
         taskTableView.register(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
         
@@ -137,6 +141,45 @@ class CalendarViewController: UIViewController {
         addEventViewController.delegate = self
         addEventViewController.date = date
         self.present(addEventViewController, animated: true, completion: nil)
+    }
+    
+    @objc private func tappedBulkDeleteButton() {
+        
+        let alert = UIAlertController(title: "アラート表示", message: "本当に一括削除しても良いですか？", preferredStyle: UIAlertController.Style.alert)
+        let clearAction = UIAlertAction(title: "削除", style: UIAlertAction.Style.default) { [self] (action: UIAlertAction) in
+
+           bulkDelete()
+            
+        }
+
+        alert.addAction(clearAction)
+        let cancelAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+
+    }
+    
+     func bulkDelete() {
+        
+        let realm = try! Realm()
+        
+        let result: Results<EventModel>!
+        result = realm.objects(EventModel.self).filter("date == '\(date)'")
+        
+        do {
+            try realm.write {
+                // 通知の削除
+                UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+//                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [result["notificationId"]])
+                realm.delete(result)
+            }
+        } catch {
+            print("Error \(error)")
+        }
+        
+        taskTableView.reloadData()
+        filterEvent(date: self.date)
+
     }
     
     private func initSelectElementDropDownMenu() {
