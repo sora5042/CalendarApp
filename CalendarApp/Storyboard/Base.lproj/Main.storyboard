@@ -59,8 +59,9 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sW-az-yYM">
+                                    <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sW-az-yYM">
                                         <rect key="frame" x="314" y="52" width="31" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="表示"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPm-pT-dpe">
@@ -105,7 +106,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DrP-ci-Hn2">
-                                <rect key="frame" x="249.66666666666663" y="445" width="50" height="31"/>
+                                <rect key="frame" x="249.66666666666663" y="449" width="50" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="一括削除"/>
@@ -128,7 +129,6 @@
                             <constraint firstItem="flh-tb-ctZ" firstAttribute="leading" secondItem="go5-jU-eb2" secondAttribute="trailing" constant="186" id="cTR-u4-2cC"/>
                             <constraint firstItem="Mu1-5G-x5G" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="42" id="cgv-Hd-q8f"/>
                             <constraint firstItem="cBT-Jv-dNi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="cin-Ys-5dL"/>
-                            <constraint firstItem="DrP-ci-Hn2" firstAttribute="top" secondItem="Pup-KQ-Lw3" secondAttribute="bottom" constant="4" id="n0O-jg-ntQ"/>
                             <constraint firstItem="DrP-ci-Hn2" firstAttribute="leading" secondItem="Ssp-Nq-wzH" secondAttribute="trailing" constant="16.329999999999998" id="nPh-Y6-4A9"/>
                             <constraint firstItem="Pup-KQ-Lw3" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="bottom" constant="8" symbolic="YES" id="ps8-zY-y92"/>
                             <constraint firstItem="Pup-KQ-Lw3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rev-Ek-nxy"/>

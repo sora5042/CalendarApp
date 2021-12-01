@@ -8,7 +8,6 @@ target 'CalendarApp' do
   # Pods for CalendarApp
 pod 'CalculateCalendarLogic'
 pod 'FSCalendar'
-pod 'DropDown'
 pod 'RealmSwift'
 
   target 'CalendarAppTests' do
@@ -16,7 +15,6 @@ pod 'RealmSwift'
     # Pods for testing
 pod 'CalculateCalendarLogic'
 pod 'FSCalendar'
-pod 'DropDown'
 pod 'RealmSwift'
 
   end
@@ -25,7 +23,6 @@ pod 'RealmSwift'
     # Pods for testing
 pod 'CalculateCalendarLogic'
 pod 'FSCalendar'
-pod 'DropDown'
 pod 'RealmSwift'
 
   end

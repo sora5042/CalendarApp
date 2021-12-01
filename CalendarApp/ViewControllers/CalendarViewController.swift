@@ -9,24 +9,28 @@ import UIKit
 import FSCalendar
 import CalculateCalendarLogic
 import RealmSwift
-import DropDown
 
 class CalendarViewController: UIViewController {
+    
+    enum MenuType: String {
+        case month = "月表示"
+        case week = "週表示"
+        case holiday = "土日祝"
+    }
     
     weak var alertDelegate: CalendarViewController?
     
     private let realm = try! Realm()
+    var eventModel: EventModel?
+    var eventModels = [EventModel]()
+    var eventResults: Results<EventModel>!
     
     private let cellId = "cellId"
-    private let selectElementDropDown = DropDown()
-    private let elementArray = ["デフォルト","平日だけ", "土日祝だけ"]
     private let dateFormat = DateFormatter()
     private var date = String()
     private let todayDate = Date()
     
-    var eventModel: EventModel?
-    var eventModels = [EventModel]()
-    var eventResults: Results<EventModel>!
+    var selectedMenuType = MenuType.month
     
     @IBOutlet weak private var calendar: FSCalendar!
     @IBOutlet weak private var calendarHeight: NSLayoutConstraint!
@@ -37,7 +41,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak private var selectElementDropDownView: UIView!
     @IBOutlet weak private var elementDropDownButton: UIButton!
     @IBOutlet weak private var scrollButton: UIButton!
-    @IBOutlet weak var bulkDeleteButton: UIButton!
+    @IBOutlet weak private var bulkDeleteButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +66,6 @@ class CalendarViewController: UIViewController {
         } else {
             
             filterEvent(date: date)
-            
         }
     }
     
@@ -70,6 +73,7 @@ class CalendarViewController: UIViewController {
         
         taskTableView.dataSource = self
         taskTableView.delegate = self
+        taskTableView.register(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
         
         dateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMMMd", options: 0, locale: Locale(identifier: "ja_JP"))
         dateLabel.text = dateFormat.string(from: todayDate)
@@ -77,18 +81,13 @@ class CalendarViewController: UIViewController {
         elementDropDownButton.addTarget(self, action: #selector(tappedElementDropDownButton), for: .touchUpInside)
         scrollButton.addTarget(self, action: #selector(tappedScrollButton), for: .touchUpInside)
         bulkDeleteButton.addTarget(self, action: #selector(tappedBulkDeleteButton), for: .touchUpInside)
-        
-        taskTableView.register(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
-        
-        initSelectElementDropDownMenu()
     }
     
     private func setupCalendar() {
         
         calendar.dataSource = self
         calendar.delegate = self
-        
-        calendar.scrollDirection = .vertical
+        calendar.scrollDirection = .horizontal
         
         calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
         calendar.calendarWeekdayView.weekdayLabels[1].text = "月"
@@ -102,20 +101,38 @@ class CalendarViewController: UIViewController {
     
     @objc private func tappedElementDropDownButton() {
         
-        if calendar.scope == .month {
-            calendar.scope = .week
-            calendar.setScope(.week, animated: true)
-            elementDropDownButton.setTitle("月表示", for: .normal)
-            
-        } else if calendar.scope == .week {
-            calendar.scope = .month
-            calendar.setScope(.month, animated: true)
-            elementDropDownButton.setTitle("週表示", for: .normal)
-            
-        }
+        var actions = [UIMenuElement]()
         
-        //            selectElementDropDown.show()
+        actions.append(UIAction(title: MenuType.month.rawValue, image: UIImage(named: "calendar1"), state: self.selectedMenuType == MenuType.month ? .on : .off, handler: { [self] _ in
+            
+            if calendar.scope == .week {
+                calendar.scope = .month
+                calendar.setScope(.month, animated: true)
+            }
+            selectedMenuType = .month
+            
+            tappedElementDropDownButton()
+        }))
         
+        actions.append(UIAction(title: MenuType.week.rawValue, image: UIImage(named: "calendar2"), state: self.selectedMenuType == MenuType.week ? .on : .off, handler: { [self] _ in
+            
+            if calendar.scope == .month {
+                calendar.scope = .week
+                calendar.setScope(.week, animated: true)
+            }
+            selectedMenuType = .week
+            tappedElementDropDownButton()
+        }))
+        
+        actions.append( UIAction(title: MenuType.holiday.rawValue, image: UIImage(named: "calendar3"), state: self.selectedMenuType == MenuType.holiday ? .on : .off, handler: { [self] _ in
+            selectedMenuType = .holiday
+            tappedElementDropDownButton()
+            
+        }))
+        
+        elementDropDownButton.menu = UIMenu(title: "", options: .displayInline, children: actions)
+        elementDropDownButton.showsMenuAsPrimaryAction = true
+        elementDropDownButton.setTitle(self.selectedMenuType.rawValue, for: .normal)
     }
     
     @objc private func tappedScrollButton() {
@@ -147,19 +164,19 @@ class CalendarViewController: UIViewController {
         
         let alert = UIAlertController(title: "アラート表示", message: "本当に一括削除しても良いですか？", preferredStyle: UIAlertController.Style.alert)
         let clearAction = UIAlertAction(title: "削除", style: UIAlertAction.Style.default) { [self] (action: UIAlertAction) in
-
-           bulkDelete()
+            
+            bulkDelete()
             
         }
-
+        
         alert.addAction(clearAction)
         let cancelAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
-
+        
     }
     
-     func bulkDelete() {
+    func bulkDelete() {
         
         let realm = try! Realm()
         
@@ -170,7 +187,7 @@ class CalendarViewController: UIViewController {
             try realm.write {
                 // 通知の削除
                 UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-//                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [result["notificationId"]])
+                //                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [result["notificationId"]])
                 realm.delete(result)
             }
         } catch {
@@ -179,19 +196,7 @@ class CalendarViewController: UIViewController {
         
         taskTableView.reloadData()
         filterEvent(date: self.date)
-
-    }
-    
-    private func initSelectElementDropDownMenu() {
         
-        selectElementButton.backgroundColor = .clear
-        selectElementDropDown.anchorView = selectElementDropDownView
-        selectElementDropDown.dataSource = elementArray // [String]
-        selectElementDropDown.direction = .bottom
-        selectElementDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-            // 選択されたときのActionを記載する
-            
-        }
     }
     
     private func fetchEventModels() {
