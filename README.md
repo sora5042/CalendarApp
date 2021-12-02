@@ -1,5 +1,43 @@
 # 2021年度 櫻井ゼミ カレンダーアプリ
 
+# 概要
+このアプリはカレンダーでスケジュール管理ができるアプリです。   
+データベースはRealmを利用しています。  
+  
+主な機能としては  
+・日付ごとのイベント管理機能(CRUD)  
+
+・リマインダープッシュ通知  
+
+・カスタマイズ可能なカレンダー表示(スライド方向の切り替え設定)  
+
+・土日祝のみの表示機能(現在実装中)    
+となっており、まだ制作中です。  
+  
+苦労している点：これまで利用していたSQLite、Firebaseと比べてRealmはRealmSwiftの設計思想や使い方を理解して使わなければトラブルがよく発生する点。  
+  
+現状での課題：UXの考え方や既存アプリとの差別化をするためにはどうすればいいか模索中です。  
+  
+# 使用ライブラリ  
+[FSCalendar](https://github.com/WenchaoD/FSCalendar)  
+[RealmSwift](https://github.com/realm/realm-cocoa)  
+[CalculateCalendarLogic](https://github.com/fumiyasac/handMadeCalendarAdvance)  
+[TextFieldEffects](https://github.com/raulriera/TextFieldEffects)  
+[IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager)  
+
+  
+# 開発環境  
+Swift5.5.1  
+Xcode13.1  
+  
+# スクリーンショット(現時点)  
+<img src="https://user-images.githubusercontent.com/65600700/144359547-24c0ab09-90ea-4016-bf5f-a0ddfe908757.PNG" width="250px">  <img src="https://user-images.githubusercontent.com/65600700/144359545-abc62cfd-0f8b-4156-a123-894b687a9951.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/144359534-7766ecf5-7f30-433b-a28d-d12f9bf961c1.PNG" width="250px">  
+  
+  
+
+
+
+
 ## セットアップ
 
 ### CocoaPods導入
