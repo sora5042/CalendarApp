@@ -30,6 +30,7 @@ class AddEventViewController: UIViewController {
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
     @IBOutlet weak private var saveButton: UIButton!
+    @IBOutlet weak private var navigationBarLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,15 @@ class AddEventViewController: UIViewController {
     }
     
     private func setupView() {
+        
+        if eventModel == nil {
+            
+            navigationBarLabel.text = "新規イベント"
+            
+        } else {
+            
+            navigationBarLabel.text = "編集"
+        }
         
         dateFormat.dateFormat = "yyyy/MM/dd"
         let datePicker = dateFormat.date(from: self.date)
@@ -50,7 +60,7 @@ class AddEventViewController: UIViewController {
         placeTextField.delegate = self
         commentTextField.delegate = self
         titleTextField.delegate = self
-        
+    
         titleTextField.text = eventModel?.title
         titleTextField.placeholderColor = .darkGray
         titleTextField.borderInactiveColor = .darkGray

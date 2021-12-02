@@ -16,57 +16,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mu1-5G-x5G">
-                                <rect key="frame" x="299" y="86" width="62" height="129"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtV-qY-3FQ">
-                                        <rect key="frame" x="18" y="15" width="24" height="14"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain"/>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="TtV-qY-3FQ" secondAttribute="trailing" constant="20" symbolic="YES" id="B3s-PU-Ilt"/>
-                                    <constraint firstItem="TtV-qY-3FQ" firstAttribute="top" secondItem="Mu1-5G-x5G" secondAttribute="top" constant="15" id="Fcu-Gc-v0B"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pup-KQ-Lw3" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="106" width="375" height="335"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="335" id="KHY-iv-dBj"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="headerDateFormat" value="yyyy/MM月"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
-                                        <color key="value" red="1" green="0.601375306" blue="0.56806277839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="todaySelectionColor">
-                                        <color key="value" systemColor="systemTealColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBT-Jv-dNi">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="98"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="103.66666666666667"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カレンダー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh8-0Z-GWZ">
-                                        <rect key="frame" x="139" y="55" width="97" height="23"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh8-0Z-GWZ">
+                                        <rect key="frame" x="139" y="54.999999999999993" width="97" height="28.666666666666664"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="97" id="qpH-6A-Ubs"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="26"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sW-az-yYM">
                                         <rect key="frame" x="314" y="52" width="31" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="表示"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPm-pT-dpe">
                                         <rect key="frame" x="20" y="51" width="77" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="スクロール"/>
                                     </button>
@@ -83,58 +53,80 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4Lt-Jh-gBl">
-                                <rect key="frame" x="0.0" y="486" width="375" height="326"/>
+                                <rect key="frame" x="0.0" y="490" width="375" height="322"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flh-tb-ctZ">
-                                <rect key="frame" x="313" y="448" width="48" height="24"/>
+                                <rect key="frame" x="313" y="452" width="48" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="plus" catalog="system"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="スケジュール" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ssp-Nq-wzH">
-                                <rect key="frame" x="141.66666666666666" y="451" width="92" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <rect key="frame" x="143.33333333333334" y="456" width="88.666666666666657" height="15"/>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="go5-jU-eb2">
-                                <rect key="frame" x="16" y="444" width="111" height="31"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021年12月2日" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="go5-jU-eb2">
+                                <rect key="frame" x="16" y="447" width="111" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DrP-ci-Hn2">
-                                <rect key="frame" x="249.66666666666663" y="449" width="50" height="27"/>
+                                <rect key="frame" x="251" y="451" width="50" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="一括削除"/>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pup-KQ-Lw3" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="104" width="375" height="337"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="337" id="daW-Iz-PRL"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="headerDateFormat" value="yyyy/MM月"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
+                                        <color key="value" red="1" green="0.601375306" blue="0.56806277839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="todaySelectionColor">
+                                        <color key="value" systemColor="systemTealColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
+                                        <color key="value" systemColor="systemTealColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
+                                        <color key="value" red="0.0" green="0.82469074789999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Mu1-5G-x5G" secondAttribute="bottom" constant="597" id="2g0-MO-RcB"/>
+                            <constraint firstItem="Pup-KQ-Lw3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3Gg-Cs-igR"/>
                             <constraint firstItem="4Lt-Jh-gBl" firstAttribute="top" secondItem="flh-tb-ctZ" secondAttribute="bottom" constant="14" id="4TK-vj-cFf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="flh-tb-ctZ" secondAttribute="trailing" constant="14" id="8A4-Xl-ef9"/>
-                            <constraint firstItem="Mu1-5G-x5G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="299" id="9cy-4M-xHB"/>
                             <constraint firstItem="4Lt-Jh-gBl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="BBM-rn-YZZ"/>
+                            <constraint firstItem="Pup-KQ-Lw3" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="bottom" constant="0.33000000000000002" id="HcZ-kn-9JU"/>
                             <constraint firstItem="cBT-Jv-dNi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LrO-xq-9AS"/>
                             <constraint firstItem="Ssp-Nq-wzH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MhJ-Fe-Pi9"/>
-                            <constraint firstItem="4Lt-Jh-gBl" firstAttribute="top" secondItem="DrP-ci-Hn2" secondAttribute="bottom" constant="10" id="MlL-8d-2Kw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mu1-5G-x5G" secondAttribute="trailing" constant="14" id="SB6-Gx-gOn"/>
+                            <constraint firstItem="4Lt-Jh-gBl" firstAttribute="top" secondItem="DrP-ci-Hn2" secondAttribute="bottom" constant="12" id="MlL-8d-2Kw"/>
                             <constraint firstAttribute="bottom" secondItem="4Lt-Jh-gBl" secondAttribute="bottom" id="Sjs-lp-6sF"/>
                             <constraint firstItem="Pup-KQ-Lw3" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="WME-qq-fLF"/>
                             <constraint firstItem="flh-tb-ctZ" firstAttribute="leading" secondItem="go5-jU-eb2" secondAttribute="trailing" constant="186" id="cTR-u4-2cC"/>
-                            <constraint firstItem="Mu1-5G-x5G" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="42" id="cgv-Hd-q8f"/>
                             <constraint firstItem="cBT-Jv-dNi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="cin-Ys-5dL"/>
-                            <constraint firstItem="DrP-ci-Hn2" firstAttribute="leading" secondItem="Ssp-Nq-wzH" secondAttribute="trailing" constant="16.329999999999998" id="nPh-Y6-4A9"/>
-                            <constraint firstItem="Pup-KQ-Lw3" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="bottom" constant="8" symbolic="YES" id="ps8-zY-y92"/>
+                            <constraint firstItem="DrP-ci-Hn2" firstAttribute="leading" secondItem="Ssp-Nq-wzH" secondAttribute="trailing" constant="19.329999923706055" id="nPh-Y6-4A9"/>
                             <constraint firstItem="Pup-KQ-Lw3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rev-Ek-nxy"/>
                             <constraint firstItem="cBT-Jv-dNi" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sG5-yr-mCy"/>
-                            <constraint firstItem="4Lt-Jh-gBl" firstAttribute="top" secondItem="go5-jU-eb2" secondAttribute="bottom" constant="11" id="uwD-JK-x1v"/>
-                            <constraint firstItem="4Lt-Jh-gBl" firstAttribute="top" secondItem="Ssp-Nq-wzH" secondAttribute="bottom" constant="17" id="vHd-vs-UuW"/>
+                            <constraint firstItem="4Lt-Jh-gBl" firstAttribute="top" secondItem="go5-jU-eb2" secondAttribute="bottom" constant="12" id="uwD-JK-x1v"/>
+                            <constraint firstItem="4Lt-Jh-gBl" firstAttribute="top" secondItem="Ssp-Nq-wzH" secondAttribute="bottom" constant="19" id="vHd-vs-UuW"/>
                             <constraint firstItem="4Lt-Jh-gBl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xta-sp-lG0"/>
                         </constraints>
                     </view>
@@ -142,12 +134,10 @@
                         <outlet property="addButton" destination="flh-tb-ctZ" id="Bta-z5-9Mu"/>
                         <outlet property="bulkDeleteButton" destination="DrP-ci-Hn2" id="j3z-i0-ZBW"/>
                         <outlet property="calendar" destination="Pup-KQ-Lw3" id="sD7-8G-Q8b"/>
-                        <outlet property="calendarHeight" destination="KHY-iv-dBj" id="YiR-d3-LhH"/>
+                        <outlet property="calendarHeight" destination="daW-Iz-PRL" id="SWP-ZB-3cS"/>
                         <outlet property="dateLabel" destination="go5-jU-eb2" id="h9I-ZW-BY0"/>
                         <outlet property="elementDropDownButton" destination="7sW-az-yYM" id="ZaF-eJ-k5a"/>
                         <outlet property="scrollButton" destination="dPm-pT-dpe" id="csd-ZS-xyZ"/>
-                        <outlet property="selectElementButton" destination="TtV-qY-3FQ" id="6ZV-HU-Ztf"/>
-                        <outlet property="selectElementDropDownView" destination="Mu1-5G-x5G" id="3Md-UN-84P"/>
                         <outlet property="taskTableView" destination="4Lt-Jh-gBl" id="8RA-Ow-ezd"/>
                     </connections>
                 </viewController>
@@ -158,9 +148,6 @@
     </scenes>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

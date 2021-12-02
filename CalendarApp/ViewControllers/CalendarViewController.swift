@@ -81,6 +81,8 @@ class CalendarViewController: UIViewController {
         elementDropDownButton.addTarget(self, action: #selector(tappedElementDropDownButton), for: .touchUpInside)
         scrollButton.addTarget(self, action: #selector(tappedScrollButton), for: .touchUpInside)
         bulkDeleteButton.addTarget(self, action: #selector(tappedBulkDeleteButton), for: .touchUpInside)
+        
+        dateLabel.layer.borderWidth = 1.5
     }
     
     private func setupCalendar() {
@@ -88,14 +90,16 @@ class CalendarViewController: UIViewController {
         calendar.dataSource = self
         calendar.delegate = self
         calendar.scrollDirection = .horizontal
+        calendar.layer.borderWidth = 2.5
+        calendar.layer.borderColor = UIColor.lightGray.cgColor
         
-        calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
-        calendar.calendarWeekdayView.weekdayLabels[1].text = "月"
-        calendar.calendarWeekdayView.weekdayLabels[2].text = "火"
-        calendar.calendarWeekdayView.weekdayLabels[3].text = "水"
-        calendar.calendarWeekdayView.weekdayLabels[4].text = "木"
-        calendar.calendarWeekdayView.weekdayLabels[5].text = "金"
-        calendar.calendarWeekdayView.weekdayLabels[6].text = "土"
+        calendar.calendarWeekdayView.weekdayLabels[0].text = "月"
+        calendar.calendarWeekdayView.weekdayLabels[1].text = "火"
+        calendar.calendarWeekdayView.weekdayLabels[2].text = "水"
+        calendar.calendarWeekdayView.weekdayLabels[3].text = "木"
+        calendar.calendarWeekdayView.weekdayLabels[4].text = "金"
+        calendar.calendarWeekdayView.weekdayLabels[5].text = "土"
+        calendar.calendarWeekdayView.weekdayLabels[6].text = "日"
         
     }
     
@@ -166,7 +170,6 @@ class CalendarViewController: UIViewController {
         let clearAction = UIAlertAction(title: "削除", style: UIAlertAction.Style.default) { [self] (action: UIAlertAction) in
             
             bulkDelete()
-            
         }
         
         alert.addAction(clearAction)
@@ -225,7 +228,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 100
+        return 90
         
     }
     
