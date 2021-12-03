@@ -39,7 +39,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m8T-UF-qUE">
-                        <rect key="frame" x="274" y="15" width="30" height="10"/>
+                        <rect key="frame" x="274" y="8" width="30" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" title="削除"/>
@@ -78,7 +78,7 @@
                 <color key="backgroundColor" red="0.83977565202064208" green="0.96738791950000003" blue="0.89576217752941645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="KEV-JK-1f5" secondAttribute="bottom" constant="5" id="2gB-yH-OEr"/>
-                    <constraint firstItem="m8T-UF-qUE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="3UM-nl-D04"/>
+                    <constraint firstItem="m8T-UF-qUE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="3UM-nl-D04"/>
                     <constraint firstItem="9UV-Ql-Kxy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="6QL-xg-c4B"/>
                     <constraint firstItem="eEp-EV-Ao9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="BPt-p5-f2q"/>
                     <constraint firstItem="KEV-JK-1f5" firstAttribute="leading" secondItem="NB3-pS-fxB" secondAttribute="trailing" constant="38" id="Cd2-Hk-p2L"/>

@@ -21,8 +21,6 @@ class CalendarViewController: UIViewController {
     weak var alertDelegate: CalendarViewController?
     
     private let realm = try! Realm()
-    var eventModel: EventModel?
-    var eventModels = [EventModel]()
     var eventResults: Results<EventModel>!
     
     private let cellId = "cellId"
@@ -48,7 +46,7 @@ class CalendarViewController: UIViewController {
         
         print(Realm.Configuration.defaultConfiguration.fileURL)
         dateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "ja_JP"))
-        var todayString = dateFormat.string(from: todayDate)
+        let todayString = dateFormat.string(from: todayDate)
         print("todayString", todayString)
         
         setupView()
@@ -184,13 +182,30 @@ class CalendarViewController: UIViewController {
         let realm = try! Realm()
         
         let result: Results<EventModel>!
+        var eventModel =  [EventModel]()
+        let event = realm.objects(EventModel.self).filter("date == '\(date)'")
         result = realm.objects(EventModel.self).filter("date == '\(date)'")
         
+        for results in event {
+            
+            eventModel.append(results)
+            print("eventModel", eventModel)
+            
+            
+        }
+        
+        let notificationIdArray = eventModel.map ({ (eventNotificationId) -> String in
+            
+            return eventNotificationId.notificationId
+            
+        })
+        
+        print("notificationID", notificationIdArray)
         do {
             try realm.write {
                 // 通知の削除
                 UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-                //                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [result["notificationId"]])
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: notificationIdArray)
                 realm.delete(result)
             }
         } catch {
