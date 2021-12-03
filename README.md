@@ -1,6 +1,6 @@
 # 2021年度 櫻井ゼミ カレンダーアプリ
 
-# 概要
+## 概要
 このアプリはカレンダーでスケジュール管理ができるアプリです。   
 データベースはRealmを利用しています。  
   
@@ -18,7 +18,7 @@
   
 現状での課題：UXの考え方や既存アプリとの差別化をするためにはどうすればいいか模索中です。  
   
-# 使用ライブラリ  
+## 使用ライブラリ  
 [FSCalendar](https://github.com/WenchaoD/FSCalendar)  
 [RealmSwift](https://github.com/realm/realm-cocoa)  
 [CalculateCalendarLogic](https://github.com/fumiyasac/handMadeCalendarAdvance)  
@@ -26,7 +26,7 @@
 [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager)  
 
   
-# 開発環境  
+## 開発環境  
 Swift5.5.1  
 Xcode13.1  
   
