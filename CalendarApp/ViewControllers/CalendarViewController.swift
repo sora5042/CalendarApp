@@ -17,9 +17,7 @@ class CalendarViewController: UIViewController {
         case week = "週表示"
         case holiday = "土日祝"
     }
-    
-    weak var alertDelegate: CalendarViewController?
-    
+        
     private let realm = try! Realm()
     var eventResults: Results<EventModel>!
     
@@ -27,6 +25,7 @@ class CalendarViewController: UIViewController {
     private let dateFormat = DateFormatter()
     private var date = String()
     private let todayDate = Date()
+    private var todayString = String()
     
     var selectedMenuType = MenuType.month
     
@@ -40,13 +39,15 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak private var elementDropDownButton: UIButton!
     @IBOutlet weak private var scrollButton: UIButton!
     @IBOutlet weak private var bulkDeleteButton: UIButton!
+    @IBOutlet weak var rokuyouLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print(Realm.Configuration.defaultConfiguration.fileURL)
         dateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "ja_JP"))
-        let todayString = dateFormat.string(from: todayDate)
+        todayString = dateFormat.string(from: todayDate)
+        
         print("todayString", todayString)
         
         setupView()
@@ -81,6 +82,8 @@ class CalendarViewController: UIViewController {
         bulkDeleteButton.addTarget(self, action: #selector(tappedBulkDeleteButton), for: .touchUpInside)
         
         dateLabel.layer.borderWidth = 1.5
+        
+        rokuyouLabel.text = calculateRokuyo(date: todayDate)
     }
     
     private func setupCalendar() {
@@ -91,13 +94,14 @@ class CalendarViewController: UIViewController {
         calendar.layer.borderWidth = 2.5
         calendar.layer.borderColor = UIColor.lightGray.cgColor
         
-        calendar.calendarWeekdayView.weekdayLabels[0].text = "月"
-        calendar.calendarWeekdayView.weekdayLabels[1].text = "火"
-        calendar.calendarWeekdayView.weekdayLabels[2].text = "水"
-        calendar.calendarWeekdayView.weekdayLabels[3].text = "木"
-        calendar.calendarWeekdayView.weekdayLabels[4].text = "金"
-        calendar.calendarWeekdayView.weekdayLabels[5].text = "土"
-        calendar.calendarWeekdayView.weekdayLabels[6].text = "日"
+        
+        calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
+        calendar.calendarWeekdayView.weekdayLabels[1].text = "月"
+        calendar.calendarWeekdayView.weekdayLabels[2].text = "火"
+        calendar.calendarWeekdayView.weekdayLabels[3].text = "水"
+        calendar.calendarWeekdayView.weekdayLabels[4].text = "木"
+        calendar.calendarWeekdayView.weekdayLabels[5].text = "金"
+        calendar.calendarWeekdayView.weekdayLabels[6].text = "土"
         
     }
     
@@ -180,27 +184,27 @@ class CalendarViewController: UIViewController {
     func bulkDelete() {
         
         let realm = try! Realm()
-        
         let result: Results<EventModel>!
         var eventModel =  [EventModel]()
         let event = realm.objects(EventModel.self).filter("date == '\(date)'")
-        result = realm.objects(EventModel.self).filter("date == '\(date)'")
+        
+        if date == "" {
+            
+            result = realm.objects(EventModel.self).filter("date == '\(todayString)'")
+            
+        } else {
+            
+            result = realm.objects(EventModel.self).filter("date == '\(date)'")
+        }
         
         for results in event {
-            
             eventModel.append(results)
-            print("eventModel", eventModel)
-            
-            
         }
         
         let notificationIdArray = eventModel.map ({ (eventNotificationId) -> String in
-            
             return eventNotificationId.notificationId
-            
         })
         
-        print("notificationID", notificationIdArray)
         do {
             try realm.write {
                 // 通知の削除
@@ -230,6 +234,32 @@ class CalendarViewController: UIViewController {
         print("filter", eventResults)
         taskTableView.reloadData()
         
+    }
+    
+    private func calculateRokuyo(date: Date) -> String {
+        let chineseCalendar = Calendar(identifier: .chinese)
+        let dateComponents = chineseCalendar.dateComponents([.year, .month, .day], from: date)
+        
+        if let month = dateComponents.month, let day = dateComponents.day {
+            let result = (month + day) % 6
+            switch result {
+            case 0:
+                return "大安"
+            case 1:
+                return "赤口"
+            case 2:
+                return "先勝"
+            case 3:
+                return "友引"
+            case 4:
+                return "先負"
+            case 5:
+                return "仏滅"
+            default:
+                break
+            }
+        }
+        return ""
     }
 }
 
@@ -324,23 +354,26 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
+        dateFormat.timeZone = TimeZone.current
+        dateFormat.locale = Locale.current
+        dateFormat.dateFormat = "yyyy/MM/dd"
+        
         let tmpDate = Calendar(identifier: .gregorian)
         let year = tmpDate.component(.year, from: date)
         let month = tmpDate.component(.month, from: date)
         let day = tmpDate.component(.day, from: date)
         dateLabel.text = "\(year)年\(month)月\(day)日"
+       
+        rokuyouLabel.text = calculateRokuyo(date: date)
         
-        dateFormat.dateFormat = "yyyy/MM/dd"
-        let date = dateFormat.string(from: date)
-        self.date = date
+        self.date = date.toStringWithCurrentLocale()
         print("date", self.date)
         
-        filterEvent(date: date)
+        filterEvent(date: date.toStringWithCurrentLocale())
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         
-        dateFormat.dateFormat = "yyyy/MM/dd"
         fetchEventModels()
         
         let date = dateFormat.string(from: date)
@@ -407,4 +440,18 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         let tmpCalendar = Calendar(identifier: .gregorian)
         return tmpCalendar.component(.weekday, from: date)
     }
+}
+
+extension Date {
+
+    func toStringWithCurrentLocale() -> String {
+
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.locale = Locale.current
+        formatter.dateFormat = "yyyy/MM/dd"
+
+        return formatter.string(from: self)
+    }
+
 }
