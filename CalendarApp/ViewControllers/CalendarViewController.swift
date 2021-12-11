@@ -39,7 +39,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak private var elementDropDownButton: UIButton!
     @IBOutlet weak private var scrollButton: UIButton!
     @IBOutlet weak private var bulkDeleteButton: UIButton!
-    @IBOutlet weak var rokuyouLabel: UILabel!
+    @IBOutlet weak private var rokuyouLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +82,7 @@ class CalendarViewController: UIViewController {
         bulkDeleteButton.addTarget(self, action: #selector(tappedBulkDeleteButton), for: .touchUpInside)
         
         dateLabel.layer.borderWidth = 1.5
+        dateLabel.layer.borderColor = UIColor.darkGray.cgColor
         
         rokuyouLabel.text = calculateRokuyo(date: todayDate)
     }
@@ -91,9 +92,8 @@ class CalendarViewController: UIViewController {
         calendar.dataSource = self
         calendar.delegate = self
         calendar.scrollDirection = .horizontal
-        calendar.layer.borderWidth = 2.5
-        calendar.layer.borderColor = UIColor.lightGray.cgColor
-        
+        calendar.layer.borderWidth = 2
+        calendar.layer.borderColor = UIColor.systemGreen.cgColor
         
         calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
         calendar.calendarWeekdayView.weekdayLabels[1].text = "月"
@@ -102,7 +102,6 @@ class CalendarViewController: UIViewController {
         calendar.calendarWeekdayView.weekdayLabels[4].text = "木"
         calendar.calendarWeekdayView.weekdayLabels[5].text = "金"
         calendar.calendarWeekdayView.weekdayLabels[6].text = "土"
-        
     }
     
     @objc private func tappedElementDropDownButton() {
@@ -178,7 +177,6 @@ class CalendarViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
-        
     }
     
     func bulkDelete() {
@@ -218,7 +216,6 @@ class CalendarViewController: UIViewController {
         
         taskTableView.reloadData()
         filterEvent(date: self.date)
-        
     }
     
     private func fetchEventModels() {
@@ -354,8 +351,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
-        dateFormat.timeZone = TimeZone.current
-        dateFormat.locale = Locale.current
         dateFormat.dateFormat = "yyyy/MM/dd"
         
         let tmpDate = Calendar(identifier: .gregorian)
@@ -373,6 +368,8 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        
+        dateFormat.dateFormat = "yyyy/MM/dd"
         
         fetchEventModels()
         
@@ -453,5 +450,4 @@ extension Date {
 
         return formatter.string(from: self)
     }
-
 }

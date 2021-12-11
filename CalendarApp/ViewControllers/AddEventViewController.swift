@@ -31,6 +31,10 @@ class AddEventViewController: UIViewController {
     @IBOutlet weak var endDatePicker: UIDatePicker!
     @IBOutlet weak private var saveButton: UIButton!
     @IBOutlet weak private var navigationBarLabel: UILabel!
+    @IBOutlet weak var titleView: UIView!
+    @IBOutlet weak var dateView: UIView!
+    @IBOutlet weak var placeView: UIView!
+    @IBOutlet weak var commentView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,18 +70,27 @@ class AddEventViewController: UIViewController {
         titleTextField.borderInactiveColor = .darkGray
         titleTextField.borderActiveColor = .systemGreen
         titleTextField.placeholderFontScale = 1
+        titleView.layer.borderWidth = 1.2
+        titleView.layer.borderColor = UIColor.lightGray.cgColor
         
         placeTextField.text = eventModel?.place
         placeTextField.placeholderColor = .darkGray
         placeTextField.borderActiveColor = .systemGreen
         placeTextField.borderInactiveColor = .darkGray
         placeTextField.placeholderFontScale = 1
+        placeView.layer.borderWidth = 1.2
+        placeView.layer.borderColor = UIColor.lightGray.cgColor
         
         commentTextField.text = eventModel?.comment
         commentTextField.placeholderColor = .darkGray
         commentTextField.borderActiveColor = .systemGreen
         commentTextField.borderInactiveColor = .darkGray
         commentTextField.placeholderFontScale = 1
+        commentView.layer.borderWidth = 1.2
+        commentView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        dateView.layer.borderWidth = 1.2
+        dateView.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     @objc private func tappedSaveButton() {
@@ -192,7 +205,9 @@ class AddEventViewController: UIViewController {
         // MARK: 通知のリクエストを実際に登録する
         UNUserNotificationCenter.current().add(request) { (error: Error?) in
             
-            if error != nil {
+            if let error = error {
+                print("プッシュ通知の作成に失敗しました", error)
+                return
                 
             } else {
                 
@@ -228,7 +243,8 @@ class AddEventViewController: UIViewController {
         // 通知のリクエストを実際に登録する
         UNUserNotificationCenter.current().add(request) { (error: Error?) in
             
-            if error != nil {
+            if let error = error {
+                print("プッシュ通知の作成に失敗しました", error)
                 
             } else {
                 
