@@ -19,7 +19,10 @@ class CalendarViewController: UIViewController {
     }
         
     private let realm = try! Realm()
+    // tablecellのイベントデータの表示用
     var eventResults: Results<EventModel>!
+    // カレンダーの緑ぽち用
+    var eventCounts: Results<EventModel>!
     
     private let cellId = "cellId"
     private let dateFormat = DateFormatter()
@@ -52,14 +55,15 @@ class CalendarViewController: UIViewController {
         
         setupView()
         setupCalendar()
-        fetchEventModels()
         filterEvent(date: todayString)
+    
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if date == "" {
+            print("date", date)
             return
             
         } else {
@@ -82,6 +86,7 @@ class CalendarViewController: UIViewController {
         bulkDeleteButton.addTarget(self, action: #selector(tappedBulkDeleteButton), for: .touchUpInside)
         
         dateLabel.layer.borderWidth = 1.5
+        dateLabel.layer.cornerRadius = 12
         dateLabel.layer.borderColor = UIColor.darkGray.cgColor
         
         rokuyouLabel.text = calculateRokuyo(date: todayDate)
@@ -179,7 +184,7 @@ class CalendarViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func bulkDelete() {
+   private func bulkDelete() {
         
         let realm = try! Realm()
         let result: Results<EventModel>!
@@ -220,7 +225,7 @@ class CalendarViewController: UIViewController {
     
     private func fetchEventModels() {
         
-        eventResults = realm.objects(EventModel.self)
+        eventCounts = realm.objects(EventModel.self)
         
     }
     
@@ -241,17 +246,17 @@ class CalendarViewController: UIViewController {
             let result = (month + day) % 6
             switch result {
             case 0:
-                return "大安"
+                return "(大安)"
             case 1:
-                return "赤口"
+                return "(赤口)"
             case 2:
-                return "先勝"
+                return "(先勝)"
             case 3:
-                return "友引"
+                return "(友引)"
             case 4:
-                return "先負"
+                return "(先負)"
             case 5:
-                return "仏滅"
+                return "(仏滅)"
             default:
                 break
             }
@@ -369,13 +374,12 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         
-        dateFormat.dateFormat = "yyyy/MM/dd"
-        
         fetchEventModels()
+        dateFormat.dateFormat = "yyyy/MM/dd"
         
         let date = dateFormat.string(from: date)
         var hasEvent: Bool = false
-        for eventModel in eventResults {
+        for eventModel in eventCounts {
             if eventModel["date"] as! String == date {
                 hasEvent = true
             }
