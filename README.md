@@ -13,7 +13,7 @@
   
 ・六曜の表示  
 
-・土日祝のみの表示機能(現在実装中)    
+・土日祝のみの表示機能    
 となっており、現在制作中です。  
   
 苦労している点：これまで利用していたSQLite、Firebaseと比べてRealmはRealmSwiftの設計思想や使い方を理解して使わなければトラブルがよく発生する点。  
@@ -32,8 +32,8 @@
 Swift5.5.1  
 Xcode13.1  
   
-# スクリーンショット(現時点)  
-<img src="https://user-images.githubusercontent.com/65600700/145767949-91060b21-84bb-435e-95f9-c523868e2474.PNG" width="250px">  <img src="https://user-images.githubusercontent.com/65600700/145768113-f4ef144f-c57b-40e1-b4aa-94420e3efa80.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/145768408-984f460d-e5c2-42d1-98c5-83e938b83fef.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/145768122-10364383-055f-42d6-b882-87455aa5add6.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/145768595-1564663f-d567-4a3a-9a24-2aa2cf390f7e.PNG" width="250px">  
+## スクリーンショット(現時点)  
+<img src="https://user-images.githubusercontent.com/65600700/145943313-3aa8cf27-e7bd-421d-9562-df8ce8497967.PNG" width="250px">  <img src="https://user-images.githubusercontent.com/65600700/145943296-6477b342-b98d-4bfd-b85e-35303f7515b5.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/145943310-757790e5-cb13-482e-9ff9-bad71c3fa963.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/145943673-7c6222d5-dd9a-4e72-a77d-de806a07acdb.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/145768122-10364383-055f-42d6-b882-87455aa5add6.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/145768595-1564663f-d567-4a3a-9a24-2aa2cf390f7e.PNG" width="250px">  
   
   
 
