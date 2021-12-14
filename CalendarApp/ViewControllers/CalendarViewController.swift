@@ -17,7 +17,7 @@ class CalendarViewController: UIViewController {
         case week = "週表示"
         case holiday = "土日祝"
     }
-        
+    
     private let realm = try! Realm()
     // tablecellのイベントデータの表示用
     var eventResults: Results<EventModel>!
@@ -56,7 +56,7 @@ class CalendarViewController: UIViewController {
         setupView()
         setupCalendar()
         filterEvent(date: todayString)
-    
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -85,10 +85,6 @@ class CalendarViewController: UIViewController {
         scrollButton.addTarget(self, action: #selector(tappedScrollButton), for: .touchUpInside)
         bulkDeleteButton.addTarget(self, action: #selector(tappedBulkDeleteButton), for: .touchUpInside)
         
-        dateLabel.layer.borderWidth = 1.5
-        dateLabel.layer.cornerRadius = 12
-        dateLabel.layer.borderColor = UIColor.darkGray.cgColor
-        
         rokuyouLabel.text = calculateRokuyo(date: todayDate)
     }
     
@@ -97,8 +93,8 @@ class CalendarViewController: UIViewController {
         calendar.dataSource = self
         calendar.delegate = self
         calendar.scrollDirection = .horizontal
-        calendar.layer.borderWidth = 2
-        calendar.layer.borderColor = UIColor.systemGreen.cgColor
+        calendar.layer.borderWidth = 2.2
+        calendar.layer.borderColor = UIColor.lightGray.cgColor
         
         calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
         calendar.calendarWeekdayView.weekdayLabels[1].text = "月"
@@ -120,7 +116,7 @@ class CalendarViewController: UIViewController {
                 calendar.setScope(.month, animated: true)
             }
             selectedMenuType = .month
-            
+            calendar.reloadData()
             tappedElementDropDownButton()
         }))
         
@@ -131,10 +127,14 @@ class CalendarViewController: UIViewController {
                 calendar.setScope(.week, animated: true)
             }
             selectedMenuType = .week
+            calendar.reloadData()
             tappedElementDropDownButton()
         }))
         
         actions.append( UIAction(title: MenuType.holiday.rawValue, image: UIImage(named: "calendar3"), state: self.selectedMenuType == MenuType.holiday ? .on : .off, handler: { [self] _ in
+            
+            calendar.reloadData()
+            
             selectedMenuType = .holiday
             tappedElementDropDownButton()
             
@@ -184,7 +184,7 @@ class CalendarViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-   private func bulkDelete() {
+    private func bulkDelete() {
         
         let realm = try! Realm()
         let result: Results<EventModel>!
@@ -226,7 +226,6 @@ class CalendarViewController: UIViewController {
     private func fetchEventModels() {
         
         eventCounts = realm.objects(EventModel.self)
-        
     }
     
     private func filterEvent(date: String) {
@@ -235,7 +234,6 @@ class CalendarViewController: UIViewController {
         
         print("filter", eventResults)
         taskTableView.reloadData()
-        
     }
     
     private func calculateRokuyo(date: Date) -> String {
@@ -262,6 +260,10 @@ class CalendarViewController: UIViewController {
             }
         }
         return ""
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
     }
 }
 
@@ -363,7 +365,7 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         let month = tmpDate.component(.month, from: date)
         let day = tmpDate.component(.day, from: date)
         dateLabel.text = "\(year)年\(month)月\(day)日"
-       
+        
         rokuyouLabel.text = calculateRokuyo(date: date)
         
         self.date = date.toStringWithCurrentLocale()
@@ -406,6 +408,32 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         else if weekday == 7 {  //土曜日
             return UIColor.blue
         }
+        // 土日祝のカレンダー表示
+        if selectedMenuType == .holiday {
+            
+            if self.judgeHoliday(date) {
+                return UIColor.red
+            }
+            
+            let weekday = self.getWeekIdx(date)
+            if weekday == 1 {   //日曜日
+                return UIColor.red
+            }
+            else if weekday == 7 {  //土曜日
+                return UIColor.blue
+                
+            }
+            
+            // 平日の色
+            switch weekday {
+                
+            case 2...6:
+                return UIColor.white
+                
+            default: break
+                
+            }
+        }
         
         return nil
     }
@@ -444,14 +472,14 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
 }
 
 extension Date {
-
+    
     func toStringWithCurrentLocale() -> String {
-
+        
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
         formatter.locale = Locale.current
         formatter.dateFormat = "yyyy/MM/dd"
-
+        
         return formatter.string(from: self)
     }
 }

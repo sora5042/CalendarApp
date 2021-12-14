@@ -129,11 +129,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="HdE-kd-YaR"/>
                                         </constraints>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="05m-HO-Q56" firstAttribute="centerY" secondItem="HaA-0z-eGk" secondAttribute="centerY" id="WgG-MJ-L64"/>
                                     <constraint firstItem="05m-HO-Q56" firstAttribute="top" secondItem="HaA-0z-eGk" secondAttribute="top" constant="15" id="bcQ-DC-d9k"/>
@@ -158,15 +159,17 @@
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Jp7-4V-Yis">
                                         <rect key="frame" x="173" y="15" width="194" height="31"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="systemTealColor"/>
                                         <locale key="locale" localeIdentifier="ja"/>
                                     </datePicker>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="N1r-Dm-J3v">
                                         <rect key="frame" x="173" y="125" width="194" height="31"/>
+                                        <color key="tintColor" systemColor="systemTealColor"/>
                                         <locale key="locale" localeIdentifier="ja"/>
                                     </datePicker>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="mGG-L9-NoF" firstAttribute="top" secondItem="mef-lD-WiD" secondAttribute="bottom" constant="90" id="Azo-bx-ldZ"/>
                                     <constraint firstItem="mef-lD-WiD" firstAttribute="leading" secondItem="hf6-70-mcy" secondAttribute="leading" constant="25" id="H1O-DQ-aE7"/>
@@ -189,11 +192,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Ho4-cg-nRx"/>
                                         </constraints>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="U18-BD-gNP" secondAttribute="trailing" constant="15" id="5Gt-rZ-szK"/>
                                     <constraint firstItem="U18-BD-gNP" firstAttribute="centerY" secondItem="DNU-Ih-daX" secondAttribute="centerY" id="JEj-cZ-W1z"/>
@@ -209,11 +213,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Afm-ob-bQp"/>
                                         </constraints>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="eUu-im-bLr" firstAttribute="top" secondItem="7hT-Vk-0Kx" secondAttribute="top" constant="15" id="Xla-dX-JHH"/>
                                     <constraint firstAttribute="trailing" secondItem="eUu-im-bLr" secondAttribute="trailing" constant="15" id="hjt-WM-RuP"/>
@@ -288,8 +293,8 @@
         </designable>
     </designables>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

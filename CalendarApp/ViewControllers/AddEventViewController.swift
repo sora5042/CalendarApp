@@ -64,7 +64,7 @@ class AddEventViewController: UIViewController {
         placeTextField.delegate = self
         commentTextField.delegate = self
         titleTextField.delegate = self
-    
+        
         titleTextField.text = eventModel?.title
         titleTextField.placeholderColor = .darkGray
         titleTextField.borderInactiveColor = .darkGray
@@ -261,6 +261,11 @@ class AddEventViewController: UIViewController {
         super.touchesBegan(touches, with: event)
         
         self.view.endEditing(true)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+        
     }
 }
 
