@@ -15,7 +15,8 @@ class CalendarViewController: UIViewController {
     enum MenuType: String {
         case month = "月表示"
         case week = "週表示"
-        case holiday = "土日祝"
+        case holiday = "土日祝のみ"
+        case weekday = "平日のみ"
     }
     
     private let realm = try! Realm()
@@ -140,6 +141,16 @@ class CalendarViewController: UIViewController {
             
         }))
         
+        actions.append( UIAction(title: MenuType.weekday.rawValue, image: UIImage(named: "calendar3"), state: self.selectedMenuType == MenuType.weekday ? .on : .off, handler: { [self] _ in
+            
+            selectedMenuType = .weekday
+            calendar.reloadData()
+            
+            
+            tappedElementDropDownButton()
+            
+        }))
+        
         elementDropDownButton.menu = UIMenu(title: "", options: .displayInline, children: actions)
         elementDropDownButton.showsMenuAsPrimaryAction = true
         elementDropDownButton.setTitle(self.selectedMenuType.rawValue, for: .normal)
@@ -150,12 +161,12 @@ class CalendarViewController: UIViewController {
         if calendar.scrollDirection == .vertical {
             
             calendar.scrollDirection = .horizontal
-            scrollButton.setTitle("縦方向", for: .normal)
+            scrollButton.setTitle("横方向", for: .normal)
             
         } else if calendar.scrollDirection == .horizontal {
             
             calendar.scrollDirection = .vertical
-            scrollButton.setTitle("横方向", for: .normal)
+            scrollButton.setTitle("縦方向", for: .normal)
         }
     }
     
@@ -395,19 +406,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
     // 土日や祝日の日の文字色を変える
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         
-        //祝日判定をする（祝日は赤色で表示する）
-        if self.judgeHoliday(date) {
-            return UIColor.red
-        }
-        
-        //土日の判定を行う（土曜日は青色、日曜日は赤色で表示する）
-        let weekday = self.getWeekIdx(date)
-        if weekday == 1 {   //日曜日
-            return UIColor.red
-        }
-        else if weekday == 7 {  //土曜日
-            return UIColor.blue
-        }
         // 土日祝のカレンダー表示
         if selectedMenuType == .holiday {
             
@@ -423,7 +421,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
                 return UIColor.blue
                 
             }
-            
             // 平日の色
             switch weekday {
                 
@@ -432,6 +429,38 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
                 
             default: break
                 
+            }
+            
+            // 平日のみの表示
+        } else if selectedMenuType == .weekday {
+            
+            if self.judgeHoliday(date) {
+                return UIColor.white
+            }
+            
+            let weekday = self.getWeekIdx(date)
+            if weekday == 1 {   //日曜日
+                return UIColor.white
+            }
+            else if weekday == 7 {  //土曜日
+                return UIColor.white
+                
+            }
+            
+        } else {
+            
+            //祝日判定をする（祝日は赤色で表示する）
+            if self.judgeHoliday(date) {
+                return UIColor.red
+            }
+            
+            //土日の判定を行う（土曜日は青色、日曜日は赤色で表示する）
+            let weekday = self.getWeekIdx(date)
+            if weekday == 1 {   //日曜日
+                return UIColor.red
+            }
+            else if weekday == 7 {  //土曜日
+                return UIColor.blue
             }
         }
         

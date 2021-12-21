@@ -32,7 +32,7 @@
                                         <state key="normal" title="スクロール"/>
                                     </button>
                                     <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sW-az-yYM">
-                                        <rect key="frame" x="311.66666666666669" y="48" width="43.333333333333314" height="30.333333333333329"/>
+                                        <rect key="frame" x="293.66666666666669" y="48" width="76.333333333333314" height="30.333333333333329"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="月表示"/>
@@ -40,11 +40,11 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.80480665955417729" green="1" blue="0.76148527081689521" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="7sW-az-yYM" secondAttribute="trailing" constant="20" id="6Ik-yn-egU"/>
+                                    <constraint firstAttribute="trailing" secondItem="7sW-az-yYM" secondAttribute="trailing" constant="5" id="6Ik-yn-egU"/>
                                     <constraint firstAttribute="bottom" secondItem="mh8-0Z-GWZ" secondAttribute="bottom" constant="15.67" id="8At-RR-lTN"/>
                                     <constraint firstItem="mh8-0Z-GWZ" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="top" constant="52" id="8ec-xL-kdm"/>
                                     <constraint firstAttribute="bottom" secondItem="dPm-pT-dpe" secondAttribute="bottom" constant="12" id="TSp-lW-18x"/>
-                                    <constraint firstItem="7sW-az-yYM" firstAttribute="leading" secondItem="mh8-0Z-GWZ" secondAttribute="trailing" constant="78.329999999999998" id="aY7-XK-wgw"/>
+                                    <constraint firstItem="7sW-az-yYM" firstAttribute="leading" secondItem="mh8-0Z-GWZ" secondAttribute="trailing" constant="60.330001831054688" id="aY7-XK-wgw"/>
                                     <constraint firstItem="7sW-az-yYM" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="top" constant="48" id="bIs-iI-9Wa"/>
                                     <constraint firstAttribute="bottom" secondItem="7sW-az-yYM" secondAttribute="bottom" constant="12" id="f5O-hk-h3l"/>
                                     <constraint firstItem="dPm-pT-dpe" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="top" constant="48" id="iwP-Ls-eUJ"/>
