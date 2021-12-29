@@ -173,12 +173,13 @@ class CalendarViewController: UIViewController {
     @objc private func tappedAddButton() {
         
         let storyboard = UIStoryboard(name: "AddSchedule", bundle: nil)
-        let addEventViewController = storyboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as! AddEventViewController
-        addEventViewController.modalTransitionStyle = .coverVertical
-        addEventViewController.modalPresentationStyle = .fullScreen
-        addEventViewController.delegate = self
-        addEventViewController.date = date
-        self.present(addEventViewController, animated: true, completion: nil)
+        if let addEventViewController = storyboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as? AddEventViewController {
+            addEventViewController.modalTransitionStyle = .coverVertical
+            addEventViewController.modalPresentationStyle = .fullScreen
+            addEventViewController.delegate = self
+            addEventViewController.date = date
+            present(addEventViewController, animated: true, completion: nil)
+        }
     }
     
     @objc private func tappedBulkDeleteButton() {
@@ -282,41 +283,37 @@ class CalendarViewController: UIViewController {
 extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
-    {
         return true
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         return 90
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return eventResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = taskTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! EventTableViewCell
-        cell.delegate = self
-        cell.alertDelegate = self
-        cell.eventModel = self.eventResults[indexPath.row]
-        
-        return cell
+        if let cell = taskTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? EventTableViewCell {
+            cell.delegate = self
+            cell.alertDelegate = self
+            cell.eventModel = self.eventResults[indexPath.row]
+            return cell
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let storyboard = UIStoryboard(name: "AddSchedule", bundle: nil)
-        let addEventViewController = storyboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as! AddEventViewController
-        
-        addEventViewController.eventModel = eventResults[indexPath.row]
-        addEventViewController.date = date
-        addEventViewController.modalPresentationStyle = .fullScreen
-        self.present(addEventViewController, animated: true, completion: nil)
-        
+        if let addEventViewController = storyboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as? AddEventViewController {
+            addEventViewController.eventModel = eventResults[indexPath.row]
+            addEventViewController.date = date
+            addEventViewController.modalPresentationStyle = .fullScreen
+            present(addEventViewController, animated: true, completion: nil)
+        }
     }
 }
 
@@ -393,7 +390,7 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         let date = dateFormat.string(from: date)
         var hasEvent: Bool = false
         for eventModel in eventCounts {
-            if eventModel["date"] as! String == date {
+            if eventModel["date"] as? String == date {
                 hasEvent = true
             }
         }
