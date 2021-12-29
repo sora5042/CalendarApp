@@ -54,7 +54,7 @@ class AddEventViewController: UIViewController {
         }
         
         dateFormat.dateFormat = "yyyy/MM/dd"
-        let datePicker = dateFormat.date(from: self.date)
+        let datePicker = dateFormat.date(from: date)
         startDatePicker.date = datePicker ?? Date()
         endDatePicker.date = datePicker ?? Date()
         

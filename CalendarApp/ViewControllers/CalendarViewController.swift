@@ -110,44 +110,41 @@ class CalendarViewController: UIViewController {
         
         var actions = [UIMenuElement]()
         
-        actions.append(UIAction(title: MenuType.month.rawValue, image: UIImage(named: "calendar1"), state: self.selectedMenuType == MenuType.month ? .on : .off, handler: { [self] _ in
+        actions.append(UIAction(title: MenuType.month.rawValue, image: UIImage(named: "calendar1"), state: self.selectedMenuType == MenuType.month ? .on : .off, handler: { [weak self] _ in
             
-            if calendar.scope == .week {
-                calendar.scope = .month
-                calendar.setScope(.month, animated: true)
+            if self?.calendar.scope == .week {
+                self?.calendar.scope = .month
+                self?.calendar.setScope(.month, animated: true)
             }
-            selectedMenuType = .month
-            calendar.reloadData()
-            tappedElementDropDownButton()
+            self?.selectedMenuType = .month
+            self?.calendar.reloadData()
+            self?.tappedElementDropDownButton()
         }))
         
-        actions.append(UIAction(title: MenuType.week.rawValue, image: UIImage(named: "calendar2"), state: self.selectedMenuType == MenuType.week ? .on : .off, handler: { [self] _ in
+        actions.append(UIAction(title: MenuType.week.rawValue, image: UIImage(named: "calendar2"), state: self.selectedMenuType == MenuType.week ? .on : .off, handler: { [weak self] _ in
             
-            if calendar.scope == .month {
-                calendar.scope = .week
-                calendar.setScope(.week, animated: true)
+            if self?.calendar.scope == .month {
+                self?.calendar.scope = .week
+                self?.calendar.setScope(.week, animated: true)
             }
-            selectedMenuType = .week
-            calendar.reloadData()
-            tappedElementDropDownButton()
+            self?.selectedMenuType = .week
+            self?.calendar.reloadData()
+            self?.tappedElementDropDownButton()
         }))
         
-        actions.append( UIAction(title: MenuType.holiday.rawValue, image: UIImage(named: "calendar3"), state: self.selectedMenuType == MenuType.holiday ? .on : .off, handler: { [self] _ in
+        actions.append( UIAction(title: MenuType.holiday.rawValue, image: UIImage(named: "calendar3"), state: self.selectedMenuType == MenuType.holiday ? .on : .off, handler: { [weak self] _ in
             
-            calendar.reloadData()
-            
-            selectedMenuType = .holiday
-            tappedElementDropDownButton()
+            self?.calendar.reloadData()
+            self?.selectedMenuType = .holiday
+            self?.tappedElementDropDownButton()
             
         }))
         
-        actions.append( UIAction(title: MenuType.weekday.rawValue, image: UIImage(named: "calendar3"), state: self.selectedMenuType == MenuType.weekday ? .on : .off, handler: { [self] _ in
+        actions.append( UIAction(title: MenuType.weekday.rawValue, image: UIImage(named: "calendar3"), state: self.selectedMenuType == MenuType.weekday ? .on : .off, handler: { [weak self] _ in
             
-            selectedMenuType = .weekday
-            calendar.reloadData()
-            
-            
-            tappedElementDropDownButton()
+            self?.selectedMenuType = .weekday
+            self?.calendar.reloadData()
+            self?.tappedElementDropDownButton()
             
         }))
         
@@ -232,7 +229,7 @@ class CalendarViewController: UIViewController {
         }
         
         taskTableView.reloadData()
-        filterEvent(date: self.date)
+        filterEvent(date: date)
     }
     
     private func fetchEventModels() {
@@ -299,7 +296,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         if let cell = taskTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? EventTableViewCell {
             cell.delegate = self
             cell.alertDelegate = self
-            cell.eventModel = self.eventResults[indexPath.row]
+            cell.eventModel = eventResults[indexPath.row]
             return cell
         }
         return UITableViewCell()
@@ -377,8 +374,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         rokuyouLabel.text = calculateRokuyo(date: date)
         
         self.date = date.toStringWithCurrentLocale()
-        print("date", self.date)
-        
         filterEvent(date: date.toStringWithCurrentLocale())
     }
     
@@ -406,11 +401,11 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         // 土日祝のカレンダー表示
         if selectedMenuType == .holiday {
             
-            if self.judgeHoliday(date) {
+            if judgeHoliday(date) {
                 return UIColor.red
             }
             
-            let weekday = self.getWeekIdx(date)
+            let weekday = getWeekIdx(date)
             if weekday == 1 {   //日曜日
                 return UIColor.red
             }
@@ -431,11 +426,11 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
             // 平日のみの表示
         } else if selectedMenuType == .weekday {
             
-            if self.judgeHoliday(date) {
+            if judgeHoliday(date) {
                 return UIColor.white
             }
             
-            let weekday = self.getWeekIdx(date)
+            let weekday = getWeekIdx(date)
             if weekday == 1 {   //日曜日
                 return UIColor.white
             }
@@ -447,12 +442,12 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         } else {
             
             //祝日判定をする（祝日は赤色で表示する）
-            if self.judgeHoliday(date) {
+            if judgeHoliday(date) {
                 return UIColor.red
             }
             
             //土日の判定を行う（土曜日は青色、日曜日は赤色で表示する）
-            let weekday = self.getWeekIdx(date)
+            let weekday = getWeekIdx(date)
             if weekday == 1 {   //日曜日
                 return UIColor.red
             }
