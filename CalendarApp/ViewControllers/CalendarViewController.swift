@@ -282,7 +282,7 @@ class CalendarViewController: UIViewController {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
