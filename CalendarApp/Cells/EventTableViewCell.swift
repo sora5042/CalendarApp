@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol EventTableViewCellDelegate: class {
+protocol EventTableViewCellDelegate: AnyObject {
     func notifiCell(eventFromCell: EventModel)
 }
 

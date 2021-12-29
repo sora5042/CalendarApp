@@ -9,7 +9,7 @@ import UIKit
 import TextFieldEffects
 import RealmSwift
 
-protocol AddEventViewControllerDelegate: class {
+protocol AddEventViewControllerDelegate: AnyObject {
     
     func event(addEvent: EventModel)
 }
