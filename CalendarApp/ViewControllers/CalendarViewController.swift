@@ -48,7 +48,7 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(Realm.Configuration.defaultConfiguration.fileURL)
+//        print(Realm.Configuration.defaultConfiguration.fileURL)
         dateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "ja_JP"))
         todayString = dateFormat.string(from: todayDate)
         
@@ -239,7 +239,7 @@ class CalendarViewController: UIViewController {
     
     private func filterEvent(date: String) {
         
-        eventResults = realm.objects(EventModel.self).filter("date == '\(date)'").sorted(byKeyPath: "time", ascending: true)
+        eventResults = realm.objects(EventModel.self).filter("date == '\(date)'").sorted(byKeyPath: "editStartTime", ascending: true)
         
         print("filter", eventResults)
         taskTableView.reloadData()

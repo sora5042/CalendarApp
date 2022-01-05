@@ -40,19 +40,11 @@ class AddEventViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        newEventOrEditEvent()
     }
     
     private func setupView() {
-        
-        if eventModel == nil {
-            
-            navigationBarLabel.text = "新規イベント"
-            
-        } else {
-            
-            navigationBarLabel.text = "編集"
-        }
-        
+                
         dateFormat.dateFormat = "yyyy/MM/dd"
         let datePicker = dateFormat.date(from: date)
         startDatePicker.date = datePicker ?? Date()
@@ -93,6 +85,22 @@ class AddEventViewController: UIViewController {
         dateView.layer.borderColor = UIColor.lightGray.cgColor
     }
     
+    private func newEventOrEditEvent() {
+        
+        if eventModel == nil {
+            
+            navigationBarLabel.text = "新規イベント"
+            
+        } else {
+            
+            navigationBarLabel.text = "編集"
+            startDatePicker.date = eventModel?.editStartTime ?? Date()
+            endDatePicker.date = eventModel?.editEndTime ?? Date()
+        }
+        
+        
+    }
+    
     @objc private func tappedSaveButton() {
         
         if eventModel == nil {
@@ -130,7 +138,8 @@ class AddEventViewController: UIViewController {
             eventModels.title = title
             eventModels.place = place
             eventModels.comment = comment
-            eventModels.time = startDatePicker.date
+            eventModels.editStartTime = startDatePicker.date
+            eventModels.editEndTime = endDatePicker.date
             eventModels.date = dateFormat.string(from: startDatePicker.date)
             eventModels.startTime = timeFormat.string(from: startDatePicker.date)
             eventModels.endTime = timeFormat.string(from: endDatePicker.date)
@@ -165,7 +174,8 @@ class AddEventViewController: UIViewController {
             eventModels.title = title
             eventModels.place = place
             eventModels.comment = comment
-            eventModels.time = startDatePicker.date
+            eventModels.editStartTime = startDatePicker.date
+            eventModels.editEndTime = endDatePicker.date
             eventModels.date = dateFormat.string(from: startDatePicker.date)
             eventModels.startTime = timeFormat.string(from: startDatePicker.date)
             eventModels.endTime = timeFormat.string(from: endDatePicker.date)
