@@ -10,26 +10,25 @@ import TextFieldEffects
 import RealmSwift
 
 protocol AddEventViewControllerDelegate: AnyObject {
-    
     func event(addEvent: EventModel)
 }
 
 class AddEventViewController: UIViewController {
     
     weak var delegate: AddEventViewControllerDelegate?
-    private let dateFormat = DateFormatter()
     var eventModel: EventModel?
     var eventModels = EventModel()
+    private let dateFormat = DateFormatter()
     private let dateFormatter = DateFormatter()
     var date = String()
     
-    @IBOutlet weak private var cancelButton: UIButton!
     @IBOutlet weak private var titleTextField: HoshiTextField!
     @IBOutlet weak private var placeTextField: HoshiTextField!
     @IBOutlet weak private var commentTextField: HoshiTextField!
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
     @IBOutlet weak private var saveButton: UIButton!
+    @IBOutlet weak private var cancelButton: UIButton!
     @IBOutlet weak private var navigationBarLabel: UILabel!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var dateView: UIView!
@@ -40,11 +39,11 @@ class AddEventViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        setupTextField()
         newEventOrEditEvent()
     }
     
     private func setupView() {
-                
         dateFormat.dateFormat = "yyyy/MM/dd"
         let datePicker = dateFormat.date(from: date)
         startDatePicker.date = datePicker ?? Date()
@@ -52,7 +51,9 @@ class AddEventViewController: UIViewController {
         
         cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
         saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
-        
+    }
+    
+    private func setupTextField() {
         placeTextField.delegate = self
         commentTextField.delegate = self
         titleTextField.delegate = self
@@ -86,31 +87,20 @@ class AddEventViewController: UIViewController {
     }
     
     private func newEventOrEditEvent() {
-        
         if eventModel == nil {
-            
             navigationBarLabel.text = "新規イベント"
-            
         } else {
-            
             navigationBarLabel.text = "編集"
             startDatePicker.date = eventModel?.editStartTime ?? Date()
             endDatePicker.date = eventModel?.editEndTime ?? Date()
         }
-        
-        
     }
     
     @objc private func tappedSaveButton() {
-        
         if eventModel == nil {
-            
             localNotification()
-            
         } else {
-            
             updateLocalNotification()
-            
         }
         
         delegate?.event(addEvent: eventModels)
@@ -118,9 +108,7 @@ class AddEventViewController: UIViewController {
     }
     
     private func createEvent(notificationId: String) {
-        
         dateFormat.dateFormat = "yyyy/MM/dd"
-        
         let timeFormat = DateFormatter()
         timeFormat.dateFormat = "HH:mm"
         
@@ -130,7 +118,6 @@ class AddEventViewController: UIViewController {
         guard let place = placeTextField.text else { return }
         
         do {
-            
             let realm = try Realm()
             
             eventModels.eventId = eventId
@@ -146,7 +133,6 @@ class AddEventViewController: UIViewController {
             
             try realm.write {
                 realm.add(eventModels)
-                
             }
         } catch {
             print("create todo error.")
@@ -154,9 +140,7 @@ class AddEventViewController: UIViewController {
     }
     
     private func updateEvent(notificationId: String) {
-        
         dateFormat.dateFormat = "yyyy/MM/dd"
-        
         let timeFormat = DateFormatter()
         timeFormat.dateFormat = "HH:mm"
         
@@ -166,7 +150,6 @@ class AddEventViewController: UIViewController {
         guard let place = placeTextField.text else { return }
         
         do {
-            
             let realm = try Realm()
             
             eventModels.eventId = eventId
@@ -214,19 +197,15 @@ class AddEventViewController: UIViewController {
         
         // MARK: 通知のリクエストを実際に登録する
         UNUserNotificationCenter.current().add(request) { (error: Error?) in
-            
             if let error = error {
                 print("プッシュ通知の作成に失敗しました", error)
                 return
-                
             } else {
-                
             }
         }
     }
     
     private func updateLocalNotification() {
-        
         guard let notificationid = eventModel?.notificationId else { return }
         guard let titleText = titleTextField.text else { return }
         guard let commentText = commentTextField.text else { return }
@@ -252,41 +231,33 @@ class AddEventViewController: UIViewController {
         updateEvent(notificationId: newId)
         // 通知のリクエストを実際に登録する
         UNUserNotificationCenter.current().add(request) { (error: Error?) in
-            
             if let error = error {
                 print("プッシュ通知の作成に失敗しました", error)
-                
             } else {
-                
             }
         }
     }
     
     @objc private func tappedCancelButton() {
-        
         dismiss(animated: true, completion: nil)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        
         self.view.endEditing(true)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .darkContent
-        
     }
 }
 
 extension AddEventViewController: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // キーボードを閉じる
         placeTextField.resignFirstResponder()
         commentTextField.resignFirstResponder()
         titleTextField.resignFirstResponder()
-        
         return true
     }
 }

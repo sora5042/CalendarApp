@@ -19,17 +19,14 @@ class EventTableViewCell: UITableViewCell {
     var eventModels = [EventModel]()
     var eventModel: EventModel? {
         didSet {
-            
             titleLabel.text = eventModel?.title
             commentLabel.text = eventModel?.comment
             placeLabel.text = eventModel?.place
             startTimeLabel.text = eventModel?.startTime
             endTimeLabel.text = eventModel?.endTime
-            
         }
-        
     }
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
@@ -44,24 +41,17 @@ class EventTableViewCell: UITableViewCell {
     }
     
     @objc func tappedClearButton() {
-           
-           let alert = UIAlertController(title: "アラート表示", message: "本当に削除しても良いですか？", preferredStyle: UIAlertController.Style.alert)
-           let clearAction = UIAlertAction(title: "削除", style: UIAlertAction.Style.default) { [weak self] (action: UIAlertAction) in
-
-               self?.delegate?.notifiCell(eventFromCell: (self?.eventModel!)!)
-
-           }
-
-           alert.addAction(clearAction)
-           let cancelAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler: nil)
-           alert.addAction(cancelAction)
-           alertDelegate?.present(alert, animated: true, completion: nil)
-       }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        let alert = UIAlertController(title: "アラート表示", message: "本当に削除しても良いですか？", preferredStyle: UIAlertController.Style.alert)
+        let clearAction = UIAlertAction(title: "削除", style: UIAlertAction.Style.default) { [weak self] (action: UIAlertAction) in
+            self?.delegate?.notifiCell(eventFromCell: (self?.eventModel!)!)
+        }
+        alert.addAction(clearAction)
+        let cancelAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(cancelAction)
+        alertDelegate?.present(alert, animated: true, completion: nil)
     }
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
 }

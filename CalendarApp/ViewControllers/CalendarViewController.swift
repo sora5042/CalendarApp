@@ -30,20 +30,19 @@ class CalendarViewController: UIViewController {
     private var date = String()
     private let todayDate = Date()
     private var todayString = String()
-    
     var selectedMenuType = MenuType.month
     
     @IBOutlet weak private var calendar: FSCalendar!
     @IBOutlet weak private var calendarHeight: NSLayoutConstraint!
     @IBOutlet weak private var taskTableView: UITableView!
-    @IBOutlet weak private var addButton: UIButton!
-    @IBOutlet weak private var dateLabel: UILabel!
-    @IBOutlet weak private var selectElementButton: UIButton!
     @IBOutlet weak private var selectElementDropDownView: UIView!
+    @IBOutlet weak private var dateLabel: UILabel!
+    @IBOutlet weak private var rokuyouLabel: UILabel!
+    @IBOutlet weak private var addButton: UIButton!
+    @IBOutlet weak private var selectElementButton: UIButton!
     @IBOutlet weak private var elementDropDownButton: UIButton!
     @IBOutlet weak private var scrollButton: UIButton!
     @IBOutlet weak private var bulkDeleteButton: UIButton!
-    @IBOutlet weak private var rokuyouLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,13 +50,9 @@ class CalendarViewController: UIViewController {
 //        print(Realm.Configuration.defaultConfiguration.fileURL)
         dateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "ja_JP"))
         todayString = dateFormat.string(from: todayDate)
-        
-        print("todayString", todayString)
-        
         setupView()
         setupCalendar()
         filterEvent(date: todayString)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,15 +61,12 @@ class CalendarViewController: UIViewController {
         if date == "" {
             print("date", date)
             return
-            
         } else {
-            
             filterEvent(date: date)
         }
     }
     
     private func setupView() {
-        
         taskTableView.dataSource = self
         taskTableView.delegate = self
         taskTableView.register(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
@@ -85,12 +77,10 @@ class CalendarViewController: UIViewController {
         elementDropDownButton.addTarget(self, action: #selector(tappedElementDropDownButton), for: .touchUpInside)
         scrollButton.addTarget(self, action: #selector(tappedScrollButton), for: .touchUpInside)
         bulkDeleteButton.addTarget(self, action: #selector(tappedBulkDeleteButton), for: .touchUpInside)
-        
         rokuyouLabel.text = calculateRokuyo(date: todayDate)
     }
     
     private func setupCalendar() {
-        
         calendar.dataSource = self
         calendar.delegate = self
         calendar.scrollDirection = .horizontal
@@ -107,7 +97,6 @@ class CalendarViewController: UIViewController {
     }
     
     @objc private func tappedElementDropDownButton() {
-        
         var actions = [UIMenuElement]()
         
         actions.append(UIAction(title: MenuType.month.rawValue, image: UIImage(named: "calendar1"), state: self.selectedMenuType == MenuType.month ? .on : .off, handler: { [weak self] _ in
@@ -154,21 +143,17 @@ class CalendarViewController: UIViewController {
     }
     
     @objc private func tappedScrollButton() {
-        
         if calendar.scrollDirection == .vertical {
-            
             calendar.scrollDirection = .horizontal
             scrollButton.setTitle("横方向", for: .normal)
             
         } else if calendar.scrollDirection == .horizontal {
-            
             calendar.scrollDirection = .vertical
             scrollButton.setTitle("縦方向", for: .normal)
         }
     }
     
     @objc private func tappedAddButton() {
-        
         let storyboard = UIStoryboard(name: "AddSchedule", bundle: nil)
         if let addEventViewController = storyboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as? AddEventViewController {
             addEventViewController.modalTransitionStyle = .coverVertical
@@ -180,13 +165,10 @@ class CalendarViewController: UIViewController {
     }
     
     @objc private func tappedBulkDeleteButton() {
-        
         let alert = UIAlertController(title: "アラート表示", message: "本当に一括削除しても良いですか？", preferredStyle: UIAlertController.Style.alert)
         let clearAction = UIAlertAction(title: "削除", style: UIAlertAction.Style.default) { [weak self] (action: UIAlertAction) in
-            
             self?.bulkDelete()
         }
-        
         alert.addAction(clearAction)
         let cancelAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(cancelAction)
@@ -194,18 +176,14 @@ class CalendarViewController: UIViewController {
     }
     
     private func bulkDelete() {
-        
         let realm = try! Realm()
         let result: Results<EventModel>!
         var eventModel =  [EventModel]()
         let event = realm.objects(EventModel.self).filter("date == '\(date)'")
         
         if date == "" {
-            
             result = realm.objects(EventModel.self).filter("date == '\(todayString)'")
-            
         } else {
-            
             result = realm.objects(EventModel.self).filter("date == '\(date)'")
         }
         
@@ -233,14 +211,11 @@ class CalendarViewController: UIViewController {
     }
     
     private func fetchEventModels() {
-        
         eventCounts = realm.objects(EventModel.self)
     }
     
     private func filterEvent(date: String) {
-        
         eventResults = realm.objects(EventModel.self).filter("date == '\(date)'").sorted(byKeyPath: "editStartTime", ascending: true)
-        
         print("filter", eventResults)
         taskTableView.reloadData()
     }
@@ -278,7 +253,6 @@ class CalendarViewController: UIViewController {
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -292,7 +266,6 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if let cell = taskTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? EventTableViewCell {
             cell.delegate = self
             cell.alertDelegate = self
@@ -303,7 +276,6 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let storyboard = UIStoryboard(name: "AddSchedule", bundle: nil)
         if let addEventViewController = storyboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as? AddEventViewController {
             addEventViewController.eventModel = eventResults[indexPath.row]
@@ -316,11 +288,8 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
 
 // MARK: - EventTableViewCellDelegate
 extension CalendarViewController: EventTableViewCellDelegate {
-    
     func notifiCell(eventFromCell: EventModel) {
-        
         let realm = try! Realm()
-        
         let result: Results<EventModel>!
         result = realm.objects(EventModel.self).filter("eventId == '\(eventFromCell.eventId)'")
         
@@ -334,7 +303,6 @@ extension CalendarViewController: EventTableViewCellDelegate {
         } catch {
             print("Error \(error)")
         }
-        
         taskTableView.reloadData()
         filterEvent(date: date)
     }
@@ -342,16 +310,13 @@ extension CalendarViewController: EventTableViewCellDelegate {
 
 // MARK: - AddEventViewControllerDelegate
 extension CalendarViewController: AddEventViewControllerDelegate {
-    
     func event(addEvent: EventModel) {
-        
         filterEvent(date: addEvent.date)
     }
 }
 
 // MARK: - FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance
 extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
-    
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         calendarHeight.constant = bounds.height
         self.view.layoutIfNeeded()
@@ -362,7 +327,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        
         dateFormat.dateFormat = "yyyy/MM/dd"
         
         let tmpDate = Calendar(identifier: .gregorian)
@@ -378,7 +342,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        
         fetchEventModels()
         dateFormat.dateFormat = "yyyy/MM/dd"
         
@@ -397,7 +360,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
     }
     // 土日や祝日の日の文字色を変える
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
-        
         // 土日祝のカレンダー表示
         if selectedMenuType == .holiday {
             
@@ -411,16 +373,13 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
             }
             else if weekday == 7 {  //土曜日
                 return UIColor.blue
-                
             }
             // 平日の色
             switch weekday {
                 
             case 2...6:
                 return UIColor.white
-                
             default: break
-                
             }
             
             // 平日のみの表示
@@ -429,16 +388,13 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
             if judgeHoliday(date) {
                 return UIColor.white
             }
-            
             let weekday = getWeekIdx(date)
             if weekday == 1 {   //日曜日
                 return UIColor.white
             }
             else if weekday == 7 {  //土曜日
                 return UIColor.white
-                
             }
-            
         } else {
             
             //祝日判定をする（祝日は赤色で表示する）
@@ -455,7 +411,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
                 return UIColor.blue
             }
         }
-        
         return nil
     }
     
@@ -470,37 +425,31 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         
         // CalculateCalendarLogic()：祝日判定のインスタンスの生成
         let holiday = CalculateCalendarLogic()
-        
         return holiday.judgeJapaneseHoliday(year: year, month: month, day: day)
     }
+    
     // date型 -> 年月日をIntで取得
     private func getDay(_ date:Date) -> (Int,Int,Int) {
-        
         let tmpCalendar = Calendar(identifier: .gregorian)
         let year = tmpCalendar.component(.year, from: date)
         let month = tmpCalendar.component(.month, from: date)
         let day = tmpCalendar.component(.day, from: date)
         return (year,month,day)
-        
     }
     
     //曜日判定(日曜日:1 〜 土曜日:7)
     private func getWeekIdx(_ date: Date) -> Int {
-        
         let tmpCalendar = Calendar(identifier: .gregorian)
         return tmpCalendar.component(.weekday, from: date)
     }
 }
 
 extension Date {
-    
     func toStringWithCurrentLocale() -> String {
-        
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
         formatter.locale = Locale.current
         formatter.dateFormat = "yyyy/MM/dd"
-        
         return formatter.string(from: self)
     }
 }
