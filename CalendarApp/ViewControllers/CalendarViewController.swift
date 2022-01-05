@@ -182,9 +182,9 @@ class CalendarViewController: UIViewController {
     @objc private func tappedBulkDeleteButton() {
         
         let alert = UIAlertController(title: "アラート表示", message: "本当に一括削除しても良いですか？", preferredStyle: UIAlertController.Style.alert)
-        let clearAction = UIAlertAction(title: "削除", style: UIAlertAction.Style.default) { [self] (action: UIAlertAction) in
+        let clearAction = UIAlertAction(title: "削除", style: UIAlertAction.Style.default) { [weak self] (action: UIAlertAction) in
             
-            bulkDelete()
+            self?.bulkDelete()
         }
         
         alert.addAction(clearAction)
