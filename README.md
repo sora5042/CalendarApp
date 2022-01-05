@@ -29,11 +29,11 @@
 
   
 ## 開発環境  
-Swift5.5.1  
-Xcode13.1  
+Swift5.5.2  
+Xcode13.2.1  
   
 ## スクリーンショット(現時点)  
-<img src="https://user-images.githubusercontent.com/65600700/145943313-3aa8cf27-e7bd-421d-9562-df8ce8497967.PNG" width="250px">  <img src="https://user-images.githubusercontent.com/65600700/145943296-6477b342-b98d-4bfd-b85e-35303f7515b5.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/145943310-757790e5-cb13-482e-9ff9-bad71c3fa963.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/145943673-7c6222d5-dd9a-4e72-a77d-de806a07acdb.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/145768122-10364383-055f-42d6-b882-87455aa5add6.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/145768595-1564663f-d567-4a3a-9a24-2aa2cf390f7e.PNG" width="250px">  
+<img src="https://user-images.githubusercontent.com/65600700/145943313-3aa8cf27-e7bd-421d-9562-df8ce8497967.PNG" width="250px">  <img src="https://user-images.githubusercontent.com/65600700/145943296-6477b342-b98d-4bfd-b85e-35303f7515b5.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/145943310-757790e5-cb13-482e-9ff9-bad71c3fa963.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/148170932-f96aa847-e31f-4548-bea6-6cb9d5904a34.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/148170812-1d2fe378-752c-47f6-9c01-3f815e03c892.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/145768122-10364383-055f-42d6-b882-87455aa5add6.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/145768595-1564663f-d567-4a3a-9a24-2aa2cf390f7e.PNG" width="250px">  
   
   
 
