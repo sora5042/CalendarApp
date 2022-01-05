@@ -27,6 +27,7 @@ class EventTableViewCell: UITableViewCell {
         }
     }
     
+    @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
@@ -37,6 +38,12 @@ class EventTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        setupView()
+    }
+    
+    private func setupView() {
+        cellView.layer.borderWidth = 0.5
+        cellView.layer.borderColor = UIColor.lightGray.cgColor
         cancelButton.addTarget(self, action: #selector(tappedClearButton), for: .touchUpInside)
     }
     
