@@ -27,13 +27,13 @@ class EventTableViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var cellView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var startTimeLabel: UILabel!
-    @IBOutlet weak var endTimeLabel: UILabel!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var commentLabel: UILabel!
-    @IBOutlet weak var placeLabel: UILabel!
+    @IBOutlet private weak var cellView: UIView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var startTimeLabel: UILabel!
+    @IBOutlet private weak var endTimeLabel: UILabel!
+    @IBOutlet private weak var cancelButton: UIButton!
+    @IBOutlet private weak var commentLabel: UILabel!
+    @IBOutlet private weak var placeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

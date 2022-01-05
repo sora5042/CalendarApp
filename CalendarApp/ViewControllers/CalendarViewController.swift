@@ -32,18 +32,18 @@ class CalendarViewController: UIViewController {
     private var todayString = String()
     var selectedMenuType = MenuType.month
     
-    @IBOutlet weak private var calendar: FSCalendar!
-    @IBOutlet weak private var calendarHeight: NSLayoutConstraint!
-    @IBOutlet weak private var taskTableView: UITableView!
-    @IBOutlet weak private var selectElementDropDownView: UIView!
-    @IBOutlet weak private var dateLabel: UILabel!
+    @IBOutlet private weak var calendar: FSCalendar!
+    @IBOutlet private weak var calendarHeight: NSLayoutConstraint!
+    @IBOutlet private weak var taskTableView: UITableView!
+    @IBOutlet private weak var selectElementDropDownView: UIView!
+    @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var calendarLabel: UILabel!
-    @IBOutlet weak private var rokuyouLabel: UILabel!
-    @IBOutlet weak private var addButton: UIButton!
-    @IBOutlet weak private var selectElementButton: UIButton!
-    @IBOutlet weak private var elementDropDownButton: UIButton!
-    @IBOutlet weak private var scrollButton: UIButton!
-    @IBOutlet weak private var bulkDeleteButton: UIButton!
+    @IBOutlet private weak var rokuyouLabel: UILabel!
+    @IBOutlet private weak var addButton: UIButton!
+    @IBOutlet private weak var selectElementButton: UIButton!
+    @IBOutlet private weak var elementDropDownButton: UIButton!
+    @IBOutlet private weak var scrollButton: UIButton!
+    @IBOutlet private weak var bulkDeleteButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

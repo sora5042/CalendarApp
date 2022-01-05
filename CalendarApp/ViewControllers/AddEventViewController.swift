@@ -22,19 +22,19 @@ class AddEventViewController: UIViewController {
     private let dateFormatter = DateFormatter()
     var date = String()
     
-    @IBOutlet weak private var titleTextField: HoshiTextField!
-    @IBOutlet weak private var placeTextField: HoshiTextField!
-    @IBOutlet weak private var commentTextField: HoshiTextField!
+    @IBOutlet private weak var titleTextField: HoshiTextField!
+    @IBOutlet private weak var placeTextField: HoshiTextField!
+    @IBOutlet private weak var commentTextField: HoshiTextField!
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
-    @IBOutlet weak private var saveButton: UIButton!
-    @IBOutlet weak private var cancelButton: UIButton!
-    @IBOutlet weak private var navigationBarLabel: UILabel!
-    @IBOutlet weak var titleView: UIView!
-    @IBOutlet weak var dateView: UIView!
-    @IBOutlet weak var placeView: UIView!
-    @IBOutlet weak var commentView: UIView!
-    @IBOutlet weak var datePickerView: UIView!
+    @IBOutlet private weak var saveButton: UIButton!
+    @IBOutlet private weak var cancelButton: UIButton!
+    @IBOutlet private weak var navigationBarLabel: UILabel!
+    @IBOutlet private weak var titleView: UIView!
+    @IBOutlet private weak var dateView: UIView!
+    @IBOutlet private weak var placeView: UIView!
+    @IBOutlet private weak var commentView: UIView!
+    @IBOutlet private weak var datePickerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
