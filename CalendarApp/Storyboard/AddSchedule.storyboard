@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,6 +16,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hf6-70-mcy">
+                                <rect key="frame" x="0.0" y="257" width="375" height="190"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="開始" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mef-lD-WiD">
+                                        <rect key="frame" x="25" y="20" width="36" height="18"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="18"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="終了" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGG-L9-NoF">
+                                        <rect key="frame" x="25" y="128" width="36" height="18"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="18"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Jp7-4V-Yis">
+                                        <rect key="frame" x="173" y="15" width="194" height="31"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="systemTealColor"/>
+                                        <locale key="locale" localeIdentifier="ja"/>
+                                    </datePicker>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="N1r-Dm-J3v">
+                                        <rect key="frame" x="173" y="125" width="194" height="31"/>
+                                        <color key="tintColor" systemColor="systemTealColor"/>
+                                        <locale key="locale" localeIdentifier="ja"/>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="mGG-L9-NoF" firstAttribute="top" secondItem="mef-lD-WiD" secondAttribute="bottom" constant="90" id="Azo-bx-ldZ"/>
+                                    <constraint firstItem="mef-lD-WiD" firstAttribute="leading" secondItem="hf6-70-mcy" secondAttribute="leading" constant="25" id="H1O-DQ-aE7"/>
+                                    <constraint firstItem="mGG-L9-NoF" firstAttribute="leading" secondItem="hf6-70-mcy" secondAttribute="leading" constant="25" id="Jzu-Id-rcc"/>
+                                    <constraint firstAttribute="trailing" secondItem="N1r-Dm-J3v" secondAttribute="trailing" constant="8" id="Om0-cG-9LS"/>
+                                    <constraint firstItem="Jp7-4V-Yis" firstAttribute="leading" secondItem="mef-lD-WiD" secondAttribute="trailing" constant="112" id="Si4-81-AwZ"/>
+                                    <constraint firstItem="N1r-Dm-J3v" firstAttribute="leading" secondItem="mGG-L9-NoF" secondAttribute="trailing" constant="112" id="Vfz-XJ-GSD"/>
+                                    <constraint firstAttribute="height" constant="190" id="Yyo-h3-biN"/>
+                                    <constraint firstItem="Jp7-4V-Yis" firstAttribute="top" secondItem="hf6-70-mcy" secondAttribute="top" constant="15" id="Z9U-eJ-QV3"/>
+                                    <constraint firstItem="N1r-Dm-J3v" firstAttribute="top" secondItem="Jp7-4V-Yis" secondAttribute="bottom" constant="79" id="aeJ-WM-a9Q"/>
+                                    <constraint firstItem="mef-lD-WiD" firstAttribute="top" secondItem="hf6-70-mcy" secondAttribute="top" constant="20" symbolic="YES" id="hMa-Ii-jyH"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jp7-4V-Yis" secondAttribute="trailing" constant="8" id="vtE-VZ-3sW"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZYT-rb-6L6">
                                 <rect key="frame" x="0.0" y="44" width="375" height="59"/>
                                 <subviews>
@@ -142,48 +184,6 @@
                                     <constraint firstAttribute="trailing" secondItem="05m-HO-Q56" secondAttribute="trailing" constant="15" id="mPL-eq-vKe"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hf6-70-mcy">
-                                <rect key="frame" x="0.0" y="257" width="375" height="190"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="開始" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mef-lD-WiD">
-                                        <rect key="frame" x="25" y="20" width="36" height="18"/>
-                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="18"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="終了" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGG-L9-NoF">
-                                        <rect key="frame" x="25" y="128" width="36" height="18"/>
-                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="18"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Jp7-4V-Yis">
-                                        <rect key="frame" x="173" y="15" width="194" height="31"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" systemColor="systemTealColor"/>
-                                        <locale key="locale" localeIdentifier="ja"/>
-                                    </datePicker>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="N1r-Dm-J3v">
-                                        <rect key="frame" x="173" y="125" width="194" height="31"/>
-                                        <color key="tintColor" systemColor="systemTealColor"/>
-                                        <locale key="locale" localeIdentifier="ja"/>
-                                    </datePicker>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="mGG-L9-NoF" firstAttribute="top" secondItem="mef-lD-WiD" secondAttribute="bottom" constant="90" id="Azo-bx-ldZ"/>
-                                    <constraint firstItem="mef-lD-WiD" firstAttribute="leading" secondItem="hf6-70-mcy" secondAttribute="leading" constant="25" id="H1O-DQ-aE7"/>
-                                    <constraint firstItem="mGG-L9-NoF" firstAttribute="leading" secondItem="hf6-70-mcy" secondAttribute="leading" constant="25" id="Jzu-Id-rcc"/>
-                                    <constraint firstAttribute="trailing" secondItem="N1r-Dm-J3v" secondAttribute="trailing" constant="8" id="Om0-cG-9LS"/>
-                                    <constraint firstItem="Jp7-4V-Yis" firstAttribute="leading" secondItem="mef-lD-WiD" secondAttribute="trailing" constant="112" id="Si4-81-AwZ"/>
-                                    <constraint firstItem="N1r-Dm-J3v" firstAttribute="leading" secondItem="mGG-L9-NoF" secondAttribute="trailing" constant="112" id="Vfz-XJ-GSD"/>
-                                    <constraint firstAttribute="height" constant="190" id="Yyo-h3-biN"/>
-                                    <constraint firstItem="Jp7-4V-Yis" firstAttribute="top" secondItem="hf6-70-mcy" secondAttribute="top" constant="15" id="Z9U-eJ-QV3"/>
-                                    <constraint firstItem="N1r-Dm-J3v" firstAttribute="top" secondItem="Jp7-4V-Yis" secondAttribute="bottom" constant="79" id="aeJ-WM-a9Q"/>
-                                    <constraint firstItem="mef-lD-WiD" firstAttribute="top" secondItem="hf6-70-mcy" secondAttribute="top" constant="20" symbolic="YES" id="hMa-Ii-jyH"/>
-                                    <constraint firstAttribute="trailing" secondItem="Jp7-4V-Yis" secondAttribute="trailing" constant="8" id="vtE-VZ-3sW"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNU-Ih-daX">
                                 <rect key="frame" x="0.0" y="484" width="375" height="80"/>
                                 <subviews>
@@ -265,6 +265,7 @@
                         <outlet property="cancelButton" destination="uvl-2X-AqJ" id="Aee-fQ-Bdp"/>
                         <outlet property="commentTextField" destination="eUu-im-bLr" id="Kra-rB-qfB"/>
                         <outlet property="commentView" destination="Q6O-XJ-22k" id="EAk-Xm-UEe"/>
+                        <outlet property="datePickerView" destination="hf6-70-mcy" id="L1W-m5-meb"/>
                         <outlet property="dateView" destination="ZJk-aa-dSV" id="sv4-I7-CvU"/>
                         <outlet property="endDatePicker" destination="N1r-Dm-J3v" id="8r1-wR-8LM"/>
                         <outlet property="navigationBarLabel" destination="iVv-3v-6ba" id="Cbk-LE-0kZ"/>

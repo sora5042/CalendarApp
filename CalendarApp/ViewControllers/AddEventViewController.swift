@@ -34,6 +34,7 @@ class AddEventViewController: UIViewController {
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var placeView: UIView!
     @IBOutlet weak var commentView: UIView!
+    @IBOutlet weak var datePickerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,10 @@ class AddEventViewController: UIViewController {
     }
     
     private func setupView() {
+        let drawView = DrawView(frame: self.datePickerView.bounds)
+        self.datePickerView.addSubview(drawView)
+        self.datePickerView.sendSubviewToBack(drawView)
+        
         dateFormat.dateFormat = "yyyy/MM/dd"
         let datePicker = dateFormat.date(from: date)
         startDatePicker.date = datePicker ?? Date()
@@ -261,3 +266,4 @@ extension AddEventViewController: UITextFieldDelegate {
         return true
     }
 }
+

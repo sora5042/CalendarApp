@@ -20,6 +20,7 @@
 		D64B0AC62702DD5500845946 /* CalendarAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0AC52702DD5500845946 /* CalendarAppTests.swift */; };
 		D64B0AD02702DD5500845946 /* CalendarAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0ACF2702DD5500845946 /* CalendarAppUITests.swift */; };
 		D64B0AD22702DD5500845946 /* CalendarAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0AD12702DD5500845946 /* CalendarAppUITestsLaunchTests.swift */; };
+		D6839D1427858E7000805816 /* Extension-DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6839D1327858E7000805816 /* Extension-DrawView.swift */; };
 		D6BA3E152711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
 		D6BA3E162711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
 		D6BA3E172711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
@@ -74,6 +75,7 @@
 		D64B0ACB2702DD5500845946 /* CalendarAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64B0ACF2702DD5500845946 /* CalendarAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAppUITests.swift; sourceTree = "<group>"; };
 		D64B0AD12702DD5500845946 /* CalendarAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D6839D1327858E7000805816 /* Extension-DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-DrawView.swift"; sourceTree = "<group>"; };
 		D6BA3E142711655300B48C05 /* AddSchedule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddSchedule.storyboard; sourceTree = "<group>"; };
 		D6BA3E182711657000B48C05 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		D6BA3E26271BF97B00B48C05 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			children = (
 				D64B0AAE2702DD5400845946 /* AppDelegate.swift */,
 				D64B0AB02702DD5400845946 /* SceneDelegate.swift */,
+				D6839D1227858E4700805816 /* Extension */,
 				D6BA3E25271BF95900B48C05 /* Model */,
 				D6442EFB272662AD00F774A6 /* Cells */,
 				D6BA3E12271164E200B48C05 /* ViewControllers */,
@@ -183,6 +186,14 @@
 				D64B0AD12702DD5500845946 /* CalendarAppUITestsLaunchTests.swift */,
 			);
 			path = CalendarAppUITests;
+			sourceTree = "<group>";
+		};
+		D6839D1227858E4700805816 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D6839D1327858E7000805816 /* Extension-DrawView.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		D6BA3E12271164E200B48C05 /* ViewControllers */ = {
@@ -493,6 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6839D1427858E7000805816 /* Extension-DrawView.swift in Sources */,
 				D6442EFE272662E600F774A6 /* EventTableViewCell.swift in Sources */,
 				D64B0AB32702DD5400845946 /* CalendarViewController.swift in Sources */,
 				D64B0AAF2702DD5400845946 /* AppDelegate.swift in Sources */,

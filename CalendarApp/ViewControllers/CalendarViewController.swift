@@ -37,6 +37,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak private var taskTableView: UITableView!
     @IBOutlet weak private var selectElementDropDownView: UIView!
     @IBOutlet weak private var dateLabel: UILabel!
+    @IBOutlet private weak var calendarLabel: UILabel!
     @IBOutlet weak private var rokuyouLabel: UILabel!
     @IBOutlet weak private var addButton: UIButton!
     @IBOutlet weak private var selectElementButton: UIButton!
@@ -78,13 +79,15 @@ class CalendarViewController: UIViewController {
         scrollButton.addTarget(self, action: #selector(tappedScrollButton), for: .touchUpInside)
         bulkDeleteButton.addTarget(self, action: #selector(tappedBulkDeleteButton), for: .touchUpInside)
         rokuyouLabel.text = calculateRokuyo(date: todayDate)
+        calendarLabel.layer.borderWidth = 2
+        calendarLabel.layer.borderColor = UIColor.systemGreen.cgColor
     }
     
     private func setupCalendar() {
         calendar.dataSource = self
         calendar.delegate = self
         calendar.scrollDirection = .horizontal
-        calendar.layer.borderWidth = 2.2
+        calendar.layer.borderWidth = 2.5
         calendar.layer.borderColor = UIColor.lightGray.cgColor
         
         calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
