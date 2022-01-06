@@ -14,14 +14,16 @@ struct SimpleWidgetEntryView: View {
         ZStack {
             VStack (spacing: 5) {
                 Text(getMonth())
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 20)
+                    .bold()
+                    .foregroundColor(.init(red: 255, green: 255, blue: 255))
+                    .padding(.horizontal, 30)
                     .background(Rectangle().fill(Color.green))
                 Text(getDay())
+                    .bold()
                 Text(getDate())
                     .font(.largeTitle)
             }
-            .background(Rectangle().fill(Color.init(red: 235, green: 235, blue: 235)))
+            .background(Rectangle().fill(Color.init(red: 200, green: 200, blue: 200)))
             .padding(25)
             .clipShape(Circle())
             .shadow(color: .gray, radius: 5, x: 5, y: 5)
