@@ -11,9 +11,3 @@ import WidgetKit
 struct SimpleWidgetEntry: TimelineEntry {
     let date: Date
 }
-
-//struct SimpleWidgetEntry_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SimpleWidgetEntry()
-//    }
-//}

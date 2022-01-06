@@ -28,7 +28,6 @@ struct SimpleWidgetTimeline: TimelineProvider {
             let entryDate = Calendar.current.date(byAdding: .day, value: dayOffSet, to: currentDate)!
             let entry = SimpleWidgetEntry(date: entryDate)
             entries.append(entry)
-            
         }
         
         let timeline = Timeline(entries: entries, policy: .atEnd)
