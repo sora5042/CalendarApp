@@ -22,13 +22,17 @@
 		D64B0AD22702DD5500845946 /* CalendarAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0AD12702DD5500845946 /* CalendarAppUITestsLaunchTests.swift */; };
 		D6738F6B2786995E0000EAC6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6738F6A2786995E0000EAC6 /* WidgetKit.framework */; };
 		D6738F6D2786995E0000EAC6 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6738F6C2786995E0000EAC6 /* SwiftUI.framework */; };
-		D6738F702786995E0000EAC6 /* widgetDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6738F6F2786995E0000EAC6 /* widgetDemo.swift */; };
+		D6738F702786995E0000EAC6 /* SimpleWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6738F6F2786995E0000EAC6 /* SimpleWidget.swift */; };
 		D6738F732786995F0000EAC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6738F722786995F0000EAC6 /* Assets.xcassets */; };
 		D6738F752786995F0000EAC6 /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D6738F712786995E0000EAC6 /* Widget.intentdefinition */; };
 		D6738F762786995F0000EAC6 /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D6738F712786995E0000EAC6 /* Widget.intentdefinition */; };
 		D6738F792786995F0000EAC6 /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D6738F692786995E0000EAC6 /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D6738F7F2786A0050000EAC6 /* TestWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6738F7E2786A0050000EAC6 /* TestWidget.swift */; };
-		D6738F802786A0050000EAC6 /* TestWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6738F7E2786A0050000EAC6 /* TestWidget.swift */; };
+		D6738F822786B32A0000EAC6 /* SimpleWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6738F812786B32A0000EAC6 /* SimpleWidgetEntry.swift */; };
+		D6738F832786B32A0000EAC6 /* SimpleWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6738F812786B32A0000EAC6 /* SimpleWidgetEntry.swift */; };
+		D6738F852786B5710000EAC6 /* SimpleWidgetTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6738F842786B5710000EAC6 /* SimpleWidgetTimeline.swift */; };
+		D6738F862786B5710000EAC6 /* SimpleWidgetTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6738F842786B5710000EAC6 /* SimpleWidgetTimeline.swift */; };
+		D6738F892786BA2F0000EAC6 /* SimpleWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6738F882786BA2F0000EAC6 /* SimpleWidgetEntryView.swift */; };
+		D6738F8A2786BA2F0000EAC6 /* SimpleWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6738F882786BA2F0000EAC6 /* SimpleWidgetEntryView.swift */; };
 		D6839D1427858E7000805816 /* Extension-DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6839D1327858E7000805816 /* Extension-DrawView.swift */; };
 		D6BA3E152711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
 		D6BA3E162711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
@@ -108,11 +112,13 @@
 		D6738F692786995E0000EAC6 /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6738F6A2786995E0000EAC6 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		D6738F6C2786995E0000EAC6 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		D6738F6F2786995E0000EAC6 /* widgetDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = widgetDemo.swift; sourceTree = "<group>"; };
+		D6738F6F2786995E0000EAC6 /* SimpleWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWidget.swift; sourceTree = "<group>"; };
 		D6738F712786995E0000EAC6 /* Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Widget.intentdefinition; sourceTree = "<group>"; };
 		D6738F722786995F0000EAC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6738F742786995F0000EAC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D6738F7E2786A0050000EAC6 /* TestWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWidget.swift; sourceTree = "<group>"; };
+		D6738F812786B32A0000EAC6 /* SimpleWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWidgetEntry.swift; sourceTree = "<group>"; };
+		D6738F842786B5710000EAC6 /* SimpleWidgetTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWidgetTimeline.swift; sourceTree = "<group>"; };
+		D6738F882786BA2F0000EAC6 /* SimpleWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWidgetEntryView.swift; sourceTree = "<group>"; };
 		D6839D1327858E7000805816 /* Extension-DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-DrawView.swift"; sourceTree = "<group>"; };
 		D6BA3E142711655300B48C05 /* AddSchedule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddSchedule.storyboard; sourceTree = "<group>"; };
 		D6BA3E182711657000B48C05 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
@@ -242,13 +248,23 @@
 		D6738F6E2786995E0000EAC6 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
-				D6738F7E2786A0050000EAC6 /* TestWidget.swift */,
-				D6738F6F2786995E0000EAC6 /* widgetDemo.swift */,
+				D6738F872786BA060000EAC6 /* Views */,
+				D6738F842786B5710000EAC6 /* SimpleWidgetTimeline.swift */,
+				D6738F812786B32A0000EAC6 /* SimpleWidgetEntry.swift */,
+				D6738F6F2786995E0000EAC6 /* SimpleWidget.swift */,
 				D6738F712786995E0000EAC6 /* Widget.intentdefinition */,
 				D6738F722786995F0000EAC6 /* Assets.xcassets */,
 				D6738F742786995F0000EAC6 /* Info.plist */,
 			);
 			path = Widget;
+			sourceTree = "<group>";
+		};
+		D6738F872786BA060000EAC6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D6738F882786BA2F0000EAC6 /* SimpleWidgetEntryView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D6839D1227858E4700805816 /* Extension */ = {
@@ -601,11 +617,13 @@
 				D6839D1427858E7000805816 /* Extension-DrawView.swift in Sources */,
 				D6442EFE272662E600F774A6 /* EventTableViewCell.swift in Sources */,
 				D64B0AB32702DD5400845946 /* CalendarViewController.swift in Sources */,
+				D6738F852786B5710000EAC6 /* SimpleWidgetTimeline.swift in Sources */,
 				D64B0AAF2702DD5400845946 /* AppDelegate.swift in Sources */,
+				D6738F822786B32A0000EAC6 /* SimpleWidgetEntry.swift in Sources */,
 				D6738F762786995F0000EAC6 /* Widget.intentdefinition in Sources */,
 				D64B0AB12702DD5400845946 /* SceneDelegate.swift in Sources */,
 				D6BA3E27271BF97B00B48C05 /* EventModel.swift in Sources */,
-				D6738F7F2786A0050000EAC6 /* TestWidget.swift in Sources */,
+				D6738F892786BA2F0000EAC6 /* SimpleWidgetEntryView.swift in Sources */,
 				D6BA3E192711657000B48C05 /* AddEventViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -636,8 +654,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6738F752786995F0000EAC6 /* Widget.intentdefinition in Sources */,
-				D6738F802786A0050000EAC6 /* TestWidget.swift in Sources */,
-				D6738F702786995E0000EAC6 /* widgetDemo.swift in Sources */,
+				D6738F862786B5710000EAC6 /* SimpleWidgetTimeline.swift in Sources */,
+				D6738F8A2786BA2F0000EAC6 /* SimpleWidgetEntryView.swift in Sources */,
+				D6738F832786B32A0000EAC6 /* SimpleWidgetEntry.swift in Sources */,
+				D6738F702786995E0000EAC6 /* SimpleWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
