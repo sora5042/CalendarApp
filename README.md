@@ -5,17 +5,18 @@
 データベースはRealmを利用しています。  
   
 主な機能としては  
-・日付ごとのイベント管理機能(CRUD)  
+- 日付ごとのイベント管理機能(CRUD)  
 
-・リマインダープッシュ通知  
+- リマインダープッシュ通知  
 
-・カスタマイズ可能なカレンダー表示(スライド方向の切り替え設定)  
+- カスタマイズ可能なカレンダー表示(スライド方向の切り替え設定)  
   
-・六曜の表示  
+- 六曜の表示  
 
-・土日祝のみと平日のみの表示機能  
+- 土日祝のみと平日のみの表示機能  
   
-・Widgetを追加  
+- Widgetを追加  
+    
 となっており、現在制作中です。  
   
 苦労している点：これまで利用していたSQLite、Firebaseと比べてRealmはRealmSwiftの設計思想や使い方を理解して使わなければトラブルがよく発生する点。  
@@ -23,16 +24,16 @@
 現状での課題：UXの考え方や既存アプリとの差別化をするためにはどうすればいいか模索中です。  
   
 ## 使用ライブラリ  
-[FSCalendar](https://github.com/WenchaoD/FSCalendar)  
-[RealmSwift](https://github.com/realm/realm-cocoa)  
-[CalculateCalendarLogic](https://github.com/fumiyasac/handMadeCalendarAdvance)  
-[TextFieldEffects](https://github.com/raulriera/TextFieldEffects)  
-[IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager)  
+- [FSCalendar](https://github.com/WenchaoD/FSCalendar)  
+- [RealmSwift](https://github.com/realm/realm-cocoa)  
+- [CalculateCalendarLogic](https://github.com/fumiyasac/handMadeCalendarAdvance)  
+- [TextFieldEffects](https://github.com/raulriera/TextFieldEffects)  
+- [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager)  
 
   
 ## 開発環境  
-Swift5.5.2  
-Xcode13.2.1  
+- Swift5.5.2  
+- Xcode13.2.1  
   
 ## スクリーンショット(現時点)  
 <img src="https://user-images.githubusercontent.com/65600700/148194387-30766f8a-dce6-4dc3-ad57-656abd9e4925.PNG" width="250px">  <img src="https://user-images.githubusercontent.com/65600700/148194478-d1abb9dd-2cfc-4f4d-bec6-e3ed430e0b8c.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/148194598-f7c4c4e0-7acf-4b77-93b3-6f5c6d6750ee.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/148193691-1ca244ab-99a7-4d25-b40a-ce4010599187.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/148193801-f91470bb-2a49-4f3c-9675-8bde78ef0043.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/148193891-f1aa8ee6-9171-4a3e-b0d7-2adf57942fdd.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/148193988-e2a3341f-4c7a-4ecb-9b39-a3a2f20c13ea.PNG" width="250px">　<img src="https://user-images.githubusercontent.com/65600700/148356028-b716538b-e1d0-4c5d-a0f6-7ef4a8a28c2f.jpg" width="250px" height="530px">  
