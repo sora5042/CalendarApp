@@ -34,6 +34,8 @@
 		D6738F892786BA2F0000EAC6 /* SimpleWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6738F882786BA2F0000EAC6 /* SimpleWidgetEntryView.swift */; };
 		D6738F8A2786BA2F0000EAC6 /* SimpleWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6738F882786BA2F0000EAC6 /* SimpleWidgetEntryView.swift */; };
 		D6839D1427858E7000805816 /* Extension-DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6839D1327858E7000805816 /* Extension-DrawView.swift */; };
+		D6AB7ABF2787F1E10072B6B6 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D6AB7ABE2787F1E10072B6B6 /* .swiftlint.yml */; };
+		D6AB7AC02787F22C0072B6B6 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D6AB7ABE2787F1E10072B6B6 /* .swiftlint.yml */; };
 		D6BA3E152711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
 		D6BA3E162711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
 		D6BA3E172711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
@@ -120,6 +122,7 @@
 		D6738F842786B5710000EAC6 /* SimpleWidgetTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWidgetTimeline.swift; sourceTree = "<group>"; };
 		D6738F882786BA2F0000EAC6 /* SimpleWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWidgetEntryView.swift; sourceTree = "<group>"; };
 		D6839D1327858E7000805816 /* Extension-DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-DrawView.swift"; sourceTree = "<group>"; };
+		D6AB7ABE2787F1E10072B6B6 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		D6BA3E142711655300B48C05 /* AddSchedule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddSchedule.storyboard; sourceTree = "<group>"; };
 		D6BA3E182711657000B48C05 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		D6BA3E26271BF97B00B48C05 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -193,6 +196,7 @@
 				D64B0AAD2702DD5400845946 /* CalendarApp */,
 				D64B0AC42702DD5500845946 /* CalendarAppTests */,
 				D64B0ACE2702DD5500845946 /* CalendarAppUITests */,
+				D6AB7ABE2787F1E10072B6B6 /* .swiftlint.yml */,
 				D6738F6E2786995E0000EAC6 /* Widget */,
 				D64B0AAC2702DD5400845946 /* Products */,
 				E9062CBD5C77F25D674BC4AC /* Pods */,
@@ -389,6 +393,7 @@
 				D6738F652786995E0000EAC6 /* Sources */,
 				D6738F662786995E0000EAC6 /* Frameworks */,
 				D6738F672786995E0000EAC6 /* Resources */,
+				D6AB7ABD2787F0D80072B6B6 /* SwiftLint Run Script */,
 			);
 			buildRules = (
 			);
@@ -455,6 +460,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6AB7ABF2787F1E10072B6B6 /* .swiftlint.yml in Resources */,
 				D6442EFF272662E600F774A6 /* EventTableViewCell.xib in Resources */,
 				D64B0ABB2702DD5500845946 /* LaunchScreen.storyboard in Resources */,
 				D64B0AB82702DD5500845946 /* Assets.xcassets in Resources */,
@@ -483,6 +489,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6AB7AC02787F22C0072B6B6 /* .swiftlint.yml in Resources */,
 				D6738F732786995F0000EAC6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,6 +574,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D6AB7ABD2787F0D80072B6B6 /* SwiftLint Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if type \"/opt/homebrew/bin/swiftlint\"  > /dev/null 2>&1; then\n## format autocorrect\n/opt/homebrew/bin/swiftlint --fix --format\n## format check\n/opt/homebrew/bin/swiftlint\nelif type \"/usr/local/bin/swiftlint\" > /dev/null 2>&1; then\n## format autocorrect\n/usr/local/bin/swiftlint --fix --format\n## format check\n/usr/local/bin/swiftlint\nelse\n  echo \"swiftlint is not installed.\"\nfi\n";
 		};
 		E756871DEF2E48E892059624 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

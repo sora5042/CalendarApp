@@ -1,0 +1,80 @@
+# 無効にするルール。
+disabled_rules:
+- attributes
+- conditional_returns_on_newline
+- empty_enum_arguments
+- explicit_type_interface
+- explicit_acl
+- explicit_top_level_acl
+- identifier_name
+- file_header
+- file_name
+- file_types_order
+# force_cast は場合によっては使用するため
+- force_cast
+- force_try
+- function_parameter_count
+- nesting
+- no_grouping_extension
+- prohibited_interface_builder
+- redundant_string_enum_value
+- strong_iboutlet
+- sorted_imports
+# コードの記載のない改行を許可したい
+- trailing_whitespace
+- type_contents_order
+- unused_optional_binding
+
+
+# デフォルト無効のルールのうち、有効にするもの。
+opt_in_rules:
+- attributes
+- closure_body_length
+- closure_end_indentation
+- closure_spacing
+- conditional_returns_on_newline
+- empty_count
+- empty_string
+- empty_xctest_method
+- expiring_todo
+- explicit_init
+- explicit_self
+- extension_access_modifier
+- fatal_error_message
+- first_where
+# 場合によっては特に問題ないので
+- force_unwrapping
+- implicitly_unwrapped_optional # new
+- missing_docs
+- nimble_operator
+- number_separator
+- object_literal
+- operator_usage_whitespace
+- overridden_super_call
+- override_in_extension
+- prohibited_super_call
+- raw_value_for_camel_cased_codable_enum
+- redundant_nil_coalescing
+- switch_case_on_newline
+- type_name
+- unowned_variable_capture
+- untyped_error_in_catch
+- unused_declaration
+- unused_import
+- valid_docs
+
+# Lint対象のパス
+included:
+- CalendarApp
+
+# 追加したOSSライブラリは対象に含めたくない
+excluded:
+- Pods
+- 
+# 1行あたりの文字数制限を300に変更
+# プロジェクト作成時にデフォルトで追加されるコメントをひっかけないため
+line_length: 300
+
+# 変数名が１文字以上なら許可に変更
+identifier_name:
+  min_length: 1

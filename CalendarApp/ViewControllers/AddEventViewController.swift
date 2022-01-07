@@ -14,14 +14,14 @@ protocol AddEventViewControllerDelegate: AnyObject {
 }
 
 class AddEventViewController: UIViewController {
-    
+
     weak var delegate: AddEventViewControllerDelegate?
     var eventModel: EventModel?
     var eventModels = EventModel()
     private let dateFormat = DateFormatter()
     private let dateFormatter = DateFormatter()
     var date = String()
-    
+
     @IBOutlet private weak var titleTextField: HoshiTextField!
     @IBOutlet private weak var placeTextField: HoshiTextField!
     @IBOutlet private weak var commentTextField: HoshiTextField!
@@ -35,34 +35,34 @@ class AddEventViewController: UIViewController {
     @IBOutlet private weak var placeView: UIView!
     @IBOutlet private weak var commentView: UIView!
     @IBOutlet private weak var datePickerView: UIView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupView()
         setupTextField()
         newEventOrEditEvent()
     }
-    
+
     private func setupView() {
         let drawView = DrawView(frame: self.datePickerView.bounds)
         self.datePickerView.addSubview(drawView)
         self.datePickerView.sendSubviewToBack(drawView)
-        
+
         dateFormat.dateFormat = "yyyy/MM/dd"
         let datePicker = dateFormat.date(from: date)
         startDatePicker.date = datePicker ?? Date()
         endDatePicker.date = datePicker ?? Date()
-        
+
         cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
         saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
     }
-    
+
     private func setupTextField() {
         placeTextField.delegate = self
         commentTextField.delegate = self
         titleTextField.delegate = self
-        
+
         titleTextField.text = eventModel?.title
         titleTextField.placeholderColor = .darkGray
         titleTextField.borderInactiveColor = .darkGray
@@ -70,7 +70,7 @@ class AddEventViewController: UIViewController {
         titleTextField.placeholderFontScale = 1
         titleView.layer.borderWidth = 1.2
         titleView.layer.borderColor = UIColor.lightGray.cgColor
-        
+
         placeTextField.text = eventModel?.place
         placeTextField.placeholderColor = .darkGray
         placeTextField.borderActiveColor = .systemGreen
@@ -78,7 +78,7 @@ class AddEventViewController: UIViewController {
         placeTextField.placeholderFontScale = 1
         placeView.layer.borderWidth = 1.2
         placeView.layer.borderColor = UIColor.lightGray.cgColor
-        
+
         commentTextField.text = eventModel?.comment
         commentTextField.placeholderColor = .darkGray
         commentTextField.borderActiveColor = .systemGreen
@@ -86,11 +86,11 @@ class AddEventViewController: UIViewController {
         commentTextField.placeholderFontScale = 1
         commentView.layer.borderWidth = 1.2
         commentView.layer.borderColor = UIColor.lightGray.cgColor
-        
+
         dateView.layer.borderWidth = 1.2
         dateView.layer.borderColor = UIColor.lightGray.cgColor
     }
-    
+
     private func newEventOrEditEvent() {
         if eventModel == nil {
             navigationBarLabel.text = "新規イベント"
@@ -100,31 +100,31 @@ class AddEventViewController: UIViewController {
             endDatePicker.date = eventModel?.editEndTime ?? Date()
         }
     }
-    
+
     @objc private func tappedSaveButton() {
         if eventModel == nil {
             localNotification()
         } else {
             updateLocalNotification()
         }
-        
+
         delegate?.event(addEvent: eventModels)
         dismiss(animated: true, completion: nil)
     }
-    
+
     private func createEvent(notificationId: String) {
         dateFormat.dateFormat = "yyyy/MM/dd"
         let timeFormat = DateFormatter()
         timeFormat.dateFormat = "HH:mm"
-        
+
         let eventId = UUID().uuidString
         guard let title = titleTextField.text else { return }
         guard let comment = commentTextField.text else { return }
         guard let place = placeTextField.text else { return }
-        
+
         do {
             let realm = try Realm()
-            
+
             eventModels.eventId = eventId
             eventModels.notificationId = notificationId
             eventModels.title = title
@@ -135,7 +135,7 @@ class AddEventViewController: UIViewController {
             eventModels.date = dateFormat.string(from: startDatePicker.date)
             eventModels.startTime = timeFormat.string(from: startDatePicker.date)
             eventModels.endTime = timeFormat.string(from: endDatePicker.date)
-            
+
             try realm.write {
                 realm.add(eventModels)
             }
@@ -143,20 +143,20 @@ class AddEventViewController: UIViewController {
             print("create todo error.")
         }
     }
-    
+
     private func updateEvent(notificationId: String) {
         dateFormat.dateFormat = "yyyy/MM/dd"
         let timeFormat = DateFormatter()
         timeFormat.dateFormat = "HH:mm"
-        
+
         guard let eventId = eventModel?.eventId else { return }
         guard let title = titleTextField.text else { return }
         guard let comment = commentTextField.text else { return }
         guard let place = placeTextField.text else { return }
-        
+
         do {
             let realm = try Realm()
-            
+
             eventModels.eventId = eventId
             eventModels.notificationId = notificationId
             eventModels.title = title
@@ -167,7 +167,7 @@ class AddEventViewController: UIViewController {
             eventModels.date = dateFormat.string(from: startDatePicker.date)
             eventModels.startTime = timeFormat.string(from: startDatePicker.date)
             eventModels.endTime = timeFormat.string(from: endDatePicker.date)
-            
+
             try realm.write {
                 realm.add(eventModels, update: .modified)
             }
@@ -175,31 +175,31 @@ class AddEventViewController: UIViewController {
             print("create todo error.")
         }
     }
-    
+
     private func localNotification() {
-        
+
         guard let titleText = titleTextField.text else { return }
         guard let commentText = commentTextField.text else { return }
-        
+
         // 通知の中身を設定
         let content: UNMutableNotificationContent = UNMutableNotificationContent()
         content.title = "\(titleText)の時間です！"
         content.subtitle = commentText
         content.sound = UNNotificationSound.default
         content.badge = 1
-        
+
         // 通知をいつ発動するかを設定
         // カレンダークラスを作成
         let calendar = Calendar.current
         let calendarComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: startDatePicker.date)
-        
+
         let trigger = UNCalendarNotificationTrigger(dateMatching: calendarComponents, repeats: true)
-        
+
         // 通知のリクエストを作成
         let id = UUID().uuidString
         let request: UNNotificationRequest = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
         createEvent(notificationId: id)
-        
+
         // MARK: 通知のリクエストを実際に登録する
         UNUserNotificationCenter.current().add(request) { (error: Error?) in
             if let error = error {
@@ -209,16 +209,16 @@ class AddEventViewController: UIViewController {
             }
         }
     }
-    
+
     private func updateLocalNotification() {
         guard let notificationid = eventModel?.notificationId else { return }
         guard let titleText = titleTextField.text else { return }
         guard let commentText = commentTextField.text else { return }
-        
-        //更新前の通知リクエストを削除
+
+        // 更新前の通知リクエストを削除
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationid])
-        
+
         // 通知の中身を設定
         let content: UNMutableNotificationContent = UNMutableNotificationContent()
         content.title = "\(titleText)の時間です！"
@@ -229,7 +229,7 @@ class AddEventViewController: UIViewController {
         // カレンダークラスを作成
         let calendar: Calendar = Calendar.current
         let trigger: UNCalendarNotificationTrigger = UNCalendarNotificationTrigger(dateMatching: calendar.dateComponents([.year, .month, .day, .hour, .minute], from: startDatePicker.date), repeats: true)
-        
+
         // 通知のリクエストを作成
         let newId = UUID().uuidString
         let request: UNNotificationRequest = UNNotificationRequest(identifier: newId, content: content, trigger: trigger)
@@ -242,16 +242,16 @@ class AddEventViewController: UIViewController {
             }
         }
     }
-    
+
     @objc private func tappedCancelButton() {
         dismiss(animated: true, completion: nil)
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         self.view.endEditing(true)
     }
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .darkContent
     }
@@ -266,4 +266,3 @@ extension AddEventViewController: UITextFieldDelegate {
         return true
     }
 }
-

@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class EventModel: Object {
-    
+
     @objc dynamic var eventId = ""
     @objc dynamic var notificationId = ""
     @objc dynamic var title = ""
@@ -18,9 +18,9 @@ class EventModel: Object {
     @objc dynamic var place = ""
     @objc dynamic var editStartTime = Date()
     @objc dynamic var editEndTime = Date()
-    @objc dynamic var startTime = "" //00:00
-    @objc dynamic var endTime = "" //00:00
-    
+    @objc dynamic var startTime = "" // 00:00
+    @objc dynamic var endTime = "" // 00:00
+
     override static func primaryKey() -> String? {
         return "eventId"
     }
