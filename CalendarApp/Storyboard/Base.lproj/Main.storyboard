@@ -26,18 +26,18 @@
                                         <state key="normal" title="スクロール"/>
                                     </button>
                                     <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sW-az-yYM">
-                                        <rect key="frame" x="297.66666666666669" y="48" width="72.333333333333314" height="30"/>
+                                        <rect key="frame" x="295" y="48" width="75" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="月表示"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh8-0Z-GWZ">
-                                        <rect key="frame" x="132.66666666666666" y="48" width="110" height="31"/>
-                                        <color key="backgroundColor" red="0.66652668635581958" green="1" blue="0.76148527079999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh8-0Z-GWZ">
+                                        <rect key="frame" x="160" y="48" width="55" height="31"/>
+                                        <color key="backgroundColor" red="0.66652668640000001" green="1" blue="0.76148527079999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="110" id="ixh-uM-Ztq"/>
+                                            <constraint firstAttribute="width" constant="55" id="zda-4y-nXu"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="19"/>
+                                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="19"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -51,7 +51,7 @@
                                     <constraint firstAttribute="bottom" secondItem="7sW-az-yYM" secondAttribute="bottom" constant="12" id="f5O-hk-h3l"/>
                                     <constraint firstItem="dPm-pT-dpe" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="top" constant="48" id="iwP-Ls-eUJ"/>
                                     <constraint firstAttribute="bottom" secondItem="mh8-0Z-GWZ" secondAttribute="bottom" constant="11" id="jBe-kG-36i"/>
-                                    <constraint firstItem="7sW-az-yYM" firstAttribute="leading" secondItem="mh8-0Z-GWZ" secondAttribute="trailing" constant="55" id="raB-Ci-rGm"/>
+                                    <constraint firstItem="7sW-az-yYM" firstAttribute="leading" secondItem="mh8-0Z-GWZ" secondAttribute="trailing" constant="80" id="raB-Ci-rGm"/>
                                     <constraint firstItem="mh8-0Z-GWZ" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="top" constant="48" id="rsi-SV-eTO"/>
                                     <constraint firstItem="dPm-pT-dpe" firstAttribute="leading" secondItem="cBT-Jv-dNi" secondAttribute="leading" constant="20" id="xiM-uM-Vpq"/>
                                 </constraints>
@@ -181,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="333.60000000000002" y="106.40394088669952"/>
+            <point key="canvasLocation" x="513" y="78"/>
         </scene>
     </scenes>
     <resources>

@@ -24,7 +24,7 @@ struct SimpleWidgetEntryView: View {
                     .font(.largeTitle)
             }
             .background(Rectangle().fill(Color.init(red: 200, green: 200, blue: 200)))
-            .padding(25)
+            .padding(20)
             .clipShape(Circle())
             .shadow(color: .gray, radius: 5, x: 5, y: 5)
         }.edgesIgnoringSafeArea(.all)
