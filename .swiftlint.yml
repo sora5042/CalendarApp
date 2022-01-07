@@ -7,7 +7,9 @@ disabled_rules:
 - explicit_acl
 - explicit_top_level_acl
 - identifier_name
+- implicitly_unwrapped_optional
 - file_header
+- file_length
 - file_name
 - file_types_order
 # force_cast は場合によっては使用するため
@@ -16,10 +18,12 @@ disabled_rules:
 - function_parameter_count
 - nesting
 - no_grouping_extension
+- object_literal
 - prohibited_interface_builder
 - redundant_string_enum_value
 - strong_iboutlet
 - sorted_imports
+- switch_case_on_newline
 # コードの記載のない改行を許可したい
 - trailing_whitespace
 - type_contents_order

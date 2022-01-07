@@ -59,7 +59,7 @@ class CalendarViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if date == "" {
+        if date.isEmpty {
             print("date", date)
             return
         } else {
@@ -184,7 +184,7 @@ class CalendarViewController: UIViewController {
         var eventModel = [EventModel]()
         let event = realm.objects(EventModel.self).filter("date == '\(date)'")
 
-        if date == "" {
+        if date.isEmpty {
             result = realm.objects(EventModel.self).filter("date == '\(todayString)'")
         } else {
             result = realm.objects(EventModel.self).filter("date == '\(date)'")
@@ -350,10 +350,8 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
 
         let date = dateFormat.string(from: date)
         var hasEvent: Bool = false
-        for eventModel in eventCounts {
-            if eventModel["date"] as? String == date {
-                hasEvent = true
-            }
+        for eventModel in eventCounts where eventModel.date == date {
+            hasEvent = true
         }
         if hasEvent {
             return 1
@@ -382,6 +380,7 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
             case 2...6:
                 return UIColor.white
             default: break
+
             }
 
             // 平日のみの表示
