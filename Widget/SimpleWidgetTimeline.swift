@@ -25,7 +25,7 @@ struct SimpleWidgetTimeline: TimelineProvider {
         let currentDate = Date()
         
         for dayOffSet in 0..<7 {
-            let entryDate = Calendar.current.date(byAdding: .day, value: dayOffSet, to: currentDate)!
+            let entryDate = Calendar.current.date(byAdding: .minute, value: dayOffSet, to: currentDate)!
             let entry = SimpleWidgetEntry(date: entryDate)
             entries.append(entry)
         }

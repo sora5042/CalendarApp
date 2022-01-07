@@ -20,8 +20,10 @@ struct SimpleWidgetEntryView: View {
                     .background(Rectangle().fill(Color.green))
                 Text(getDay())
                     .bold()
+                    .foregroundColor(Color.black)
                 Text(getDate())
                     .font(.largeTitle)
+                    .foregroundColor(Color.black)
             }
             .background(Rectangle().fill(Color.init(red: 200, green: 200, blue: 200)))
             .padding(20)
