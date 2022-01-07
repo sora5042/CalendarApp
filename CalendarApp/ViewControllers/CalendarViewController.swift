@@ -48,7 +48,6 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //        print(Realm.Configuration.defaultConfiguration.fileURL)
         dateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "ja_JP"))
         todayString = dateFormat.string(from: todayDate)
         setupView()
@@ -219,7 +218,6 @@ class CalendarViewController: UIViewController {
 
     private func filterEvent(date: String) {
         eventResults = realm.objects(EventModel.self).filter("date == '\(date)'").sorted(byKeyPath: "editStartTime", ascending: true)
-        print("filter", eventResults)
         taskTableView.reloadData()
     }
 
@@ -331,13 +329,11 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         dateFormat.dateFormat = "yyyy/MM/dd"
-
         let tmpDate = Calendar(identifier: .gregorian)
         let year = tmpDate.component(.year, from: date)
         let month = tmpDate.component(.month, from: date)
         let day = tmpDate.component(.day, from: date)
         dateLabel.text = "\(year)年\(month)月\(day)日"
-
         rokuyouLabel.text = calculateRokuyo(date: date)
 
         self.date = date.toStringWithCurrentLocale()
@@ -363,7 +359,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         // 土日祝のカレンダー表示
         if selectedMenuType == .holiday {
-
             if judgeHoliday(date) {
                 return UIColor.red
             }
@@ -385,7 +380,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
 
             // 平日のみの表示
         } else if selectedMenuType == .weekday {
-
             if judgeHoliday(date) {
                 return UIColor.white
             }
@@ -396,7 +390,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
                 return UIColor.white
             }
         } else {
-
             // 祝日判定をする（祝日は赤色で表示する）
             if judgeHoliday(date) {
                 return UIColor.red

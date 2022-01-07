@@ -19,7 +19,6 @@ class AddEventViewController: UIViewController {
     var eventModel: EventModel?
     var eventModels = EventModel()
     private let dateFormat = DateFormatter()
-    private let dateFormatter = DateFormatter()
     var date = String()
 
     @IBOutlet private weak var titleTextField: HoshiTextField!
@@ -107,7 +106,6 @@ class AddEventViewController: UIViewController {
         } else {
             updateLocalNotification()
         }
-
         delegate?.event(addEvent: eventModels)
         dismiss(animated: true, completion: nil)
     }
