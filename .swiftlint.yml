@@ -2,6 +2,7 @@
 disabled_rules:
 - attributes
 - conditional_returns_on_newline
+- cyclomatic_complexity
 - empty_enum_arguments
 - explicit_type_interface
 - explicit_acl
@@ -15,7 +16,9 @@ disabled_rules:
 # force_cast は場合によっては使用するため
 - force_cast
 - force_try
+- force_unwrapping
 - function_parameter_count
+- large_tuple
 - nesting
 - no_grouping_extension
 - object_literal
@@ -28,7 +31,7 @@ disabled_rules:
 - trailing_whitespace
 - type_contents_order
 - unused_optional_binding
-
+- valid_docs
 
 # デフォルト無効のルールのうち、有効にするもの。
 opt_in_rules:
@@ -46,9 +49,6 @@ opt_in_rules:
 - extension_access_modifier
 - fatal_error_message
 - first_where
-# 場合によっては特に問題ないので
-- force_unwrapping
-- implicitly_unwrapped_optional # new
 - missing_docs
 - nimble_operator
 - number_separator
@@ -74,7 +74,6 @@ included:
 # 追加したOSSライブラリは対象に含めたくない
 excluded:
 - Pods
-- 
 # 1行あたりの文字数制限を300に変更
 # プロジェクト作成時にデフォルトで追加されるコメントをひっかけないため
 line_length: 300
