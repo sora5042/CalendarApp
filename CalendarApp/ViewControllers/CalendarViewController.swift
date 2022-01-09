@@ -131,7 +131,7 @@ class CalendarViewController: UIViewController {
 
         }))
 
-        actions.append( UIAction(title: MenuType.weekday.rawValue, image: UIImage(named: "calendar3"), state: self.selectedMenuType == MenuType.weekday ? .on : .off, handler: { [weak self] _ in
+        actions.append( UIAction(title: MenuType.weekday.rawValue, image: UIImage(named: "calendar4"), state: self.selectedMenuType == MenuType.weekday ? .on : .off, handler: { [weak self] _ in
 
             self?.selectedMenuType = .weekday
             self?.calendar.reloadData()
