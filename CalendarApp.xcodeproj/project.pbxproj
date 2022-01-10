@@ -14,7 +14,7 @@
 		D64B0AAF2702DD5400845946 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0AAE2702DD5400845946 /* AppDelegate.swift */; };
 		D64B0AB12702DD5400845946 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0AB02702DD5400845946 /* SceneDelegate.swift */; };
 		D64B0AB32702DD5400845946 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0AB22702DD5400845946 /* CalendarViewController.swift */; };
-		D64B0AB62702DD5400845946 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D64B0AB42702DD5400845946 /* Main.storyboard */; };
+		D64B0AB62702DD5400845946 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D64B0AB42702DD5400845946 /* Calendar.storyboard */; };
 		D64B0AB82702DD5500845946 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D64B0AB72702DD5500845946 /* Assets.xcassets */; };
 		D64B0ABB2702DD5500845946 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D64B0AB92702DD5500845946 /* LaunchScreen.storyboard */; };
 		D64B0AC62702DD5500845946 /* CalendarAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0AC52702DD5500845946 /* CalendarAppTests.swift */; };
@@ -102,7 +102,7 @@
 		D64B0AAE2702DD5400845946 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D64B0AB02702DD5400845946 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D64B0AB22702DD5400845946 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		D64B0AB52702DD5400845946 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D64B0AB52702DD5400845946 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Calendar.storyboard; sourceTree = "<group>"; };
 		D64B0AB72702DD5500845946 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D64B0ABA2702DD5500845946 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D64B0ABC2702DD5500845946 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -291,7 +291,7 @@
 		D6BA3E13271164F600B48C05 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				D64B0AB42702DD5400845946 /* Main.storyboard */,
+				D64B0AB42702DD5400845946 /* Calendar.storyboard */,
 				D6BA3E142711655300B48C05 /* AddSchedule.storyboard */,
 			);
 			path = Storyboard;
@@ -464,7 +464,7 @@
 				D6442EFF272662E600F774A6 /* EventTableViewCell.xib in Resources */,
 				D64B0ABB2702DD5500845946 /* LaunchScreen.storyboard in Resources */,
 				D64B0AB82702DD5500845946 /* Assets.xcassets in Resources */,
-				D64B0AB62702DD5400845946 /* Main.storyboard in Resources */,
+				D64B0AB62702DD5400845946 /* Calendar.storyboard in Resources */,
 				D6BA3E152711655300B48C05 /* AddSchedule.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -707,12 +707,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D64B0AB42702DD5400845946 /* Main.storyboard */ = {
+		D64B0AB42702DD5400845946 /* Calendar.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D64B0AB52702DD5400845946 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Calendar.storyboard;
 			sourceTree = "<group>";
 		};
 		D64B0AB92702DD5500845946 /* LaunchScreen.storyboard */ = {
@@ -856,7 +856,7 @@
 				INFOPLIST_FILE = CalendarApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Calendar;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -887,7 +887,7 @@
 				INFOPLIST_FILE = CalendarApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Calendar;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
