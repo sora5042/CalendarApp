@@ -80,7 +80,7 @@
                                         <state key="normal" title="保存"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.80480665959999997" green="1" blue="0.76148527079999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.82629580940000003" green="0.96738791950000003" blue="0.81615785350000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="iVv-3v-6ba" secondAttribute="bottom" constant="27" id="DVE-7U-ELN"/>
                                     <constraint firstItem="iVv-3v-6ba" firstAttribute="leading" secondItem="uvl-2X-AqJ" secondAttribute="trailing" constant="39" id="K1U-bC-prw"/>
@@ -227,7 +227,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" red="0.80480665959999997" green="1" blue="0.76148527079999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.82629580940000003" green="0.96738791950000003" blue="0.81615785350000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="DNU-Ih-daX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="144-tu-7gt"/>
                             <constraint firstItem="Q6O-XJ-22k" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="1Qk-Lv-R0R"/>
