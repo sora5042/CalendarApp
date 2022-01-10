@@ -48,8 +48,7 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        dateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "ja_JP"))
-        todayString = dateFormat.string(from: todayDate)
+        setupTodayDate()
         setupView()
         setupCalendar()
         filterEvent(date: todayString)
@@ -58,8 +57,9 @@ class CalendarViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        setupTodayDate()
         if date.isEmpty {
-            print("date", date)
+            filterEvent(date: todayString)
             return
         } else {
             filterEvent(date: date)
@@ -78,8 +78,6 @@ class CalendarViewController: UIViewController {
         scrollButton.addTarget(self, action: #selector(tappedScrollButton), for: .touchUpInside)
         bulkDeleteButton.addTarget(self, action: #selector(tappedBulkDeleteButton), for: .touchUpInside)
         rokuyouLabel.text = calculateRokuyo(date: todayDate)
-        calendarLabel.layer.borderWidth = 2
-        calendarLabel.layer.borderColor = UIColor.systemGreen.cgColor
     }
 
     private func setupCalendar() {
@@ -96,6 +94,11 @@ class CalendarViewController: UIViewController {
         calendar.calendarWeekdayView.weekdayLabels[4].text = "木"
         calendar.calendarWeekdayView.weekdayLabels[5].text = "金"
         calendar.calendarWeekdayView.weekdayLabels[6].text = "土"
+    }
+
+    private func setupTodayDate() {
+        dateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "ja_JP"))
+        todayString = dateFormat.string(from: todayDate)
     }
 
     @objc private func tappedElementDropDownButton() {
