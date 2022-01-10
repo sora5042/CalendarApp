@@ -85,8 +85,7 @@ class CalendarViewController: UIViewController {
         calendar.delegate = self
         calendar.scrollDirection = .horizontal
         calendar.layer.borderWidth = 2.5
-        calendar.layer.borderColor = UIColor.gray.cgColor
-
+        calendar.layer.borderColor = UIColor.rgb(red: 235, green: 235, blue: 235).cgColor
         calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
         calendar.calendarWeekdayView.weekdayLabels[1].text = "月"
         calendar.calendarWeekdayView.weekdayLabels[2].text = "火"
