@@ -55,6 +55,9 @@ class AddEventViewController: UIViewController {
 
         cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
         saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
+        
+        dateView.layer.borderWidth = 1.2
+        dateView.layer.borderColor = UIColor.lightGray.cgColor
     }
 
     private func setupTextField() {
@@ -85,9 +88,6 @@ class AddEventViewController: UIViewController {
         commentTextField.placeholderFontScale = 1
         commentView.layer.borderWidth = 1.2
         commentView.layer.borderColor = UIColor.lightGray.cgColor
-
-        dateView.layer.borderWidth = 1.2
-        dateView.layer.borderColor = UIColor.lightGray.cgColor
     }
 
     private func newEventOrEditEvent() {
@@ -175,7 +175,6 @@ class AddEventViewController: UIViewController {
     }
 
     private func localNotification() {
-
         guard let titleText = titleTextField.text else { return }
         guard let commentText = commentTextField.text else { return }
 
