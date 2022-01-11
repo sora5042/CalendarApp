@@ -10,6 +10,8 @@ pod 'CalculateCalendarLogic'
 pod 'FSCalendar'
 pod 'RealmSwift'
 pod 'GTMAppAuth'
+pod 'AppAuth'
+pod 'GoogleAPIClientForREST/Calendar'
 
   target 'CalendarAppTests' do
     inherit! :search_paths
@@ -18,6 +20,8 @@ pod 'CalculateCalendarLogic'
 pod 'FSCalendar'
 pod 'RealmSwift'
 pod 'GTMAppAuth'
+pod 'AppAuth'
+pod 'GoogleAPIClientForREST/Calendar'
 
   end
 
@@ -27,6 +31,8 @@ pod 'CalculateCalendarLogic'
 pod 'FSCalendar'
 pod 'RealmSwift'
 pod 'GTMAppAuth'
+pod 'AppAuth'
+pod 'GoogleAPIClientForREST/Calendar'
 
   end
 

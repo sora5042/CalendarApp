@@ -1,11 +1,24 @@
 PODS:
+  - AppAuth (1.4.0):
+    - AppAuth/Core (= 1.4.0)
+    - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
+  - AppAuth/ExternalUserAgent (1.4.0)
   - CalculateCalendarLogic (0.5.0)
   - FSCalendar (2.8.2)
+  - GoogleAPIClientForREST/Calendar (1.6.0):
+    - GoogleAPIClientForREST/Core
+    - GTMSessionFetcher (>= 1.6.1)
+  - GoogleAPIClientForREST/Core (1.6.0):
+    - GTMSessionFetcher (>= 1.6.1)
   - GTMAppAuth (1.2.2):
     - AppAuth/Core (~> 1.4)
     - GTMSessionFetcher/Core (~> 1.5)
+  - GTMSessionFetcher (1.7.0):
+    - GTMSessionFetcher/Full (= 1.7.0)
   - GTMSessionFetcher/Core (1.7.0)
+  - GTMSessionFetcher/Full (1.7.0):
+    - GTMSessionFetcher/Core (= 1.7.0)
   - Realm (10.20.1):
     - Realm/Headers (= 10.20.1)
   - Realm/Headers (10.20.1)
@@ -13,8 +26,10 @@ PODS:
     - Realm (= 10.20.1)
 
 DEPENDENCIES:
+  - AppAuth
   - CalculateCalendarLogic
   - FSCalendar
+  - GoogleAPIClientForREST/Calendar
   - GTMAppAuth
   - RealmSwift
 
@@ -23,6 +38,7 @@ SPEC REPOS:
     - AppAuth
     - CalculateCalendarLogic
     - FSCalendar
+    - GoogleAPIClientForREST
     - GTMAppAuth
     - GTMSessionFetcher
     - Realm
@@ -32,11 +48,12 @@ SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   CalculateCalendarLogic: d14189787cd47766e64281b2686608afea07ae4d
   FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
+  GoogleAPIClientForREST: 5183df28e7bcb7b7b41ebd558e16083cfed60d99
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   Realm: fac5ecd031fcb81171627b74944c885662d4b266
   RealmSwift: 9b02d25acb46a14756bde9893abb99e2e3675923
 
-PODFILE CHECKSUM: 85bfe0f7421119299ce9abc8cad09147950bf86e
+PODFILE CHECKSUM: 3946597c1b942aa1af1c419acbe7ef7c3b06d30a
 
 COCOAPODS: 1.11.2
