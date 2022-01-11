@@ -9,6 +9,7 @@ target 'CalendarApp' do
 pod 'CalculateCalendarLogic'
 pod 'FSCalendar'
 pod 'RealmSwift'
+pod 'GTMAppAuth'
 
   target 'CalendarAppTests' do
     inherit! :search_paths
@@ -16,6 +17,7 @@ pod 'RealmSwift'
 pod 'CalculateCalendarLogic'
 pod 'FSCalendar'
 pod 'RealmSwift'
+pod 'GTMAppAuth'
 
   end
 
@@ -24,6 +26,7 @@ pod 'RealmSwift'
 pod 'CalculateCalendarLogic'
 pod 'FSCalendar'
 pod 'RealmSwift'
+pod 'GTMAppAuth'
 
   end
 
