@@ -37,8 +37,6 @@
 		D6AB7ABF2787F1E10072B6B6 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D6AB7ABE2787F1E10072B6B6 /* .swiftlint.yml */; };
 		D6AB7AC02787F22C0072B6B6 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D6AB7ABE2787F1E10072B6B6 /* .swiftlint.yml */; };
 		D6B36629278C5BD400442E76 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B36628278C5BD400442E76 /* UIColor-Extension.swift */; };
-		D6B3662C278D5C6D00442E76 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D6B3662B278D5C6D00442E76 /* Alamofire */; };
-		D6B3662F278D602400442E76 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = D6B3662E278D602400442E76 /* SwiftyJSON */; };
 		D6B36634278D6DF400442E76 /* GoogleCalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B36633278D6DF400442E76 /* GoogleCalendarEvent.swift */; };
 		D6B36637278FC58300442E76 /* GoogleCalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B36633278D6DF400442E76 /* GoogleCalendarEvent.swift */; };
 		D6B36638278FC58300442E76 /* GoogleCalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B36633278D6DF400442E76 /* GoogleCalendarEvent.swift */; };
@@ -144,9 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				679CB76B19D8DFBC536B5350 /* Pods_CalendarApp.framework in Frameworks */,
-				D6B3662C278D5C6D00442E76 /* Alamofire in Frameworks */,
 				D6BA3E212714089800B48C05 /* TextFieldEffects in Frameworks */,
-				D6B3662F278D602400442E76 /* SwiftyJSON in Frameworks */,
 				D6BA3E242714116500B48C05 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,8 +349,6 @@
 			packageProductDependencies = (
 				D6BA3E202714089800B48C05 /* TextFieldEffects */,
 				D6BA3E232714116500B48C05 /* IQKeyboardManagerSwift */,
-				D6B3662B278D5C6D00442E76 /* Alamofire */,
-				D6B3662E278D602400442E76 /* SwiftyJSON */,
 			);
 			productName = CalendarApp;
 			productReference = D64B0AAB2702DD5400845946 /* CalendarApp.app */;
@@ -456,8 +450,6 @@
 			packageReferences = (
 				D6BA3E1F2714089800B48C05 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 				D6BA3E222714116500B48C05 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
-				D6B3662A278D5C6D00442E76 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				D6B3662D278D602400442E76 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = D64B0AAC2702DD5400845946 /* Products */;
 			projectDirPath = "";
@@ -1133,22 +1125,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D6B3662A278D5C6D00442E76 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		D6B3662D278D602400442E76 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		D6BA3E1F2714089800B48C05 /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/raulriera/TextFieldEffects";
@@ -1168,16 +1144,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D6B3662B278D5C6D00442E76 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D6B3662A278D5C6D00442E76 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		D6B3662E278D602400442E76 /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D6B3662D278D602400442E76 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
-			productName = SwiftyJSON;
-		};
 		D6BA3E202714089800B48C05 /* TextFieldEffects */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D6BA3E1F2714089800B48C05 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
