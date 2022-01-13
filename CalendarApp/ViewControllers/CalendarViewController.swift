@@ -12,6 +12,7 @@ import RealmSwift
 import AppAuth
 import GTMAppAuth
 import GoogleAPIClientForREST
+import PKHUD
 
 class CalendarViewController: UIViewController {
 
@@ -111,7 +112,6 @@ class CalendarViewController: UIViewController {
         googleCalendarEventList.removeAll()
         let startDateTime = Calendar(identifier: .gregorian).date(byAdding: .year, value: -1, to: todayDate)
         let endDateTime = Calendar(identifier: .gregorian).date(byAdding: .year, value: 1, to: todayDate)
-
         self.get(startDateTime: startDateTime!, endDateTime: endDateTime!)
     }
 
@@ -247,7 +247,9 @@ class CalendarViewController: UIViewController {
         }))
 
         displayCalendarMenu.append(UIAction(title: "Googleカレンダーと同期", handler: { [weak self] _ in
+            HUD.show(.progress)
             self?.getEvents()
+            HUD.flash(.success)
         }))
 
         elementDropDownButton.menu = UIMenu(title: "オプション", options: .displayInline, children: displayCalendarMenu)
