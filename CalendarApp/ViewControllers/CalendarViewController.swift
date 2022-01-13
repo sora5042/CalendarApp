@@ -157,7 +157,7 @@ class CalendarViewController: UIViewController {
                             let name: String = item.summary ?? ""
                             let startDate: Date? = item.start?.dateTime?.date
                             let endDate: Date? = item.end?.dateTime?.date
-                            
+
                             try realm.write {
                                 eventModels.eventId = id
                                 eventModels.title = name

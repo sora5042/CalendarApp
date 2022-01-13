@@ -55,7 +55,7 @@ class AddEventViewController: UIViewController {
 
         cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
         saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
-        
+
         dateView.layer.borderWidth = 1.2
         dateView.layer.borderColor = UIColor.lightGray.cgColor
     }
