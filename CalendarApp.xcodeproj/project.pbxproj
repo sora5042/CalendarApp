@@ -40,6 +40,7 @@
 		D6B36634278D6DF400442E76 /* GoogleCalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B36633278D6DF400442E76 /* GoogleCalendarEvent.swift */; };
 		D6B36637278FC58300442E76 /* GoogleCalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B36633278D6DF400442E76 /* GoogleCalendarEvent.swift */; };
 		D6B36638278FC58300442E76 /* GoogleCalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B36633278D6DF400442E76 /* GoogleCalendarEvent.swift */; };
+		D6B3663D278FE9CB00442E76 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = D6B3663C278FE9CB00442E76 /* PKHUD */; };
 		D6BA3E152711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
 		D6BA3E162711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
 		D6BA3E172711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
@@ -142,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				679CB76B19D8DFBC536B5350 /* Pods_CalendarApp.framework in Frameworks */,
+				D6B3663D278FE9CB00442E76 /* PKHUD in Frameworks */,
 				D6BA3E212714089800B48C05 /* TextFieldEffects in Frameworks */,
 				D6BA3E242714116500B48C05 /* IQKeyboardManagerSwift in Frameworks */,
 			);
@@ -349,6 +351,7 @@
 			packageProductDependencies = (
 				D6BA3E202714089800B48C05 /* TextFieldEffects */,
 				D6BA3E232714116500B48C05 /* IQKeyboardManagerSwift */,
+				D6B3663C278FE9CB00442E76 /* PKHUD */,
 			);
 			productName = CalendarApp;
 			productReference = D64B0AAB2702DD5400845946 /* CalendarApp.app */;
@@ -450,6 +453,7 @@
 			packageReferences = (
 				D6BA3E1F2714089800B48C05 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 				D6BA3E222714116500B48C05 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				D6B3663B278FE9CB00442E76 /* XCRemoteSwiftPackageReference "PKHUD" */,
 			);
 			productRefGroup = D64B0AAC2702DD5400845946 /* Products */;
 			projectDirPath = "";
@@ -1125,6 +1129,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D6B3663B278FE9CB00442E76 /* XCRemoteSwiftPackageReference "PKHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pkluz/PKHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		D6BA3E1F2714089800B48C05 /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/raulriera/TextFieldEffects";
@@ -1144,6 +1156,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D6B3663C278FE9CB00442E76 /* PKHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6B3663B278FE9CB00442E76 /* XCRemoteSwiftPackageReference "PKHUD" */;
+			productName = PKHUD;
+		};
 		D6BA3E202714089800B48C05 /* TextFieldEffects */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D6BA3E1F2714089800B48C05 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
