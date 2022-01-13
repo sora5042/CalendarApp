@@ -69,7 +69,6 @@ class CalendarViewController: UIViewController {
         setupTodayDate()
         if date.isEmpty {
             filterEvent(date: todayString)
-            getEvents()
             return
         } else {
             filterEvent(date: date)
@@ -117,8 +116,8 @@ class CalendarViewController: UIViewController {
     }
 
     private func get(startDateTime: Date, endDateTime: Date) {
-        if GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization") != nil {
-            self.authorization = GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization")!
+        if let gtmAppAuth = GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization") {
+            self.authorization = gtmAppAuth
         }
 
         if self.authorization == nil {
@@ -210,10 +209,10 @@ class CalendarViewController: UIViewController {
     }
 
     @objc private func tappedElementDropDownButton() {
-        var actions = [UIMenuElement]()
+        var googleCalendarMenu = [UIMenuElement]()
+        var displayCalendarMenu = [UIMenuElement]()
 
-        actions.append(UIAction(title: MenuType.month.rawValue, image: UIImage(named: "calendar1"), state: self.selectedMenuType == MenuType.month ? .on : .off, handler: { [weak self] _ in
-
+        displayCalendarMenu.append(UIAction(title: MenuType.month.rawValue, image: UIImage(named: "calendar1"), state: self.selectedMenuType == MenuType.month ? .on : .off, handler: { [weak self] _ in
             if self?.calendar.scope == .week {
                 self?.calendar.scope = .month
                 self?.calendar.setScope(.month, animated: true)
@@ -223,8 +222,7 @@ class CalendarViewController: UIViewController {
             self?.tappedElementDropDownButton()
         }))
 
-        actions.append(UIAction(title: MenuType.week.rawValue, image: UIImage(named: "calendar2"), state: self.selectedMenuType == MenuType.week ? .on : .off, handler: { [weak self] _ in
-
+        displayCalendarMenu.append(UIAction(title: MenuType.week.rawValue, image: UIImage(named: "calendar2"), state: self.selectedMenuType == MenuType.week ? .on : .off, handler: { [weak self] _ in
             if self?.calendar.scope == .month {
                 self?.calendar.scope = .week
                 self?.calendar.setScope(.week, animated: true)
@@ -234,23 +232,25 @@ class CalendarViewController: UIViewController {
             self?.tappedElementDropDownButton()
         }))
 
-        actions.append( UIAction(title: MenuType.holiday.rawValue, image: UIImage(named: "calendar3"), state: self.selectedMenuType == MenuType.holiday ? .on : .off, handler: { [weak self] _ in
-
+        displayCalendarMenu.append(UIAction(title: MenuType.holiday.rawValue, image: UIImage(named: "calendar3"), state: self.selectedMenuType == MenuType.holiday ? .on : .off, handler: { [weak self] _ in
             self?.calendar.reloadData()
             self?.selectedMenuType = .holiday
             self?.tappedElementDropDownButton()
 
         }))
 
-        actions.append( UIAction(title: MenuType.weekday.rawValue, image: UIImage(named: "calendar4"), state: self.selectedMenuType == MenuType.weekday ? .on : .off, handler: { [weak self] _ in
-
+        displayCalendarMenu.append(UIAction(title: MenuType.weekday.rawValue, image: UIImage(named: "calendar4"), state: self.selectedMenuType == MenuType.weekday ? .on : .off, handler: { [weak self] _ in
             self?.selectedMenuType = .weekday
             self?.calendar.reloadData()
             self?.tappedElementDropDownButton()
 
         }))
 
-        elementDropDownButton.menu = UIMenu(title: "", options: .displayInline, children: actions)
+        displayCalendarMenu.append(UIAction(title: "Googleカレンダーと同期", handler: { [weak self] _ in
+            self?.getEvents()
+        }))
+
+        elementDropDownButton.menu = UIMenu(title: "オプション", options: .displayInline, children: displayCalendarMenu)
         elementDropDownButton.showsMenuAsPrimaryAction = true
         elementDropDownButton.setTitle(self.selectedMenuType.rawValue, for: .normal)
     }
