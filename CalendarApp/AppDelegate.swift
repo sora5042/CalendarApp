@@ -7,11 +7,14 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import AppAuth
+import GTMAppAuth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
+    var currentAuthorizationFlow: OIDExternalUserAgentSession?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -28,9 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 // 「許可しない」が押された場合
             }
         }
-
         return true
-
     }
 
     //　通知をタップした時に呼ばれるメソッド
@@ -39,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         self.window = UIWindow(frame: UIScreen.main.bounds)
 
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
 
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "CalendarViewController")
 

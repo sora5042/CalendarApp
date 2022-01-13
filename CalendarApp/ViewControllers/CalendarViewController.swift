@@ -9,6 +9,9 @@ import UIKit
 import FSCalendar
 import CalculateCalendarLogic
 import RealmSwift
+import AppAuth
+import GTMAppAuth
+import GoogleAPIClientForREST
 
 class CalendarViewController: UIViewController {
 
@@ -31,6 +34,12 @@ class CalendarViewController: UIViewController {
     private let todayDate = Date()
     private var todayString = String()
     var selectedMenuType = MenuType.month
+
+    private var authorization: GTMAppAuthFetcherAuthorization?
+    private let configuration = GTMAppAuthFetcherAuthorization.configurationForGoogle()
+    private let clientID = "579964048764-q3nu1gpee4h5hjrqa4ubppvvg3g3jrnt.apps.googleusercontent.com"
+    private let redirectURL = "com.googleusercontent.apps.579964048764-q3nu1gpee4h5hjrqa4ubppvvg3g3jrnt:/oauthredirect"
+    private var googleCalendarEventList: [GoogleCalendarEvent] = []
 
     @IBOutlet private weak var calendar: FSCalendar!
     @IBOutlet private weak var calendarHeight: NSLayoutConstraint!
@@ -60,19 +69,119 @@ class CalendarViewController: UIViewController {
         setupTodayDate()
         if date.isEmpty {
             filterEvent(date: todayString)
+            getEvents()
             return
         } else {
             filterEvent(date: date)
         }
     }
 
+    typealias ShowAuthorizationDialogCallBack = ((Error?) -> Void)
+    private func showAuthorizationDialog(callBack: @escaping ShowAuthorizationDialogCallBack) {
+        let scopes = ["https://www.googleapis.com/auth/calendar", "https://www.googleapis.com/auth/calendar.readonly", "https://www.googleapis.com/auth/calendar.events", "https://www.googleapis.com/auth/calendar.events.readonly"]
+
+        let configuration = GTMAppAuthFetcherAuthorization.configurationForGoogle()
+        let redirectURL = URL(string: redirectURL + ":/oauthredirect")
+
+        let request = OIDAuthorizationRequest(configuration: configuration,
+                                              clientId: clientID,
+                                              scopes: scopes,
+                                              redirectURL: redirectURL!,
+                                              responseType: OIDResponseTypeCode,
+                                              additionalParameters: nil)
+
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.currentAuthorizationFlow = OIDAuthState.authState(
+            byPresenting: request,
+            presenting: self,
+            callback: { (authState, error) in
+                if let error = error {
+                    NSLog("\(error)")
+                } else {
+                    if let authState = authState {
+                        // 認証情報オブジェクトを生成
+                        self.authorization = GTMAppAuthFetcherAuthorization(authState: authState)
+                        GTMAppAuthFetcherAuthorization.save(self.authorization!, toKeychainForName: "authorization")
+                    }
+                }
+                callBack(error)
+            })
+    }
+
+    private func getEvents() {
+        googleCalendarEventList.removeAll()
+        let startDateTime = Calendar(identifier: .gregorian).date(byAdding: .year, value: -1, to: todayDate)
+        let endDateTime = Calendar(identifier: .gregorian).date(byAdding: .year, value: 1, to: todayDate)
+
+        self.get(startDateTime: startDateTime!, endDateTime: endDateTime!)
+    }
+
+    private func get(startDateTime: Date, endDateTime: Date) {
+        if GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization") != nil {
+            self.authorization = GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization")!
+        }
+
+        if self.authorization == nil {
+            showAuthorizationDialog(callBack: {(error) -> Void in
+                if error == nil {
+                    self.getCalendarEvents(startDateTime: startDateTime, endDateTime: endDateTime)
+                }
+            })
+        } else {
+            self.getCalendarEvents(startDateTime: startDateTime, endDateTime: endDateTime)
+        }
+    }
+
+    private func getCalendarEvents(startDateTime: Date, endDateTime: Date) {
+        let calendarService = GTLRCalendarService()
+        calendarService.authorizer = self.authorization
+        calendarService.shouldFetchNextPages = true
+
+        let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")
+        query.timeMin = GTLRDateTime(date: startDateTime)
+        query.timeMax = GTLRDateTime(date: endDateTime)
+
+        calendarService.executeQuery(query, completionHandler: { [weak self] (_, event, error) -> Void in
+            if let error = error {
+                NSLog("\(error)")
+            } else {
+                if let event = event as? GTLRCalendar_Events, let items = event.items {
+                    for item in items {
+                        do {
+                            let realm = try Realm()
+                            let eventModels = EventModel()
+                            let timeFormat = DateFormatter()
+                            self?.dateFormat.dateFormat = "yyyy/MM/dd"
+                            timeFormat.dateFormat = "HH:mm"
+                            let id: String = item.identifier ?? ""
+                            let name: String = item.summary ?? ""
+                            let startDate: Date? = item.start?.dateTime?.date
+                            let endDate: Date? = item.end?.dateTime?.date
+                            
+                            try realm.write {
+                                eventModels.eventId = id
+                                eventModels.title = name
+                                eventModels.editStartTime = startDate ?? Date()
+                                eventModels.editEndTime = endDate ?? Date()
+                                eventModels.date = self?.dateFormat.string(from: startDate ?? Date()) ?? ""
+                                eventModels.startTime = timeFormat.string(from: startDate ?? Date())
+                                eventModels.endTime = timeFormat.string(from: endDate ?? Date())
+                                realm.add(eventModels, update: .modified)
+                            }
+                        } catch {
+                            print("create todo error.")
+                        }
+                    }
+                }
+            }
+        })
+    }
+
     private func setupView() {
         taskTableView.dataSource = self
         taskTableView.delegate = self
         taskTableView.register(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
-
-        dateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMMMd", options: 0, locale: Locale(identifier: "ja_JP"))
-        dateLabel.text = dateFormat.string(from: todayDate)
+        dateLabel.text = todayString
         addButton.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
         elementDropDownButton.addTarget(self, action: #selector(tappedElementDropDownButton), for: .touchUpInside)
         scrollButton.addTarget(self, action: #selector(tappedScrollButton), for: .touchUpInside)
@@ -379,7 +488,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
             default: break
 
             }
-
             // 平日のみの表示
         } else if selectedMenuType == .weekday {
             if judgeHoliday(date) {
@@ -396,7 +504,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
             if judgeHoliday(date) {
                 return UIColor.red
             }
-
             // 土日の判定を行う（土曜日は青色、日曜日は赤色で表示する）
             let weekday = getWeekIdx(date)
             if weekday == 1 {   // 日曜日
@@ -411,17 +518,14 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
     private func judgeHoliday(_ date: Date) -> Bool {
         // 祝日判定用のカレンダークラスのインスタンス
         let tmpCalendar = Calendar(identifier: .gregorian)
-
         // 祝日判定を行う日にちの年、月、日を取得
         let year = tmpCalendar.component(.year, from: date)
         let month = tmpCalendar.component(.month, from: date)
         let day = tmpCalendar.component(.day, from: date)
-
         // CalculateCalendarLogic()：祝日判定のインスタンスの生成
         let holiday = CalculateCalendarLogic()
         return holiday.judgeJapaneseHoliday(year: year, month: month, day: day)
     }
-
     // date型 -> 年月日をIntで取得
     private func getDay(_ date: Date) -> (Int, Int, Int) {
         let tmpCalendar = Calendar(identifier: .gregorian)
@@ -430,7 +534,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         let day = tmpCalendar.component(.day, from: date)
         return (year, month, day)
     }
-
     // 曜日判定(日曜日:1 〜 土曜日:7)
     private func getWeekIdx(_ date: Date) -> Int {
         let tmpCalendar = Calendar(identifier: .gregorian)
