@@ -96,6 +96,7 @@ class CalendarViewController: UIViewController {
             presenting: self,
             callback: { (authState, error) in
                 if let error = error {
+                    HUD.flash(.labeledError(title: "エラー", subtitle: nil))
                     NSLog("\(error)")
                 } else {
                     if let authState = authState {
@@ -125,6 +126,7 @@ class CalendarViewController: UIViewController {
                 if error == nil {
                     self.getCalendarEvents(startDateTime: startDateTime, endDateTime: endDateTime)
                 }
+                HUD.flash(.labeledError(title: "エラー", subtitle: nil))
             })
         } else {
             self.getCalendarEvents(startDateTime: startDateTime, endDateTime: endDateTime)
@@ -142,6 +144,7 @@ class CalendarViewController: UIViewController {
 
         calendarService.executeQuery(query, completionHandler: { [weak self] (_, event, error) -> Void in
             if let error = error {
+                HUD.flash(.labeledError(title: "エラー", subtitle: nil))
                 NSLog("\(error)")
             } else {
                 if let event = event as? GTLRCalendar_Events, let items = event.items {
