@@ -19,11 +19,11 @@ PODS:
   - GTMSessionFetcher/Core (1.7.0)
   - GTMSessionFetcher/Full (1.7.0):
     - GTMSessionFetcher/Core (= 1.7.0)
-  - Realm (10.20.1):
-    - Realm/Headers (= 10.20.1)
-  - Realm/Headers (10.20.1)
-  - RealmSwift (10.20.1):
-    - Realm (= 10.20.1)
+  - Realm (10.21.0):
+    - Realm/Headers (= 10.21.0)
+  - Realm/Headers (10.21.0)
+  - RealmSwift (10.21.0):
+    - Realm (= 10.21.0)
 
 DEPENDENCIES:
   - AppAuth
@@ -51,8 +51,8 @@ SPEC CHECKSUMS:
   GoogleAPIClientForREST: 5183df28e7bcb7b7b41ebd558e16083cfed60d99
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
-  Realm: fac5ecd031fcb81171627b74944c885662d4b266
-  RealmSwift: 9b02d25acb46a14756bde9893abb99e2e3675923
+  Realm: 55220cda83aabd773740d18518e05fdbe00b87cc
+  RealmSwift: 129dce1dd6b5d9194a37f568aaf32a6c10d1a803
 
 PODFILE CHECKSUM: 3946597c1b942aa1af1c419acbe7ef7c3b06d30a
 
