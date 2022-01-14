@@ -33,7 +33,7 @@
 		D6738F862786B5710000EAC6 /* SimpleWidgetTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6738F842786B5710000EAC6 /* SimpleWidgetTimeline.swift */; };
 		D6738F892786BA2F0000EAC6 /* SimpleWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6738F882786BA2F0000EAC6 /* SimpleWidgetEntryView.swift */; };
 		D6738F8A2786BA2F0000EAC6 /* SimpleWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6738F882786BA2F0000EAC6 /* SimpleWidgetEntryView.swift */; };
-		D6839D1427858E7000805816 /* Extension-DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6839D1327858E7000805816 /* Extension-DrawView.swift */; };
+		D6839D1427858E7000805816 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6839D1327858E7000805816 /* DrawView.swift */; };
 		D6AB7ABF2787F1E10072B6B6 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D6AB7ABE2787F1E10072B6B6 /* .swiftlint.yml */; };
 		D6AB7AC02787F22C0072B6B6 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D6AB7ABE2787F1E10072B6B6 /* .swiftlint.yml */; };
 		D6B36629278C5BD400442E76 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B36628278C5BD400442E76 /* UIColor-Extension.swift */; };
@@ -124,7 +124,7 @@
 		D6738F812786B32A0000EAC6 /* SimpleWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWidgetEntry.swift; sourceTree = "<group>"; };
 		D6738F842786B5710000EAC6 /* SimpleWidgetTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWidgetTimeline.swift; sourceTree = "<group>"; };
 		D6738F882786BA2F0000EAC6 /* SimpleWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWidgetEntryView.swift; sourceTree = "<group>"; };
-		D6839D1327858E7000805816 /* Extension-DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-DrawView.swift"; sourceTree = "<group>"; };
+		D6839D1327858E7000805816 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 		D6AB7ABE2787F1E10072B6B6 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		D6B36628278C5BD400442E76 /* UIColor-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
 		D6B3663E2791461300442E76 /* GoogleCalendarSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCalendarSync.swift; sourceTree = "<group>"; };
@@ -290,7 +290,7 @@
 		D6B3664027914C4A00442E76 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D6839D1327858E7000805816 /* Extension-DrawView.swift */,
+				D6839D1327858E7000805816 /* DrawView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -665,7 +665,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6839D1427858E7000805816 /* Extension-DrawView.swift in Sources */,
+				D6839D1427858E7000805816 /* DrawView.swift in Sources */,
 				D6B36629278C5BD400442E76 /* UIColor-Extension.swift in Sources */,
 				D6442EFE272662E600F774A6 /* EventTableViewCell.swift in Sources */,
 				D64B0AB32702DD5400845946 /* CalendarViewController.swift in Sources */,
