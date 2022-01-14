@@ -37,10 +37,8 @@
 		D6AB7ABF2787F1E10072B6B6 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D6AB7ABE2787F1E10072B6B6 /* .swiftlint.yml */; };
 		D6AB7AC02787F22C0072B6B6 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D6AB7ABE2787F1E10072B6B6 /* .swiftlint.yml */; };
 		D6B36629278C5BD400442E76 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B36628278C5BD400442E76 /* UIColor-Extension.swift */; };
-		D6B36634278D6DF400442E76 /* GoogleCalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B36633278D6DF400442E76 /* GoogleCalendarEvent.swift */; };
-		D6B36637278FC58300442E76 /* GoogleCalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B36633278D6DF400442E76 /* GoogleCalendarEvent.swift */; };
-		D6B36638278FC58300442E76 /* GoogleCalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B36633278D6DF400442E76 /* GoogleCalendarEvent.swift */; };
 		D6B3663D278FE9CB00442E76 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = D6B3663C278FE9CB00442E76 /* PKHUD */; };
+		D6B3663F2791461300442E76 /* GoogleCalendarSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B3663E2791461300442E76 /* GoogleCalendarSync.swift */; };
 		D6BA3E152711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
 		D6BA3E162711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
 		D6BA3E172711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
@@ -129,7 +127,7 @@
 		D6839D1327858E7000805816 /* Extension-DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-DrawView.swift"; sourceTree = "<group>"; };
 		D6AB7ABE2787F1E10072B6B6 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		D6B36628278C5BD400442E76 /* UIColor-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
-		D6B36633278D6DF400442E76 /* GoogleCalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCalendarEvent.swift; sourceTree = "<group>"; };
+		D6B3663E2791461300442E76 /* GoogleCalendarSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCalendarSync.swift; sourceTree = "<group>"; };
 		D6BA3E142711655300B48C05 /* AddSchedule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddSchedule.storyboard; sourceTree = "<group>"; };
 		D6BA3E182711657000B48C05 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		D6BA3E26271BF97B00B48C05 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -229,10 +227,12 @@
 				D64B0AAE2702DD5400845946 /* AppDelegate.swift */,
 				D64B0AB02702DD5400845946 /* SceneDelegate.swift */,
 				D6839D1227858E4700805816 /* Extension */,
+				D6B3664127914C9500442E76 /* Service */,
 				D6BA3E25271BF95900B48C05 /* Model */,
-				D6442EFB272662AD00F774A6 /* Cells */,
 				D6BA3E12271164E200B48C05 /* ViewControllers */,
+				D6B3664027914C4A00442E76 /* View */,
 				D6BA3E13271164F600B48C05 /* Storyboard */,
+				D6442EFB272662AD00F774A6 /* Cells */,
 				D64B0AB72702DD5500845946 /* Assets.xcassets */,
 				D64B0AB92702DD5500845946 /* LaunchScreen.storyboard */,
 				D64B0ABC2702DD5500845946 /* Info.plist */,
@@ -282,10 +282,25 @@
 		D6839D1227858E4700805816 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				D6839D1327858E7000805816 /* Extension-DrawView.swift */,
 				D6B36628278C5BD400442E76 /* UIColor-Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		D6B3664027914C4A00442E76 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D6839D1327858E7000805816 /* Extension-DrawView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D6B3664127914C9500442E76 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D6B3663E2791461300442E76 /* GoogleCalendarSync.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		D6BA3E12271164E200B48C05 /* ViewControllers */ = {
@@ -310,7 +325,6 @@
 			isa = PBXGroup;
 			children = (
 				D6BA3E26271BF97B00B48C05 /* EventModel.swift */,
-				D6B36633278D6DF400442E76 /* GoogleCalendarEvent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -662,8 +676,8 @@
 				D64B0AB12702DD5400845946 /* SceneDelegate.swift in Sources */,
 				D6BA3E27271BF97B00B48C05 /* EventModel.swift in Sources */,
 				D6738F892786BA2F0000EAC6 /* SimpleWidgetEntryView.swift in Sources */,
+				D6B3663F2791461300442E76 /* GoogleCalendarSync.swift in Sources */,
 				D6BA3E192711657000B48C05 /* AddEventViewController.swift in Sources */,
-				D6B36634278D6DF400442E76 /* GoogleCalendarEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,7 +686,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D64B0AC62702DD5500845946 /* CalendarAppTests.swift in Sources */,
-				D6B36637278FC58300442E76 /* GoogleCalendarEvent.swift in Sources */,
 				D6BA3E28271BF97B00B48C05 /* EventModel.swift in Sources */,
 				D6BA3E1A2711657000B48C05 /* AddEventViewController.swift in Sources */,
 			);
@@ -685,7 +698,6 @@
 				D64B0AD22702DD5500845946 /* CalendarAppUITestsLaunchTests.swift in Sources */,
 				D6BA3E1B2711657000B48C05 /* AddEventViewController.swift in Sources */,
 				D6BA3E29271BF97B00B48C05 /* EventModel.swift in Sources */,
-				D6B36638278FC58300442E76 /* GoogleCalendarEvent.swift in Sources */,
 				D64B0AD02702DD5500845946 /* CalendarAppUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

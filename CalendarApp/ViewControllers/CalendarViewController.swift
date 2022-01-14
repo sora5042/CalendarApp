@@ -9,9 +9,6 @@ import UIKit
 import FSCalendar
 import CalculateCalendarLogic
 import RealmSwift
-import AppAuth
-import GTMAppAuth
-import GoogleAPIClientForREST
 import PKHUD
 
 class CalendarViewController: UIViewController {
@@ -35,12 +32,6 @@ class CalendarViewController: UIViewController {
     private let todayDate = Date()
     private var todayString = String()
     var selectedMenuType = MenuType.month
-
-    private var authorization: GTMAppAuthFetcherAuthorization?
-    private let configuration = GTMAppAuthFetcherAuthorization.configurationForGoogle()
-    private let clientID = "579964048764-q3nu1gpee4h5hjrqa4ubppvvg3g3jrnt.apps.googleusercontent.com"
-    private let redirectURL = "com.googleusercontent.apps.579964048764-q3nu1gpee4h5hjrqa4ubppvvg3g3jrnt:/oauthredirect"
-    private var googleCalendarEventList: [GoogleCalendarEvent] = []
 
     @IBOutlet private weak var calendar: FSCalendar!
     @IBOutlet private weak var calendarHeight: NSLayoutConstraint!
@@ -76,109 +67,6 @@ class CalendarViewController: UIViewController {
         }
     }
 
-    typealias ShowAuthorizationDialogCallBack = ((Error?) -> Void)
-    private func showAuthorizationDialog(callBack: @escaping ShowAuthorizationDialogCallBack) {
-        let scopes = ["https://www.googleapis.com/auth/calendar", "https://www.googleapis.com/auth/calendar.readonly", "https://www.googleapis.com/auth/calendar.events", "https://www.googleapis.com/auth/calendar.events.readonly"]
-
-        let configuration = GTMAppAuthFetcherAuthorization.configurationForGoogle()
-        let redirectURL = URL(string: redirectURL + ":/oauthredirect")
-
-        let request = OIDAuthorizationRequest(configuration: configuration,
-                                              clientId: clientID,
-                                              scopes: scopes,
-                                              redirectURL: redirectURL!,
-                                              responseType: OIDResponseTypeCode,
-                                              additionalParameters: nil)
-
-        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.currentAuthorizationFlow = OIDAuthState.authState(
-            byPresenting: request,
-            presenting: self,
-            callback: { (authState, error) in
-                if let error = error {
-                    HUD.flash(.labeledError(title: "エラー", subtitle: nil))
-                    NSLog("\(error)")
-                } else {
-                    if let authState = authState {
-                        // 認証情報オブジェクトを生成
-                        self.authorization = GTMAppAuthFetcherAuthorization(authState: authState)
-                        GTMAppAuthFetcherAuthorization.save(self.authorization!, toKeychainForName: "authorization")
-                    }
-                }
-                callBack(error)
-            })
-    }
-
-    private func getEvents() {
-        googleCalendarEventList.removeAll()
-        let startDateTime = Calendar(identifier: .gregorian).date(byAdding: .year, value: -1, to: todayDate)
-        let endDateTime = Calendar(identifier: .gregorian).date(byAdding: .year, value: 1, to: todayDate)
-        self.get(startDateTime: startDateTime!, endDateTime: endDateTime!)
-    }
-
-    private func get(startDateTime: Date, endDateTime: Date) {
-        if let gtmAppAuth = GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization") {
-            self.authorization = gtmAppAuth
-        }
-
-        if self.authorization == nil {
-            showAuthorizationDialog(callBack: {(error) -> Void in
-                if error == nil {
-                    self.getCalendarEvents(startDateTime: startDateTime, endDateTime: endDateTime)
-                }
-                HUD.flash(.labeledError(title: "エラー", subtitle: nil))
-            })
-        } else {
-            self.getCalendarEvents(startDateTime: startDateTime, endDateTime: endDateTime)
-        }
-    }
-
-    private func getCalendarEvents(startDateTime: Date, endDateTime: Date) {
-        let calendarService = GTLRCalendarService()
-        calendarService.authorizer = self.authorization
-        calendarService.shouldFetchNextPages = true
-
-        let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")
-        query.timeMin = GTLRDateTime(date: startDateTime)
-        query.timeMax = GTLRDateTime(date: endDateTime)
-
-        calendarService.executeQuery(query, completionHandler: { [weak self] (_, event, error) -> Void in
-            if let error = error {
-                HUD.flash(.labeledError(title: "エラー", subtitle: nil))
-                NSLog("\(error)")
-            } else {
-                if let event = event as? GTLRCalendar_Events, let items = event.items {
-                    for item in items {
-                        do {
-                            let realm = try Realm()
-                            let eventModels = EventModel()
-                            let timeFormat = DateFormatter()
-                            self?.dateFormat.dateFormat = "yyyy/MM/dd"
-                            timeFormat.dateFormat = "HH:mm"
-                            let id: String = item.identifier ?? ""
-                            let name: String = item.summary ?? ""
-                            let startDate: Date? = item.start?.dateTime?.date
-                            let endDate: Date? = item.end?.dateTime?.date
-
-                            try realm.write {
-                                eventModels.eventId = id
-                                eventModels.title = name
-                                eventModels.editStartTime = startDate ?? Date()
-                                eventModels.editEndTime = endDate ?? Date()
-                                eventModels.date = self?.dateFormat.string(from: startDate ?? Date()) ?? ""
-                                eventModels.startTime = timeFormat.string(from: startDate ?? Date())
-                                eventModels.endTime = timeFormat.string(from: endDate ?? Date())
-                                realm.add(eventModels, update: .modified)
-                            }
-                        } catch {
-                            print("create todo error.")
-                        }
-                    }
-                }
-            }
-        })
-    }
-
     private func setupView() {
         taskTableView.dataSource = self
         taskTableView.delegate = self
@@ -212,7 +100,6 @@ class CalendarViewController: UIViewController {
     }
 
     @objc private func tappedElementDropDownButton() {
-        var googleCalendarMenu = [UIMenuElement]()
         var displayCalendarMenu = [UIMenuElement]()
 
         displayCalendarMenu.append(UIAction(title: MenuType.month.rawValue, image: UIImage(named: "calendar1"), state: self.selectedMenuType == MenuType.month ? .on : .off, handler: { [weak self] _ in
@@ -249,9 +136,9 @@ class CalendarViewController: UIViewController {
 
         }))
 
-        displayCalendarMenu.append(UIAction(title: "Googleカレンダーと同期", handler: { [weak self] _ in
+        displayCalendarMenu.append(UIAction(title: "Googleカレンダーと同期", handler: { _ in
             HUD.show(.progress)
-            self?.getEvents()
+            GoogleCalendarSync.getEvents()
             HUD.flash(.success)
         }))
 
