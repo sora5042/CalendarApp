@@ -5,7 +5,6 @@
 //  Created by 大谷空 on 2022/01/14.
 //
 
-import Foundation
 import UIKit
 import RealmSwift
 import AppAuth
@@ -53,7 +52,6 @@ class GoogleCalendarSync {
     }
 
     static func getEvents() {
-        //        googleCalendarEventList.removeAll()
         let today = Date()
         let startDateTime = Calendar(identifier: .gregorian).date(byAdding: .year, value: -1, to: today)
         let endDateTime = Calendar(identifier: .gregorian).date(byAdding: .year, value: 1, to: today)
