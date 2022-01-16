@@ -18,6 +18,7 @@ class EventModel: Object {
     @objc dynamic var place = ""
     @objc dynamic var editStartTime = Date()
     @objc dynamic var editEndTime = Date()
+    @objc dynamic var editNotificationTime = Date()
     @objc dynamic var startTime = "" // 00:00
     @objc dynamic var endTime = "" // 00:00
 

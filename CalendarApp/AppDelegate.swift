@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         IQKeyboardManager.shared.enable = true
 
         // プッシュ通知の許可を依頼する際のコード
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, _) in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted: Bool, _: Error?) in
             // [.alert, .badge, .sound]と指定されているので、「アラート、バッジ、サウンド」の3つに対しての許可をリクエストした
             if granted {
                 // 「許可」が押された場合
@@ -34,19 +34,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
 
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler(
+            [
+                UNNotificationPresentationOptions.banner,
+                UNNotificationPresentationOptions.list,
+                UNNotificationPresentationOptions.sound,
+                UNNotificationPresentationOptions.badge
+            ]
+        )
+    }
+
     //　通知をタップした時に呼ばれるメソッド
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         self.window = UIWindow(frame: UIScreen.main.bounds)
-
         let storyboard = UIStoryboard(name: "Calendar", bundle: nil)
-
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "CalendarViewController")
-
         self.window?.rootViewController = initialViewController
-
         self.window?.makeKeyAndVisible()
+        completionHandler()
     }
 
     // MARK: UISceneSession Lifecycle

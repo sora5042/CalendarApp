@@ -26,6 +26,7 @@ class AddEventViewController: UIViewController {
     @IBOutlet private weak var commentTextField: HoshiTextField!
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
+    @IBOutlet weak var noticationDatePicker: UIDatePicker!
     @IBOutlet private weak var saveButton: UIButton!
     @IBOutlet private weak var cancelButton: UIButton!
     @IBOutlet private weak var navigationBarLabel: UILabel!
@@ -52,6 +53,7 @@ class AddEventViewController: UIViewController {
         let datePicker = dateFormat.date(from: date)
         startDatePicker.date = datePicker ?? Date()
         endDatePicker.date = datePicker ?? Date()
+        noticationDatePicker.date = datePicker ?? Date()
 
         cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
         saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
@@ -97,6 +99,7 @@ class AddEventViewController: UIViewController {
             navigationBarLabel.text = "編集"
             startDatePicker.date = eventModel?.editStartTime ?? Date()
             endDatePicker.date = eventModel?.editEndTime ?? Date()
+            noticationDatePicker.date = eventModel?.editNotificationTime ?? Date()
         }
     }
 
@@ -130,6 +133,7 @@ class AddEventViewController: UIViewController {
             eventModels.comment = comment
             eventModels.editStartTime = startDatePicker.date
             eventModels.editEndTime = endDatePicker.date
+            eventModels.editNotificationTime = noticationDatePicker.date
             eventModels.date = dateFormat.string(from: startDatePicker.date)
             eventModels.startTime = timeFormat.string(from: startDatePicker.date)
             eventModels.endTime = timeFormat.string(from: endDatePicker.date)
@@ -162,6 +166,7 @@ class AddEventViewController: UIViewController {
             eventModels.comment = comment
             eventModels.editStartTime = startDatePicker.date
             eventModels.editEndTime = endDatePicker.date
+            eventModels.editNotificationTime = noticationDatePicker.date
             eventModels.date = dateFormat.string(from: startDatePicker.date)
             eventModels.startTime = timeFormat.string(from: startDatePicker.date)
             eventModels.endTime = timeFormat.string(from: endDatePicker.date)
@@ -175,21 +180,22 @@ class AddEventViewController: UIViewController {
     }
 
     private func localNotification() {
-        guard let titleText = titleTextField.text else { return }
-        guard let commentText = commentTextField.text else { return }
+        let titleText = titleTextField.text
+        let commentText = commentTextField.text
+        let placeText = placeTextField.text
 
         // 通知の中身を設定
         let content: UNMutableNotificationContent = UNMutableNotificationContent()
-        content.title = "\(titleText)の時間です！"
-        content.subtitle = commentText
+        content.title = titleText ?? ""
+        content.subtitle = "場所：\(placeText ?? "")"
+        content.body = commentText ?? ""
         content.sound = UNNotificationSound.default
         content.badge = 1
 
         // 通知をいつ発動するかを設定
         // カレンダークラスを作成
         let calendar = Calendar.current
-        let calendarComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: startDatePicker.date)
-
+        let calendarComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: noticationDatePicker.date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: calendarComponents, repeats: true)
 
         // 通知のリクエストを作成
@@ -209,23 +215,24 @@ class AddEventViewController: UIViewController {
 
     private func updateLocalNotification() {
         guard let notificationid = eventModel?.notificationId else { return }
-        guard let titleText = titleTextField.text else { return }
-        guard let commentText = commentTextField.text else { return }
-
+        let titleText = titleTextField.text
+        let commentText = commentTextField.text
+        let placeText = placeTextField.text
         // 更新前の通知リクエストを削除
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notificationid])
 
         // 通知の中身を設定
         let content: UNMutableNotificationContent = UNMutableNotificationContent()
-        content.title = "\(titleText)の時間です！"
-        content.subtitle = commentText
+        content.title = titleText ?? ""
+        content.subtitle = "場所：\(placeText ?? "")"
+        content.body = commentText ?? ""
         content.sound = UNNotificationSound.default
         content.badge = 1
         // 通知をいつ発動するかを設定
         // カレンダークラスを作成
         let calendar: Calendar = Calendar.current
-        let trigger: UNCalendarNotificationTrigger = UNCalendarNotificationTrigger(dateMatching: calendar.dateComponents([.year, .month, .day, .hour, .minute], from: startDatePicker.date), repeats: true)
+        let trigger: UNCalendarNotificationTrigger = UNCalendarNotificationTrigger(dateMatching: calendar.dateComponents([.year, .month, .day, .hour, .minute], from: noticationDatePicker.date), repeats: true)
 
         // 通知のリクエストを作成
         let newId = UUID().uuidString
@@ -236,6 +243,7 @@ class AddEventViewController: UIViewController {
             if let error = error {
                 print("プッシュ通知の作成に失敗しました", error)
             } else {
+
             }
         }
     }
