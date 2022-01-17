@@ -43,6 +43,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet private weak var calendarHeight: NSLayoutConstraint!
     @IBOutlet private weak var taskTableView: UITableView!
     @IBOutlet private weak var selectElementDropDownView: UIView!
+    @IBOutlet private weak var calendarInfoView: UIView!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var calendarLabel: UILabel!
     @IBOutlet private weak var rokuyouLabel: UILabel!
@@ -85,6 +86,9 @@ class CalendarViewController: UIViewController {
         bulkDeleteButton.addTarget(self, action: #selector(tappedBulkDeleteButton), for: .touchUpInside)
         dayOfWeekSortButton.addTarget(self, action: #selector(tappedDayOfWeekButton), for: .touchUpInside)
         rokuyouLabel.text = calculateRokuyo(date: todayDate)
+        calendarInfoView.layer.borderWidth = 2.5
+        calendarInfoView.layer.borderColor = UIColor.rgb(red: 235, green: 235, blue: 235).cgColor
+
     }
 
     private func setupCalendar() {

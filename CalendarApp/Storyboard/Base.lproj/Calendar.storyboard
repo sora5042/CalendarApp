@@ -172,6 +172,7 @@
                         <outlet property="bulkDeleteButton" destination="DrP-ci-Hn2" id="j3z-i0-ZBW"/>
                         <outlet property="calendar" destination="Pup-KQ-Lw3" id="sD7-8G-Q8b"/>
                         <outlet property="calendarHeight" destination="gvK-ng-a1J" id="V9e-b0-ZZ6"/>
+                        <outlet property="calendarInfoView" destination="GlU-Qw-ZMm" id="EbJ-6E-0bt"/>
                         <outlet property="calendarLabel" destination="mh8-0Z-GWZ" id="kd1-96-eCL"/>
                         <outlet property="dateLabel" destination="go5-jU-eb2" id="h9I-ZW-BY0"/>
                         <outlet property="dayOfWeekSortButton" destination="uvq-w3-Wa3" id="Opr-id-2nE"/>
