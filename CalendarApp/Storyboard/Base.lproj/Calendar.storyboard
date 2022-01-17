@@ -38,9 +38,16 @@
                                         <color key="textColor" red="0.0" green="0.5869878878" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvq-w3-Wa3">
+                                        <rect key="frame" x="271.66666666666669" y="8" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="曜日順"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="7sW-az-yYM" firstAttribute="leading" secondItem="uvq-w3-Wa3" secondAttribute="trailing" constant="3.6700000762939453" id="7ok-by-YP4"/>
                                     <constraint firstItem="dPm-pT-dpe" firstAttribute="leading" secondItem="cBT-Jv-dNi" secondAttribute="leading" constant="15" id="Mst-Ez-HrH"/>
                                     <constraint firstAttribute="bottom" secondItem="mh8-0Z-GWZ" secondAttribute="bottom" constant="7" id="NJY-JR-Vmx"/>
                                     <constraint firstItem="7sW-az-yYM" firstAttribute="leading" secondItem="mh8-0Z-GWZ" secondAttribute="trailing" constant="80" id="NN0-aa-3HT"/>
@@ -48,6 +55,7 @@
                                     <constraint firstItem="mh8-0Z-GWZ" firstAttribute="centerX" secondItem="cBT-Jv-dNi" secondAttribute="centerX" id="Uhl-XT-ra1"/>
                                     <constraint firstItem="dPm-pT-dpe" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="top" constant="8" id="dft-yv-K5T"/>
                                     <constraint firstAttribute="trailing" secondItem="7sW-az-yYM" secondAttribute="trailing" id="jGp-2l-trx"/>
+                                    <constraint firstItem="uvq-w3-Wa3" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="top" constant="8" id="jTS-yG-5wo"/>
                                     <constraint firstItem="7sW-az-yYM" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="top" constant="8" id="tWK-y9-TPJ"/>
                                 </constraints>
                             </view>
@@ -166,6 +174,7 @@
                         <outlet property="calendarHeight" destination="gvK-ng-a1J" id="V9e-b0-ZZ6"/>
                         <outlet property="calendarLabel" destination="mh8-0Z-GWZ" id="kd1-96-eCL"/>
                         <outlet property="dateLabel" destination="go5-jU-eb2" id="h9I-ZW-BY0"/>
+                        <outlet property="dayOfWeekSortButton" destination="uvq-w3-Wa3" id="Opr-id-2nE"/>
                         <outlet property="elementDropDownButton" destination="7sW-az-yYM" id="ZaF-eJ-k5a"/>
                         <outlet property="rokuyouLabel" destination="XdF-YP-ger" id="frB-nS-1Uf"/>
                         <outlet property="scrollButton" destination="dPm-pT-dpe" id="csd-ZS-xyZ"/>
@@ -174,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="648" y="29"/>
+            <point key="canvasLocation" x="647.82608695652175" y="28.794642857142854"/>
         </scene>
     </scenes>
     <resources>

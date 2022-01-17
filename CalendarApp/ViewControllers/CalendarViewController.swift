@@ -20,6 +20,11 @@ class CalendarViewController: UIViewController {
         case weekday = "平日のみ"
     }
 
+    enum DayOfWeekType: String {
+        case monday = "月曜日スタート"
+        case sunday = "日曜日スタート"
+    }
+
     private let realm = try! Realm()
     // tablecellのイベントデータの表示用
     var eventResults: Results<EventModel>!
@@ -32,6 +37,7 @@ class CalendarViewController: UIViewController {
     private let todayDate = Date()
     private var todayString = String()
     var selectedMenuType = MenuType.month
+    var selectDayOfWeekMenuType = DayOfWeekType.sunday
 
     @IBOutlet private weak var calendar: FSCalendar!
     @IBOutlet private weak var calendarHeight: NSLayoutConstraint!
@@ -45,6 +51,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet private weak var elementDropDownButton: UIButton!
     @IBOutlet private weak var scrollButton: UIButton!
     @IBOutlet private weak var bulkDeleteButton: UIButton!
+    @IBOutlet private weak var dayOfWeekSortButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +83,7 @@ class CalendarViewController: UIViewController {
         elementDropDownButton.addTarget(self, action: #selector(tappedElementDropDownButton), for: .touchUpInside)
         scrollButton.addTarget(self, action: #selector(tappedScrollButton), for: .touchUpInside)
         bulkDeleteButton.addTarget(self, action: #selector(tappedBulkDeleteButton), for: .touchUpInside)
+        dayOfWeekSortButton.addTarget(self, action: #selector(tappedDayOfWeekButton), for: .touchUpInside)
         rokuyouLabel.text = calculateRokuyo(date: todayDate)
     }
 
@@ -92,6 +100,7 @@ class CalendarViewController: UIViewController {
         calendar.calendarWeekdayView.weekdayLabels[4].text = "木"
         calendar.calendarWeekdayView.weekdayLabels[5].text = "金"
         calendar.calendarWeekdayView.weekdayLabels[6].text = "土"
+
     }
 
     private func setupTodayDate() {
@@ -145,6 +154,46 @@ class CalendarViewController: UIViewController {
         elementDropDownButton.menu = UIMenu(title: "オプション", options: .displayInline, children: displayCalendarMenu)
         elementDropDownButton.showsMenuAsPrimaryAction = true
         elementDropDownButton.setTitle(self.selectedMenuType.rawValue, for: .normal)
+    }
+
+    @objc private func tappedDayOfWeekButton() {
+        var dayOfWeekMenu = [UIMenuElement]()
+
+        dayOfWeekMenu.append(UIAction(title: DayOfWeekType.sunday.rawValue, state: self.selectDayOfWeekMenuType == DayOfWeekType.sunday ? .on : .off, handler: { [weak self] _ in
+            self?.calendar.firstWeekday = 1
+            self?.calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
+            self?.calendar.calendarWeekdayView.weekdayLabels[1].text = "月"
+            self?.calendar.calendarWeekdayView.weekdayLabels[2].text = "火"
+            self?.calendar.calendarWeekdayView.weekdayLabels[3].text = "水"
+            self?.calendar.calendarWeekdayView.weekdayLabels[4].text = "木"
+            self?.calendar.calendarWeekdayView.weekdayLabels[5].text = "金"
+            self?.calendar.calendarWeekdayView.weekdayLabels[6].text = "土"
+
+            self?.selectDayOfWeekMenuType = .sunday
+            self?.calendar.reloadData()
+            self?.tappedDayOfWeekButton()
+
+        }))
+
+        dayOfWeekMenu.append(UIAction(title: DayOfWeekType.monday.rawValue, state: self.selectDayOfWeekMenuType == DayOfWeekType.monday ? .on : .off, handler: { [weak self] _ in
+            self?.calendar.firstWeekday = 2
+            self?.calendar.calendarWeekdayView.weekdayLabels[0].text = "月"
+            self?.calendar.calendarWeekdayView.weekdayLabels[1].text = "火"
+            self?.calendar.calendarWeekdayView.weekdayLabels[2].text = "水"
+            self?.calendar.calendarWeekdayView.weekdayLabels[3].text = "木"
+            self?.calendar.calendarWeekdayView.weekdayLabels[4].text = "金"
+            self?.calendar.calendarWeekdayView.weekdayLabels[5].text = "土"
+            self?.calendar.calendarWeekdayView.weekdayLabels[6].text = "日"
+
+            self?.selectDayOfWeekMenuType = .monday
+            self?.calendar.reloadData()
+            self?.tappedDayOfWeekButton()
+
+        }))
+
+        dayOfWeekSortButton.menu = UIMenu(title: "曜日順", options: .displayInline, children: dayOfWeekMenu)
+        dayOfWeekSortButton.showsMenuAsPrimaryAction = true
+
     }
 
     @objc private func tappedScrollButton() {
@@ -252,6 +301,10 @@ class CalendarViewController: UIViewController {
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .darkContent
+    }
+
+    override var shouldAutorotate: Bool {
+        return false
     }
 }
 
