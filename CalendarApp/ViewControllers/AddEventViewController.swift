@@ -260,6 +260,10 @@ class AddEventViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .darkContent
     }
+
+    override var shouldAutorotate: Bool {
+        return false
+    }
 }
 
 extension AddEventViewController: UITextFieldDelegate {
