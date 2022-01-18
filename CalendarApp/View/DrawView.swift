@@ -21,7 +21,7 @@ class DrawView: UIView {
     override func draw(_ rect: CGRect) {
         let line = UIBezierPath()
         line.move(to: CGPoint(x: 10, y: 125))
-        line.addLine(to: CGPoint(x: 365, y: 125))
+        line.addLine(to: CGPoint(x: 750, y: 125))
         line.close()
         UIColor.lightGray.setStroke()
         line.lineWidth = 1.2
