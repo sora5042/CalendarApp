@@ -32,6 +32,11 @@
 - [CalculateCalendarLogic](https://github.com/fumiyasac/handMadeCalendarAdvance)  
 - [TextFieldEffects](https://github.com/raulriera/TextFieldEffects)  
 - [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager)  
+- [PKHUD](https://github.com/pkluz/PKHUD)  
+- [SwiftLint](https://github.com/realm/SwiftLint)
+- [AppAuth](https://github.com/openid/AppAuth-iOS)  
+- [GTMAppAuth](https://github.com/google/GTMAppAuth)  
+- [GoogleAPIClientForREST/Calendar](https://github.com/google/google-api-objectivec-client-for-rest)  
 
   
 ## 開発環境  
