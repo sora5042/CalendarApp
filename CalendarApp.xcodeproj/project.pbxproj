@@ -882,6 +882,7 @@
 				DEVELOPMENT_TEAM = L6Q4H7M3DB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CalendarApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Re:スケ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Calendar;
@@ -914,6 +915,7 @@
 				DEVELOPMENT_TEAM = L6Q4H7M3DB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CalendarApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Re:スケ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Calendar;
