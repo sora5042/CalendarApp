@@ -78,19 +78,19 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="59"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新規イベント" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVv-3v-6ba">
-                                        <rect key="frame" x="126" y="13" width="123" height="19"/>
+                                        <rect key="frame" x="131" y="13" width="113" height="19"/>
                                         <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="19"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvl-2X-AqJ">
-                                        <rect key="frame" x="10" y="13" width="77" height="30"/>
+                                        <rect key="frame" x="10" y="13" width="82" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="キャンセル"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7TH-uC-hJL">
-                                        <rect key="frame" x="334" y="13" width="31" height="30"/>
+                                        <rect key="frame" x="329" y="13" width="31" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="保存"/>
@@ -105,7 +105,7 @@
                                     <constraint firstItem="uvl-2X-AqJ" firstAttribute="leading" secondItem="ZYT-rb-6L6" secondAttribute="leading" constant="10" id="aDF-Ax-juw"/>
                                     <constraint firstItem="iVv-3v-6ba" firstAttribute="centerX" secondItem="ZYT-rb-6L6" secondAttribute="centerX" id="gfO-wm-2B3"/>
                                     <constraint firstItem="7TH-uC-hJL" firstAttribute="leading" secondItem="iVv-3v-6ba" secondAttribute="trailing" constant="85" id="j37-FP-wwL"/>
-                                    <constraint firstAttribute="trailing" secondItem="7TH-uC-hJL" secondAttribute="trailing" constant="10" id="wdh-OZ-uhc"/>
+                                    <constraint firstAttribute="trailing" secondItem="7TH-uC-hJL" secondAttribute="trailing" constant="15" id="wdh-OZ-uhc"/>
                                     <constraint firstItem="iVv-3v-6ba" firstAttribute="top" secondItem="ZYT-rb-6L6" secondAttribute="top" constant="13" id="yzt-n6-cW1"/>
                                 </constraints>
                             </view>
