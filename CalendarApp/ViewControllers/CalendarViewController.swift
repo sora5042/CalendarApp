@@ -67,14 +67,10 @@ class CalendarViewController: UIViewController {
         super.viewDidAppear(animated)
 
         setupTodayDate()
-        if date.isEmpty {
-            filterEvent(date: todayString)
-            return
-        } else {
-            filterEvent(date: date)
-        }
-    }
+        todayDateOrOtherDate()
 
+    }
+    // MARK: - Method
     private func setupView() {
         taskTableView.dataSource = self
         taskTableView.delegate = self
@@ -97,6 +93,24 @@ class CalendarViewController: UIViewController {
         calendar.scrollDirection = .horizontal
         calendar.layer.borderWidth = 2.5
         calendar.layer.borderColor = UIColor.rgb(red: 235, green: 235, blue: 235).cgColor
+        defaultWeekdayLabels()
+    }
+
+    private func setupTodayDate() {
+        dateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "ja_JP"))
+        todayString = dateFormat.string(from: todayDate)
+    }
+
+    private func todayDateOrOtherDate() {
+        if date.isEmpty {
+            filterEvent(date: todayString)
+            return
+        } else {
+            filterEvent(date: date)
+        }
+    }
+
+    private func defaultWeekdayLabels() {
         calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
         calendar.calendarWeekdayView.weekdayLabels[1].text = "月"
         calendar.calendarWeekdayView.weekdayLabels[2].text = "火"
@@ -104,12 +118,6 @@ class CalendarViewController: UIViewController {
         calendar.calendarWeekdayView.weekdayLabels[4].text = "木"
         calendar.calendarWeekdayView.weekdayLabels[5].text = "金"
         calendar.calendarWeekdayView.weekdayLabels[6].text = "土"
-
-    }
-
-    private func setupTodayDate() {
-        dateFormat.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/MM/dd", options: 0, locale: Locale(identifier: "ja_JP"))
-        todayString = dateFormat.string(from: todayDate)
     }
 
     @objc private func tappedElementDropDownButton() {
@@ -154,7 +162,6 @@ class CalendarViewController: UIViewController {
             GoogleCalendarSync.getEvents()
             HUD.flash(.success)
         }))
-
         elementDropDownButton.menu = UIMenu(title: "オプション", options: .displayInline, children: displayCalendarMenu)
         elementDropDownButton.showsMenuAsPrimaryAction = true
         elementDropDownButton.setTitle(self.selectedMenuType.rawValue, for: .normal)
@@ -165,14 +172,7 @@ class CalendarViewController: UIViewController {
 
         dayOfWeekMenu.append(UIAction(title: DayOfWeekType.sunday.rawValue, state: self.selectDayOfWeekMenuType == DayOfWeekType.sunday ? .on : .off, handler: { [weak self] _ in
             self?.calendar.firstWeekday = 1
-            self?.calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
-            self?.calendar.calendarWeekdayView.weekdayLabels[1].text = "月"
-            self?.calendar.calendarWeekdayView.weekdayLabels[2].text = "火"
-            self?.calendar.calendarWeekdayView.weekdayLabels[3].text = "水"
-            self?.calendar.calendarWeekdayView.weekdayLabels[4].text = "木"
-            self?.calendar.calendarWeekdayView.weekdayLabels[5].text = "金"
-            self?.calendar.calendarWeekdayView.weekdayLabels[6].text = "土"
-
+            self?.defaultWeekdayLabels()
             self?.selectDayOfWeekMenuType = .sunday
             self?.calendar.reloadData()
             self?.tappedDayOfWeekButton()
@@ -194,7 +194,6 @@ class CalendarViewController: UIViewController {
             self?.tappedDayOfWeekButton()
 
         }))
-
         dayOfWeekSortButton.menu = UIMenu(title: "曜日順", options: .displayInline, children: dayOfWeekMenu)
         dayOfWeekSortButton.showsMenuAsPrimaryAction = true
 
@@ -265,7 +264,7 @@ class CalendarViewController: UIViewController {
         }
 
         taskTableView.reloadData()
-        filterEvent(date: date)
+        todayDateOrOtherDate()
     }
 
     private func fetchEventModels() {
@@ -365,7 +364,7 @@ extension CalendarViewController: EventTableViewCellDelegate {
             print("Error \(error)")
         }
         taskTableView.reloadData()
-        filterEvent(date: date)
+        todayDateOrOtherDate()
     }
 }
 
