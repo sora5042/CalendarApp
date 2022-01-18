@@ -75,6 +75,11 @@ class GoogleCalendarSync {
     }
 
     static func getCalendarEvents(startDateTime: Date, endDateTime: Date) {
+        let timeFormat = DateFormatter()
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "yyyy/MM/dd"
+        timeFormat.dateFormat = "HH:mm"
+
         let calendarService = GTLRCalendarService()
         calendarService.authorizer = self.authorization
         calendarService.shouldFetchNextPages = true
@@ -92,10 +97,6 @@ class GoogleCalendarSync {
                         do {
                             let realm = try Realm()
                             let eventModels = EventModel()
-                            let timeFormat = DateFormatter()
-                            let dateFormat = DateFormatter()
-                            dateFormat.dateFormat = "yyyy/MM/dd"
-                            timeFormat.dateFormat = "HH:mm"
                             let id: String = item.identifier ?? ""
                             let name: String = item.summary ?? ""
                             let startDate: Date? = item.start?.dateTime?.date
