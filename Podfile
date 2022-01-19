@@ -8,7 +8,6 @@ target 'CalendarApp' do
   # Pods for CalendarApp
 pod 'CalculateCalendarLogic'
 pod 'FSCalendar'
-pod 'RealmSwift'
 pod 'GTMAppAuth'
 pod 'AppAuth'
 pod 'GoogleAPIClientForREST/Calendar'
@@ -18,7 +17,6 @@ pod 'GoogleAPIClientForREST/Calendar'
     # Pods for testing
 pod 'CalculateCalendarLogic'
 pod 'FSCalendar'
-pod 'RealmSwift'
 pod 'GTMAppAuth'
 pod 'AppAuth'
 pod 'GoogleAPIClientForREST/Calendar'
@@ -29,7 +27,6 @@ pod 'GoogleAPIClientForREST/Calendar'
     # Pods for testing
 pod 'CalculateCalendarLogic'
 pod 'FSCalendar'
-pod 'RealmSwift'
 pod 'GTMAppAuth'
 pod 'AppAuth'
 pod 'GoogleAPIClientForREST/Calendar'
