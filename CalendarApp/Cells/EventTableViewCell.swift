@@ -48,7 +48,7 @@ class EventTableViewCell: UITableViewCell {
     }
 
     @objc func tappedClearButton() {
-        let alert = UIAlertController(title: "アラート表示", message: "本当に削除しても良いですか？", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "アラート表示", message: "本当に削除してもよろしいですか？", preferredStyle: UIAlertController.Style.alert)
         let clearAction = UIAlertAction(title: "削除", style: UIAlertAction.Style.default) { [weak self] (_: UIAlertAction) in
             self?.delegate?.notifiCell(eventFromCell: ((self?.eventModel!)!))
         }
