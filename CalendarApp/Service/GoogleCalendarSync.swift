@@ -63,7 +63,7 @@ class GoogleCalendarSync {
             authorization = gtmAppAuth
         }
 
-        if self.authorization == nil {
+        if authorization == nil {
             showAuthorizationDialog(callBack: {(error) -> Void in
                 if error == nil {
                     getCalendarEvents(startDateTime: startDateTime, endDateTime: endDateTime)
@@ -81,7 +81,7 @@ class GoogleCalendarSync {
         timeFormat.dateFormat = "HH:mm"
 
         let calendarService = GTLRCalendarService()
-        calendarService.authorizer = self.authorization
+        calendarService.authorizer = authorization
         calendarService.shouldFetchNextPages = true
 
         let query = GTLRCalendarQuery_EventsList.query(withCalendarId: "primary")
@@ -120,4 +120,47 @@ class GoogleCalendarSync {
             }
         })
     }
+    // このアプリで保存したイベントデータをGoogleカレンダーアプリにも保存するメソッド
+    static func add(eventName: String, startDateTime: Date, endDateTime: Date) {
+        if GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization") != nil {
+            authorization = GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization")!
+        }
+
+        if authorization == nil {
+            showAuthorizationDialog(callBack: {(error) -> Void in
+                if error == nil {
+                    addCalendarEvent(eventName: eventName, startDateTime: startDateTime, endDateTime: endDateTime)
+                }
+            })
+        } else {
+            addCalendarEvent(eventName: eventName, startDateTime: startDateTime, endDateTime: endDateTime)
+        }
+    }
+
+    static func addCalendarEvent(eventName: String, startDateTime: Date, endDateTime: Date) {
+        let calendarService = GTLRCalendarService()
+        calendarService.authorizer = authorization
+        calendarService.shouldFetchNextPages = true
+
+        let event = GTLRCalendar_Event()
+        event.summary = eventName
+
+        let gtlrDateTimeStart: GTLRDateTime = GTLRDateTime(date: startDateTime)
+        let startEventDateTime: GTLRCalendar_EventDateTime = GTLRCalendar_EventDateTime()
+        startEventDateTime.dateTime = gtlrDateTimeStart
+        event.start = startEventDateTime
+
+        let gtlrDateTimeEnd: GTLRDateTime = GTLRDateTime(date: endDateTime)
+        let endEventDateTime: GTLRCalendar_EventDateTime = GTLRCalendar_EventDateTime()
+        endEventDateTime.dateTime = gtlrDateTimeEnd
+        event.end = endEventDateTime
+
+        let query = GTLRCalendarQuery_EventsInsert.query(withObject: event, calendarId: "primary")
+        calendarService.executeQuery(query, completionHandler: { (_, _, error) -> Void in
+            if let error = error {
+                NSLog("\(error)")
+            }
+        })
+    }
+
 }

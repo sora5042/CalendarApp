@@ -15,11 +15,17 @@ protocol AddEventViewControllerDelegate: AnyObject {
 
 class AddEventViewController: UIViewController {
 
+    enum SwitchType: String {
+        case on = "ON"
+        case off = "OFF"
+    }
+
     weak var delegate: AddEventViewControllerDelegate?
     var eventModel: EventModel?
     var eventModels = EventModel()
     private let dateFormat = DateFormatter()
     var date = String()
+    private var selectedSwitchType = SwitchType.off
 
     @IBOutlet private weak var titleTextField: HoshiTextField!
     @IBOutlet private weak var placeTextField: HoshiTextField!
@@ -30,6 +36,7 @@ class AddEventViewController: UIViewController {
     @IBOutlet private weak var saveButton: UIButton!
     @IBOutlet private weak var cancelButton: UIButton!
     @IBOutlet private weak var navigationBarLabel: UILabel!
+    @IBOutlet private weak var googleCalendarAddView: UIView!
     @IBOutlet private weak var titleView: UIView!
     @IBOutlet private weak var dateView: UIView!
     @IBOutlet private weak var placeView: UIView!
@@ -60,6 +67,8 @@ class AddEventViewController: UIViewController {
 
         dateView.layer.borderWidth = 1.2
         dateView.layer.borderColor = UIColor.lightGray.cgColor
+        googleCalendarAddView.layer.borderWidth = 1.2
+        googleCalendarAddView.layer.borderColor = UIColor.lightGray.cgColor
     }
 
     private func setupTextField() {
@@ -68,26 +77,26 @@ class AddEventViewController: UIViewController {
         titleTextField.delegate = self
 
         titleTextField.text = eventModel?.title
+        titleTextField.placeholderFontScale = 0.9
         titleTextField.placeholderColor = .darkGray
-        titleTextField.borderInactiveColor = .darkGray
-        titleTextField.borderActiveColor = .systemGreen
-        titleTextField.placeholderFontScale = 1
+        titleTextField.borderInactiveColor = .lightGray
+        titleTextField.borderActiveColor = UIColor.rgb(red: 0, green: 230, blue: 0)
         titleView.layer.borderWidth = 1.2
         titleView.layer.borderColor = UIColor.lightGray.cgColor
 
         placeTextField.text = eventModel?.place
+        placeTextField.placeholderFontScale = 0.9
         placeTextField.placeholderColor = .darkGray
-        placeTextField.borderActiveColor = .systemGreen
-        placeTextField.borderInactiveColor = .darkGray
-        placeTextField.placeholderFontScale = 1
+        placeTextField.borderInactiveColor = .lightGray
+        placeTextField.borderActiveColor = UIColor.rgb(red: 0, green: 230, blue: 0)
         placeView.layer.borderWidth = 1.2
         placeView.layer.borderColor = UIColor.lightGray.cgColor
 
         commentTextField.text = eventModel?.comment
+        commentTextField.placeholderFontScale = 0.9
         commentTextField.placeholderColor = .darkGray
-        commentTextField.borderActiveColor = .systemGreen
-        commentTextField.borderInactiveColor = .darkGray
-        commentTextField.placeholderFontScale = 1
+        commentTextField.borderInactiveColor = .lightGray
+        commentTextField.borderActiveColor = UIColor.rgb(red: 0, green: 230, blue: 0)
         commentView.layer.borderWidth = 1.2
         commentView.layer.borderColor = UIColor.lightGray.cgColor
     }
@@ -100,10 +109,19 @@ class AddEventViewController: UIViewController {
             startDatePicker.date = eventModel?.editStartTime ?? Date()
             endDatePicker.date = eventModel?.editEndTime ?? Date()
             noticationDatePicker.date = eventModel?.editNotificationTime ?? Date()
+            googleCalendarAddView.alpha = 0
         }
     }
 
     @objc private func tappedSaveButton() {
+        dateFormat.dateFormat = "yyyy/MM/dd"
+        guard let title = titleTextField.text else { return }
+
+        if selectedSwitchType == .on {
+            GoogleCalendarSync.add(eventName: title, startDateTime: startDatePicker.date, endDateTime: endDatePicker.date)
+        } else {
+        }
+
         if eventModel == nil {
             localNotification()
         } else {
@@ -111,6 +129,17 @@ class AddEventViewController: UIViewController {
         }
         delegate?.event(addEvent: eventModels)
         dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction func addGoogleCalendarSwitch(_ sender: UISwitch) {
+        if sender.isOn {
+            selectedSwitchType = .on
+            print(selectedSwitchType)
+
+        } else {
+            selectedSwitchType = .off
+            print(selectedSwitchType)
+        }
     }
 
     private func createEvent(notificationId: String) {
