@@ -9,6 +9,7 @@ import UIKit
 import RealmSwift
 import AppAuth
 import GTMAppAuth
+import PKHUD
 import GoogleAPIClientForREST
 
 class GoogleCalendarSync {
@@ -39,6 +40,7 @@ class GoogleCalendarSync {
             presenting: calendarViewController,
             callback: { (authState, error) in
                 if let error = error {
+                    HUD.flash(.labeledError(title: "認証に失敗しました", subtitle: nil), delay: 1)
                     NSLog("\(error)")
                 } else {
                     if let authState = authState {
@@ -90,6 +92,7 @@ class GoogleCalendarSync {
 
         calendarService.executeQuery(query, completionHandler: { (_, event, error) -> Void in
             if let error = error {
+                HUD.flash(.labeledError(title: "データの取得に失敗しました", subtitle: nil), delay: 1)
                 NSLog("\(error)")
             } else {
                 if let event = event as? GTLRCalendar_Events, let items = event.items {
@@ -158,6 +161,7 @@ class GoogleCalendarSync {
         let query = GTLRCalendarQuery_EventsInsert.query(withObject: event, calendarId: "primary")
         calendarService.executeQuery(query, completionHandler: { (_, _, error) -> Void in
             if let error = error {
+                HUD.flash(.labeledError(title: "データの追加に失敗しました", subtitle: nil), delay: 1)
                 NSLog("\(error)")
             }
         })

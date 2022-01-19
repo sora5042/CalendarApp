@@ -160,7 +160,7 @@ class CalendarViewController: UIViewController {
         displayCalendarMenu.append(UIAction(title: "Googleカレンダーと同期", handler: { _ in
             HUD.show(.progress)
             GoogleCalendarSync.getEvents()
-            HUD.flash(.success)
+            HUD.flash(.labeledSuccess(title: "同期に成功しました", subtitle: nil), delay: 1)
         }))
         elementDropDownButton.menu = UIMenu(title: "オプション", options: .displayInline, children: displayCalendarMenu)
         elementDropDownButton.showsMenuAsPrimaryAction = true
