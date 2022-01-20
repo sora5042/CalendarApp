@@ -11,7 +11,6 @@ import RealmSwift
 extension Realm {
 
     static func createEvent(notificationId: String, title: String?, place: String?, comment: String?, startDatePicker: Date, endDatePicker: Date, notificationDatePicker: Date, completion: @escaping (Bool) -> Void) {
-
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let timeFormat = DateFormatter()
@@ -48,7 +47,6 @@ extension Realm {
     }
 
     static func updateEvent(eventId: String, notificationId: String, title: String?, place: String?, comment: String?, startDatePicker: Date, endDatePicker: Date, notificationDatePicker: Date, completion: @escaping (Bool) -> Void) {
-
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let timeFormat = DateFormatter()

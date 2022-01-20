@@ -16,7 +16,6 @@ class EventTableViewCell: UITableViewCell {
     weak var delegate: EventTableViewCellDelegate?
     weak var alertDelegate: CalendarViewController?
 
-    var eventModels = [EventModel]()
     var eventModel: EventModel? {
         didSet {
             titleLabel.text = eventModel?.title
