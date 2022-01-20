@@ -32,7 +32,7 @@ class AddEventViewController: UIViewController {
     @IBOutlet private weak var commentTextField: HoshiTextField!
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
-    @IBOutlet weak var noticationDatePicker: UIDatePicker!
+    @IBOutlet weak var notificationDatePicker: UIDatePicker!
     @IBOutlet private weak var saveButton: UIButton!
     @IBOutlet private weak var cancelButton: UIButton!
     @IBOutlet private weak var navigationBarLabel: UILabel!
@@ -60,7 +60,7 @@ class AddEventViewController: UIViewController {
         let datePicker = dateFormat.date(from: date)
         startDatePicker.date = datePicker ?? Date()
         endDatePicker.date = datePicker ?? Date()
-        noticationDatePicker.date = datePicker ?? Date()
+        notificationDatePicker.date = datePicker ?? Date()
 
         cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
         saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
@@ -108,7 +108,7 @@ class AddEventViewController: UIViewController {
             navigationBarLabel.text = "編集"
             startDatePicker.date = eventModel?.editStartTime ?? Date()
             endDatePicker.date = eventModel?.editEndTime ?? Date()
-            noticationDatePicker.date = eventModel?.editNotificationTime ?? Date()
+            notificationDatePicker.date = eventModel?.editNotificationTime ?? Date()
             googleCalendarAddView.alpha = 0
         }
     }
@@ -147,7 +147,7 @@ class AddEventViewController: UIViewController {
         guard let commentText = commentTextField.text else { return }
         guard let placeText = placeTextField.text else { return }
 
-        Realm.createEvent(notificationId: notificationId, title: titleText, place: placeText, comment: commentText, startDatePicker: startDatePicker.date, endDatePicker: endDatePicker.date, notificationDatePicker: noticationDatePicker.date) { (success) in
+        Realm.createEvent(notificationId: notificationId, title: titleText, place: placeText, comment: commentText, startDatePicker: startDatePicker.date, endDatePicker: endDatePicker.date, notificationDatePicker: notificationDatePicker.date) { (success) in
 
             if success {
                 print("イベントデータの保存に成功しました")
@@ -161,7 +161,7 @@ class AddEventViewController: UIViewController {
         guard let placeText = placeTextField.text else { return }
         guard let eventId = eventModel?.eventId else { return }
 
-        Realm.updateEvent(eventId: eventId, notificationId: notificationId, title: titleText, place: placeText, comment: commentText, startDatePicker: startDatePicker.date, endDatePicker: endDatePicker.date, notificationDatePicker: noticationDatePicker.date) { success in
+        Realm.updateEvent(eventId: eventId, notificationId: notificationId, title: titleText, place: placeText, comment: commentText, startDatePicker: startDatePicker.date, endDatePicker: endDatePicker.date, notificationDatePicker: notificationDatePicker.date) { success in
 
             if success {
                 print("イベントデータの更新に成功しました")
@@ -185,7 +185,7 @@ class AddEventViewController: UIViewController {
         // 通知をいつ発動するかを設定
         // カレンダークラスを作成
         let calendar = Calendar.current
-        let calendarComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: noticationDatePicker.date)
+        let calendarComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: notificationDatePicker.date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: calendarComponents, repeats: true)
 
         // 通知のリクエストを作成
@@ -222,7 +222,7 @@ class AddEventViewController: UIViewController {
         // 通知をいつ発動するかを設定
         // カレンダークラスを作成
         let calendar: Calendar = Calendar.current
-        let trigger: UNCalendarNotificationTrigger = UNCalendarNotificationTrigger(dateMatching: calendar.dateComponents([.year, .month, .day, .hour, .minute], from: noticationDatePicker.date), repeats: true)
+        let trigger: UNCalendarNotificationTrigger = UNCalendarNotificationTrigger(dateMatching: calendar.dateComponents([.year, .month, .day, .hour, .minute], from: notificationDatePicker.date), repeats: true)
 
         // 通知のリクエストを作成
         let newId = UUID().uuidString

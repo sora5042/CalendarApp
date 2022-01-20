@@ -321,7 +321,7 @@
                         <outlet property="endDatePicker" destination="N1r-Dm-J3v" id="8r1-wR-8LM"/>
                         <outlet property="googleCalendarAddView" destination="0ZW-VL-mbG" id="iHF-bV-50O"/>
                         <outlet property="navigationBarLabel" destination="iVv-3v-6ba" id="Cbk-LE-0kZ"/>
-                        <outlet property="noticationDatePicker" destination="Tvy-Kt-xxA" id="afP-Yg-qmm"/>
+                        <outlet property="notificationDatePicker" destination="Tvy-Kt-xxA" id="afP-Yg-qmm"/>
                         <outlet property="placeTextField" destination="U18-BD-gNP" id="olI-b6-sZJ"/>
                         <outlet property="placeView" destination="kUG-HQ-AuI" id="fsC-cw-whk"/>
                         <outlet property="saveButton" destination="7TH-uC-hJL" id="Bk4-ge-8Ql"/>
