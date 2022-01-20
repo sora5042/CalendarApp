@@ -77,11 +77,6 @@ class GoogleCalendarSync {
     }
 
     static func getCalendarEvents(startDateTime: Date, endDateTime: Date) {
-        let timeFormat = DateFormatter()
-        let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "yyyy/MM/dd"
-        timeFormat.dateFormat = "HH:mm"
-
         let calendarService = GTLRCalendarService()
         calendarService.authorizer = authorization
         calendarService.shouldFetchNextPages = true
@@ -97,26 +92,15 @@ class GoogleCalendarSync {
             } else {
                 if let event = event as? GTLRCalendar_Events, let items = event.items {
                     for item in items {
-                        do {
-                            let realm = try Realm()
-                            let eventModels = EventModel()
-                            let id: String = item.identifier ?? ""
-                            let name: String = item.summary ?? ""
-                            let startDate: Date? = item.start?.dateTime?.date
-                            let endDate: Date? = item.end?.dateTime?.date
+                        let id: String = item.identifier ?? ""
+                        let name: String = item.summary ?? ""
+                        let startDate: Date? = item.start?.dateTime?.date
+                        let endDate: Date? = item.end?.dateTime?.date
 
-                            try realm.write {
-                                eventModels.eventId = id
-                                eventModels.title = name
-                                eventModels.editStartTime = startDate ?? Date()
-                                eventModels.editEndTime = endDate ?? Date()
-                                eventModels.date = dateFormat.string(from: startDate ?? Date())
-                                eventModels.startTime = timeFormat.string(from: startDate ?? Date())
-                                eventModels.endTime = timeFormat.string(from: endDate ?? Date())
-                                realm.add(eventModels, update: .modified)
+                        Realm.googleCalendar(id: id, name: name, startDate: startDate ?? Date(), endDate: endDate ?? Date()) { success in
+                            if success {
+                                print("Googleカレンダーからのデータの取得に成功しました")
                             }
-                        } catch {
-                            print("create todo error.")
                         }
                     }
                 }
