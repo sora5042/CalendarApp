@@ -50,7 +50,7 @@ class AddEventViewController: UIViewController {
         setupTextField()
         newEventOrEditEvent()
     }
-
+    // MARK: - Method
     private func setupView() {
         let drawView = DrawView(frame: self.datePickerView.bounds)
         self.datePickerView.addSubview(drawView)
@@ -143,68 +143,29 @@ class AddEventViewController: UIViewController {
     }
 
     private func createEvent(notificationId: String) {
-        dateFormat.dateFormat = "yyyy/MM/dd"
-        let timeFormat = DateFormatter()
-        timeFormat.dateFormat = "HH:mm"
+        guard let titleText = titleTextField.text else { return }
+        guard let commentText = commentTextField.text else { return }
+        guard let placeText = placeTextField.text else { return }
 
-        let eventId = UUID().uuidString
-        guard let title = titleTextField.text else { return }
-        guard let comment = commentTextField.text else { return }
-        guard let place = placeTextField.text else { return }
+        Realm.createEvent(notificationId: notificationId, title: titleText, place: placeText, comment: commentText, startDatePicker: startDatePicker.date, endDatePicker: endDatePicker.date, notificationDatePicker: noticationDatePicker.date) { (success) in
 
-        do {
-            let realm = try Realm()
-
-            eventModels.eventId = eventId
-            eventModels.notificationId = notificationId
-            eventModels.title = title
-            eventModels.place = place
-            eventModels.comment = comment
-            eventModels.editStartTime = startDatePicker.date
-            eventModels.editEndTime = endDatePicker.date
-            eventModels.editNotificationTime = noticationDatePicker.date
-            eventModels.date = dateFormat.string(from: startDatePicker.date)
-            eventModels.startTime = timeFormat.string(from: startDatePicker.date)
-            eventModels.endTime = timeFormat.string(from: endDatePicker.date)
-
-            try realm.write {
-                realm.add(eventModels)
+            if success {
+                print("イベントデータの保存に成功しました")
             }
-        } catch {
-            print("create todo error.")
         }
     }
 
     private func updateEvent(notificationId: String) {
-        dateFormat.dateFormat = "yyyy/MM/dd"
-        let timeFormat = DateFormatter()
-        timeFormat.dateFormat = "HH:mm"
-
+        guard let titleText = titleTextField.text else { return }
+        guard let commentText = commentTextField.text else { return }
+        guard let placeText = placeTextField.text else { return }
         guard let eventId = eventModel?.eventId else { return }
-        guard let title = titleTextField.text else { return }
-        guard let comment = commentTextField.text else { return }
-        guard let place = placeTextField.text else { return }
 
-        do {
-            let realm = try Realm()
+        Realm.updateEvent(eventId: eventId, notificationId: notificationId, title: titleText, place: placeText, comment: commentText, startDatePicker: startDatePicker.date, endDatePicker: endDatePicker.date, notificationDatePicker: noticationDatePicker.date) { success in
 
-            eventModels.eventId = eventId
-            eventModels.notificationId = notificationId
-            eventModels.title = title
-            eventModels.place = place
-            eventModels.comment = comment
-            eventModels.editStartTime = startDatePicker.date
-            eventModels.editEndTime = endDatePicker.date
-            eventModels.editNotificationTime = noticationDatePicker.date
-            eventModels.date = dateFormat.string(from: startDatePicker.date)
-            eventModels.startTime = timeFormat.string(from: startDatePicker.date)
-            eventModels.endTime = timeFormat.string(from: endDatePicker.date)
-
-            try realm.write {
-                realm.add(eventModels, update: .modified)
+            if success {
+                print("イベントデータの更新に成功しました")
             }
-        } catch {
-            print("create todo error.")
         }
     }
 
