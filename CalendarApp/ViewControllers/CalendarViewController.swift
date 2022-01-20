@@ -84,7 +84,6 @@ class CalendarViewController: UIViewController {
         rokuyouLabel.text = calculateRokuyo(date: todayDate)
         calendarInfoView.layer.borderWidth = 2.5
         calendarInfoView.layer.borderColor = UIColor.rgb(red: 235, green: 235, blue: 235).cgColor
-
     }
 
     private func setupCalendar() {
@@ -93,6 +92,10 @@ class CalendarViewController: UIViewController {
         calendar.scrollDirection = .horizontal
         calendar.layer.borderWidth = 2.5
         calendar.layer.borderColor = UIColor.rgb(red: 235, green: 235, blue: 235).cgColor
+        calendar.layer.shadowOffset = CGSize(width: 10.0, height: 5.0)
+        calendar.layer.shadowColor = UIColor.gray.cgColor
+        calendar.layer.shadowOpacity = 1.0
+        calendar.layer.shadowRadius = 8
         selectedWeekdayLabels()
     }
 
