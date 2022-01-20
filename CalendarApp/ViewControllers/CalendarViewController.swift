@@ -93,7 +93,7 @@ class CalendarViewController: UIViewController {
         calendar.scrollDirection = .horizontal
         calendar.layer.borderWidth = 2.5
         calendar.layer.borderColor = UIColor.rgb(red: 235, green: 235, blue: 235).cgColor
-        defaultWeekdayLabels()
+        selectedWeekdayLabels()
     }
 
     private func setupTodayDate() {
@@ -110,14 +110,25 @@ class CalendarViewController: UIViewController {
         }
     }
 
-    private func defaultWeekdayLabels() {
-        calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
-        calendar.calendarWeekdayView.weekdayLabels[1].text = "月"
-        calendar.calendarWeekdayView.weekdayLabels[2].text = "火"
-        calendar.calendarWeekdayView.weekdayLabels[3].text = "水"
-        calendar.calendarWeekdayView.weekdayLabels[4].text = "木"
-        calendar.calendarWeekdayView.weekdayLabels[5].text = "金"
-        calendar.calendarWeekdayView.weekdayLabels[6].text = "土"
+    private func selectedWeekdayLabels() {
+        if selectDayOfWeekMenuType == .sunday {
+            calendar.calendarWeekdayView.weekdayLabels[0].text = "日"
+            calendar.calendarWeekdayView.weekdayLabels[1].text = "月"
+            calendar.calendarWeekdayView.weekdayLabels[2].text = "火"
+            calendar.calendarWeekdayView.weekdayLabels[3].text = "水"
+            calendar.calendarWeekdayView.weekdayLabels[4].text = "木"
+            calendar.calendarWeekdayView.weekdayLabels[5].text = "金"
+            calendar.calendarWeekdayView.weekdayLabels[6].text = "土"
+
+        } else if selectDayOfWeekMenuType == .monday {
+            calendar.calendarWeekdayView.weekdayLabels[0].text = "月"
+            calendar.calendarWeekdayView.weekdayLabels[1].text = "火"
+            calendar.calendarWeekdayView.weekdayLabels[2].text = "水"
+            calendar.calendarWeekdayView.weekdayLabels[3].text = "木"
+            calendar.calendarWeekdayView.weekdayLabels[4].text = "金"
+            calendar.calendarWeekdayView.weekdayLabels[5].text = "土"
+            calendar.calendarWeekdayView.weekdayLabels[6].text = "日"
+        }
     }
 
     @objc private func tappedElementDropDownButton() {
@@ -172,8 +183,8 @@ class CalendarViewController: UIViewController {
 
         dayOfWeekMenu.append(UIAction(title: DayOfWeekType.sunday.rawValue, state: self.selectDayOfWeekMenuType == DayOfWeekType.sunday ? .on : .off, handler: { [weak self] _ in
             self?.calendar.firstWeekday = 1
-            self?.defaultWeekdayLabels()
             self?.selectDayOfWeekMenuType = .sunday
+            self?.selectedWeekdayLabels()
             self?.calendar.reloadData()
             self?.tappedDayOfWeekButton()
 
@@ -181,22 +192,14 @@ class CalendarViewController: UIViewController {
 
         dayOfWeekMenu.append(UIAction(title: DayOfWeekType.monday.rawValue, state: self.selectDayOfWeekMenuType == DayOfWeekType.monday ? .on : .off, handler: { [weak self] _ in
             self?.calendar.firstWeekday = 2
-            self?.calendar.calendarWeekdayView.weekdayLabels[0].text = "月"
-            self?.calendar.calendarWeekdayView.weekdayLabels[1].text = "火"
-            self?.calendar.calendarWeekdayView.weekdayLabels[2].text = "水"
-            self?.calendar.calendarWeekdayView.weekdayLabels[3].text = "木"
-            self?.calendar.calendarWeekdayView.weekdayLabels[4].text = "金"
-            self?.calendar.calendarWeekdayView.weekdayLabels[5].text = "土"
-            self?.calendar.calendarWeekdayView.weekdayLabels[6].text = "日"
-
             self?.selectDayOfWeekMenuType = .monday
+            self?.selectedWeekdayLabels()
             self?.calendar.reloadData()
             self?.tappedDayOfWeekButton()
 
         }))
         dayOfWeekSortButton.menu = UIMenu(title: "曜日順", options: .displayInline, children: dayOfWeekMenu)
         dayOfWeekSortButton.showsMenuAsPrimaryAction = true
-
     }
 
     @objc private func tappedScrollButton() {
