@@ -55,6 +55,9 @@ playground.xcworkspace
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
 Pods/
++ com.mono0926.LicensePlist/
++ com.mono0926.LicensePlist.latest_result.txt
++ com.mono0926.LicensePlist.plist
 #
 # Add this line if you want to avoid checking in source code from the Xcode workspace
 *.xcworkspace
