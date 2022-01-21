@@ -28,23 +28,44 @@
   
 ## 使用ライブラリ  
 - [FSCalendar](https://github.com/WenchaoD/FSCalendar)  
-- [RealmSwift](https://github.com/realm/realm-cocoa)  
-- [CalculateCalendarLogic](https://github.com/fumiyasac/handMadeCalendarAdvance)  
-- [TextFieldEffects](https://github.com/raulriera/TextFieldEffects)  
-- [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager)  
-- [PKHUD](https://github.com/pkluz/PKHUD)  
-- [SwiftLint](https://github.com/realm/SwiftLint)
-- [AppAuth](https://github.com/openid/AppAuth-iOS)  
-- [GTMAppAuth](https://github.com/google/GTMAppAuth)  
-- [GoogleAPIClientForREST/Calendar](https://github.com/google/google-api-objectivec-client-for-rest)  
+カレンダーの実装  
 
+- [RealmSwift](https://github.com/realm/realm-cocoa)  
+日付ごとのイベント管理  
+  
+- [CalculateCalendarLogic](https://github.com/fumiyasac/handMadeCalendarAdvance)  
+祝日判定  
+  
+- [TextFieldEffects](https://github.com/raulriera/TextFieldEffects)  
+TextFieldのUI  
+  
+- [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager)  
+キーボード表示時の画面のスライド  
+  
+- [PKHUD](https://github.com/pkluz/PKHUD)  
+通信時のローディングインジケーター  
+  
+- [SwiftLint](https://github.com/realm/SwiftLint)  
+ソースコードの品質管理  
+  
+- [AppAuth](https://github.com/openid/AppAuth-iOS)  
+OAuth2.0およびOpenIDConnectプロバイダーと通信するためのクライアントSDK  
+  
+- [GTMAppAuth](https://github.com/google/GTMAppAuth)  
+AppAuthでリクエストを認証するためGTMFetcherAuthorizationProtocolの実装を提供する  
+  
+- [GoogleAPIClientForREST/Calendar](https://github.com/google/google-api-objectivec-client-for-rest)  
+Googleの様々なAPI へのアクセス・データの取得などを簡単にできるようにしてくれるもの(今回はGoogleカレンダー)  
+  
+- [Google-Mobile-Ads-SDK](https://github.com/googleads/googleads-mobile-ios-examples)  
+Googleモバイル広告の最新世代で、洗練された広告フォーマットと、モバイル広告ネットワークや広告ソリューションにアクセスするため
   
 ## 開発環境  
 - Swift5.5.2  
 - Xcode13.2.1  
   
 ## スクリーンショット(iPhone12mini)  
-<img src="https://user-images.githubusercontent.com/65600700/149734705-82815666-31cc-4cbe-bb55-698ad97d44f9.PNG" width="250px">  <img src="https://user-images.githubusercontent.com/65600700/149734822-4ca4253b-4362-4ccc-bbfb-3f015875d32a.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/149734966-ed7f34bd-1ba1-4965-b1d8-afb879df609d.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/149735087-886919a0-b91a-44b0-b546-a3793c4cab83.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/149735203-87cebd7e-ca52-4cbb-937f-a65166ce372a.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/150107690-0e186811-5247-42aa-94e3-71bbd73412ba.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/150107750-4414d6dd-671b-4859-bdf9-a1cdfd704106.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/149735911-560f3061-ab86-4643-9582-ccf56b9ab476.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/149735986-ac748815-f7be-46ef-b8f1-44c490789dc1.PNG" width="250px"> 　<img src="https://user-images.githubusercontent.com/65600700/148356028-b716538b-e1d0-4c5d-a0f6-7ef4a8a28c2f.jpg" width="250px" height="530px">  
+<img src="https://user-images.githubusercontent.com/65600700/150466218-0b30e3b9-b481-4865-989e-af03e0bc0425.PNG" width="250px">  <img src="https://user-images.githubusercontent.com/65600700/150466355-fc8a48e5-95c4-40d8-8c60-3717a2381ea1.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/150466443-5d4b8bbc-2036-4f93-b035-0f8c2af023b8.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/150466491-5a29f00c-980b-44d9-9c22-4b503f3332ab.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/150466522-972b7acc-bf40-4fbc-8fd8-98cb67be5a94.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/150466562-e5d523fa-d036-46be-a8d3-e79bcb6485af.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/150466745-65fcb571-ffae-41ea-a8f5-dcc49f32843a.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/150107750-4414d6dd-671b-4859-bdf9-a1cdfd704106.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/149735986-ac748815-f7be-46ef-b8f1-44c490789dc1.PNG" width="250px"> 　<img src="https://user-images.githubusercontent.com/65600700/148356028-b716538b-e1d0-4c5d-a0f6-7ef4a8a28c2f.jpg" width="250px" height="530px">  
   
   
 
