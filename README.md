@@ -58,8 +58,11 @@ AppAuthでリクエストを認証するためGTMFetcherAuthorizationProtocolの
 Googleの様々なAPI へのアクセス・データの取得などを簡単にできるようにしてくれるもの(今回はGoogleカレンダー)  
   
 - [Google-Mobile-Ads-SDK](https://github.com/googleads/googleads-mobile-ios-examples)  
-Googleモバイル広告の最新世代で、洗練された広告フォーマットと、モバイル広告ネットワークや広告ソリューションにアクセスするため
+Googleモバイル広告の最新世代で、洗練された広告フォーマットと、モバイル広告ネットワークや広告ソリューションにアクセスするため  
   
+ - [LicensePlist](https://github.com/mono0926/LicensePlist#installation)  
+ CocoaPods、SwiftPMなどで管理しているライブラリのライセンス表示を自動的に生成するツール  
+   
 ## 開発環境  
 - Swift5.5.2  
 - Xcode13.2.1  
