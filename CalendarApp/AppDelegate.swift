@@ -9,6 +9,9 @@ import UIKit
 import IQKeyboardManagerSwift
 import AppAuth
 import GTMAppAuth
+import GoogleMobileAds
+import AppTrackingTransparency
+import AdSupport
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -19,6 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
+                GADMobileAds.sharedInstance().start(completionHandler: nil)
+            })
+        } else {
+            // Fallback on earlier versions
+            GADMobileAds.sharedInstance().start(completionHandler: nil)
+        }
 
         // プッシュ通知の許可を依頼する際のコード
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted: Bool, _: Error?) in

@@ -11,6 +11,7 @@ pod 'FSCalendar'
 pod 'GTMAppAuth'
 pod 'AppAuth'
 pod 'GoogleAPIClientForREST/Calendar'
+pod 'Google-Mobile-Ads-SDK'
 
   target 'CalendarAppTests' do
     inherit! :search_paths

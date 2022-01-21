@@ -10,6 +10,7 @@ import FSCalendar
 import CalculateCalendarLogic
 import RealmSwift
 import PKHUD
+import GoogleMobileAds
 
 class CalendarViewController: UIViewController {
 
@@ -44,6 +45,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet private weak var taskTableView: UITableView!
     @IBOutlet private weak var selectElementDropDownView: UIView!
     @IBOutlet private weak var calendarInfoView: UIView!
+    @IBOutlet private weak var bannerView: GADBannerView!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var calendarLabel: UILabel!
     @IBOutlet private weak var rokuyouLabel: UILabel!
@@ -68,6 +70,7 @@ class CalendarViewController: UIViewController {
 
         setupTodayDate()
         todayDateOrOtherDate()
+        setupBannerView()
 
     }
     // MARK: - Method
@@ -84,6 +87,21 @@ class CalendarViewController: UIViewController {
         rokuyouLabel.text = calculateRokuyo(date: todayDate)
         calendarInfoView.layer.borderWidth = 2.5
         calendarInfoView.layer.borderColor = UIColor.rgb(red: 235, green: 235, blue: 235).cgColor
+    }
+
+    private func setupBannerView() {
+        if let id = adUnitID(key: "banner") {
+            bannerView.adUnitID = id
+            bannerView.rootViewController = self
+            bannerView.load(GADRequest())
+        }
+    }
+
+    func adUnitID(key: String) -> String? {
+        guard let adUnitIDs = Bundle.main.object(forInfoDictionaryKey: "AdUnitIDs") as? [String: String] else {
+            return nil
+        }
+        return adUnitIDs[key]
     }
 
     private func setupCalendar() {
