@@ -60,6 +60,7 @@ PODS:
   - GTMSessionFetcher/Core (1.7.0)
   - GTMSessionFetcher/Full (1.7.0):
     - GTMSessionFetcher/Core (= 1.7.0)
+  - LicensePlist (3.16.0)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -74,6 +75,7 @@ DEPENDENCIES:
   - Google-Mobile-Ads-SDK
   - GoogleAPIClientForREST/Calendar
   - GTMAppAuth
+  - LicensePlist
 
 SPEC REPOS:
   trunk:
@@ -87,6 +89,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
+    - LicensePlist
     - nanopb
     - PromisesObjC
 
@@ -101,9 +104,10 @@ SPEC CHECKSUMS:
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
+  LicensePlist: f91b2c4bd3379379cdfc0541693c3af031b9bcb3
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
 
-PODFILE CHECKSUM: f9de2fa987c62cb70879aab1039bb026fc149540
+PODFILE CHECKSUM: 1b8b9d48a98f3996adda893857d4f66661fb9bc3
 
 COCOAPODS: 1.11.2

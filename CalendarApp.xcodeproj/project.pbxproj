@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		2D4A13331BB35C837699F0B1 /* Pods_CalendarApp_CalendarAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C249F81BA5DBBA623C968A6 /* Pods_CalendarApp_CalendarAppUITests.framework */; };
 		679CB76B19D8DFBC536B5350 /* Pods_CalendarApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5ABEA05192DFFCE69B96AC3 /* Pods_CalendarApp.framework */; };
+		D616937C279A90FE002EE7B0 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D616937B279A90FE002EE7B0 /* Realm */; };
+		D616937E279A90FE002EE7B0 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D616937D279A90FE002EE7B0 /* RealmSwift */; };
+		D6169381279A9112002EE7B0 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = D6169380279A9112002EE7B0 /* PKHUD */; };
+		D616938A279A9AB9002EE7B0 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D6169389279A9AB9002EE7B0 /* IQKeyboardManagerSwift */; };
+		D616938D279A9C0C002EE7B0 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = D616938C279A9C0C002EE7B0 /* TextFieldEffects */; };
+		D616938E279AABA2002EE7B0 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D66303A6279A782400D9181F /* Settings.bundle */; };
 		D6442EFE272662E600F774A6 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6442EFC272662E600F774A6 /* EventTableViewCell.swift */; };
 		D6442EFF272662E600F774A6 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6442EFD272662E600F774A6 /* EventTableViewCell.xib */; };
 		D64B0AAF2702DD5400845946 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0AAE2702DD5400845946 /* AppDelegate.swift */; };
@@ -38,18 +44,13 @@
 		D6AB7ABF2787F1E10072B6B6 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D6AB7ABE2787F1E10072B6B6 /* .swiftlint.yml */; };
 		D6AB7AC02787F22C0072B6B6 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D6AB7ABE2787F1E10072B6B6 /* .swiftlint.yml */; };
 		D6B36629278C5BD400442E76 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B36628278C5BD400442E76 /* UIColor-Extension.swift */; };
-		D6B3663D278FE9CB00442E76 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = D6B3663C278FE9CB00442E76 /* PKHUD */; };
 		D6B3663F2791461300442E76 /* GoogleCalendarSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B3663E2791461300442E76 /* GoogleCalendarSync.swift */; };
-		D6B798892797F4F800A056DC /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D6B798882797F4F800A056DC /* Realm */; };
-		D6B7988B2797F4F800A056DC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D6B7988A2797F4F800A056DC /* RealmSwift */; };
 		D6BA3E152711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
 		D6BA3E162711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
 		D6BA3E172711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
 		D6BA3E192711657000B48C05 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BA3E182711657000B48C05 /* AddEventViewController.swift */; };
 		D6BA3E1A2711657000B48C05 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BA3E182711657000B48C05 /* AddEventViewController.swift */; };
 		D6BA3E1B2711657000B48C05 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BA3E182711657000B48C05 /* AddEventViewController.swift */; };
-		D6BA3E212714089800B48C05 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = D6BA3E202714089800B48C05 /* TextFieldEffects */; };
-		D6BA3E242714116500B48C05 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D6BA3E232714116500B48C05 /* IQKeyboardManagerSwift */; };
 		D6BA3E27271BF97B00B48C05 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BA3E26271BF97B00B48C05 /* EventModel.swift */; };
 		D6BA3E28271BF97B00B48C05 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BA3E26271BF97B00B48C05 /* EventModel.swift */; };
 		D6BA3E29271BF97B00B48C05 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BA3E26271BF97B00B48C05 /* EventModel.swift */; };
@@ -118,6 +119,7 @@
 		D64B0ACF2702DD5500845946 /* CalendarAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAppUITests.swift; sourceTree = "<group>"; };
 		D64B0AD12702DD5500845946 /* CalendarAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D66303A3279927F700D9181F /* Realm-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm-Extension.swift"; sourceTree = "<group>"; };
+		D66303A6279A782400D9181F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D6738F692786995E0000EAC6 /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6738F6A2786995E0000EAC6 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		D6738F6C2786995E0000EAC6 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -144,12 +146,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6B7988B2797F4F800A056DC /* RealmSwift in Frameworks */,
+				D616938A279A9AB9002EE7B0 /* IQKeyboardManagerSwift in Frameworks */,
+				D616937E279A90FE002EE7B0 /* RealmSwift in Frameworks */,
+				D6169381279A9112002EE7B0 /* PKHUD in Frameworks */,
+				D616938D279A9C0C002EE7B0 /* TextFieldEffects in Frameworks */,
+				D616937C279A90FE002EE7B0 /* Realm in Frameworks */,
 				679CB76B19D8DFBC536B5350 /* Pods_CalendarApp.framework in Frameworks */,
-				D6B3663D278FE9CB00442E76 /* PKHUD in Frameworks */,
-				D6BA3E212714089800B48C05 /* TextFieldEffects in Frameworks */,
-				D6BA3E242714116500B48C05 /* IQKeyboardManagerSwift in Frameworks */,
-				D6B798892797F4F800A056DC /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +244,7 @@
 				D64B0AB72702DD5500845946 /* Assets.xcassets */,
 				D64B0AB92702DD5500845946 /* LaunchScreen.storyboard */,
 				D64B0ABC2702DD5500845946 /* Info.plist */,
+				D66303A6279A782400D9181F /* Settings.bundle */,
 			);
 			path = CalendarApp;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				D64B0AA92702DD5400845946 /* Resources */,
 				56D0C11D93EA47006B1FA818 /* [CP] Embed Pods Frameworks */,
 				D6738F7A2786995F0000EAC6 /* Embed App Extensions */,
+				D66303A5279A77DD00D9181F /* LicensePlist */,
 			);
 			buildRules = (
 			);
@@ -370,11 +374,11 @@
 			);
 			name = CalendarApp;
 			packageProductDependencies = (
-				D6BA3E202714089800B48C05 /* TextFieldEffects */,
-				D6BA3E232714116500B48C05 /* IQKeyboardManagerSwift */,
-				D6B3663C278FE9CB00442E76 /* PKHUD */,
-				D6B798882797F4F800A056DC /* Realm */,
-				D6B7988A2797F4F800A056DC /* RealmSwift */,
+				D616937B279A90FE002EE7B0 /* Realm */,
+				D616937D279A90FE002EE7B0 /* RealmSwift */,
+				D6169380279A9112002EE7B0 /* PKHUD */,
+				D6169389279A9AB9002EE7B0 /* IQKeyboardManagerSwift */,
+				D616938C279A9C0C002EE7B0 /* TextFieldEffects */,
 			);
 			productName = CalendarApp;
 			productReference = D64B0AAB2702DD5400845946 /* CalendarApp.app */;
@@ -474,10 +478,10 @@
 			);
 			mainGroup = D64B0AA22702DD5400845946;
 			packageReferences = (
-				D6BA3E1F2714089800B48C05 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
-				D6BA3E222714116500B48C05 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
-				D6B3663B278FE9CB00442E76 /* XCRemoteSwiftPackageReference "PKHUD" */,
-				D6B798872797F4F800A056DC /* XCRemoteSwiftPackageReference "realm-swift" */,
+				D616937A279A90FE002EE7B0 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				D616937F279A9112002EE7B0 /* XCRemoteSwiftPackageReference "PKHUD" */,
+				D6169388279A9AB9002EE7B0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				D616938B279A9C0C002EE7B0 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 			);
 			productRefGroup = D64B0AAC2702DD5400845946 /* Products */;
 			projectDirPath = "";
@@ -502,6 +506,7 @@
 				D64B0AB82702DD5500845946 /* Assets.xcassets in Resources */,
 				D64B0AB62702DD5400845946 /* Calendar.storyboard in Resources */,
 				D6BA3E152711655300B48C05 /* AddSchedule.storyboard in Resources */,
+				D616938E279AABA2002EE7B0 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,6 +615,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D66303A5279A77DD00D9181F /* LicensePlist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = LicensePlist;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n    ${PODS_ROOT}/LicensePlist/license-plist --output-path $PRODUCT_NAME/Settings.bundle\nfi\n";
 		};
 		D6AB7ABD2787F0D80072B6B6 /* SwiftLint Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1117,7 +1140,7 @@
 				D64B0AD42702DD5500845946 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		D64B0AD52702DD5500845946 /* Build configuration list for PBXNativeTarget "CalendarApp" */ = {
 			isa = XCConfigurationList;
@@ -1126,7 +1149,7 @@
 				D64B0AD72702DD5500845946 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		D64B0AD82702DD5500845946 /* Build configuration list for PBXNativeTarget "CalendarAppTests" */ = {
 			isa = XCConfigurationList;
@@ -1135,7 +1158,7 @@
 				D64B0ADA2702DD5500845946 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		D64B0ADB2702DD5500845946 /* Build configuration list for PBXNativeTarget "CalendarAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -1144,7 +1167,7 @@
 				D64B0ADD2702DD5500845946 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		D6738F7D2786995F0000EAC6 /* Build configuration list for PBXNativeTarget "WidgetExtension" */ = {
 			isa = XCConfigurationList;
@@ -1153,12 +1176,20 @@
 				D6738F7C2786995F0000EAC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D6B3663B278FE9CB00442E76 /* XCRemoteSwiftPackageReference "PKHUD" */ = {
+		D616937A279A90FE002EE7B0 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.2.1;
+			};
+		};
+		D616937F279A9112002EE7B0 /* XCRemoteSwiftPackageReference "PKHUD" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pkluz/PKHUD";
 			requirement = {
@@ -1166,57 +1197,49 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		D6B798872797F4F800A056DC /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.5.1;
-			};
-		};
-		D6BA3E1F2714089800B48C05 /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/raulriera/TextFieldEffects";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		D6BA3E222714116500B48C05 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+		D6169388279A9AB9002EE7B0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
+				branch = master;
+				kind = branch;
+			};
+		};
+		D616938B279A9C0C002EE7B0 /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/raulriera/TextFieldEffects";
+			requirement = {
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D6B3663C278FE9CB00442E76 /* PKHUD */ = {
+		D616937B279A90FE002EE7B0 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D6B3663B278FE9CB00442E76 /* XCRemoteSwiftPackageReference "PKHUD" */;
-			productName = PKHUD;
-		};
-		D6B798882797F4F800A056DC /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D6B798872797F4F800A056DC /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = D616937A279A90FE002EE7B0 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
 		};
-		D6B7988A2797F4F800A056DC /* RealmSwift */ = {
+		D616937D279A90FE002EE7B0 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D6B798872797F4F800A056DC /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = D616937A279A90FE002EE7B0 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
-		D6BA3E202714089800B48C05 /* TextFieldEffects */ = {
+		D6169380279A9112002EE7B0 /* PKHUD */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D6BA3E1F2714089800B48C05 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
-			productName = TextFieldEffects;
+			package = D616937F279A9112002EE7B0 /* XCRemoteSwiftPackageReference "PKHUD" */;
+			productName = PKHUD;
 		};
-		D6BA3E232714116500B48C05 /* IQKeyboardManagerSwift */ = {
+		D6169389279A9AB9002EE7B0 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D6BA3E222714116500B48C05 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			package = D6169388279A9AB9002EE7B0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		D616938C279A9C0C002EE7B0 /* TextFieldEffects */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D616938B279A9C0C002EE7B0 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
+			productName = TextFieldEffects;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

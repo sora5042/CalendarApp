@@ -12,6 +12,7 @@ pod 'GTMAppAuth'
 pod 'AppAuth'
 pod 'GoogleAPIClientForREST/Calendar'
 pod 'Google-Mobile-Ads-SDK'
+pod 'LicensePlist'
 
   target 'CalendarAppTests' do
     inherit! :search_paths
