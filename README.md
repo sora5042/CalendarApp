@@ -28,16 +28,37 @@
   
 ## 使用ライブラリ  
 - [FSCalendar](https://github.com/WenchaoD/FSCalendar)  
-- [RealmSwift](https://github.com/realm/realm-cocoa)  
-- [CalculateCalendarLogic](https://github.com/fumiyasac/handMadeCalendarAdvance)  
-- [TextFieldEffects](https://github.com/raulriera/TextFieldEffects)  
-- [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager)  
-- [PKHUD](https://github.com/pkluz/PKHUD)  
-- [SwiftLint](https://github.com/realm/SwiftLint)
-- [AppAuth](https://github.com/openid/AppAuth-iOS)  
-- [GTMAppAuth](https://github.com/google/GTMAppAuth)  
-- [GoogleAPIClientForREST/Calendar](https://github.com/google/google-api-objectivec-client-for-rest)  
+カレンダーの実装  
 
+- [RealmSwift](https://github.com/realm/realm-cocoa)  
+日付ごとのイベント管理  
+  
+- [CalculateCalendarLogic](https://github.com/fumiyasac/handMadeCalendarAdvance)  
+祝日判定  
+  
+- [TextFieldEffects](https://github.com/raulriera/TextFieldEffects)  
+TextFieldのUI  
+  
+- [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager)  
+キーボード表示時の画面のスライド  
+  
+- [PKHUD](https://github.com/pkluz/PKHUD)  
+通信時のローディングインジケーター  
+  
+- [SwiftLint](https://github.com/realm/SwiftLint)  
+ソースコードの品質管理  
+  
+- [AppAuth](https://github.com/openid/AppAuth-iOS)  
+OAuth2.0およびOpenIDConnectプロバイダーと通信するためのクライアントSDK  
+  
+- [GTMAppAuth](https://github.com/google/GTMAppAuth)  
+AppAuthでリクエストを認証するためGTMFetcherAuthorizationProtocolの実装を提供する  
+  
+- [GoogleAPIClientForREST/Calendar](https://github.com/google/google-api-objectivec-client-for-rest)  
+Googleの様々なAPI へのアクセス・データの取得などを簡単にできるようにしてくれるもの(今回はGoogleカレンダー)  
+  
+- [Google-Mobile-Ads-SDK](https://github.com/googleads/googleads-mobile-ios-examples)  
+Googleモバイル広告の最新世代で、洗練された広告フォーマットと、モバイル広告ネットワークや広告ソリューションにアクセスするため
   
 ## 開発環境  
 - Swift5.5.2  
