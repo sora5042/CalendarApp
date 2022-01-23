@@ -15,12 +15,11 @@ import GoogleAPIClientForREST
 class GoogleCalendarSync {
 
     static var authorization: GTMAppAuthFetcherAuthorization?
-    static let configuration = GTMAppAuthFetcherAuthorization.configurationForGoogle()
-    static let clientID = "579964048764-q3nu1gpee4h5hjrqa4ubppvvg3g3jrnt.apps.googleusercontent.com"
     static let redirectURL = "com.googleusercontent.apps.579964048764-q3nu1gpee4h5hjrqa4ubppvvg3g3jrnt:/oauthredirect"
 
     typealias ShowAuthorizationDialogCallBack = ((Error?) -> Void)
     static func showAuthorizationDialog(callBack: @escaping ShowAuthorizationDialogCallBack) {
+        let clientID = "579964048764-q3nu1gpee4h5hjrqa4ubppvvg3g3jrnt.apps.googleusercontent.com"
         let scopes = ["https://www.googleapis.com/auth/calendar", "https://www.googleapis.com/auth/calendar.readonly", "https://www.googleapis.com/auth/calendar.events", "https://www.googleapis.com/auth/calendar.events.readonly"]
 
         let configuration = GTMAppAuthFetcherAuthorization.configurationForGoogle()
