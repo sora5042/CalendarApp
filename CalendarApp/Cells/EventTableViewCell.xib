@@ -22,7 +22,7 @@
                             <constraint firstAttribute="height" constant="30" id="Tcx-ND-zLy"/>
                             <constraint firstAttribute="width" constant="196" id="fSG-ti-OKp"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -73,7 +73,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大阪府" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPd-f2-hJf">
-                        <rect key="frame" x="230" y="66" width="75" height="15"/>
+                        <rect key="frame" x="230" y="66.333333333333329" width="75" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="75" id="DCi-PD-RcK"/>
                         </constraints>
