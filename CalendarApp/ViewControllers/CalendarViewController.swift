@@ -28,8 +28,9 @@ class CalendarViewController: UIViewController {
 
     private let realm = try! Realm()
     // tablecellのイベントデータの表示用
-    var eventResults: Results<EventModel>!
+    var eventResults: Results<EventModel>?
     // カレンダーの緑ぽち用
+    var allEvent: Results<EventModel>!
     var eventCounts: Results<EventModel>!
 
     private let cellId = "cellId"
@@ -37,8 +38,8 @@ class CalendarViewController: UIViewController {
     private var date = String()
     private let todayDate = Date()
     private var todayString = String()
-    var selectedMenuType = MenuType.month
-    var selectDayOfWeekMenuType = DayOfWeekType.sunday
+    private var selectedMenuType = MenuType.month
+    private var selectDayOfWeekMenuType = DayOfWeekType.sunday
 
     @IBOutlet private weak var calendar: FSCalendar!
     @IBOutlet private weak var calendarHeight: NSLayoutConstraint!
@@ -62,7 +63,6 @@ class CalendarViewController: UIViewController {
         setupTodayDate()
         setupView()
         setupCalendar()
-        filterEvent(date: todayString)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -71,7 +71,6 @@ class CalendarViewController: UIViewController {
         setupTodayDate()
         todayDateOrOtherDate()
         setupBannerView()
-
     }
     // MARK: - Method
     private func setupView() {
@@ -97,7 +96,7 @@ class CalendarViewController: UIViewController {
         }
     }
 
-    func adUnitID(key: String) -> String? {
+    private func adUnitID(key: String) -> String? {
         guard let adUnitIDs = Bundle.main.object(forInfoDictionaryKey: "AdUnitIDs") as? [String: String] else {
             return nil
         }
@@ -125,9 +124,11 @@ class CalendarViewController: UIViewController {
     private func todayDateOrOtherDate() {
         if date.isEmpty {
             filterEvent(date: todayString)
+            taskTableView.reloadData()
             return
         } else {
             filterEvent(date: date)
+            taskTableView.reloadData()
         }
     }
 
@@ -292,12 +293,15 @@ class CalendarViewController: UIViewController {
     }
 
     private func fetchEventModels() {
-        eventCounts = realm.objects(EventModel.self)
+        allEvent = realm.objects(EventModel.self)
+    }
+
+    private func fetchEventCounts(date: String) {
+        eventCounts = realm.objects(EventModel.self).filter("date == '\(date)'")
     }
 
     private func filterEvent(date: String) {
         eventResults = realm.objects(EventModel.self).filter("date == '\(date)'").sorted(byKeyPath: "editStartTime", ascending: true)
-        taskTableView.reloadData()
     }
 
     private func calculateRokuyo(date: Date) -> String {
@@ -346,14 +350,14 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventResults.count
+        return eventResults?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = taskTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? EventTableViewCell {
             cell.delegate = self
             cell.alertDelegate = self
-            cell.eventModel = eventResults[indexPath.row]
+            cell.eventModel = eventResults?[indexPath.row]
             return cell
         }
         return UITableViewCell()
@@ -362,7 +366,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "AddSchedule", bundle: nil)
         if let addEventViewController = storyboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as? AddEventViewController {
-            addEventViewController.eventModel = eventResults[indexPath.row]
+            addEventViewController.eventModel = eventResults?[indexPath.row]
             addEventViewController.date = date
             addEventViewController.modalPresentationStyle = .fullScreen
             present(addEventViewController, animated: true, completion: nil)
@@ -396,6 +400,7 @@ extension CalendarViewController: EventTableViewCellDelegate {
 extension CalendarViewController: AddEventViewControllerDelegate {
     func event(addEvent: EventModel) {
         filterEvent(date: addEvent.date)
+        taskTableView.reloadData()
     }
 }
 
@@ -421,6 +426,7 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
 
         self.date = date.toStringWithCurrentLocale()
         filterEvent(date: date.toStringWithCurrentLocale())
+        taskTableView.reloadData()
     }
 
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
@@ -428,12 +434,13 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         dateFormat.dateFormat = "yyyy/MM/dd"
 
         let date = dateFormat.string(from: date)
+        fetchEventCounts(date: date)
         var hasEvent: Bool = false
-        for eventModel in eventCounts where eventModel.date == date {
+        for eventModel in allEvent where eventModel.date == date {
             hasEvent = true
         }
         if hasEvent {
-            return 1
+            return eventCounts.count
         } else {
             return 0
         }
