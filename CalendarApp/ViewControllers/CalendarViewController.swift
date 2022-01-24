@@ -106,6 +106,7 @@ class CalendarViewController: UIViewController {
     private func setupCalendar() {
         calendar.dataSource = self
         calendar.delegate = self
+        calendar.swipeToChooseGesture.isEnabled = true
         calendar.scrollDirection = .horizontal
         calendar.layer.borderWidth = 2.5
         calendar.layer.borderColor = UIColor.rgb(red: 235, green: 235, blue: 235).cgColor
@@ -423,7 +424,6 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
         let day = tmpDate.component(.day, from: date)
         dateLabel.text = "\(year)年\(month)月\(day)日"
         rokuyouLabel.text = calculateRokuyo(date: date)
-
         self.date = date.toStringWithCurrentLocale()
         filterEvent(date: date.toStringWithCurrentLocale())
         taskTableView.reloadData()
