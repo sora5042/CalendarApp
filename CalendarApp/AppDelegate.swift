@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
 
         // プッシュ通知の許可を依頼する際のコード
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted: Bool, _: Error?) in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted: Bool, _: Error?) in
             // [.alert, .badge, .sound]と指定されているので、「アラート、バッジ、サウンド」の3つに対しての許可をリクエストした
             if granted {
                 // 「許可」が押された場合
@@ -50,8 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             [
                 UNNotificationPresentationOptions.banner,
                 UNNotificationPresentationOptions.list,
-                UNNotificationPresentationOptions.sound,
-                UNNotificationPresentationOptions.badge
+                UNNotificationPresentationOptions.sound
             ]
         )
     }
