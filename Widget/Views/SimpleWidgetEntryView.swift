@@ -17,7 +17,7 @@ struct SimpleWidgetEntryView: View {
                     .bold()
                     .foregroundColor(.init(red: 255, green: 255, blue: 255))
                     .padding(.horizontal, 30)
-                    .background(Rectangle().fill(Color.green))
+                    .background(Rectangle().fill(Color(red: 0.3, green: 1, blue: 0.5)))
                 Text(getDay())
                     .bold()
                     .foregroundColor(Color.black)
@@ -25,7 +25,7 @@ struct SimpleWidgetEntryView: View {
                     .font(.largeTitle)
                     .foregroundColor(Color.black)
             }
-            .background(Rectangle().fill(Color.init(red: 200, green: 200, blue: 200)))
+            .background(Rectangle().fill(Color(red: 2, green: 2, blue: 2)))
             .padding(20)
             .clipShape(Circle())
             .shadow(color: .gray, radius: 5, x: 5, y: 5)
