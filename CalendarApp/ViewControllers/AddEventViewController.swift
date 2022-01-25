@@ -116,9 +116,10 @@ class AddEventViewController: UIViewController {
     @objc private func tappedSaveButton() {
         dateFormat.dateFormat = "yyyy/MM/dd"
         guard let title = titleTextField.text else { return }
+        let calendarViewController = CalendarViewController()
 
         if selectedSwitchType == .on {
-            GoogleCalendarSync.add(eventName: title, startDateTime: startDatePicker.date, endDateTime: endDatePicker.date)
+            calendarViewController.add(eventName: title, startDateTime: startDatePicker.date, endDateTime: endDatePicker.date)
         } else {
         }
 

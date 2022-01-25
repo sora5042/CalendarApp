@@ -26,6 +26,7 @@
 		D64B0AC62702DD5500845946 /* CalendarAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0AC52702DD5500845946 /* CalendarAppTests.swift */; };
 		D64B0AD02702DD5500845946 /* CalendarAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0ACF2702DD5500845946 /* CalendarAppUITests.swift */; };
 		D64B0AD22702DD5500845946 /* CalendarAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0AD12702DD5500845946 /* CalendarAppUITestsLaunchTests.swift */; };
+		D65FFF9F279FC4D00070D44A /* StandardCalendarAppSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65FFF9E279FC4D00070D44A /* StandardCalendarAppSync.swift */; };
 		D66303A4279927F700D9181F /* Realm-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66303A3279927F700D9181F /* Realm-Extension.swift */; };
 		D6738F6B2786995E0000EAC6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6738F6A2786995E0000EAC6 /* WidgetKit.framework */; };
 		D6738F6D2786995E0000EAC6 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6738F6C2786995E0000EAC6 /* SwiftUI.framework */; };
@@ -118,6 +119,7 @@
 		D64B0ACB2702DD5500845946 /* CalendarAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64B0ACF2702DD5500845946 /* CalendarAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAppUITests.swift; sourceTree = "<group>"; };
 		D64B0AD12702DD5500845946 /* CalendarAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D65FFF9E279FC4D00070D44A /* StandardCalendarAppSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardCalendarAppSync.swift; sourceTree = "<group>"; };
 		D66303A3279927F700D9181F /* Realm-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm-Extension.swift"; sourceTree = "<group>"; };
 		D66303A6279A782400D9181F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D6738F692786995E0000EAC6 /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -309,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				D6B3663E2791461300442E76 /* GoogleCalendarSync.swift */,
+				D65FFF9E279FC4D00070D44A /* StandardCalendarAppSync.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 			files = (
 				D6839D1427858E7000805816 /* DrawView.swift in Sources */,
 				D6B36629278C5BD400442E76 /* UIColor-Extension.swift in Sources */,
+				D65FFF9F279FC4D00070D44A /* StandardCalendarAppSync.swift in Sources */,
 				D6442EFE272662E600F774A6 /* EventTableViewCell.swift in Sources */,
 				D66303A4279927F700D9181F /* Realm-Extension.swift in Sources */,
 				D64B0AB32702DD5400845946 /* CalendarViewController.swift in Sources */,
@@ -919,6 +923,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CalendarApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Re:スケ";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "標準カレンダーアプリにアクセスするために許可を頂きたいです。これによりカレンダーアプリの予定を同期することができます。";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "「許可」を押すと、よりお客様に適した広告が表示されます。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Calendar;
@@ -954,6 +960,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CalendarApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Re:スケ";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "標準カレンダーアプリにアクセスするために許可を頂きたいです。これによりカレンダーアプリの予定を同期することができます。";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "「許可」を押すと、よりお客様に適した広告が表示されます。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Calendar;

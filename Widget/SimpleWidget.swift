@@ -17,7 +17,7 @@ struct SimpleWidget: Widget {
         StaticConfiguration(kind: kind, provider: SimpleWidgetTimeline()) { entry in
             SimpleWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Calendarウィジェット")
+        .configurationDisplayName("Re:スケウィジェット")
         .description("カレンダーのウィジェットです")
     }
 }

@@ -108,4 +108,34 @@ extension Realm {
         }
 
     }
+
+    static func iOSCalendar(eventId: String, name: String?, startDate: Date, endDate: Date, completion: @escaping (Bool) -> Void) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        let timeFormat = DateFormatter()
+        timeFormat.dateFormat = "HH:mm"
+
+        guard let name = name else { return }
+        let eventId = eventId
+
+        do {
+            let realm = try Realm()
+            let eventModels = EventModel()
+
+            try realm.write {
+                eventModels.eventId = eventId
+                eventModels.title = name
+                eventModels.editStartTime = startDate
+                eventModels.editEndTime = endDate
+                eventModels.date = dateFormatter.string(from: startDate)
+                eventModels.startTime = timeFormat.string(from: startDate)
+                eventModels.endTime = timeFormat.string(from: endDate)
+                realm.add(eventModels, update: .modified)
+            }
+        } catch {
+            print("create todo error.")
+        }
+
+    }
+
 }
