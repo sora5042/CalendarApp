@@ -71,11 +71,8 @@ class StandardCalendarAppSync {
 
         var eventArray: [EKEvent] = []
         eventArray = eventStore.events(matching: predicate)
-        print("eventArray", eventArray)
 
         for events in eventArray {
-            print("events", events)
-            print("eventId", events.eventIdentifier)
             let title = events.title
             let eventId = events.eventIdentifier ?? ""
             let startDate = events.startDate ?? Date()

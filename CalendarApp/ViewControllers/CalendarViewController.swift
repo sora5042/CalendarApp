@@ -115,7 +115,7 @@ class CalendarViewController: UIViewController {
         calendar.swipeToChooseGesture.isEnabled = true
         calendar.scrollDirection = .horizontal
         calendar.layer.borderWidth = 2.5
-        calendar.layer.borderColor = UIColor.rgb(red: 235, green: 235, blue: 235).cgColor
+        calendar.layer.borderColor = UIColor(named: "borderColor")?.cgColor
         calendar.layer.shadowOffset = CGSize(width: 18.0, height: 8.0)
         calendar.layer.shadowColor = UIColor(named: "shadow")?.cgColor
         calendar.layer.shadowOpacity = 1.0
