@@ -90,8 +90,8 @@ class CalendarViewController: UIViewController {
         bulkDeleteButton.addTarget(self, action: #selector(tappedBulkDeleteButton), for: .touchUpInside)
         dayOfWeekSortButton.addTarget(self, action: #selector(tappedDayOfWeekButton), for: .touchUpInside)
         rokuyouLabel.text = calculateRokuyo(date: todayDate)
-        calendarInfoView.layer.borderWidth = 2.5
-        calendarInfoView.layer.borderColor = UIColor(named: "borderColor")?.cgColor
+        calendarInfoView.layer.borderWidth = 2.3
+        calendarInfoView.layer.borderColor = UIColor(named: "calendarInfoViewBorder")?.cgColor
     }
 
     private func setupBannerView() {
@@ -126,7 +126,7 @@ class CalendarViewController: UIViewController {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         calendar.layer.shadowColor = UIColor(named: "shadow")?.cgColor
-        calendarInfoView.layer.borderColor = UIColor(named: "borderColor")?.cgColor
+        calendarInfoView.layer.borderColor = UIColor(named: "calendarInfoViewBorder")?.cgColor
         calendar.layer.borderColor = UIColor(named: "borderColor")?.cgColor
     }
 
