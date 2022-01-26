@@ -58,6 +58,8 @@ class AddEventViewController: UIViewController {
 
         dateFormat.dateFormat = "yyyy/MM/dd"
         let datePicker = dateFormat.date(from: date)
+        startDatePicker.setValue(UIColor(named: "textColor"), forKeyPath: "textColor")
+        endDatePicker.setValue(UIColor(named: "textColor"), forKeyPath: "textColor")
         startDatePicker.date = datePicker ?? Date()
         endDatePicker.date = datePicker ?? Date()
         notificationDatePicker.date = datePicker ?? Date()
@@ -78,25 +80,25 @@ class AddEventViewController: UIViewController {
 
         titleTextField.text = eventModel?.title
         titleTextField.placeholderFontScale = 0.9
-        titleTextField.placeholderColor = .darkGray
+        titleTextField.placeholderColor = .lightGray
         titleTextField.borderInactiveColor = .lightGray
-        titleTextField.borderActiveColor = UIColor.rgb(red: 0, green: 230, blue: 0)
+        titleTextField.borderActiveColor = UIColor(named: "textFieldBorderActiveColor")
         titleView.layer.borderWidth = 1.2
         titleView.layer.borderColor = UIColor.lightGray.cgColor
 
         placeTextField.text = eventModel?.place
         placeTextField.placeholderFontScale = 0.9
-        placeTextField.placeholderColor = .darkGray
+        placeTextField.placeholderColor = .lightGray
         placeTextField.borderInactiveColor = .lightGray
-        placeTextField.borderActiveColor = UIColor.rgb(red: 0, green: 230, blue: 0)
+        placeTextField.borderActiveColor = UIColor(named: "textFieldBorderActiveColor")
         placeView.layer.borderWidth = 1.2
         placeView.layer.borderColor = UIColor.lightGray.cgColor
 
         commentTextField.text = eventModel?.comment
         commentTextField.placeholderFontScale = 0.9
-        commentTextField.placeholderColor = .darkGray
+        commentTextField.placeholderColor = .lightGray
         commentTextField.borderInactiveColor = .lightGray
-        commentTextField.borderActiveColor = UIColor.rgb(red: 0, green: 230, blue: 0)
+        commentTextField.borderActiveColor = UIColor(named: "textFieldBorderActiveColor")
         commentView.layer.borderWidth = 1.2
         commentView.layer.borderColor = UIColor.lightGray.cgColor
     }
@@ -246,10 +248,6 @@ class AddEventViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         self.view.endEditing(true)
-    }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .darkContent
     }
 
     override var shouldAutorotate: Bool {

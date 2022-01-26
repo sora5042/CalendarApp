@@ -9,11 +9,6 @@
 /* Begin PBXBuildFile section */
 		2D4A13331BB35C837699F0B1 /* Pods_CalendarApp_CalendarAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C249F81BA5DBBA623C968A6 /* Pods_CalendarApp_CalendarAppUITests.framework */; };
 		679CB76B19D8DFBC536B5350 /* Pods_CalendarApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5ABEA05192DFFCE69B96AC3 /* Pods_CalendarApp.framework */; };
-		D616937C279A90FE002EE7B0 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D616937B279A90FE002EE7B0 /* Realm */; };
-		D616937E279A90FE002EE7B0 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D616937D279A90FE002EE7B0 /* RealmSwift */; };
-		D6169381279A9112002EE7B0 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = D6169380279A9112002EE7B0 /* PKHUD */; };
-		D616938A279A9AB9002EE7B0 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D6169389279A9AB9002EE7B0 /* IQKeyboardManagerSwift */; };
-		D616938D279A9C0C002EE7B0 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = D616938C279A9C0C002EE7B0 /* TextFieldEffects */; };
 		D616938E279AABA2002EE7B0 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D66303A6279A782400D9181F /* Settings.bundle */; };
 		D6442EFE272662E600F774A6 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6442EFC272662E600F774A6 /* EventTableViewCell.swift */; };
 		D6442EFF272662E600F774A6 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6442EFD272662E600F774A6 /* EventTableViewCell.xib */; };
@@ -28,6 +23,11 @@
 		D64B0AD22702DD5500845946 /* CalendarAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0AD12702DD5500845946 /* CalendarAppUITestsLaunchTests.swift */; };
 		D65FFF9F279FC4D00070D44A /* StandardCalendarAppSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65FFF9E279FC4D00070D44A /* StandardCalendarAppSync.swift */; };
 		D65FFFA127A019FC0070D44A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D65FFFA027A019FC0070D44A /* Colors.xcassets */; };
+		D65FFFA427A144990070D44A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D65FFFA327A144990070D44A /* Realm */; };
+		D65FFFA627A144990070D44A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D65FFFA527A144990070D44A /* RealmSwift */; };
+		D65FFFA927A145080070D44A /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = D65FFFA827A145080070D44A /* PKHUD */; };
+		D65FFFAC27A1451F0070D44A /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D65FFFAB27A1451F0070D44A /* IQKeyboardManagerSwift */; };
+		D65FFFAF27A145320070D44A /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = D65FFFAE27A145320070D44A /* TextFieldEffects */; };
 		D66303A4279927F700D9181F /* Realm-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66303A3279927F700D9181F /* Realm-Extension.swift */; };
 		D6738F6B2786995E0000EAC6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6738F6A2786995E0000EAC6 /* WidgetKit.framework */; };
 		D6738F6D2786995E0000EAC6 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6738F6C2786995E0000EAC6 /* SwiftUI.framework */; };
@@ -148,12 +148,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D616938A279A9AB9002EE7B0 /* IQKeyboardManagerSwift in Frameworks */,
-				D616937E279A90FE002EE7B0 /* RealmSwift in Frameworks */,
-				D6169381279A9112002EE7B0 /* PKHUD in Frameworks */,
-				D616938D279A9C0C002EE7B0 /* TextFieldEffects in Frameworks */,
-				D616937C279A90FE002EE7B0 /* Realm in Frameworks */,
+				D65FFFA627A144990070D44A /* RealmSwift in Frameworks */,
+				D65FFFA927A145080070D44A /* PKHUD in Frameworks */,
 				679CB76B19D8DFBC536B5350 /* Pods_CalendarApp.framework in Frameworks */,
+				D65FFFAF27A145320070D44A /* TextFieldEffects in Frameworks */,
+				D65FFFA427A144990070D44A /* Realm in Frameworks */,
+				D65FFFAC27A1451F0070D44A /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,11 +377,11 @@
 			);
 			name = CalendarApp;
 			packageProductDependencies = (
-				D616937B279A90FE002EE7B0 /* Realm */,
-				D616937D279A90FE002EE7B0 /* RealmSwift */,
-				D6169380279A9112002EE7B0 /* PKHUD */,
-				D6169389279A9AB9002EE7B0 /* IQKeyboardManagerSwift */,
-				D616938C279A9C0C002EE7B0 /* TextFieldEffects */,
+				D65FFFA327A144990070D44A /* Realm */,
+				D65FFFA527A144990070D44A /* RealmSwift */,
+				D65FFFA827A145080070D44A /* PKHUD */,
+				D65FFFAB27A1451F0070D44A /* IQKeyboardManagerSwift */,
+				D65FFFAE27A145320070D44A /* TextFieldEffects */,
 			);
 			productName = CalendarApp;
 			productReference = D64B0AAB2702DD5400845946 /* CalendarApp.app */;
@@ -481,10 +481,10 @@
 			);
 			mainGroup = D64B0AA22702DD5400845946;
 			packageReferences = (
-				D616937A279A90FE002EE7B0 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				D616937F279A9112002EE7B0 /* XCRemoteSwiftPackageReference "PKHUD" */,
-				D6169388279A9AB9002EE7B0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
-				D616938B279A9C0C002EE7B0 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
+				D65FFFA227A144990070D44A /* XCRemoteSwiftPackageReference "realm-swift" */,
+				D65FFFA727A145080070D44A /* XCRemoteSwiftPackageReference "PKHUD" */,
+				D65FFFAA27A1451F0070D44A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				D65FFFAD27A145320070D44A /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 			);
 			productRefGroup = D64B0AAC2702DD5400845946 /* Products */;
 			projectDirPath = "";
@@ -1189,23 +1189,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D616937A279A90FE002EE7B0 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		D65FFFA227A144990070D44A /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.2.1;
+				branch = master;
+				kind = branch;
 			};
 		};
-		D616937F279A9112002EE7B0 /* XCRemoteSwiftPackageReference "PKHUD" */ = {
+		D65FFFA727A145080070D44A /* XCRemoteSwiftPackageReference "PKHUD" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pkluz/PKHUD";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				branch = master;
+				kind = branch;
 			};
 		};
-		D6169388279A9AB9002EE7B0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+		D65FFFAA27A1451F0070D44A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
 			requirement = {
@@ -1213,7 +1213,7 @@
 				kind = branch;
 			};
 		};
-		D616938B279A9C0C002EE7B0 /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
+		D65FFFAD27A145320070D44A /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/raulriera/TextFieldEffects";
 			requirement = {
@@ -1224,29 +1224,29 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D616937B279A90FE002EE7B0 /* Realm */ = {
+		D65FFFA327A144990070D44A /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D616937A279A90FE002EE7B0 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = D65FFFA227A144990070D44A /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
 		};
-		D616937D279A90FE002EE7B0 /* RealmSwift */ = {
+		D65FFFA527A144990070D44A /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D616937A279A90FE002EE7B0 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = D65FFFA227A144990070D44A /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
-		D6169380279A9112002EE7B0 /* PKHUD */ = {
+		D65FFFA827A145080070D44A /* PKHUD */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D616937F279A9112002EE7B0 /* XCRemoteSwiftPackageReference "PKHUD" */;
+			package = D65FFFA727A145080070D44A /* XCRemoteSwiftPackageReference "PKHUD" */;
 			productName = PKHUD;
 		};
-		D6169389279A9AB9002EE7B0 /* IQKeyboardManagerSwift */ = {
+		D65FFFAB27A1451F0070D44A /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D6169388279A9AB9002EE7B0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			package = D65FFFAA27A1451F0070D44A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
 		};
-		D616938C279A9C0C002EE7B0 /* TextFieldEffects */ = {
+		D65FFFAE27A145320070D44A /* TextFieldEffects */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D616938B279A9C0C002EE7B0 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
+			package = D65FFFAD27A145320070D44A /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
 			productName = TextFieldEffects;
 		};
 /* End XCSwiftPackageProductDependency section */

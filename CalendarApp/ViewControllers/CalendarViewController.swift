@@ -91,7 +91,7 @@ class CalendarViewController: UIViewController {
         dayOfWeekSortButton.addTarget(self, action: #selector(tappedDayOfWeekButton), for: .touchUpInside)
         rokuyouLabel.text = calculateRokuyo(date: todayDate)
         calendarInfoView.layer.borderWidth = 2.5
-        calendarInfoView.layer.borderColor = UIColor.rgb(red: 235, green: 235, blue: 235).cgColor
+        calendarInfoView.layer.borderColor = UIColor(named: "borderColor")?.cgColor
     }
 
     private func setupBannerView() {
@@ -116,11 +116,18 @@ class CalendarViewController: UIViewController {
         calendar.scrollDirection = .horizontal
         calendar.layer.borderWidth = 2.5
         calendar.layer.borderColor = UIColor.rgb(red: 235, green: 235, blue: 235).cgColor
-        calendar.layer.shadowOffset = CGSize(width: 15.0, height: 5.0)
-        calendar.layer.shadowColor = UIColor.gray.cgColor
+        calendar.layer.shadowOffset = CGSize(width: 18.0, height: 8.0)
+        calendar.layer.shadowColor = UIColor(named: "shadow")?.cgColor
         calendar.layer.shadowOpacity = 1.0
         calendar.layer.shadowRadius = 8
         selectedWeekdayLabels()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        calendar.layer.shadowColor = UIColor(named: "shadow")?.cgColor
+        calendarInfoView.layer.borderColor = UIColor(named: "borderColor")?.cgColor
+        calendar.layer.borderColor = UIColor(named: "borderColor")?.cgColor
     }
 
     private func setupTodayDate() {
@@ -203,11 +210,9 @@ class CalendarViewController: UIViewController {
 
         displayCalendarMenu.append(UIAction(title: "標準カレンダーアプリと同期", handler: { _ in
             StandardCalendarAppSync.checkAuth()
-
         }))
         elementDropDownButton.menu = UIMenu(title: "オプション", options: .displayInline, children: displayCalendarMenu)
         elementDropDownButton.showsMenuAsPrimaryAction = true
-        elementDropDownButton.setTitle(self.selectedMenuType.rawValue, for: .normal)
     }
 
     @objc private func tappedDayOfWeekButton() {
@@ -349,7 +354,7 @@ class CalendarViewController: UIViewController {
         }
 
         if authorization == nil {
-            showAuthorizationDialog(callBack: { [weak self](error) -> Void in
+            showAuthorizationDialog(callBack: { [weak self] (error) -> Void in
                 if error == nil {
                     self?.getCalendarEvents(startDateTime: startDateTime, endDateTime: endDateTime)
                 }
@@ -472,10 +477,6 @@ class CalendarViewController: UIViewController {
             }
         }
         return ""
-    }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .darkContent
     }
 
     override var shouldAutorotate: Bool {
