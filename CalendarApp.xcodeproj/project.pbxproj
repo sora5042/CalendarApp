@@ -27,6 +27,7 @@
 		D64B0AD02702DD5500845946 /* CalendarAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0ACF2702DD5500845946 /* CalendarAppUITests.swift */; };
 		D64B0AD22702DD5500845946 /* CalendarAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0AD12702DD5500845946 /* CalendarAppUITestsLaunchTests.swift */; };
 		D65FFF9F279FC4D00070D44A /* StandardCalendarAppSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65FFF9E279FC4D00070D44A /* StandardCalendarAppSync.swift */; };
+		D65FFFA127A019FC0070D44A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D65FFFA027A019FC0070D44A /* Colors.xcassets */; };
 		D66303A4279927F700D9181F /* Realm-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66303A3279927F700D9181F /* Realm-Extension.swift */; };
 		D6738F6B2786995E0000EAC6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6738F6A2786995E0000EAC6 /* WidgetKit.framework */; };
 		D6738F6D2786995E0000EAC6 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6738F6C2786995E0000EAC6 /* SwiftUI.framework */; };
@@ -45,7 +46,6 @@
 		D6AB7ABF2787F1E10072B6B6 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D6AB7ABE2787F1E10072B6B6 /* .swiftlint.yml */; };
 		D6AB7AC02787F22C0072B6B6 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D6AB7ABE2787F1E10072B6B6 /* .swiftlint.yml */; };
 		D6B36629278C5BD400442E76 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B36628278C5BD400442E76 /* UIColor-Extension.swift */; };
-		D6B3663F2791461300442E76 /* GoogleCalendarSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B3663E2791461300442E76 /* GoogleCalendarSync.swift */; };
 		D6BA3E152711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
 		D6BA3E162711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
 		D6BA3E172711655300B48C05 /* AddSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BA3E142711655300B48C05 /* AddSchedule.storyboard */; };
@@ -120,6 +120,7 @@
 		D64B0ACF2702DD5500845946 /* CalendarAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAppUITests.swift; sourceTree = "<group>"; };
 		D64B0AD12702DD5500845946 /* CalendarAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D65FFF9E279FC4D00070D44A /* StandardCalendarAppSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardCalendarAppSync.swift; sourceTree = "<group>"; };
+		D65FFFA027A019FC0070D44A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		D66303A3279927F700D9181F /* Realm-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm-Extension.swift"; sourceTree = "<group>"; };
 		D66303A6279A782400D9181F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D6738F692786995E0000EAC6 /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,7 +136,6 @@
 		D6839D1327858E7000805816 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 		D6AB7ABE2787F1E10072B6B6 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		D6B36628278C5BD400442E76 /* UIColor-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
-		D6B3663E2791461300442E76 /* GoogleCalendarSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCalendarSync.swift; sourceTree = "<group>"; };
 		D6BA3E142711655300B48C05 /* AddSchedule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddSchedule.storyboard; sourceTree = "<group>"; };
 		D6BA3E182711657000B48C05 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		D6BA3E26271BF97B00B48C05 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -244,6 +244,7 @@
 				D6BA3E13271164F600B48C05 /* Storyboard */,
 				D6442EFB272662AD00F774A6 /* Cells */,
 				D64B0AB72702DD5500845946 /* Assets.xcassets */,
+				D65FFFA027A019FC0070D44A /* Colors.xcassets */,
 				D64B0AB92702DD5500845946 /* LaunchScreen.storyboard */,
 				D64B0ABC2702DD5500845946 /* Info.plist */,
 				D66303A6279A782400D9181F /* Settings.bundle */,
@@ -310,7 +311,6 @@
 		D6B3664127914C9500442E76 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				D6B3663E2791461300442E76 /* GoogleCalendarSync.swift */,
 				D65FFF9E279FC4D00070D44A /* StandardCalendarAppSync.swift */,
 			);
 			path = Service;
@@ -508,6 +508,7 @@
 				D64B0ABB2702DD5500845946 /* LaunchScreen.storyboard in Resources */,
 				D64B0AB82702DD5500845946 /* Assets.xcassets in Resources */,
 				D64B0AB62702DD5400845946 /* Calendar.storyboard in Resources */,
+				D65FFFA127A019FC0070D44A /* Colors.xcassets in Resources */,
 				D6BA3E152711655300B48C05 /* AddSchedule.storyboard in Resources */,
 				D616938E279AABA2002EE7B0 /* Settings.bundle in Resources */,
 			);
@@ -714,7 +715,6 @@
 				D64B0AB12702DD5400845946 /* SceneDelegate.swift in Sources */,
 				D6BA3E27271BF97B00B48C05 /* EventModel.swift in Sources */,
 				D6738F892786BA2F0000EAC6 /* SimpleWidgetEntryView.swift in Sources */,
-				D6B3663F2791461300442E76 /* GoogleCalendarSync.swift in Sources */,
 				D6BA3E192711657000B48C05 /* AddEventViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
