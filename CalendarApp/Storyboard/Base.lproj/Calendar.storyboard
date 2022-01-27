@@ -82,13 +82,13 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021年12月2日" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="go5-jU-eb2">
-                                        <rect key="frame" x="147.66666666666666" y="17" width="80" height="15"/>
-                                        <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="11"/>
+                                        <rect key="frame" x="144.33333333333334" y="17" width="86.666666666666657" height="15"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="12"/>
                                         <color key="textColor" name="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大安" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdF-YP-ger">
-                                        <rect key="frame" x="230.66666666666666" y="17" width="24" height="15"/>
+                                        <rect key="frame" x="231" y="17" width="24" height="15"/>
                                         <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="12"/>
                                         <color key="textColor" name="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -102,7 +102,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DrP-ci-Hn2">
-                                        <rect key="frame" x="269" y="11" width="50" height="27"/>
+                                        <rect key="frame" x="272" y="11" width="50" height="27"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="一括削除">
@@ -120,11 +120,11 @@
                                     <constraint firstItem="DrP-ci-Hn2" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="top" constant="11" id="OV7-Wk-DwG"/>
                                     <constraint firstItem="go5-jU-eb2" firstAttribute="centerX" secondItem="GlU-Qw-ZMm" secondAttribute="centerX" id="V3w-GE-UNg"/>
                                     <constraint firstAttribute="trailing" secondItem="flh-tb-ctZ" secondAttribute="trailing" constant="20" id="VOf-r7-lR6"/>
-                                    <constraint firstItem="XdF-YP-ger" firstAttribute="leading" secondItem="go5-jU-eb2" secondAttribute="trailing" constant="3" id="lij-iC-Vdc"/>
+                                    <constraint firstItem="XdF-YP-ger" firstAttribute="leading" secondItem="go5-jU-eb2" secondAttribute="trailing" id="lij-iC-Vdc"/>
                                     <constraint firstItem="flh-tb-ctZ" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="top" constant="10" id="qhm-47-Kz7"/>
                                     <constraint firstItem="go5-jU-eb2" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="ruF-Le-DZP"/>
                                     <constraint firstItem="DrP-ci-Hn2" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="tjf-AU-sr2"/>
-                                    <constraint firstItem="flh-tb-ctZ" firstAttribute="leading" secondItem="DrP-ci-Hn2" secondAttribute="trailing" constant="18" id="wzl-yH-4uI"/>
+                                    <constraint firstItem="flh-tb-ctZ" firstAttribute="leading" secondItem="DrP-ci-Hn2" secondAttribute="trailing" constant="15" id="wzl-yH-4uI"/>
                                     <constraint firstItem="7sW-az-yYM" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="top" constant="8" id="x0A-Y4-VqW"/>
                                     <constraint firstItem="7sW-az-yYM" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="xMh-gx-oln"/>
                                 </constraints>

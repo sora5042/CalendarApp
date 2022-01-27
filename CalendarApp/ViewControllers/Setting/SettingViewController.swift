@@ -24,7 +24,7 @@ class SettingViewController: UIViewController {
     @objc private func tappedBackButton() {
         dismiss(animated: true, completion: nil)
     }
-    
+
     override var shouldAutorotate: Bool {
         return false
     }
