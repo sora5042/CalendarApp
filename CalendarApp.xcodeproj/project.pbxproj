@@ -21,6 +21,9 @@
 		D64B0AC62702DD5500845946 /* CalendarAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0AC52702DD5500845946 /* CalendarAppTests.swift */; };
 		D64B0AD02702DD5500845946 /* CalendarAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0ACF2702DD5500845946 /* CalendarAppUITests.swift */; };
 		D64B0AD22702DD5500845946 /* CalendarAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B0AD12702DD5500845946 /* CalendarAppUITestsLaunchTests.swift */; };
+		D659818A27A27CE500959B0A /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D659818927A27CE500959B0A /* Setting.storyboard */; };
+		D659818C27A27D8900959B0A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D659818B27A27D8900959B0A /* SettingViewController.swift */; };
+		D659819027A2907500959B0A /* ContainerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D659818F27A2907500959B0A /* ContainerTableViewController.swift */; };
 		D65FFF9F279FC4D00070D44A /* StandardCalendarAppSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65FFF9E279FC4D00070D44A /* StandardCalendarAppSync.swift */; };
 		D65FFFA127A019FC0070D44A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D65FFFA027A019FC0070D44A /* Colors.xcassets */; };
 		D65FFFA427A144990070D44A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D65FFFA327A144990070D44A /* Realm */; };
@@ -119,6 +122,9 @@
 		D64B0ACB2702DD5500845946 /* CalendarAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64B0ACF2702DD5500845946 /* CalendarAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAppUITests.swift; sourceTree = "<group>"; };
 		D64B0AD12702DD5500845946 /* CalendarAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D659818927A27CE500959B0A /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		D659818B27A27D8900959B0A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		D659818F27A2907500959B0A /* ContainerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTableViewController.swift; sourceTree = "<group>"; };
 		D65FFF9E279FC4D00070D44A /* StandardCalendarAppSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardCalendarAppSync.swift; sourceTree = "<group>"; };
 		D65FFFA027A019FC0070D44A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		D66303A3279927F700D9181F /* Realm-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm-Extension.swift"; sourceTree = "<group>"; };
@@ -269,6 +275,15 @@
 			path = CalendarAppUITests;
 			sourceTree = "<group>";
 		};
+		D659819127A298B400959B0A /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				D659818B27A27D8900959B0A /* SettingViewController.swift */,
+				D659818F27A2907500959B0A /* ContainerTableViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		D6738F6E2786995E0000EAC6 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +336,7 @@
 			children = (
 				D64B0AB22702DD5400845946 /* CalendarViewController.swift */,
 				D6BA3E182711657000B48C05 /* AddEventViewController.swift */,
+				D659819127A298B400959B0A /* Setting */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -330,6 +346,7 @@
 			children = (
 				D64B0AB42702DD5400845946 /* Calendar.storyboard */,
 				D6BA3E142711655300B48C05 /* AddSchedule.storyboard */,
+				D659818927A27CE500959B0A /* Setting.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -508,6 +525,7 @@
 				D64B0ABB2702DD5500845946 /* LaunchScreen.storyboard in Resources */,
 				D64B0AB82702DD5500845946 /* Assets.xcassets in Resources */,
 				D64B0AB62702DD5400845946 /* Calendar.storyboard in Resources */,
+				D659818A27A27CE500959B0A /* Setting.storyboard in Resources */,
 				D65FFFA127A019FC0070D44A /* Colors.xcassets in Resources */,
 				D6BA3E152711655300B48C05 /* AddSchedule.storyboard in Resources */,
 				D616938E279AABA2002EE7B0 /* Settings.bundle in Resources */,
@@ -705,12 +723,14 @@
 				D6839D1427858E7000805816 /* DrawView.swift in Sources */,
 				D6B36629278C5BD400442E76 /* UIColor-Extension.swift in Sources */,
 				D65FFF9F279FC4D00070D44A /* StandardCalendarAppSync.swift in Sources */,
+				D659819027A2907500959B0A /* ContainerTableViewController.swift in Sources */,
 				D6442EFE272662E600F774A6 /* EventTableViewCell.swift in Sources */,
 				D66303A4279927F700D9181F /* Realm-Extension.swift in Sources */,
 				D64B0AB32702DD5400845946 /* CalendarViewController.swift in Sources */,
 				D6738F852786B5710000EAC6 /* SimpleWidgetTimeline.swift in Sources */,
 				D64B0AAF2702DD5400845946 /* AppDelegate.swift in Sources */,
 				D6738F822786B32A0000EAC6 /* SimpleWidgetEntry.swift in Sources */,
+				D659818C27A27D8900959B0A /* SettingViewController.swift in Sources */,
 				D6738F762786995F0000EAC6 /* Widget.intentdefinition in Sources */,
 				D64B0AB12702DD5400845946 /* SceneDelegate.swift in Sources */,
 				D6BA3E27271BF97B00B48C05 /* EventModel.swift in Sources */,

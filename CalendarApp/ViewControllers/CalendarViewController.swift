@@ -62,6 +62,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet private weak var scrollButton: UIButton!
     @IBOutlet private weak var bulkDeleteButton: UIButton!
     @IBOutlet private weak var dayOfWeekSortButton: UIButton!
+    @IBOutlet private weak var settingButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +90,7 @@ class CalendarViewController: UIViewController {
         scrollButton.addTarget(self, action: #selector(tappedScrollButton), for: .touchUpInside)
         bulkDeleteButton.addTarget(self, action: #selector(tappedBulkDeleteButton), for: .touchUpInside)
         dayOfWeekSortButton.addTarget(self, action: #selector(tappedDayOfWeekButton), for: .touchUpInside)
+        settingButton.addTarget(self, action: #selector(tappedSettingButton), for: .touchUpInside)
         rokuyouLabel.text = calculateRokuyo(date: todayDate)
         calendarInfoView.layer.borderWidth = 2.3
         calendarInfoView.layer.borderColor = UIColor(named: "calendarInfoViewBorder")?.cgColor
@@ -258,6 +260,15 @@ class CalendarViewController: UIViewController {
             addEventViewController.delegate = self
             addEventViewController.date = date
             present(addEventViewController, animated: true, completion: nil)
+        }
+    }
+
+    @objc private func tappedSettingButton() {
+        let storyboard = UIStoryboard(name: "Setting", bundle: nil)
+        if let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController") as? SettingViewController {
+            settingViewController.modalTransitionStyle = .coverVertical
+            settingViewController.modalPresentationStyle = .fullScreen
+            present(settingViewController, animated: true, completion: nil)
         }
     }
 

@@ -28,14 +28,6 @@
                                             <color key="titleColor" name="button"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sW-az-yYM">
-                                        <rect key="frame" x="297" y="8" width="73" height="29"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="オプション">
-                                            <color key="titleColor" name="button"/>
-                                        </state>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Re:スケ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh8-0Z-GWZ">
                                         <rect key="frame" x="153" y="8.0000000000000018" width="69" height="27.666666666666671"/>
                                         <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="21"/>
@@ -43,37 +35,45 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvq-w3-Wa3">
-                                        <rect key="frame" x="241" y="8" width="46" height="30"/>
+                                        <rect key="frame" x="262.66666666666669" y="8" width="46" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="曜日順">
                                             <color key="titleColor" name="button"/>
                                         </state>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E4g-Se-NZz">
+                                        <rect key="frame" x="332.66666666666669" y="6" width="22.333333333333314" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                        <color key="tintColor" name="button"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="gearshape" catalog="system">
+                                            <color key="titleColor" name="button"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="calendarNavigation"/>
                                 <constraints>
-                                    <constraint firstItem="7sW-az-yYM" firstAttribute="leading" secondItem="uvq-w3-Wa3" secondAttribute="trailing" constant="10" id="7ok-by-YP4"/>
                                     <constraint firstItem="dPm-pT-dpe" firstAttribute="leading" secondItem="cBT-Jv-dNi" secondAttribute="leading" constant="15" id="Mst-Ez-HrH"/>
                                     <constraint firstAttribute="bottom" secondItem="mh8-0Z-GWZ" secondAttribute="bottom" constant="7" id="NJY-JR-Vmx"/>
-                                    <constraint firstItem="7sW-az-yYM" firstAttribute="leading" secondItem="mh8-0Z-GWZ" secondAttribute="trailing" constant="75" id="NN0-aa-3HT"/>
                                     <constraint firstItem="mh8-0Z-GWZ" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="top" constant="8" id="R4v-jw-a9t"/>
                                     <constraint firstItem="mh8-0Z-GWZ" firstAttribute="centerX" secondItem="cBT-Jv-dNi" secondAttribute="centerX" id="Uhl-XT-ra1"/>
+                                    <constraint firstItem="E4g-Se-NZz" firstAttribute="leading" secondItem="uvq-w3-Wa3" secondAttribute="trailing" constant="24" id="Vko-Z3-tj7"/>
                                     <constraint firstItem="dPm-pT-dpe" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="top" constant="8" id="dft-yv-K5T"/>
-                                    <constraint firstAttribute="trailing" secondItem="7sW-az-yYM" secondAttribute="trailing" constant="5" id="jGp-2l-trx"/>
+                                    <constraint firstAttribute="trailing" secondItem="E4g-Se-NZz" secondAttribute="trailing" constant="20" id="hYF-Uw-NlC"/>
                                     <constraint firstItem="uvq-w3-Wa3" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="top" constant="8" id="jTS-yG-5wo"/>
-                                    <constraint firstItem="7sW-az-yYM" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="top" constant="8" id="tWK-y9-TPJ"/>
+                                    <constraint firstItem="E4g-Se-NZz" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="top" constant="6" id="sNw-te-GhM"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4Lt-Jh-gBl">
-                                <rect key="frame" x="0.0" y="486.66666666666669" width="375" height="240.33333333333331"/>
+                                <rect key="frame" x="0.0" y="485.66666666666669" width="375" height="241.33333333333331"/>
                                 <color key="backgroundColor" name="tableViewBackground"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GlU-Qw-ZMm">
-                                <rect key="frame" x="0.0" y="436.66666666666669" width="375" height="45"/>
+                                <rect key="frame" x="0.0" y="436.66666666666669" width="375" height="49"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flh-tb-ctZ">
-                                        <rect key="frame" x="332" y="10" width="18" height="25"/>
+                                        <rect key="frame" x="340" y="10" width="18" height="29"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="tintColor" name="button"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -81,53 +81,52 @@
                                             <color key="titleColor" name="button"/>
                                         </state>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="スケジュール" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ssp-Nq-wzH">
-                                        <rect key="frame" x="146" y="16" width="83" height="13"/>
-                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021年12月2日" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="go5-jU-eb2">
+                                        <rect key="frame" x="135" y="17" width="80" height="15"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="11"/>
                                         <color key="textColor" name="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大安" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdF-YP-ger">
+                                        <rect key="frame" x="222" y="17" width="24" height="15"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="12"/>
+                                        <color key="textColor" name="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sW-az-yYM">
+                                        <rect key="frame" x="35" y="8" width="72" height="33"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="オプション">
+                                            <color key="titleColor" name="button"/>
+                                        </state>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DrP-ci-Hn2">
-                                        <rect key="frame" x="259" y="11" width="50" height="23"/>
+                                        <rect key="frame" x="269" y="11" width="50" height="27"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="一括削除">
                                             <color key="titleColor" name="button"/>
                                         </state>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021年12月2日" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="go5-jU-eb2">
-                                        <rect key="frame" x="20" y="8" width="79.666666666666671" height="29"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="29" id="RfX-iN-zeW"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="11"/>
-                                        <color key="textColor" name="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大安" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdF-YP-ger">
-                                        <rect key="frame" x="102.66666666666667" y="17" width="24" height="11"/>
-                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="12"/>
-                                        <color key="textColor" name="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="calendarInfoView"/>
                                 <constraints>
-                                    <constraint firstItem="go5-jU-eb2" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="3NI-1x-9Qw"/>
-                                    <constraint firstItem="DrP-ci-Hn2" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="top" constant="11" id="82g-uA-jsp"/>
-                                    <constraint firstItem="DrP-ci-Hn2" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="BTy-te-GzA"/>
-                                    <constraint firstItem="flh-tb-ctZ" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="JHp-A2-KB3"/>
-                                    <constraint firstItem="go5-jU-eb2" firstAttribute="leading" secondItem="GlU-Qw-ZMm" secondAttribute="leading" constant="20" id="KB9-wO-GMN"/>
-                                    <constraint firstItem="Ssp-Nq-wzH" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="MP3-sM-AVY"/>
-                                    <constraint firstItem="XdF-YP-ger" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="PLx-U6-BFD"/>
-                                    <constraint firstItem="XdF-YP-ger" firstAttribute="leading" secondItem="go5-jU-eb2" secondAttribute="trailing" constant="3" id="bao-fs-eew"/>
-                                    <constraint firstItem="go5-jU-eb2" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="top" constant="8" id="eDw-Q5-HE0"/>
-                                    <constraint firstItem="XdF-YP-ger" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="top" constant="17" id="gZb-O3-RLK"/>
-                                    <constraint firstAttribute="bottom" secondItem="flh-tb-ctZ" secondAttribute="bottom" constant="10" id="kdw-pj-XCf"/>
-                                    <constraint firstItem="DrP-ci-Hn2" firstAttribute="leading" secondItem="Ssp-Nq-wzH" secondAttribute="trailing" constant="30" id="mPK-NA-Jjb"/>
-                                    <constraint firstItem="Ssp-Nq-wzH" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="top" constant="16" id="pFN-Gi-Ogk"/>
-                                    <constraint firstAttribute="trailing" secondItem="flh-tb-ctZ" secondAttribute="trailing" constant="25" id="sIz-35-kYQ"/>
-                                    <constraint firstItem="Ssp-Nq-wzH" firstAttribute="centerX" secondItem="GlU-Qw-ZMm" secondAttribute="centerX" id="vVO-Or-g11"/>
+                                    <constraint firstItem="go5-jU-eb2" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="top" constant="17" id="1kK-jV-NCx"/>
+                                    <constraint firstItem="flh-tb-ctZ" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="EQf-2H-nwf"/>
+                                    <constraint firstItem="7sW-az-yYM" firstAttribute="leading" secondItem="GlU-Qw-ZMm" secondAttribute="leading" constant="35" id="I3f-wq-fZZ"/>
+                                    <constraint firstItem="XdF-YP-ger" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="top" constant="17" id="JKY-NO-bbp"/>
+                                    <constraint firstItem="XdF-YP-ger" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="K7I-Jt-RKj"/>
+                                    <constraint firstItem="DrP-ci-Hn2" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="top" constant="11" id="OV7-Wk-DwG"/>
+                                    <constraint firstAttribute="trailing" secondItem="flh-tb-ctZ" secondAttribute="trailing" constant="17" id="VOf-r7-lR6"/>
+                                    <constraint firstItem="XdF-YP-ger" firstAttribute="leading" secondItem="go5-jU-eb2" secondAttribute="trailing" constant="7" id="lij-iC-Vdc"/>
+                                    <constraint firstItem="go5-jU-eb2" firstAttribute="leading" secondItem="7sW-az-yYM" secondAttribute="trailing" constant="28" id="mti-xB-KQF"/>
+                                    <constraint firstItem="flh-tb-ctZ" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="top" constant="10" id="qhm-47-Kz7"/>
+                                    <constraint firstItem="go5-jU-eb2" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="ruF-Le-DZP"/>
+                                    <constraint firstItem="DrP-ci-Hn2" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="tjf-AU-sr2"/>
+                                    <constraint firstItem="7sW-az-yYM" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="top" constant="8" id="x0A-Y4-VqW"/>
+                                    <constraint firstItem="7sW-az-yYM" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="xMh-gx-oln"/>
+                                    <constraint firstItem="DrP-ci-Hn2" firstAttribute="leading" secondItem="XdF-YP-ger" secondAttribute="trailing" constant="23" id="ydg-1A-MbQ"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pup-KQ-Lw3" customClass="FSCalendar">
@@ -169,15 +168,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="calendarNavigation"/>
                         <constraints>
+                            <constraint firstItem="4Lt-Jh-gBl" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="bottom" id="0X9-gu-U0P"/>
                             <constraint firstItem="Pup-KQ-Lw3" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="bottom" id="2rN-GR-nOk"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GlU-Qw-ZMm" secondAttribute="trailing" id="4xI-AW-dLE"/>
-                            <constraint firstItem="4Lt-Jh-gBl" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="bottom" constant="5" id="8ap-uy-Wmy"/>
+                            <constraint firstItem="GlU-Qw-ZMm" firstAttribute="top" secondItem="Pup-KQ-Lw3" secondAttribute="bottom" constant="10" id="4ae-wK-kkF"/>
                             <constraint firstItem="hnA-uJ-gfc" firstAttribute="top" secondItem="4Lt-Jh-gBl" secondAttribute="bottom" id="Aao-xN-cOo"/>
                             <constraint firstItem="hnA-uJ-gfc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DLb-xl-511"/>
+                            <constraint firstItem="GlU-Qw-ZMm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Oo2-co-bfR"/>
+                            <constraint firstItem="GlU-Qw-ZMm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rq2-Bk-0if"/>
                             <constraint firstItem="cBT-Jv-dNi" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TcX-iK-8L1"/>
                             <constraint firstItem="4Lt-Jh-gBl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="W04-X7-enn"/>
-                            <constraint firstItem="GlU-Qw-ZMm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xje-V9-g6H"/>
-                            <constraint firstItem="GlU-Qw-ZMm" firstAttribute="top" secondItem="Pup-KQ-Lw3" secondAttribute="bottom" constant="10" id="aZK-A9-Kk5"/>
                             <constraint firstItem="cBT-Jv-dNi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cLA-kZ-1Xa"/>
                             <constraint firstItem="Pup-KQ-Lw3" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-15" id="f9s-Ec-kwc"/>
                             <constraint firstItem="hnA-uJ-gfc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="h4Z-ao-e1J"/>
@@ -185,6 +184,7 @@
                             <constraint firstItem="cBT-Jv-dNi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="t0I-BK-ubr"/>
                             <constraint firstItem="hnA-uJ-gfc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="tPc-ju-tKU"/>
                             <constraint firstItem="Pup-KQ-Lw3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="v8Z-8b-azi"/>
+                            <constraint firstItem="GlU-Qw-ZMm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vgt-jB-8mf"/>
                             <constraint firstItem="cBT-Jv-dNi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yoY-Zg-u6Q"/>
                         </constraints>
                     </view>
@@ -201,6 +201,7 @@
                         <outlet property="elementDropDownButton" destination="7sW-az-yYM" id="ZaF-eJ-k5a"/>
                         <outlet property="rokuyouLabel" destination="XdF-YP-ger" id="frB-nS-1Uf"/>
                         <outlet property="scrollButton" destination="dPm-pT-dpe" id="csd-ZS-xyZ"/>
+                        <outlet property="settingButton" destination="E4g-Se-NZz" id="RiP-zu-PAW"/>
                         <outlet property="taskTableView" destination="4Lt-Jh-gBl" id="8RA-Ow-ezd"/>
                     </connections>
                 </viewController>
@@ -210,12 +211,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="Re:スケ">
-            <color red="0.0" green="0.5869878878" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.62800002098083496" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="button">
-            <color red="0.0" green="0.39060200801512013" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.39100000262260437" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="calendarBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -224,19 +226,19 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="calendarNavigation">
-            <color red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="selectionColor">
-            <color red="0.0" green="0.70456887385940714" blue="0.70636500144491388" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.70499998331069946" blue="0.70599997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="tableViewBackground">
-            <color red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="todayColor">
-            <color red="1" green="0.601375306" blue="0.56806277839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.60100001096725464" blue="0.56800001859664917" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
