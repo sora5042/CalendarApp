@@ -36,6 +36,7 @@ class ContainerTableViewController: UITableViewController {
         case 2:
             if let url = URL(string: "https://itunes.apple.com/app/ido.s110507@icloud.com?action=write-review") {
                 UIApplication.shared.open(url)
+                tableView.deselectRow(at: indexPath, animated: true)
             }
         default:
             break
