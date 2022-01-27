@@ -304,6 +304,7 @@ class CalendarViewController: UIViewController {
         }
 
         taskTableView.reloadData()
+        calendar.reloadData()
         todayDateOrOtherDate()
     }
 
@@ -537,6 +538,7 @@ extension CalendarViewController: EventTableViewCellDelegate {
             print("Error \(error)")
         }
         taskTableView.reloadData()
+        calendar.reloadData()
         todayDateOrOtherDate()
     }
 }
@@ -545,6 +547,7 @@ extension CalendarViewController: EventTableViewCellDelegate {
 extension CalendarViewController: AddEventViewControllerDelegate {
     func event(addEvent: EventModel) {
         filterEvent(date: addEvent.date)
+        calendar.reloadData()
         taskTableView.reloadData()
     }
 }
