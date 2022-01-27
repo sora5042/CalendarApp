@@ -10,6 +10,7 @@ import UIKit
 class ContainerTableViewController: UITableViewController {
 
     @IBOutlet weak var versionLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // アプリのバージョン
