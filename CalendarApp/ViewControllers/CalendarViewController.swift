@@ -610,20 +610,20 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate, FSCa
             switch weekday {
 
             case 2...6:
-                return UIColor.white
+                return UIColor(named: "calendarBackground")
             default: break
 
             }
             // 平日のみの表示
         } else if selectedMenuType == .weekday {
             if judgeHoliday(date) {
-                return UIColor.white
+                return UIColor(named: "calendarBackground")
             }
             let weekday = getWeekIdx(date)
             if weekday == 1 {   // 日曜日
-                return UIColor.white
+                return UIColor(named: "calendarBackground")
             } else if weekday == 7 {  // 土曜日
-                return UIColor.white
+                return UIColor(named: "calendarBackground")
             }
         } else {
             // 祝日判定をする（祝日は赤色で表示する）
