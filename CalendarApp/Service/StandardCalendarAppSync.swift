@@ -77,7 +77,7 @@ class StandardCalendarAppSync {
             let eventId = events.eventIdentifier ?? ""
             let startDate = events.startDate ?? Date()
             let endDate = events.endDate ?? Date()
-            Realm.iOSCalendar(eventId: eventId, name: title, startDate: startDate, endDate: endDate) { success in
+            Realm.iOSCalendar(eventId: eventId, name: title, startDate: startDate, endDate: endDate, notificationDate: startDate) { success in
                 if success {
                     print("イベントデータの取得に成功しました")
                 }

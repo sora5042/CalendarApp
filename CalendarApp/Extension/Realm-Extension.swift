@@ -81,7 +81,7 @@ extension Realm {
         }
     }
 
-    static func googleCalendar(id: String, name: String?, startDate: Date, endDate: Date, completion: @escaping (Bool) -> Void) {
+    static func googleCalendar(id: String, name: String?, startDate: Date, endDate: Date, notificationDate: Date, completion: @escaping (Bool) -> Void) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let timeFormat = DateFormatter()
@@ -98,6 +98,7 @@ extension Realm {
                 eventModels.title = name
                 eventModels.editStartTime = startDate
                 eventModels.editEndTime = endDate
+                eventModels.editNotificationTime = startDate
                 eventModels.date = dateFormatter.string(from: startDate)
                 eventModels.startTime = timeFormat.string(from: startDate)
                 eventModels.endTime = timeFormat.string(from: endDate)
@@ -109,7 +110,7 @@ extension Realm {
 
     }
 
-    static func iOSCalendar(eventId: String, name: String?, startDate: Date, endDate: Date, completion: @escaping (Bool) -> Void) {
+    static func iOSCalendar(eventId: String, name: String?, startDate: Date, endDate: Date, notificationDate: Date, completion: @escaping (Bool) -> Void) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let timeFormat = DateFormatter()
@@ -127,6 +128,7 @@ extension Realm {
                 eventModels.title = name
                 eventModels.editStartTime = startDate
                 eventModels.editEndTime = endDate
+                eventModels.editNotificationTime = startDate
                 eventModels.date = dateFormatter.string(from: startDate)
                 eventModels.startTime = timeFormat.string(from: startDate)
                 eventModels.endTime = timeFormat.string(from: endDate)

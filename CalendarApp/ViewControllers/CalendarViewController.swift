@@ -387,7 +387,7 @@ class CalendarViewController: UIViewController {
                         let startDate: Date? = item.start?.dateTime?.date
                         let endDate: Date? = item.end?.dateTime?.date
 
-                        Realm.googleCalendar(id: id, name: name, startDate: startDate ?? Date(), endDate: endDate ?? Date()) { success in
+                        Realm.googleCalendar(id: id, name: name, startDate: startDate ?? Date(), endDate: endDate ?? Date(), notificationDate: startDateTime) { success in
                             if success {
                                 print("Googleカレンダーからのデータの取得に成功しました")
                             }
