@@ -11,7 +11,6 @@ import CalculateCalendarLogic
 import RealmSwift
 import PKHUD
 import GoogleMobileAds
-import EventKit
 import AppAuth
 import GTMAppAuth
 import GoogleAPIClientForREST
@@ -45,7 +44,7 @@ class CalendarViewController: UIViewController {
     private var selectedMenuType = MenuType.month
     private var selectDayOfWeekMenuType = DayOfWeekType.sunday
     var authorization: GTMAppAuthFetcherAuthorization?
-    
+
     @IBOutlet private weak var calendar: FSCalendar!
     @IBOutlet private weak var calendarHeight: NSLayoutConstraint!
     @IBOutlet private weak var taskTableView: UITableView!
@@ -92,7 +91,7 @@ class CalendarViewController: UIViewController {
         calendarInfoView.layer.borderWidth = 2.3
         calendarInfoView.layer.borderColor = UIColor(named: "calendarInfoViewBorder")?.cgColor
     }
-    
+
     private func setupCalendar() {
         calendar.dataSource = self
         calendar.delegate = self
@@ -447,7 +446,7 @@ class CalendarViewController: UIViewController {
     private func filterEvent(date: String) {
         eventResults = realm.objects(EventModel.self).filter("date == '\(date)'").sorted(byKeyPath: "editStartTime", ascending: true)
     }
-    
+
     private func setupBannerView() {
         if let id = adUnitID(key: "banner") {
             bannerView.adUnitID = id
