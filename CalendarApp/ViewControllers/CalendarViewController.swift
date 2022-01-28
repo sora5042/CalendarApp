@@ -45,20 +45,17 @@ class CalendarViewController: UIViewController {
     private var selectedMenuType = MenuType.month
     private var selectDayOfWeekMenuType = DayOfWeekType.sunday
     var authorization: GTMAppAuthFetcherAuthorization?
-    let redirectURL = "com.googleusercontent.apps.579964048764-q3nu1gpee4h5hjrqa4ubppvvg3g3jrnt:/oauthredirect"
-
+    
     @IBOutlet private weak var calendar: FSCalendar!
     @IBOutlet private weak var calendarHeight: NSLayoutConstraint!
     @IBOutlet private weak var taskTableView: UITableView!
-    @IBOutlet private weak var selectElementDropDownView: UIView!
     @IBOutlet private weak var calendarInfoView: UIView!
     @IBOutlet private weak var bannerView: GADBannerView!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var calendarLabel: UILabel!
     @IBOutlet private weak var rokuyouLabel: UILabel!
     @IBOutlet private weak var addButton: UIButton!
-    @IBOutlet private weak var selectElementButton: UIButton!
-    @IBOutlet private weak var elementDropDownButton: UIButton!
+    @IBOutlet private weak var optionButton: UIButton!
     @IBOutlet private weak var scrollButton: UIButton!
     @IBOutlet private weak var bulkDeleteButton: UIButton!
     @IBOutlet private weak var dayOfWeekSortButton: UIButton!
@@ -85,32 +82,17 @@ class CalendarViewController: UIViewController {
         taskTableView.delegate = self
         taskTableView.register(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
         dateLabel.text = todayString
+        tappedOptionMenuButton()
+        tappedDayOfWeekButton()
         addButton.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
-        elementDropDownButton.addTarget(self, action: #selector(tappedElementDropDownButton), for: .touchUpInside)
         scrollButton.addTarget(self, action: #selector(tappedScrollButton), for: .touchUpInside)
         bulkDeleteButton.addTarget(self, action: #selector(tappedBulkDeleteButton), for: .touchUpInside)
-        dayOfWeekSortButton.addTarget(self, action: #selector(tappedDayOfWeekButton), for: .touchUpInside)
         settingButton.addTarget(self, action: #selector(tappedSettingButton), for: .touchUpInside)
         rokuyouLabel.text = calculateRokuyo(date: todayDate)
         calendarInfoView.layer.borderWidth = 2.3
         calendarInfoView.layer.borderColor = UIColor(named: "calendarInfoViewBorder")?.cgColor
     }
-
-    private func setupBannerView() {
-        if let id = adUnitID(key: "banner") {
-            bannerView.adUnitID = id
-            bannerView.rootViewController = self
-            bannerView.load(GADRequest())
-        }
-    }
-
-    private func adUnitID(key: String) -> String? {
-        guard let adUnitIDs = Bundle.main.object(forInfoDictionaryKey: "AdUnitIDs") as? [String: String] else {
-            return nil
-        }
-        return adUnitIDs[key]
-    }
-
+    
     private func setupCalendar() {
         calendar.dataSource = self
         calendar.delegate = self
@@ -169,7 +151,7 @@ class CalendarViewController: UIViewController {
         }
     }
 
-    @objc private func tappedElementDropDownButton() {
+    private func tappedOptionMenuButton() {
         var displayCalendarMenu = [UIMenuElement]()
 
         displayCalendarMenu.append(UIAction(title: "Googleカレンダーアプリと同期", handler: { [weak self] _ in
@@ -183,14 +165,14 @@ class CalendarViewController: UIViewController {
         displayCalendarMenu.append(UIAction(title: MenuType.weekday.rawValue, image: UIImage(named: "calendar4"), state: self.selectedMenuType == MenuType.weekday ? .on : .off, handler: { [weak self] _ in
             self?.selectedMenuType = .weekday
             self?.calendar.reloadData()
-            self?.tappedElementDropDownButton()
+            self?.tappedOptionMenuButton()
 
         }))
 
         displayCalendarMenu.append(UIAction(title: MenuType.holiday.rawValue, image: UIImage(named: "calendar3"), state: self.selectedMenuType == MenuType.holiday ? .on : .off, handler: { [weak self] _ in
             self?.calendar.reloadData()
             self?.selectedMenuType = .holiday
-            self?.tappedElementDropDownButton()
+            self?.tappedOptionMenuButton()
 
         }))
 
@@ -201,7 +183,7 @@ class CalendarViewController: UIViewController {
             }
             self?.selectedMenuType = .week
             self?.calendar.reloadData()
-            self?.tappedElementDropDownButton()
+            self?.tappedOptionMenuButton()
         }))
 
         displayCalendarMenu.append(UIAction(title: MenuType.month.rawValue, image: UIImage(named: "calendar1"), state: self.selectedMenuType == MenuType.month ? .on : .off, handler: { [weak self] _ in
@@ -211,13 +193,13 @@ class CalendarViewController: UIViewController {
             }
             self?.selectedMenuType = .month
             self?.calendar.reloadData()
-            self?.tappedElementDropDownButton()
+            self?.tappedOptionMenuButton()
         }))
-        elementDropDownButton.menu = UIMenu(title: "オプション", options: .displayInline, children: displayCalendarMenu)
-        elementDropDownButton.showsMenuAsPrimaryAction = true
+        optionButton.menu = UIMenu(title: "オプション", options: .displayInline, children: displayCalendarMenu)
+        optionButton.showsMenuAsPrimaryAction = true
     }
 
-    @objc private func tappedDayOfWeekButton() {
+    private func tappedDayOfWeekButton() {
         var dayOfWeekMenu = [UIMenuElement]()
 
         dayOfWeekMenu.append(UIAction(title: DayOfWeekType.sunday.rawValue, state: self.selectDayOfWeekMenuType == DayOfWeekType.sunday ? .on : .off, handler: { [weak self] _ in
@@ -322,10 +304,11 @@ class CalendarViewController: UIViewController {
     typealias ShowAuthorizationDialogCallBack = ((Error?) -> Void)
     private func showAuthorizationDialog(callBack: @escaping ShowAuthorizationDialogCallBack) {
         let clientID = "579964048764-q3nu1gpee4h5hjrqa4ubppvvg3g3jrnt.apps.googleusercontent.com"
+        let redirectUrl = "com.googleusercontent.apps.579964048764-q3nu1gpee4h5hjrqa4ubppvvg3g3jrnt:/oauthredirect"
         let scopes = ["https://www.googleapis.com/auth/calendar", "https://www.googleapis.com/auth/calendar.readonly", "https://www.googleapis.com/auth/calendar.events", "https://www.googleapis.com/auth/calendar.events.readonly"]
 
         let configuration = GTMAppAuthFetcherAuthorization.configurationForGoogle()
-        let redirectURL = URL(string: redirectURL + ":/oauthredirect")
+        let redirectURL = URL(string: redirectUrl + ":/oauthredirect")
 
         let request = OIDAuthorizationRequest(configuration: configuration,
                                               clientId: clientID,
@@ -463,6 +446,21 @@ class CalendarViewController: UIViewController {
 
     private func filterEvent(date: String) {
         eventResults = realm.objects(EventModel.self).filter("date == '\(date)'").sorted(byKeyPath: "editStartTime", ascending: true)
+    }
+    
+    private func setupBannerView() {
+        if let id = adUnitID(key: "banner") {
+            bannerView.adUnitID = id
+            bannerView.rootViewController = self
+            bannerView.load(GADRequest())
+        }
+    }
+
+    private func adUnitID(key: String) -> String? {
+        guard let adUnitIDs = Bundle.main.object(forInfoDictionaryKey: "AdUnitIDs") as? [String: String] else {
+            return nil
+        }
+        return adUnitIDs[key]
     }
 
     private func calculateRokuyo(date: Date) -> String {

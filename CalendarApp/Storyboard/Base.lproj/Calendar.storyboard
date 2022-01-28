@@ -198,7 +198,7 @@
                         <outlet property="calendarLabel" destination="mh8-0Z-GWZ" id="kd1-96-eCL"/>
                         <outlet property="dateLabel" destination="go5-jU-eb2" id="h9I-ZW-BY0"/>
                         <outlet property="dayOfWeekSortButton" destination="uvq-w3-Wa3" id="Opr-id-2nE"/>
-                        <outlet property="elementDropDownButton" destination="7sW-az-yYM" id="ZaF-eJ-k5a"/>
+                        <outlet property="optionButton" destination="7sW-az-yYM" id="ZaF-eJ-k5a"/>
                         <outlet property="rokuyouLabel" destination="XdF-YP-ger" id="frB-nS-1Uf"/>
                         <outlet property="scrollButton" destination="dPm-pT-dpe" id="csd-ZS-xyZ"/>
                         <outlet property="settingButton" destination="E4g-Se-NZz" id="RiP-zu-PAW"/>
