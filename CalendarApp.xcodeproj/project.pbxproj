@@ -24,6 +24,10 @@
 		D659818A27A27CE500959B0A /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D659818927A27CE500959B0A /* Setting.storyboard */; };
 		D659818C27A27D8900959B0A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D659818B27A27D8900959B0A /* SettingViewController.swift */; };
 		D659819027A2907500959B0A /* ContainerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D659818F27A2907500959B0A /* ContainerTableViewController.swift */; };
+		D659819627A3AE4900959B0A /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = D659819527A3AE4900959B0A /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		D659819827A3AE4900959B0A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D659819727A3AE4900959B0A /* FirebaseCrashlytics */; };
+		D659819C27A3BD4900959B0A /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = D659819B27A3BD4900959B0A /* GoogleService-Info-Release.plist */; };
+		D659819F27A3C0EA00959B0A /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = D659819E27A3C0EA00959B0A /* GoogleService-Info-Debug.plist */; };
 		D65FFF9F279FC4D00070D44A /* StandardCalendarAppSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65FFF9E279FC4D00070D44A /* StandardCalendarAppSync.swift */; };
 		D65FFFA127A019FC0070D44A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D65FFFA027A019FC0070D44A /* Colors.xcassets */; };
 		D65FFFA427A144990070D44A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D65FFFA327A144990070D44A /* Realm */; };
@@ -125,6 +129,8 @@
 		D659818927A27CE500959B0A /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		D659818B27A27D8900959B0A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		D659818F27A2907500959B0A /* ContainerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTableViewController.swift; sourceTree = "<group>"; };
+		D659819B27A3BD4900959B0A /* GoogleService-Info-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Release.plist"; sourceTree = "<group>"; };
+		D659819E27A3C0EA00959B0A /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
 		D65FFF9E279FC4D00070D44A /* StandardCalendarAppSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardCalendarAppSync.swift; sourceTree = "<group>"; };
 		D65FFFA027A019FC0070D44A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		D66303A3279927F700D9181F /* Realm-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm-Extension.swift"; sourceTree = "<group>"; };
@@ -158,6 +164,8 @@
 				D65FFFA927A145080070D44A /* PKHUD in Frameworks */,
 				679CB76B19D8DFBC536B5350 /* Pods_CalendarApp.framework in Frameworks */,
 				D65FFFAF27A145320070D44A /* TextFieldEffects in Frameworks */,
+				D659819627A3AE4900959B0A /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				D659819827A3AE4900959B0A /* FirebaseCrashlytics in Frameworks */,
 				D65FFFA427A144990070D44A /* Realm in Frameworks */,
 				D65FFFAC27A1451F0070D44A /* IQKeyboardManagerSwift in Frameworks */,
 			);
@@ -252,6 +260,7 @@
 				D64B0AB72702DD5500845946 /* Assets.xcassets */,
 				D65FFFA027A019FC0070D44A /* Colors.xcassets */,
 				D64B0AB92702DD5500845946 /* LaunchScreen.storyboard */,
+				D659819A27A3BD1000959B0A /* Configs */,
 				D64B0ABC2702DD5500845946 /* Info.plist */,
 				D66303A6279A782400D9181F /* Settings.bundle */,
 			);
@@ -282,6 +291,15 @@
 				D659818F27A2907500959B0A /* ContainerTableViewController.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		D659819A27A3BD1000959B0A /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				D659819E27A3C0EA00959B0A /* GoogleService-Info-Debug.plist */,
+				D659819B27A3BD4900959B0A /* GoogleService-Info-Release.plist */,
+			);
+			path = Configs;
 			sourceTree = "<group>";
 		};
 		D6738F6E2786995E0000EAC6 /* Widget */ = {
@@ -386,6 +404,8 @@
 				56D0C11D93EA47006B1FA818 /* [CP] Embed Pods Frameworks */,
 				D6738F7A2786995F0000EAC6 /* Embed App Extensions */,
 				D66303A5279A77DD00D9181F /* LicensePlist */,
+				D659819D27A3BD6C00959B0A /* GoogleService-Info.Plist */,
+				D659819927A3B80900959B0A /* dSYM */,
 			);
 			buildRules = (
 			);
@@ -399,6 +419,8 @@
 				D65FFFA827A145080070D44A /* PKHUD */,
 				D65FFFAB27A1451F0070D44A /* IQKeyboardManagerSwift */,
 				D65FFFAE27A145320070D44A /* TextFieldEffects */,
+				D659819527A3AE4900959B0A /* FirebaseAnalyticsWithoutAdIdSupport */,
+				D659819727A3AE4900959B0A /* FirebaseCrashlytics */,
 			);
 			productName = CalendarApp;
 			productReference = D64B0AAB2702DD5400845946 /* CalendarApp.app */;
@@ -502,6 +524,7 @@
 				D65FFFA727A145080070D44A /* XCRemoteSwiftPackageReference "PKHUD" */,
 				D65FFFAA27A1451F0070D44A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				D65FFFAD27A145320070D44A /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
+				D659819427A3AE4900959B0A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = D64B0AAC2702DD5400845946 /* Products */;
 			projectDirPath = "";
@@ -526,9 +549,11 @@
 				D64B0AB82702DD5500845946 /* Assets.xcassets in Resources */,
 				D64B0AB62702DD5400845946 /* Calendar.storyboard in Resources */,
 				D659818A27A27CE500959B0A /* Setting.storyboard in Resources */,
+				D659819F27A3C0EA00959B0A /* GoogleService-Info-Debug.plist in Resources */,
 				D65FFFA127A019FC0070D44A /* Colors.xcassets in Resources */,
 				D6BA3E152711655300B48C05 /* AddSchedule.storyboard in Resources */,
 				D616938E279AABA2002EE7B0 /* Settings.bundle in Resources */,
+				D659819C27A3BD4900959B0A /* GoogleService-Info-Release.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,6 +662,44 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D659819927A3B80900959B0A /* dSYM */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = dSYM;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+		D659819D27A3BD6C00959B0A /* GoogleService-Info.Plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "GoogleService-Info.Plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" == \"Release\" ]; then\n  cp \"${PROJECT_DIR}/${PROJECT_NAME}/Configs/GoogleService-Info-Release.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\nelse\n  cp \"${PROJECT_DIR}/${PROJECT_NAME}/Configs/GoogleService-Info-Debug.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\nfi\n";
 		};
 		D66303A5279A77DD00D9181F /* LicensePlist */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -846,7 +909,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1209,6 +1272,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D659819427A3AE4900959B0A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 		D65FFFA227A144990070D44A /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
@@ -1244,6 +1315,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D659819527A3AE4900959B0A /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D659819427A3AE4900959B0A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		D659819727A3AE4900959B0A /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D659819427A3AE4900959B0A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
 		D65FFFA327A144990070D44A /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D65FFFA227A144990070D44A /* XCRemoteSwiftPackageReference "realm-swift" */;
