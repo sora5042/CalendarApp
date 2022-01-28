@@ -26,7 +26,7 @@ class ContainerTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 4
+            return 5
         default:
             return 0
         }
@@ -41,6 +41,12 @@ class ContainerTableViewController: UITableViewController {
             }
         case 3:
             guard let url = URL(string: "https://docs.google.com/forms/d/e/1FAIpQLSdkKuELsVccoESxOyN0F8Br4nw8k5Mh4V-6_qzToiGa2SYrsA/viewform?usp=sf_link") else { return }
+            if UIApplication.shared.canOpenURL(url as URL) {
+                UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+        case 4:
+            guard let url = URL(string: "https://sites.google.com/view/resukeapp-privacypolicy/%E3%83%9B%E3%83%BC%E3%83%A0") else { return }
             if UIApplication.shared.canOpenURL(url as URL) {
                 UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
                 tableView.deselectRow(at: indexPath, animated: true)
