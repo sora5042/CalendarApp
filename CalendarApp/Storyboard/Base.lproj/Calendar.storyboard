@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="42.666666666666657"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPm-pT-dpe">
-                                        <rect key="frame" x="15" y="8" width="77" height="30"/>
+                                        <rect key="frame" x="20" y="8" width="77" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="スクロール">
@@ -54,7 +54,7 @@
                                 </subviews>
                                 <color key="backgroundColor" name="calendarNavigation"/>
                                 <constraints>
-                                    <constraint firstItem="dPm-pT-dpe" firstAttribute="leading" secondItem="cBT-Jv-dNi" secondAttribute="leading" constant="15" id="Mst-Ez-HrH"/>
+                                    <constraint firstItem="dPm-pT-dpe" firstAttribute="leading" secondItem="cBT-Jv-dNi" secondAttribute="leading" constant="20" id="Mst-Ez-HrH"/>
                                     <constraint firstAttribute="bottom" secondItem="mh8-0Z-GWZ" secondAttribute="bottom" constant="7" id="NJY-JR-Vmx"/>
                                     <constraint firstItem="mh8-0Z-GWZ" firstAttribute="top" secondItem="cBT-Jv-dNi" secondAttribute="top" constant="8" id="R4v-jw-a9t"/>
                                     <constraint firstItem="mh8-0Z-GWZ" firstAttribute="centerX" secondItem="cBT-Jv-dNi" secondAttribute="centerX" id="Uhl-XT-ra1"/>
@@ -87,14 +87,8 @@
                                         <color key="textColor" name="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大安" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdF-YP-ger">
-                                        <rect key="frame" x="231" y="17" width="24" height="15"/>
-                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="12"/>
-                                        <color key="textColor" name="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sW-az-yYM">
-                                        <rect key="frame" x="40" y="8" width="72" height="33"/>
+                                        <rect key="frame" x="40.000000000000007" y="8" width="74.666666666666686" height="33"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="オプション">
@@ -102,29 +96,35 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DrP-ci-Hn2">
-                                        <rect key="frame" x="272" y="11" width="50" height="27"/>
+                                        <rect key="frame" x="262" y="11" width="50" height="27"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="一括削除">
                                             <color key="titleColor" name="button"/>
                                         </state>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大安" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdF-YP-ger">
+                                        <rect key="frame" x="177.66666666666666" y="32" width="20" height="10"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="10"/>
+                                        <color key="textColor" name="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="calendarInfoView"/>
                                 <constraints>
                                     <constraint firstItem="go5-jU-eb2" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="top" constant="17" id="1kK-jV-NCx"/>
                                     <constraint firstItem="flh-tb-ctZ" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="EQf-2H-nwf"/>
                                     <constraint firstItem="7sW-az-yYM" firstAttribute="leading" secondItem="GlU-Qw-ZMm" secondAttribute="leading" constant="40" id="I3f-wq-fZZ"/>
-                                    <constraint firstItem="XdF-YP-ger" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="top" constant="17" id="JKY-NO-bbp"/>
-                                    <constraint firstItem="XdF-YP-ger" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="K7I-Jt-RKj"/>
                                     <constraint firstItem="DrP-ci-Hn2" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="top" constant="11" id="OV7-Wk-DwG"/>
+                                    <constraint firstItem="XdF-YP-ger" firstAttribute="centerX" secondItem="GlU-Qw-ZMm" secondAttribute="centerX" id="SnH-Cc-C55"/>
                                     <constraint firstItem="go5-jU-eb2" firstAttribute="centerX" secondItem="GlU-Qw-ZMm" secondAttribute="centerX" id="V3w-GE-UNg"/>
                                     <constraint firstAttribute="trailing" secondItem="flh-tb-ctZ" secondAttribute="trailing" constant="20" id="VOf-r7-lR6"/>
-                                    <constraint firstItem="XdF-YP-ger" firstAttribute="leading" secondItem="go5-jU-eb2" secondAttribute="trailing" id="lij-iC-Vdc"/>
+                                    <constraint firstItem="XdF-YP-ger" firstAttribute="leading" secondItem="7sW-az-yYM" secondAttribute="trailing" constant="63" id="WLx-Lh-Hso"/>
+                                    <constraint firstItem="XdF-YP-ger" firstAttribute="top" secondItem="go5-jU-eb2" secondAttribute="bottom" id="nZY-wW-O0W"/>
                                     <constraint firstItem="flh-tb-ctZ" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="top" constant="10" id="qhm-47-Kz7"/>
                                     <constraint firstItem="go5-jU-eb2" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="ruF-Le-DZP"/>
                                     <constraint firstItem="DrP-ci-Hn2" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="tjf-AU-sr2"/>
-                                    <constraint firstItem="flh-tb-ctZ" firstAttribute="leading" secondItem="DrP-ci-Hn2" secondAttribute="trailing" constant="15" id="wzl-yH-4uI"/>
+                                    <constraint firstItem="flh-tb-ctZ" firstAttribute="leading" secondItem="DrP-ci-Hn2" secondAttribute="trailing" constant="25" id="wzl-yH-4uI"/>
                                     <constraint firstItem="7sW-az-yYM" firstAttribute="top" secondItem="GlU-Qw-ZMm" secondAttribute="top" constant="8" id="x0A-Y4-VqW"/>
                                     <constraint firstItem="7sW-az-yYM" firstAttribute="centerY" secondItem="GlU-Qw-ZMm" secondAttribute="centerY" id="xMh-gx-oln"/>
                                 </constraints>
