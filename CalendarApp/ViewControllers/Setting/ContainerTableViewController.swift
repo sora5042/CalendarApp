@@ -26,7 +26,7 @@ class ContainerTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 3
+            return 4
         default:
             return 0
         }
@@ -37,6 +37,12 @@ class ContainerTableViewController: UITableViewController {
         case 2:
             if let url = URL(string: "https://itunes.apple.com/app/ido.s110507@icloud.com?action=write-review") {
                 UIApplication.shared.open(url)
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+        case 3:
+            guard let url = URL(string: "https://docs.google.com/forms/d/e/1FAIpQLSdkKuELsVccoESxOyN0F8Br4nw8k5Mh4V-6_qzToiGa2SYrsA/viewform?usp=sf_link") else { return }
+            if UIApplication.shared.canOpenURL(url as URL) {
+                UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
                 tableView.deselectRow(at: indexPath, animated: true)
             }
         default:
