@@ -59,6 +59,9 @@ com.mono0926.LicensePlist/
 com.mono0926.LicensePlist.latest_result.txt
 com.mono0926.LicensePlist.plist
 #
+# Firebase Settings Files
+Configs/GoogleService-Info-Debug.plist
+Configs/GoogleService-Info-Release.plist
 # Add this line if you want to avoid checking in source code from the Xcode workspace
 *.xcworkspace
 

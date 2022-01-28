@@ -173,15 +173,19 @@ class AddEventViewController: UIViewController {
     }
 
     private func localNotification() {
+        let timeFormat = DateFormatter()
+        timeFormat.dateFormat = "HH:mm"
+
         let titleText = titleTextField.text
-        let commentText = commentTextField.text
+        let startTime = timeFormat.string(from: startDatePicker.date)
+        let endTime = timeFormat.string(from: endDatePicker.date)
         let placeText = placeTextField.text
 
         // 通知の中身を設定
         let content: UNMutableNotificationContent = UNMutableNotificationContent()
         content.title = titleText ?? ""
         content.subtitle = "場所：\(placeText ?? "")"
-        content.body = commentText ?? ""
+        content.body = "\(startTime)~\(endTime)"
         content.sound = UNNotificationSound.default
         content.badge = 1
 
@@ -207,9 +211,13 @@ class AddEventViewController: UIViewController {
     }
 
     private func updateLocalNotification() {
+        let timeFormat = DateFormatter()
+        timeFormat.dateFormat = "HH:mm"
+
         guard let notificationid = eventModel?.notificationId else { return }
         let titleText = titleTextField.text
-        let commentText = commentTextField.text
+        let startTime = timeFormat.string(from: startDatePicker.date)
+        let endTime = timeFormat.string(from: endDatePicker.date)
         let placeText = placeTextField.text
         // 更新前の通知リクエストを削除
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
@@ -219,7 +227,7 @@ class AddEventViewController: UIViewController {
         let content: UNMutableNotificationContent = UNMutableNotificationContent()
         content.title = titleText ?? ""
         content.subtitle = "場所：\(placeText ?? "")"
-        content.body = commentText ?? ""
+        content.body = "\(startTime)~\(endTime)"
         content.sound = UNNotificationSound.default
         content.badge = 1
         // 通知をいつ発動するかを設定
