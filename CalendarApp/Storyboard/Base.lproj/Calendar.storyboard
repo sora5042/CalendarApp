@@ -82,7 +82,7 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021年12月2日" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="go5-jU-eb2">
-                                        <rect key="frame" x="144.33333333333334" y="17" width="86.666666666666657" height="15"/>
+                                        <rect key="frame" x="144" y="17" width="87" height="15"/>
                                         <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="12"/>
                                         <color key="textColor" name="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -157,7 +157,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnA-uJ-gfc" customClass="GADBannerView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnA-uJ-gfc" customClass="GADBannerView">
                                 <rect key="frame" x="0.0" y="727" width="375" height="51"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>

@@ -36,15 +36,13 @@
                                 </subviews>
                                 <color key="backgroundColor" name="settingBackground"/>
                                 <constraints>
-                                    <constraint firstItem="ZBU-cd-VlJ" firstAttribute="centerX" secondItem="onE-Vv-FpF" secondAttribute="centerX" id="9fw-YF-58E"/>
+                                    <constraint firstItem="ZBU-cd-VlJ" firstAttribute="centerX" secondItem="onE-Vv-FpF" secondAttribute="centerX" id="4JH-fd-Rll"/>
                                     <constraint firstItem="e5V-Jy-z1G" firstAttribute="leading" secondItem="onE-Vv-FpF" secondAttribute="leading" constant="20" symbolic="YES" id="AQy-hk-IhB"/>
                                     <constraint firstItem="e5V-Jy-z1G" firstAttribute="top" secondItem="onE-Vv-FpF" secondAttribute="top" constant="9" id="Oct-xU-U7g"/>
                                     <constraint firstItem="ZBU-cd-VlJ" firstAttribute="centerY" secondItem="onE-Vv-FpF" secondAttribute="centerY" id="WrO-fC-GIi"/>
                                     <constraint firstAttribute="bottom" secondItem="ZBU-cd-VlJ" secondAttribute="bottom" constant="10" id="Wxa-YE-ntR"/>
                                     <constraint firstItem="e5V-Jy-z1G" firstAttribute="centerY" secondItem="onE-Vv-FpF" secondAttribute="centerY" id="a2b-bM-wVu"/>
                                     <constraint firstItem="ZBU-cd-VlJ" firstAttribute="top" secondItem="onE-Vv-FpF" secondAttribute="top" constant="10" id="eZc-Ac-BrB"/>
-                                    <constraint firstItem="ZBU-cd-VlJ" firstAttribute="leading" secondItem="onE-Vv-FpF" secondAttribute="leading" constant="167" id="mCe-k3-yNo"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZBU-cd-VlJ" secondAttribute="trailing" constant="167" id="tPI-z4-Rzo"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEP-VB-fkR">
@@ -62,6 +60,8 @@
                             <constraint firstItem="kEP-VB-fkR" firstAttribute="top" secondItem="onE-Vv-FpF" secondAttribute="bottom" id="VbA-oF-FIR"/>
                             <constraint firstItem="kEP-VB-fkR" firstAttribute="trailing" secondItem="9Ty-ZS-DkQ" secondAttribute="trailing" id="W5y-Eg-Tlv"/>
                             <constraint firstItem="kEP-VB-fkR" firstAttribute="leading" secondItem="9Ty-ZS-DkQ" secondAttribute="leading" id="Wvj-tX-l46"/>
+                            <constraint firstItem="kEP-VB-fkR" firstAttribute="centerX" secondItem="Y0i-3c-wqm" secondAttribute="centerX" id="c44-8e-2Zr"/>
+                            <constraint firstItem="onE-Vv-FpF" firstAttribute="centerX" secondItem="Y0i-3c-wqm" secondAttribute="centerX" id="dED-PX-D72"/>
                             <constraint firstItem="onE-Vv-FpF" firstAttribute="leading" secondItem="9Ty-ZS-DkQ" secondAttribute="leading" id="hK0-vF-8UO"/>
                             <constraint firstAttribute="bottom" secondItem="kEP-VB-fkR" secondAttribute="bottom" id="ywF-vt-kCY"/>
                         </constraints>
