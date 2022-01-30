@@ -8,6 +8,10 @@
 import UIKit
 import TextFieldEffects
 import RealmSwift
+import PKHUD
+import AppAuth
+import GTMAppAuth
+import GoogleAPIClientForREST
 
 protocol AddEventViewControllerDelegate: AnyObject {
     func event(addEvent: EventModel)
@@ -26,6 +30,7 @@ class AddEventViewController: UIViewController {
     private let dateFormat = DateFormatter()
     var date = String()
     private var selectedSwitchType = SwitchType.off
+    var authorization: GTMAppAuthFetcherAuthorization?
 
     @IBOutlet private weak var titleTextField: HoshiTextField!
     @IBOutlet private weak var placeTextField: HoshiTextField!
@@ -117,13 +122,6 @@ class AddEventViewController: UIViewController {
 
     @objc private func tappedSaveButton() {
         dateFormat.dateFormat = "yyyy/MM/dd"
-        guard let title = titleTextField.text else { return }
-        let calendarViewController = CalendarViewController()
-
-        if selectedSwitchType == .on {
-            calendarViewController.add(eventName: title, startDateTime: startDatePicker.date, endDateTime: endDatePicker.date)
-        } else {
-        }
 
         if eventModel == nil {
             localNotification()
@@ -135,8 +133,11 @@ class AddEventViewController: UIViewController {
     }
 
     @IBAction func addGoogleCalendarSwitch(_ sender: UISwitch) {
+        guard let title = titleTextField.text else { return }
+
         if sender.isOn {
             selectedSwitchType = .on
+            add(eventName: title, startDateTime: startDatePicker.date, endDateTime: endDatePicker.date)
             print(selectedSwitchType)
 
         } else {
@@ -247,6 +248,84 @@ class AddEventViewController: UIViewController {
 
             }
         }
+    }
+
+    typealias ShowAuthorizationDialogCallBack = ((Error?) -> Void)
+    private func showAuthorizationDialog(callBack: @escaping ShowAuthorizationDialogCallBack) {
+        let clientID = "579964048764-q3nu1gpee4h5hjrqa4ubppvvg3g3jrnt.apps.googleusercontent.com"
+        let redirectUrl = "com.googleusercontent.apps.579964048764-q3nu1gpee4h5hjrqa4ubppvvg3g3jrnt:/oauthredirect"
+        let scopes = ["https://www.googleapis.com/auth/calendar", "https://www.googleapis.com/auth/calendar.readonly", "https://www.googleapis.com/auth/calendar.events", "https://www.googleapis.com/auth/calendar.events.readonly"]
+
+        let configuration = GTMAppAuthFetcherAuthorization.configurationForGoogle()
+        let redirectURL = URL(string: redirectUrl + ":/oauthredirect")
+
+        let request = OIDAuthorizationRequest(configuration: configuration,
+                                              clientId: clientID,
+                                              scopes: scopes,
+                                              redirectURL: redirectURL!,
+                                              responseType: OIDResponseTypeCode,
+                                              additionalParameters: nil)
+
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.currentAuthorizationFlow = OIDAuthState.authState(
+            byPresenting: request,
+            presenting: self,
+            callback: { [weak self] (authState, error) in
+                if let error = error {
+                    HUD.flash(.labeledError(title: "認証に失敗しました", subtitle: nil), delay: 1)
+                    NSLog("\(error)")
+                } else {
+                    if let authState = authState {
+                        // 認証情報オブジェクトを生成
+                        self?.authorization = GTMAppAuthFetcherAuthorization(authState: authState)
+                        GTMAppAuthFetcherAuthorization.save((self?.authorization)!, toKeychainForName: "authorization")
+                    }
+                }
+                callBack(error)
+            })
+    }
+    // このアプリで保存したイベントデータをGoogleカレンダーアプリにも保存するメソッド
+    private func add(eventName: String, startDateTime: Date, endDateTime: Date) {
+        if GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization") != nil {
+            authorization = GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization")!
+        }
+
+        if authorization == nil {
+            showAuthorizationDialog(callBack: { [weak self](error) -> Void in
+                if error == nil {
+                    self?.addCalendarEvent(eventName: eventName, startDateTime: startDateTime, endDateTime: endDateTime)
+                }
+            })
+        } else {
+            addCalendarEvent(eventName: eventName, startDateTime: startDateTime, endDateTime: endDateTime)
+        }
+    }
+
+    private func addCalendarEvent(eventName: String, startDateTime: Date, endDateTime: Date) {
+        let calendarService = GTLRCalendarService()
+        calendarService.authorizer = authorization
+        calendarService.shouldFetchNextPages = true
+
+        let event = GTLRCalendar_Event()
+        event.summary = eventName
+
+        let gtlrDateTimeStart: GTLRDateTime = GTLRDateTime(date: startDateTime)
+        let startEventDateTime: GTLRCalendar_EventDateTime = GTLRCalendar_EventDateTime()
+        startEventDateTime.dateTime = gtlrDateTimeStart
+        event.start = startEventDateTime
+
+        let gtlrDateTimeEnd: GTLRDateTime = GTLRDateTime(date: endDateTime)
+        let endEventDateTime: GTLRCalendar_EventDateTime = GTLRCalendar_EventDateTime()
+        endEventDateTime.dateTime = gtlrDateTimeEnd
+        event.end = endEventDateTime
+
+        let query = GTLRCalendarQuery_EventsInsert.query(withObject: event, calendarId: "primary")
+        calendarService.executeQuery(query, completionHandler: { (_, _, error) -> Void in
+            if let error = error {
+                HUD.flash(.labeledError(title: "データの追加に失敗しました", subtitle: nil), delay: 1)
+                NSLog("\(error)")
+            }
+        })
     }
 
     @objc private func tappedCancelButton() {

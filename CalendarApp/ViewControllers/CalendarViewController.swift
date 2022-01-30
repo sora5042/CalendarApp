@@ -391,49 +391,6 @@ class CalendarViewController: UIViewController {
             }
         })
     }
-    // このアプリで保存したイベントデータをGoogleカレンダーアプリにも保存するメソッド
-    func add(eventName: String, startDateTime: Date, endDateTime: Date) {
-        if GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization") != nil {
-            authorization = GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization")!
-        }
-
-        if authorization == nil {
-            showAuthorizationDialog(callBack: { [weak self](error) -> Void in
-                if error == nil {
-                    self?.addCalendarEvent(eventName: eventName, startDateTime: startDateTime, endDateTime: endDateTime)
-                }
-            })
-        } else {
-            addCalendarEvent(eventName: eventName, startDateTime: startDateTime, endDateTime: endDateTime)
-        }
-    }
-
-    private func addCalendarEvent(eventName: String, startDateTime: Date, endDateTime: Date) {
-        let calendarService = GTLRCalendarService()
-        calendarService.authorizer = authorization
-        calendarService.shouldFetchNextPages = true
-
-        let event = GTLRCalendar_Event()
-        event.summary = eventName
-
-        let gtlrDateTimeStart: GTLRDateTime = GTLRDateTime(date: startDateTime)
-        let startEventDateTime: GTLRCalendar_EventDateTime = GTLRCalendar_EventDateTime()
-        startEventDateTime.dateTime = gtlrDateTimeStart
-        event.start = startEventDateTime
-
-        let gtlrDateTimeEnd: GTLRDateTime = GTLRDateTime(date: endDateTime)
-        let endEventDateTime: GTLRCalendar_EventDateTime = GTLRCalendar_EventDateTime()
-        endEventDateTime.dateTime = gtlrDateTimeEnd
-        event.end = endEventDateTime
-
-        let query = GTLRCalendarQuery_EventsInsert.query(withObject: event, calendarId: "primary")
-        calendarService.executeQuery(query, completionHandler: { (_, _, error) -> Void in
-            if let error = error {
-                HUD.flash(.labeledError(title: "データの追加に失敗しました", subtitle: nil), delay: 1)
-                NSLog("\(error)")
-            }
-        })
-    }
 
     private func fetchEventModels() {
         allEvent = realm.objects(EventModel.self)
