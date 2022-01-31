@@ -77,10 +77,47 @@ class StandardCalendarAppSync {
             let eventId = events.eventIdentifier ?? ""
             let startDate = events.startDate ?? Date()
             let endDate = events.endDate ?? Date()
-            Realm.iOSCalendar(eventId: eventId, name: title, startDate: startDate, endDate: endDate, notificationDate: startDate) { success in
+            let notificationId = UUID().uuidString
+
+            calendarSyncNotification(notificaitonId: notificationId, name: title, notificationDate: startDate, endDate: endDate)
+            Realm.iOSCalendar(eventId: eventId, notificationId: notificationId, name: title, startDate: startDate, endDate: endDate, notificationDate: startDate) { success in
                 if success {
                     print("イベントデータの取得に成功しました")
                 }
+            }
+        }
+    }
+
+    static func calendarSyncNotification(notificaitonId: String, name: String?, notificationDate: Date, endDate: Date) {
+        let timeFormat = DateFormatter()
+        timeFormat.dateFormat = "HH:mm"
+
+        let titleText = name
+        let startTime = timeFormat.string(from: notificationDate)
+        let endTime = timeFormat.string(from: endDate)
+
+        // 通知の中身を設定
+        let content: UNMutableNotificationContent = UNMutableNotificationContent()
+        content.title = titleText ?? ""
+        content.body = "\(startTime)~\(endTime)"
+        content.sound = UNNotificationSound.default
+        content.badge = 1
+
+        // 通知をいつ発動するかを設定
+        // カレンダークラスを作成
+        let calendar = Calendar.current
+        let calendarComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: notificationDate)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: calendarComponents, repeats: true)
+
+        // 通知のリクエストを作成
+        let request: UNNotificationRequest = UNNotificationRequest(identifier: notificaitonId, content: content, trigger: trigger)
+
+        // MARK: 通知のリクエストを実際に登録する
+        UNUserNotificationCenter.current().add(request) { (error: Error?) in
+            if let error = error {
+                print("プッシュ通知の作成に失敗しました", error)
+                return
+            } else {
             }
         }
     }

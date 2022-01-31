@@ -379,8 +379,10 @@ class CalendarViewController: UIViewController {
                         let name: String = item.summary ?? ""
                         let startDate: Date? = item.start?.dateTime?.date
                         let endDate: Date? = item.end?.dateTime?.date
+                        let notificationId = UUID().uuidString
 
-                        Realm.googleCalendar(id: id, name: name, startDate: startDate ?? Date(), endDate: endDate ?? Date(), notificationDate: startDateTime) { success in
+                        StandardCalendarAppSync.calendarSyncNotification(notificaitonId: notificationId, name: name, notificationDate: startDate ?? Date(), endDate: endDate ?? Date())
+                        Realm.googleCalendar(id: id, notificationId: notificationId, name: name, startDate: startDate ?? Date(), endDate: endDate ?? Date(), notificationDate: startDateTime) { success in
                             if success {
                                 print("Googleカレンダーからのデータの取得に成功しました")
                             }

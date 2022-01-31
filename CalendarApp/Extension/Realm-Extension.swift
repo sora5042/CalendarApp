@@ -81,13 +81,14 @@ extension Realm {
         }
     }
 
-    static func googleCalendar(id: String, name: String?, startDate: Date, endDate: Date, notificationDate: Date, completion: @escaping (Bool) -> Void) {
+    static func googleCalendar(id: String, notificationId: String?, name: String?, startDate: Date, endDate: Date, notificationDate: Date, completion: @escaping (Bool) -> Void) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let timeFormat = DateFormatter()
         timeFormat.dateFormat = "HH:mm"
 
         guard let name = name else { return }
+        guard let notificationId = notificationId else { return }
 
         do {
             let realm = try Realm()
@@ -95,6 +96,7 @@ extension Realm {
 
             try realm.write {
                 eventModels.eventId = id
+                eventModels.notificationId = notificationId
                 eventModels.title = name
                 eventModels.editStartTime = startDate
                 eventModels.editEndTime = endDate
@@ -107,16 +109,16 @@ extension Realm {
         } catch {
             print("create todo error.")
         }
-
     }
 
-    static func iOSCalendar(eventId: String, name: String?, startDate: Date, endDate: Date, notificationDate: Date, completion: @escaping (Bool) -> Void) {
+    static func iOSCalendar(eventId: String, notificationId: String?, name: String?, startDate: Date, endDate: Date, notificationDate: Date, completion: @escaping (Bool) -> Void) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let timeFormat = DateFormatter()
         timeFormat.dateFormat = "HH:mm"
 
         guard let name = name else { return }
+        guard let notificationId = notificationId else { return }
         let eventId = eventId
 
         do {
@@ -125,6 +127,7 @@ extension Realm {
 
             try realm.write {
                 eventModels.eventId = eventId
+                eventModels.notificationId = notificationId
                 eventModels.title = name
                 eventModels.editStartTime = startDate
                 eventModels.editEndTime = endDate
