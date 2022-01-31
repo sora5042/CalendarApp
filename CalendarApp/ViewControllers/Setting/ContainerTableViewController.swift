@@ -35,7 +35,7 @@ class ContainerTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 2:
-            if let url = URL(string: "https://itunes.apple.com/app/ido.s110507@icloud.com?action=write-review") {
+            if let url = URL(string: "https://itunes.apple.com/app/id1607735456?action=write-review") {
                 UIApplication.shared.open(url)
                 tableView.deselectRow(at: indexPath, animated: true)
             }
