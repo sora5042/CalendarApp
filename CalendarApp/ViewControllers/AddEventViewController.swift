@@ -63,8 +63,6 @@ class AddEventViewController: UIViewController {
 
         dateFormat.dateFormat = "yyyy/MM/dd"
         let datePicker = dateFormat.date(from: date)
-        startDatePicker.setValue(UIColor(named: "textColor"), forKeyPath: "textColor")
-        endDatePicker.setValue(UIColor(named: "textColor"), forKeyPath: "textColor")
         startDatePicker.date = datePicker ?? Date()
         endDatePicker.date = datePicker ?? Date()
         notificationDatePicker.date = datePicker ?? Date()
@@ -245,7 +243,6 @@ class AddEventViewController: UIViewController {
             if let error = error {
                 print("プッシュ通知の作成に失敗しました", error)
             } else {
-
             }
         }
     }
