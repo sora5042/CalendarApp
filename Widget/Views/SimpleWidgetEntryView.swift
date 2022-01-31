@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SimpleWidgetEntryView: View {
     let entry: SimpleWidgetEntry
-    
+        
     var body: some View {
         ZStack {
             VStack (spacing: 5) {
