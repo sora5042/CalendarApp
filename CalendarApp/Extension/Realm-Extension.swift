@@ -140,7 +140,5 @@ extension Realm {
         } catch {
             print("create todo error.")
         }
-
     }
-
 }
