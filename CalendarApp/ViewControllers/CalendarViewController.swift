@@ -15,7 +15,7 @@ import AppAuth
 import GTMAppAuth
 import GoogleAPIClientForREST
 
-class CalendarViewController: UIViewController {
+class CalendarViewController: UIViewController, UNUserNotificationCenterDelegate {
 
     enum MenuType: String {
         case month = "月表示"
@@ -154,10 +154,12 @@ class CalendarViewController: UIViewController {
         var displayCalendarMenu = [UIMenuElement]()
 
         displayCalendarMenu.append(UIAction(title: "Googleカレンダーアプリと同期", handler: { [weak self] _ in
+            self?.requestNotification()
             self?.getEvents()
         }))
 
-        displayCalendarMenu.append(UIAction(title: "標準カレンダーアプリと同期", handler: { _ in
+        displayCalendarMenu.append(UIAction(title: "標準カレンダーアプリと同期", handler: { [weak self] _ in
+            self?.requestNotification()
             StandardCalendarAppSync.checkAuth()
         }))
 
@@ -245,6 +247,7 @@ class CalendarViewController: UIViewController {
     }
 
     @objc private func tappedSettingButton() {
+        requestNotification()
         let storyboard = UIStoryboard(name: "Setting", bundle: nil)
         if let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController") as? SettingViewController {
             settingViewController.modalTransitionStyle = .coverVertical
@@ -419,6 +422,19 @@ class CalendarViewController: UIViewController {
             return nil
         }
         return adUnitIDs[key]
+    }
+
+    private func requestNotification() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted: Bool, _: Error?) in
+            // [.alert, .badge, .sound]と指定されているので、「アラート、バッジ、サウンド」の3つに対しての許可をリクエストした
+            if granted {
+                // 「許可」が押された場合
+                UNUserNotificationCenter.current().delegate = self
+            } else {
+                return
+                // 「許可しない」が押された場合
+            }
+        }
     }
 
     private func calculateRokuyo(date: Date) -> String {
