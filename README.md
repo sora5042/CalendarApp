@@ -24,7 +24,9 @@
 苦労している点：これまで利用していたSQLite、Firebaseと比べてRealmはRealmSwiftの設計思想や使い方を理解して使わなければトラブルがよく発生する点。  
   
 現状での課題：UXの考え方や既存アプリとの差別化をするためにはどうすればいいか模索中です。  
-このアプリはAppStoreに公開予定です。
+  
+このアプリはAppStoreに公開済みです。  
+[https://apps.apple.com/jp/app/re-%E3%82%B9%E3%82%B1/id1607735456](https://apps.apple.com/jp/app/re-%E3%82%B9%E3%82%B1/id1607735456)
   
 ## 使用ライブラリ  
 - [FSCalendar](https://github.com/WenchaoD/FSCalendar)  
@@ -68,7 +70,7 @@ Googleモバイル広告の最新世代で、洗練された広告フォーマ�
 - Xcode13.2.1  
   
 ## スクリーンショット(iPhone12mini)  
-<img src="https://user-images.githubusercontent.com/65600700/150466218-0b30e3b9-b481-4865-989e-af03e0bc0425.PNG" width="250px">  <img src="https://user-images.githubusercontent.com/65600700/150466355-fc8a48e5-95c4-40d8-8c60-3717a2381ea1.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/150466443-5d4b8bbc-2036-4f93-b035-0f8c2af023b8.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/150466491-5a29f00c-980b-44d9-9c22-4b503f3332ab.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/150466522-972b7acc-bf40-4fbc-8fd8-98cb67be5a94.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/150466562-e5d523fa-d036-46be-a8d3-e79bcb6485af.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/150466745-65fcb571-ffae-41ea-a8f5-dcc49f32843a.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/150107750-4414d6dd-671b-4859-bdf9-a1cdfd704106.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/149735986-ac748815-f7be-46ef-b8f1-44c490789dc1.PNG" width="250px"> 　<img src="https://user-images.githubusercontent.com/65600700/148356028-b716538b-e1d0-4c5d-a0f6-7ef4a8a28c2f.jpg" width="250px" height="530px">  
+<img src="https://user-images.githubusercontent.com/65600700/152096481-9bc06538-d097-4e5b-86af-cf6401c8490a.PNG" width="250px">  <img src="https://user-images.githubusercontent.com/65600700/152096520-dc17ad4a-5ae0-4b85-bb33-189e48ce6c38.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/152096607-277945bf-433a-4971-873d-aff12204725b.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/152096655-a107ef83-2b4e-40a3-86bf-da56c79abde5.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/152096715-bb049bf3-60be-4bbe-b94f-d46af27d12b2.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/152096731-289c460c-6258-4eac-86af-75619b7f0b1d.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/152096907-589e5e52-db1c-44d6-ad19-6d95482024ba.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/150466745-65fcb571-ffae-41ea-a8f5-dcc49f32843a.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/150107750-4414d6dd-671b-4859-bdf9-a1cdfd704106.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/152097069-81b16a46-9f7c-40f9-9009-27a26fcfbe50.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/149735986-ac748815-f7be-46ef-b8f1-44c490789dc1.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/148356028-b716538b-e1d0-4c5d-a0f6-7ef4a8a28c2f.jpg" width="250px" height="530px">  
   
   
 
