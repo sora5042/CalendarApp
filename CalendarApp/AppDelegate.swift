@@ -13,38 +13,64 @@ import GoogleMobileAds
 import AppTrackingTransparency
 import AdSupport
 import Firebase
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     var currentAuthorizationFlow: OIDExternalUserAgentSession?
+    @Published var trackingAuthorized: Bool?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
         FirebaseApp.configure()
-        if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
-                GADMobileAds.sharedInstance().start(completionHandler: nil)
-            })
-        } else {
-            // Fallback on earlier versions
-            GADMobileAds.sharedInstance().start(completionHandler: nil)
-        }
-
-        // プッシュ通知の許可を依頼する際のコード
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted: Bool, _: Error?) in
-            // [.alert, .badge, .sound]と指定されているので、「アラート、バッジ、サウンド」の3つに対しての許可をリクエストした
-            if granted {
-                // 「許可」が押された場合
-                UNUserNotificationCenter.current().delegate = self
-            } else {
-                return
-                // 「許可しない」が押された場合
+        if #available(iOS 15, *) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+                self?.checkTrackingAuthorizationStatus()
             }
+        } else if #available(iOS 14, *) {
+            checkTrackingAuthorizationStatus()
         }
         return true
+    }
+
+    func checkTrackingAuthorizationStatus() {
+        switch ATTrackingManager.trackingAuthorizationStatus {
+        case .notDetermined:
+            requestTrackingAuthorization()
+        case .restricted:
+            updateTrackingAuthorizationStatus(false)
+        case .denied:
+            updateTrackingAuthorizationStatus(false)
+        case .authorized:
+            updateTrackingAuthorizationStatus(true)
+        @unknown default:
+            fatalError()
+        }
+    }
+
+    func requestTrackingAuthorization() {
+        ATTrackingManager.requestTrackingAuthorization { status in
+            switch status {
+            case .notDetermined: break
+            case .restricted:
+                self.updateTrackingAuthorizationStatus(false)
+            case .denied:
+                self.updateTrackingAuthorizationStatus(false)
+            case .authorized:
+                self.updateTrackingAuthorizationStatus(true)
+            @unknown default:
+                fatalError()
+            }
+        }
+    }
+
+    func updateTrackingAuthorizationStatus(_ b: Bool) {
+        GADMobileAds.sharedInstance().start { _ in
+            self.trackingAuthorized = b
+        }
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
