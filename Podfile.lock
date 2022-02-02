@@ -6,7 +6,7 @@ PODS:
   - AppAuth/ExternalUserAgent (1.4.0)
   - CalculateCalendarLogic (0.5.0)
   - FSCalendar (2.8.2)
-  - Google-Mobile-Ads-SDK (8.13.0):
+  - Google-Mobile-Ads-SDK (9.0.0):
     - GoogleAppMeasurement (< 9.0, >= 7.0)
     - GoogleUserMessagingPlatform (>= 1.1)
   - GoogleAPIClientForREST/Calendar (1.6.0):
@@ -60,7 +60,7 @@ PODS:
   - GTMSessionFetcher/Core (1.7.0)
   - GTMSessionFetcher/Full (1.7.0):
     - GTMSessionFetcher/Core (= 1.7.0)
-  - LicensePlist (3.16.0)
+  - LicensePlist (3.17.0)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -97,14 +97,14 @@ SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   CalculateCalendarLogic: d14189787cd47766e64281b2686608afea07ae4d
   FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
-  Google-Mobile-Ads-SDK: 05e5d68bb42a61b2e5bef336a52789785605aa22
+  Google-Mobile-Ads-SDK: d6ff7e6a7e46a76eb91af814d16d040197606afc
   GoogleAPIClientForREST: 5183df28e7bcb7b7b41ebd558e16083cfed60d99
   GoogleAppMeasurement: aa3cb422fab2b05d2efac543a5720d1a85b9dea5
   GoogleUserMessagingPlatform: ab890ce5f6620f293a21b6bdd82e416a2c73aeca
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
-  LicensePlist: f91b2c4bd3379379cdfc0541693c3af031b9bcb3
+  LicensePlist: f7eaf6d1d39746d49415ab30f104b734d5163519
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
 
