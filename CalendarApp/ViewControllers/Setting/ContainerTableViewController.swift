@@ -46,7 +46,7 @@ class ContainerTableViewController: UITableViewController {
                 tableView.deselectRow(at: indexPath, animated: true)
             }
         case 4:
-            guard let url = URL(string: "https://sites.google.com/view/resukeapp-privacypolicy/%E3%83%9B%E3%83%BC%E3%83%A0") else { return }
+            guard let url = URL(string: "https://sora.sakurai-lab.info/プライバシーポリシー") else { return }
             if UIApplication.shared.canOpenURL(url as URL) {
                 UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
                 tableView.deselectRow(at: indexPath, animated: true)
