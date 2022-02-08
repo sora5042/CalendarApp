@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
-    <device id="retina6_7" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController storyboardIdentifier="AddScheduleViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="AddEventViewController" customModule="CalendarApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hf6-70-mcy">
-                                <rect key="frame" x="0.0" y="238" width="428" height="190"/>
+                                <rect key="frame" x="0.0" y="238" width="375" height="190"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="開始" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mef-lD-WiD">
                                         <rect key="frame" x="25" y="20" width="30" height="15"/>
@@ -33,9 +33,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Jp7-4V-Yis">
-                                        <rect key="frame" x="167" y="15" width="253" height="31"/>
+                                        <rect key="frame" x="145" y="15" width="222" height="31"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" systemColor="systemTealColor"/>
+                                        <color key="tintColor" systemColor="tintColor"/>
                                         <locale key="locale" localeIdentifier="ja"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
@@ -44,8 +44,8 @@
                                         </userDefinedRuntimeAttributes>
                                     </datePicker>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="N1r-Dm-J3v">
-                                        <rect key="frame" x="167" y="72" width="253" height="31"/>
-                                        <color key="tintColor" systemColor="systemTealColor"/>
+                                        <rect key="frame" x="145" y="72" width="222" height="31"/>
+                                        <color key="tintColor" systemColor="tintColor"/>
                                         <locale key="locale" localeIdentifier="ja"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
@@ -60,8 +60,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Tvy-Kt-xxA">
-                                        <rect key="frame" x="161" y="138" width="259" height="31"/>
-                                        <color key="tintColor" systemColor="systemTealColor"/>
+                                        <rect key="frame" x="145" y="138" width="222" height="31"/>
+                                        <color key="tintColor" systemColor="tintColor"/>
                                         <locale key="locale" localeIdentifier="ja"/>
                                     </datePicker>
                                 </subviews>
@@ -70,13 +70,13 @@
                                     <constraint firstItem="mGG-L9-NoF" firstAttribute="top" secondItem="mef-lD-WiD" secondAttribute="bottom" constant="47" id="3Bm-ne-jfX"/>
                                     <constraint firstItem="Jp7-4V-Yis" firstAttribute="top" secondItem="hf6-70-mcy" secondAttribute="top" constant="15" id="4hH-nD-y8e"/>
                                     <constraint firstAttribute="trailing" secondItem="Tvy-Kt-xxA" secondAttribute="trailing" constant="8" id="8GH-SF-pMM"/>
-                                    <constraint firstItem="Tvy-Kt-xxA" firstAttribute="leading" secondItem="74Y-OI-o1k" secondAttribute="trailing" constant="76" id="9SO-cB-exd"/>
+                                    <constraint firstItem="Tvy-Kt-xxA" firstAttribute="leading" secondItem="74Y-OI-o1k" secondAttribute="trailing" constant="60" id="9SO-cB-exd"/>
                                     <constraint firstItem="74Y-OI-o1k" firstAttribute="top" secondItem="mGG-L9-NoF" secondAttribute="bottom" constant="55" id="Dan-Mz-y9u"/>
-                                    <constraint firstItem="N1r-Dm-J3v" firstAttribute="leading" secondItem="mGG-L9-NoF" secondAttribute="trailing" constant="112" id="PhW-7o-2oo"/>
+                                    <constraint firstItem="N1r-Dm-J3v" firstAttribute="leading" secondItem="mGG-L9-NoF" secondAttribute="trailing" constant="90" id="PhW-7o-2oo"/>
                                     <constraint firstItem="N1r-Dm-J3v" firstAttribute="top" secondItem="Jp7-4V-Yis" secondAttribute="bottom" constant="26" id="So3-0G-gtQ"/>
                                     <constraint firstAttribute="bottom" secondItem="74Y-OI-o1k" secondAttribute="bottom" constant="23" id="XsK-Fv-N0F"/>
                                     <constraint firstAttribute="trailing" secondItem="N1r-Dm-J3v" secondAttribute="trailing" constant="8" id="cuk-VB-hhW"/>
-                                    <constraint firstItem="Jp7-4V-Yis" firstAttribute="leading" secondItem="mef-lD-WiD" secondAttribute="trailing" constant="112" id="dpk-5L-mWJ"/>
+                                    <constraint firstItem="Jp7-4V-Yis" firstAttribute="leading" secondItem="mef-lD-WiD" secondAttribute="trailing" constant="90" id="dpk-5L-mWJ"/>
                                     <constraint firstItem="74Y-OI-o1k" firstAttribute="leading" secondItem="hf6-70-mcy" secondAttribute="leading" constant="25" id="e6i-c5-j7f"/>
                                     <constraint firstItem="mef-lD-WiD" firstAttribute="top" secondItem="hf6-70-mcy" secondAttribute="top" constant="20" symbolic="YES" id="evY-Ay-uBU"/>
                                     <constraint firstItem="Tvy-Kt-xxA" firstAttribute="top" secondItem="N1r-Dm-J3v" secondAttribute="bottom" constant="35" id="eyU-fg-Suz"/>
@@ -86,7 +86,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZYT-rb-6L6">
-                                <rect key="frame" x="0.0" y="44" width="428" height="59"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="59"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvl-2X-AqJ">
                                         <rect key="frame" x="10" y="13" width="77" height="30"/>
@@ -97,7 +97,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7TH-uC-hJL">
-                                        <rect key="frame" x="382" y="13" width="31" height="30"/>
+                                        <rect key="frame" x="329" y="13" width="31" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="保存">
@@ -105,7 +105,7 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新規イベント" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVv-3v-6ba">
-                                        <rect key="frame" x="157.66666666666666" y="19" width="112.99999999999997" height="19"/>
+                                        <rect key="frame" x="131" y="19" width="113" height="19"/>
                                         <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="19"/>
                                         <color key="textColor" name="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -125,18 +125,28 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJk-aa-dSV">
-                                <rect key="frame" x="0.0" y="201" width="428" height="37"/>
+                                <rect key="frame" x="0.0" y="201" width="375" height="37"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="・日時" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cya-Ic-qyT">
-                                        <rect key="frame" x="8" y="11" width="98" height="15"/>
+                                        <rect key="frame" x="8" y="11" width="45" height="15"/>
                                         <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="15"/>
                                         <color key="textColor" name="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bA1-qT-uL9">
+                                        <rect key="frame" x="311" y="4.6666666666666572" width="54" height="28"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="日時指定">
+                                            <color key="titleColor" name="button"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="Navigation"/>
                                 <constraints>
                                     <constraint firstItem="cya-Ic-qyT" firstAttribute="leading" secondItem="ZJk-aa-dSV" secondAttribute="leading" constant="8" id="LzY-Xg-mK9"/>
+                                    <constraint firstAttribute="trailing" secondItem="bA1-qT-uL9" secondAttribute="trailing" constant="10" id="TCG-MM-KaN"/>
+                                    <constraint firstItem="bA1-qT-uL9" firstAttribute="centerY" secondItem="ZJk-aa-dSV" secondAttribute="centerY" id="ZlG-nI-rFW"/>
                                     <constraint firstItem="cya-Ic-qyT" firstAttribute="centerY" secondItem="ZJk-aa-dSV" secondAttribute="centerY" id="mIc-Br-SPv"/>
                                     <constraint firstItem="cya-Ic-qyT" firstAttribute="top" secondItem="ZJk-aa-dSV" secondAttribute="top" constant="11" id="rJ0-ht-Ejq"/>
                                     <constraint firstAttribute="trailing" secondItem="cya-Ic-qyT" secondAttribute="trailing" constant="322" id="vWz-kO-YIe"/>
@@ -144,10 +154,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUG-HQ-AuI">
-                                <rect key="frame" x="0.0" y="428" width="428" height="37"/>
+                                <rect key="frame" x="0.0" y="428" width="375" height="37"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="・場所" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzZ-wz-vtr">
-                                        <rect key="frame" x="8" y="11" width="98" height="15"/>
+                                        <rect key="frame" x="8" y="11" width="45" height="15"/>
                                         <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="15"/>
                                         <color key="textColor" name="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -162,10 +172,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6O-XJ-22k">
-                                <rect key="frame" x="0.0" y="526" width="428" height="37"/>
+                                <rect key="frame" x="0.0" y="526" width="375" height="37"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="・コメント" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzz-wj-zCj">
-                                        <rect key="frame" x="8" y="11" width="128" height="15"/>
+                                        <rect key="frame" x="8" y="11" width="75" height="15"/>
                                         <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="15"/>
                                         <color key="textColor" name="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -181,10 +191,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8Z-Mh-P8A">
-                                <rect key="frame" x="0.0" y="103" width="428" height="37"/>
+                                <rect key="frame" x="0.0" y="103" width="375" height="37"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="・タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNf-fp-z6A">
-                                        <rect key="frame" x="8" y="11" width="140" height="15"/>
+                                        <rect key="frame" x="8" y="11" width="87" height="15"/>
                                         <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="15"/>
                                         <color key="textColor" name="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -199,10 +209,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HaA-0z-eGk">
-                                <rect key="frame" x="0.0" y="140" width="428" height="61"/>
+                                <rect key="frame" x="0.0" y="140" width="375" height="61"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="タイトルを入力" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="05m-HO-Q56" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="15" y="8" width="398" height="45"/>
+                                        <rect key="frame" x="15" y="8" width="345" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="2Pn-PS-9mn"/>
                                         </constraints>
@@ -220,10 +230,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNU-Ih-daX">
-                                <rect key="frame" x="0.0" y="465" width="428" height="61"/>
+                                <rect key="frame" x="0.0" y="465" width="375" height="61"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="場所を入力" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U18-BD-gNP" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="15" y="8" width="398" height="45"/>
+                                        <rect key="frame" x="15" y="8" width="345" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="dbE-Lc-oZp"/>
                                         </constraints>
@@ -241,10 +251,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7hT-Vk-0Kx">
-                                <rect key="frame" x="0.0" y="563" width="428" height="363"/>
+                                <rect key="frame" x="0.0" y="563" width="375" height="249"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="コメントを入力" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eUu-im-bLr" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="15" y="8" width="398" height="45"/>
+                                        <rect key="frame" x="15" y="8" width="345" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="pKZ-DR-fpX"/>
                                         </constraints>
@@ -253,33 +263,39 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ZW-VL-mbG">
-                                        <rect key="frame" x="0.0" y="73" width="428" height="48"/>
+                                        <rect key="frame" x="0.0" y="73" width="375" height="48"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dMs-Gb-2GE">
-                                                <rect key="frame" x="334" y="8" width="51" height="32"/>
+                                                <rect key="frame" x="316" y="8" width="51" height="32"/>
                                                 <connections>
                                                     <action selector="addGoogleCalendarSwitch:" destination="Y6W-OH-hqX" eventType="valueChanged" id="LOX-mw-NY9"/>
                                                 </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="・Googleカレンダーにも追加する" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyz-UV-zd9">
-                                                <rect key="frame" x="25" y="14" width="255" height="20"/>
+                                                <rect key="frame" x="5" y="14" width="191" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="qXf-qk-laO"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="13"/>
+                                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="12"/>
                                                 <color key="textColor" name="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google" translatesAutoresizingMaskIntoConstraints="NO" id="EbM-72-Zvo">
+                                                <rect key="frame" x="201" y="8.6666666666666288" width="107" height="31"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" name="Navigation"/>
                                         <constraints>
                                             <constraint firstItem="iyz-UV-zd9" firstAttribute="centerY" secondItem="0ZW-VL-mbG" secondAttribute="centerY" id="Elf-a0-GcX"/>
+                                            <constraint firstItem="EbM-72-Zvo" firstAttribute="centerY" secondItem="0ZW-VL-mbG" secondAttribute="centerY" id="G2s-uc-17N"/>
                                             <constraint firstItem="dMs-Gb-2GE" firstAttribute="top" secondItem="0ZW-VL-mbG" secondAttribute="top" constant="8" id="GVO-Bb-IUp"/>
                                             <constraint firstItem="dMs-Gb-2GE" firstAttribute="centerY" secondItem="0ZW-VL-mbG" secondAttribute="centerY" id="Lbv-Do-aiJ"/>
-                                            <constraint firstItem="dMs-Gb-2GE" firstAttribute="leading" secondItem="iyz-UV-zd9" secondAttribute="trailing" constant="54" id="gfq-CH-yQM"/>
-                                            <constraint firstItem="iyz-UV-zd9" firstAttribute="leading" secondItem="0ZW-VL-mbG" secondAttribute="leading" constant="25" id="guO-fq-H1y"/>
+                                            <constraint firstItem="dMs-Gb-2GE" firstAttribute="leading" secondItem="EbM-72-Zvo" secondAttribute="trailing" constant="8" symbolic="YES" id="UCJ-1p-yF9"/>
+                                            <constraint firstItem="EbM-72-Zvo" firstAttribute="leading" secondItem="iyz-UV-zd9" secondAttribute="trailing" constant="5" id="en8-oo-1o6"/>
+                                            <constraint firstItem="dMs-Gb-2GE" firstAttribute="leading" secondItem="iyz-UV-zd9" secondAttribute="trailing" constant="120" id="gfq-CH-yQM"/>
+                                            <constraint firstItem="iyz-UV-zd9" firstAttribute="leading" secondItem="0ZW-VL-mbG" secondAttribute="leading" constant="5" id="guO-fq-H1y"/>
                                             <constraint firstItem="iyz-UV-zd9" firstAttribute="top" secondItem="0ZW-VL-mbG" secondAttribute="top" constant="14" id="iwi-S1-UbF"/>
-                                            <constraint firstAttribute="trailing" secondItem="dMs-Gb-2GE" secondAttribute="trailing" constant="45" id="wOv-nQ-2OT"/>
+                                            <constraint firstAttribute="trailing" secondItem="dMs-Gb-2GE" secondAttribute="trailing" constant="10" id="wOv-nQ-2OT"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -331,6 +347,7 @@
                         <outlet property="cancelButton" destination="uvl-2X-AqJ" id="Aee-fQ-Bdp"/>
                         <outlet property="commentTextField" destination="eUu-im-bLr" id="Kra-rB-qfB"/>
                         <outlet property="commentView" destination="Q6O-XJ-22k" id="EAk-Xm-UEe"/>
+                        <outlet property="datePickerMenuButton" destination="bA1-qT-uL9" id="Mvn-rQ-eP6"/>
                         <outlet property="datePickerView" destination="hf6-70-mcy" id="L1W-m5-meb"/>
                         <outlet property="dateView" destination="ZJk-aa-dSV" id="sv4-I7-CvU"/>
                         <outlet property="endDatePicker" destination="N1r-Dm-J3v" id="8r1-wR-8LM"/>
@@ -347,7 +364,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="119.2" y="106.59670164917542"/>
+            <point key="canvasLocation" x="119.2" y="106.40394088669952"/>
         </scene>
     </scenes>
     <designables>
@@ -362,6 +379,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="google" width="127.33333587646484" height="30.666666030883789"/>
         <namedColor name="Navigation">
             <color red="0.82599997520446777" green="0.96700000762939453" blue="0.81599998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -374,8 +392,8 @@
         <namedColor name="textColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

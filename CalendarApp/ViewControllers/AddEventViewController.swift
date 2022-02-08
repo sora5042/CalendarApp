@@ -29,6 +29,7 @@ class AddEventViewController: UIViewController {
     var eventModels = EventModel()
     private let dateFormat = DateFormatter()
     var date = String()
+    var allDayDate = String()
     private var selectedSwitchType = SwitchType.off
     var authorization: GTMAppAuthFetcherAuthorization?
 
@@ -40,6 +41,7 @@ class AddEventViewController: UIViewController {
     @IBOutlet weak var notificationDatePicker: UIDatePicker!
     @IBOutlet private weak var saveButton: UIButton!
     @IBOutlet private weak var cancelButton: UIButton!
+    @IBOutlet private weak var datePickerMenuButton: UIButton!
     @IBOutlet private weak var navigationBarLabel: UILabel!
     @IBOutlet private weak var googleCalendarAddView: UIView!
     @IBOutlet private weak var titleView: UIView!
@@ -69,6 +71,7 @@ class AddEventViewController: UIViewController {
 
         cancelButton.addTarget(self, action: #selector(tappedCancelButton), for: .touchUpInside)
         saveButton.addTarget(self, action: #selector(tappedSaveButton), for: .touchUpInside)
+        tappedDatePickerMenuButton()
 
         dateView.layer.borderWidth = 1.2
         dateView.layer.borderColor = UIColor.lightGray.cgColor
@@ -119,8 +122,6 @@ class AddEventViewController: UIViewController {
     }
 
     @objc private func tappedSaveButton() {
-        dateFormat.dateFormat = "yyyy/MM/dd"
-
         if eventModel == nil {
             localNotification()
         } else {
@@ -128,6 +129,41 @@ class AddEventViewController: UIViewController {
         }
         delegate?.event(addEvent: eventModels)
         dismiss(animated: true, completion: nil)
+    }
+
+    private func tappedDatePickerMenuButton() {
+        var selectedDatePickerMenu = [UIMenuElement]()
+
+        selectedDatePickerMenu.append(UIAction(title: "終日", handler: { [weak self] _ in
+            self?.dateFormat.dateFormat = "yyyy/MM/dd"
+            let allDayDate = self?.dateFormat.date(from: self?.allDayDate ?? "")
+            let calendar = Calendar(identifier: .gregorian)
+            let startDate = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: allDayDate ?? Date())
+            let endDate = calendar.date(bySettingHour: 23, minute: 59, second: 0, of: allDayDate ?? Date())
+            self?.startDatePicker.date = startDate ?? Date()
+            self?.endDatePicker.date = endDate ?? Date()
+            self?.tappedDatePickerMenuButton()
+        }))
+
+        selectedDatePickerMenu.append(UIAction(title: "現在の日時", handler: { [weak self] _ in
+            let startDate = Date()
+            let endDate = Date()
+
+            self?.startDatePicker.date = startDate
+            self?.endDatePicker.date = endDate
+            self?.tappedDatePickerMenuButton()
+        }))
+        selectedDatePickerMenu.append(UIAction(title: "元の日時に戻す", handler: { [weak self] _ in
+
+            self?.dateFormat.dateFormat = "yyyy/MM/dd"
+            let datePicker = self?.dateFormat.date(from: self?.date ?? "")
+            self?.startDatePicker.date = datePicker ?? Date()
+            self?.endDatePicker.date = datePicker ?? Date()
+            self?.tappedDatePickerMenuButton()
+        }))
+
+        datePickerMenuButton.menu = UIMenu(title: "日時指定", options: .displayInline, children: selectedDatePickerMenu)
+        datePickerMenuButton.showsMenuAsPrimaryAction = true
     }
 
     @IBAction func addGoogleCalendarSwitch(_ sender: UISwitch) {
@@ -251,7 +287,7 @@ class AddEventViewController: UIViewController {
     private func showAuthorizationDialog(callBack: @escaping ShowAuthorizationDialogCallBack) {
         let clientID = "579964048764-q3nu1gpee4h5hjrqa4ubppvvg3g3jrnt.apps.googleusercontent.com"
         let redirectUrl = "com.googleusercontent.apps.579964048764-q3nu1gpee4h5hjrqa4ubppvvg3g3jrnt:/oauthredirect"
-        let scopes = ["https://www.googleapis.com/auth/calendar", "https://www.googleapis.com/auth/calendar.readonly", "https://www.googleapis.com/auth/calendar.events", "https://www.googleapis.com/auth/calendar.events.readonly"]
+        let scopes = ["https://www.googleapis.com/auth/calendar.events"]
 
         let configuration = GTMAppAuthFetcherAuthorization.configurationForGoogle()
         let redirectURL = URL(string: redirectUrl + ":/oauthredirect")
@@ -275,7 +311,7 @@ class AddEventViewController: UIViewController {
                     if let authState = authState {
                         // 認証情報オブジェクトを生成
                         self?.authorization = GTMAppAuthFetcherAuthorization(authState: authState)
-                        GTMAppAuthFetcherAuthorization.save((self?.authorization)!, toKeychainForName: "authorization")
+                        //                        GTMAppAuthFetcherAuthorization.save((self?.authorization)!, toKeychainForName: "authorization")
                     }
                 }
                 callBack(error)
@@ -283,9 +319,9 @@ class AddEventViewController: UIViewController {
     }
     // このアプリで保存したイベントデータをGoogleカレンダーアプリにも保存するメソッド
     private func add(eventName: String, startDateTime: Date, endDateTime: Date) {
-        if GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization") != nil {
-            authorization = GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization")!
-        }
+                if GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization") != nil {
+                    authorization = GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization")!
+                }
 
         if authorization == nil {
             showAuthorizationDialog(callBack: { [weak self](error) -> Void in
