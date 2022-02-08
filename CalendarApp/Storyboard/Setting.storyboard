@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -212,6 +213,61 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="他カレンダーアプリと連携" id="PZa-Rj-cYv">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="axo-OW-dts" detailTextLabel="gGn-1p-sPL" rowHeight="60" style="IBUITableViewCellStyleValue1" id="AMZ-2g-yO7">
+                                        <rect key="frame" x="0.0" y="361.99999809265137" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AMZ-2g-yO7" id="AjR-YI-gQq">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="iOSカレンダーアプリと同期する" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="axo-OW-dts">
+                                                    <rect key="frame" x="16" y="23" width="180.33333333333334" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="0.0"/>
+                                                    <color key="textColor" name="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gGn-1p-sPL">
+                                                    <rect key="frame" x="323.66666666666669" y="23" width="35.333333333333336" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="0.0"/>
+                                                    <color key="textColor" name="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="settingCell"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="9yf-Q9-N6D">
+                                        <rect key="frame" x="0.0" y="421.99999809265137" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9yf-Q9-N6D" id="Hq6-fT-1jV">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Googleカレンダーアプリと同期する" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Kw-rn-o1A">
+                                                    <rect key="frame" x="16" y="22.666666666666668" width="202" height="15.000000000000004"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <color key="textColor" name="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google" translatesAutoresizingMaskIntoConstraints="NO" id="Bb1-8C-heC">
+                                                    <rect key="frame" x="226.00000000000003" y="14.666666666666666" width="127.33333333333334" height="30.666666666666671"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3Kw-rn-o1A" firstAttribute="leading" secondItem="Hq6-fT-1jV" secondAttribute="leadingMargin" id="AYF-Kw-vrP"/>
+                                                <constraint firstItem="Bb1-8C-heC" firstAttribute="centerY" secondItem="Hq6-fT-1jV" secondAttribute="centerY" id="Bcb-46-Gng"/>
+                                                <constraint firstItem="Bb1-8C-heC" firstAttribute="leading" secondItem="3Kw-rn-o1A" secondAttribute="trailing" constant="8" symbolic="YES" id="Jlr-5o-ANh"/>
+                                                <constraint firstItem="3Kw-rn-o1A" firstAttribute="centerY" secondItem="Hq6-fT-1jV" secondAttribute="centerY" id="gay-Fp-Yya"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="settingCell"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="Vlw-oR-Zrz" id="TVS-v7-7gz"/>
@@ -224,10 +280,11 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4uR-JZ-o0M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-305" y="-389"/>
+            <point key="canvasLocation" x="-306.39999999999998" y="-389.40886699507394"/>
         </scene>
     </scenes>
     <resources>
+        <image name="google" width="127.33333587646484" height="30.666666030883789"/>
         <namedColor name="button">
             <color red="0.0" green="0.39100000262260437" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
