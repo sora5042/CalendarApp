@@ -162,7 +162,7 @@ class ContainerTableViewController: UITableViewController, UNUserNotificationCen
                     tableView.deselectRow(at: indexPath, animated: true)
                 }
             case 4:
-                guard let url = URL(string: "https://sora.sakurai-lab.info/プライバシーポリシー") else { return }
+                guard let url = URL(string: "https://sora.sakurai-lab.info/%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC") else { return }
                 if UIApplication.shared.canOpenURL(url as URL) {
                     UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
                     tableView.deselectRow(at: indexPath, animated: true)
