@@ -134,7 +134,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bA1-qT-uL9">
-                                        <rect key="frame" x="311" y="4.6666666666666572" width="54" height="28"/>
+                                        <rect key="frame" x="306" y="4.6666666666666572" width="54" height="28"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="日時指定">
@@ -145,7 +145,7 @@
                                 <color key="backgroundColor" name="Navigation"/>
                                 <constraints>
                                     <constraint firstItem="cya-Ic-qyT" firstAttribute="leading" secondItem="ZJk-aa-dSV" secondAttribute="leading" constant="8" id="LzY-Xg-mK9"/>
-                                    <constraint firstAttribute="trailing" secondItem="bA1-qT-uL9" secondAttribute="trailing" constant="10" id="TCG-MM-KaN"/>
+                                    <constraint firstAttribute="trailing" secondItem="bA1-qT-uL9" secondAttribute="trailing" constant="15" id="TCG-MM-KaN"/>
                                     <constraint firstItem="bA1-qT-uL9" firstAttribute="centerY" secondItem="ZJk-aa-dSV" secondAttribute="centerY" id="ZlG-nI-rFW"/>
                                     <constraint firstItem="cya-Ic-qyT" firstAttribute="centerY" secondItem="ZJk-aa-dSV" secondAttribute="centerY" id="mIc-Br-SPv"/>
                                     <constraint firstItem="cya-Ic-qyT" firstAttribute="top" secondItem="ZJk-aa-dSV" secondAttribute="top" constant="11" id="rJ0-ht-Ejq"/>
@@ -381,7 +381,7 @@
     <resources>
         <image name="google" width="127.33333587646484" height="30.666666030883789"/>
         <namedColor name="Navigation">
-            <color red="0.82599997520446777" green="0.96700000762939453" blue="0.81599998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.82629580940000003" green="0.96738791950000003" blue="0.81615785350000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
