@@ -319,9 +319,9 @@ class AddEventViewController: UIViewController {
     }
     // このアプリで保存したイベントデータをGoogleカレンダーアプリにも保存するメソッド
     private func add(eventName: String, startDateTime: Date, endDateTime: Date) {
-                if GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization") != nil {
-                    authorization = GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization")!
-                }
+        if GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization") != nil {
+            authorization = GTMAppAuthFetcherAuthorization(fromKeychainForName: "authorization")!
+        }
 
         if authorization == nil {
             showAuthorizationDialog(callBack: { [weak self](error) -> Void in
