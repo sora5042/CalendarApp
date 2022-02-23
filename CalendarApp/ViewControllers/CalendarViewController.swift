@@ -41,6 +41,7 @@ class CalendarViewController: UIViewController, UNUserNotificationCenterDelegate
     var allDayDate = String()
     private var selectedMenuType = MenuType.month
     private var selectDayOfWeekMenuType = DayOfWeekType.sunday
+    private var dayOfWeekBool = Bool()
 
     @IBOutlet private weak var calendar: FSCalendar!
     @IBOutlet private weak var calendarHeight: NSLayoutConstraint!
@@ -59,15 +60,17 @@ class CalendarViewController: UIViewController, UNUserNotificationCenterDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupTodayDate()
         setupView()
         setupCalendar()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        defaultDayOfWeek()
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
         setupTodayDate()
         todayDateOrOtherDate()
         setupBannerView()
@@ -87,6 +90,7 @@ class CalendarViewController: UIViewController, UNUserNotificationCenterDelegate
         rokuyouLabel.text = calculateRokuyo(date: todayDate)
         calendarInfoView.layer.borderWidth = 2.3
         calendarInfoView.layer.borderColor = UIColor(named: "calendarInfoViewBorder")?.cgColor
+        calendarInfoView.layer.cornerRadius = 12
     }
 
     private func setupCalendar() {
@@ -95,6 +99,7 @@ class CalendarViewController: UIViewController, UNUserNotificationCenterDelegate
         calendar.swipeToChooseGesture.isEnabled = true
         calendar.scrollDirection = .horizontal
         calendar.layer.borderWidth = 2.5
+        calendar.layer.cornerRadius = 20
         calendar.layer.borderColor = UIColor(named: "borderColor")?.cgColor
         calendar.layer.shadowOffset = CGSize(width: 18.0, height: 8.0)
         calendar.layer.shadowColor = UIColor(named: "shadow")?.cgColor
@@ -185,23 +190,44 @@ class CalendarViewController: UIViewController, UNUserNotificationCenterDelegate
         }))
         optionButton.menu = UIMenu(title: "オプション", options: .displayInline, children: displayCalendarMenu)
         optionButton.showsMenuAsPrimaryAction = true
+        optionButton.setTitle(selectedMenuType.rawValue, for: .normal)
+    }
+
+    private func defaultDayOfWeek() {
+        let userDefaults = UserDefaults.standard.bool(forKey: "dayOfWeek")
+        print(userDefaults)
+
+        if userDefaults == false {
+            calendar.firstWeekday = 1
+            selectDayOfWeekMenuType = .sunday
+            selectedWeekdayLabels()
+        } else {
+            calendar.firstWeekday = 2
+            selectDayOfWeekMenuType = .monday
+            selectedWeekdayLabels()
+        }
+        calendar.reloadData()
     }
 
     private func tappedDayOfWeekButton() {
         var dayOfWeekMenu = [UIMenuElement]()
 
-        dayOfWeekMenu.append(UIAction(title: DayOfWeekType.sunday.rawValue, state: self.selectDayOfWeekMenuType == DayOfWeekType.sunday ? .on : .off, handler: { [weak self] _ in
+        dayOfWeekMenu.append(UIAction(title: DayOfWeekType.sunday.rawValue, handler: { [weak self] _ in
             self?.calendar.firstWeekday = 1
             self?.selectDayOfWeekMenuType = .sunday
+            self?.dayOfWeekBool = false
+            UserDefaults.standard.set(self?.dayOfWeekBool, forKey: "dayOfWeek")
             self?.selectedWeekdayLabels()
             self?.calendar.reloadData()
             self?.tappedDayOfWeekButton()
 
         }))
 
-        dayOfWeekMenu.append(UIAction(title: DayOfWeekType.monday.rawValue, state: self.selectDayOfWeekMenuType == DayOfWeekType.monday ? .on : .off, handler: { [weak self] _ in
+        dayOfWeekMenu.append(UIAction(title: DayOfWeekType.monday.rawValue, handler: { [weak self] _ in
             self?.calendar.firstWeekday = 2
             self?.selectDayOfWeekMenuType = .monday
+            self?.dayOfWeekBool = true
+            UserDefaults.standard.set(self?.dayOfWeekBool, forKey: "dayOfWeek")
             self?.selectedWeekdayLabels()
             self?.calendar.reloadData()
             self?.tappedDayOfWeekButton()
@@ -359,6 +385,10 @@ class CalendarViewController: UIViewController, UNUserNotificationCenterDelegate
 
     override var shouldAutorotate: Bool {
         return false
+    }
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
     }
 }
 
