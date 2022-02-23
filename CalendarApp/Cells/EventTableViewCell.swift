@@ -41,8 +41,9 @@ class EventTableViewCell: UITableViewCell {
     }
 
     private func setupView() {
-        cellView.layer.borderWidth = 0.5
+        cellView.layer.borderWidth = 0.8
         cellView.layer.borderColor = UIColor.lightGray.cgColor
+        cellView.layer.cornerRadius = 12.5
         cancelButton.addTarget(self, action: #selector(tappedClearButton), for: .touchUpInside)
     }
 
