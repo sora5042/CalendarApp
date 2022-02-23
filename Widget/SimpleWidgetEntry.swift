@@ -7,7 +7,9 @@
 
 import SwiftUI
 import WidgetKit
+import RealmSwift
 
 struct SimpleWidgetEntry: TimelineEntry {
     let date: Date
+    
 }

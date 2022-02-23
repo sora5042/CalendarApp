@@ -8,16 +8,24 @@
 import WidgetKit
 import SwiftUI
 import Intents
+import RealmSwift
 
 @main
 struct SimpleWidget: Widget {
     let kind: String = "Widget"
-    
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: SimpleWidgetTimeline()) { entry in
-            SimpleWidgetEntryView(entry: entry)
+        
+        var body: some WidgetConfiguration {
+            StaticConfiguration(kind: kind, provider: SimpleWidgetTimeline()) { entry in
+                SimpleWidgetEntryView(entry: entry)
+            }
+            .configurationDisplayName("Re:スケウィジェット")
+            .description("カレンダーのウィジェットです")
         }
-        .configurationDisplayName("Re:スケウィジェット")
-        .description("カレンダーのウィジェットです")
     }
-}
+
+//struct WidgetWithRealmWidget_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SimpleWidgetEntryView(entry: SimpleWidgetEntry(date: Date(), event: ))
+//            .previewContext(WidgetPreviewContext(family: .systemSmall))
+//    }
+//}
