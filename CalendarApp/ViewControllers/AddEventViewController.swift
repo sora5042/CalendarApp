@@ -75,6 +75,7 @@ class AddEventViewController: UIViewController {
 
         dateView.layer.borderWidth = 1.2
         dateView.layer.borderColor = UIColor.lightGray.cgColor
+        dateView.layer.cornerRadius = 12
         googleCalendarAddView.layer.borderWidth = 1.2
         googleCalendarAddView.layer.borderColor = UIColor.lightGray.cgColor
     }
@@ -91,6 +92,7 @@ class AddEventViewController: UIViewController {
         titleTextField.borderActiveColor = UIColor(named: "textFieldBorderActiveColor")
         titleView.layer.borderWidth = 1.2
         titleView.layer.borderColor = UIColor.lightGray.cgColor
+        titleView.layer.cornerRadius = 12
 
         placeTextField.text = eventModel?.place
         placeTextField.placeholderFontScale = 0.9
@@ -99,6 +101,7 @@ class AddEventViewController: UIViewController {
         placeTextField.borderActiveColor = UIColor(named: "textFieldBorderActiveColor")
         placeView.layer.borderWidth = 1.2
         placeView.layer.borderColor = UIColor.lightGray.cgColor
+        placeView.layer.cornerRadius = 12
 
         commentTextField.text = eventModel?.comment
         commentTextField.placeholderFontScale = 0.9
@@ -107,11 +110,12 @@ class AddEventViewController: UIViewController {
         commentTextField.borderActiveColor = UIColor(named: "textFieldBorderActiveColor")
         commentView.layer.borderWidth = 1.2
         commentView.layer.borderColor = UIColor.lightGray.cgColor
+        commentView.layer.cornerRadius = 12
     }
 
     private func newEventOrEditEvent() {
         if eventModel == nil {
-            navigationBarLabel.text = "新規イベント"
+            navigationBarLabel.text = "新規作成"
         } else {
             navigationBarLabel.text = "編集"
             startDatePicker.date = eventModel?.editStartTime ?? Date()
@@ -372,6 +376,10 @@ class AddEventViewController: UIViewController {
 
     override var shouldAutorotate: Bool {
         return false
+    }
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
     }
 }
 
