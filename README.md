@@ -19,7 +19,7 @@
   
 - Googleカレンダーアプリと同期、iOS標準カレンダーアプリと同期    
     
-となっており、現在制作中です。  
+となっております。  
   
 苦労した点：これまで利用していたSQLite、Firebaseと比べてRealmはRealmSwiftの設計思想や使い方を理解して使わなければトラブルがよく発生する点。  
   
@@ -62,8 +62,11 @@ Googleの様々なAPI へのアクセス・データの取得などを簡単に�
 - [Google-Mobile-Ads-SDK](https://github.com/googleads/googleads-mobile-ios-examples)  
 Googleモバイル広告の最新世代で、洗練された広告フォーマットと、モバイル広告ネットワークや広告ソリューションにアクセスするため  
   
- - [LicensePlist](https://github.com/mono0926/LicensePlist#installation)  
- CocoaPods、SwiftPMなどで管理しているライブラリのライセンス表示を自動的に生成するツール  
+- [LicensePlist](https://github.com/mono0926/LicensePlist#installation)  
+CocoaPods、SwiftPMなどで管理しているライブラリのライセンス表示を自動的に生成するツール 
+    
+- [Firebase](https://github.com/firebase/firebase-ios-sdk)  
+Firebaseのアナリティクスでユーザー解析をするため     
    
 ## 開発環境  
 - Swift5.5.2  
